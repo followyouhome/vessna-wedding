@@ -1,0 +1,55 @@
+<template>
+    <div id="app">
+        <module-nav></module-nav>
+        <main>
+          <transition name="fade">
+            <router-view></router-view>
+          </transition>
+        </main>
+        <module-footer></module-footer>
+    </div>
+</template>
+
+<script>
+  import Vue from 'vue'
+  import appHeader from './components/global/header.vue';
+  import config from '../config';
+  import ImageDeferred from './components/atoms/image-deferred.vue';
+  import ModuleFooter from './components/module/module-footer.vue';
+  import ModuleNav from './components/module/module-nav.vue';
+
+  Vue.component('image-deferred', ImageDeferred)
+
+  export default {
+    name: 'app',
+    components: {
+      appHeader,
+      'module-nav': ModuleNav,
+      'module-footer': ModuleFooter
+    },
+
+    asyncData ({ store }) {
+      return store.dispatch('fetch', {
+        endpoint: 'config',
+        namespace: 'config',
+        id: 'navigation'
+      });
+    }
+  }
+</script>
+
+<style>
+  .fade-enter-active, .fade-leave-active {
+    transition-property: opacity;
+    transition-duration: .2s;
+  }
+  .fade-leave-to + .fade-enter-to {
+    position: absolute;
+  }
+  .fade-enter-active {
+    transition-delay: .2s;
+  }
+  .fade-enter, .fade-leave-active {
+    opacity: 0
+  }
+</style>

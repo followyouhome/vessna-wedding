@@ -1,0 +1,69 @@
+const keystone = require('keystone');
+const responseHandler = require('../../lib/response-handler');
+
+const {
+  PAGE_HOMEPAGE,
+  PAGE_NEWS_HUB,
+  PAGE_DRESS_COLLECTION
+} = require('../../../config/constants.js');
+
+const FILTER_WEDDING = 'wedding';
+const FILTER_PROM = 'prom';
+
+var data;
+
+module.exports = (app, base) => {
+  app.get(base + '/navigation', [
+    (req, res, next) => {
+      const query = keystone.list('DressCollection')
+                      .model.find();
+
+      data = [{
+        label: 'Главная страница',
+        route: PAGE_HOMEPAGE
+      }, {
+        label: 'Новости',
+        route: PAGE_NEWS_HUB
+      }];
+
+      query.exec((err, result) => {
+        data.push({
+          label: 'Свадебные платья',
+          route: '',
+          items: result.reduce(function(result, element) {
+            if(element.type === FILTER_WEDDING) {
+              result.push({
+                slug: element.slug,
+                label: element.name,
+                route: PAGE_DRESS_COLLECTION
+              });
+            }
+
+            return result;
+          }, [])
+        });
+
+        data.push({
+          label: 'Вечерние платья',
+          route: '',
+          items: result.reduce(function(result, element) {
+            if(element.type === FILTER_PROM) {
+              result.push({
+                slug: element.slug,
+                label: element.name,
+                route: PAGE_DRESS_COLLECTION
+              });
+            }
+
+            return result;
+          }, [])
+        });
+
+        next();
+      });
+    },
+    (req, res) => {
+      responseHandler(res, null, data); 
+    }
+  ]);
+};
