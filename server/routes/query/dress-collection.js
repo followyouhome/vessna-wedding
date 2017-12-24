@@ -9,10 +9,9 @@ module.exports = (app, base) => {
       const query = keystone.list('DressCollection')
                       .model
                       .findOne({ slug: req.params.slug });
-      
+
       query.exec((err, result) => {
         locals.collection = result;
-
         next();
       });
     },
@@ -21,16 +20,15 @@ module.exports = (app, base) => {
       const query = keystone.list('Dress')
                       .model
                       .find({ collections: locals.collection._id });
-      
+
       query.exec((err, result) => {
         locals.dresses = result;
-
         next();
       });
     },
 
     (req, res) => {
-       responseHandler(res, null, locals); 
+       responseHandler(res, null, locals);
     }
   ]);
 };

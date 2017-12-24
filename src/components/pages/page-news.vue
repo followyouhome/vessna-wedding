@@ -1,16 +1,19 @@
 <template>
-  <div>
-    <module-related-posts></module-related-posts>
-  </div>
+  <main id="article">
+    <module-related-posts ></module-related-posts>
+    <module-article v-bind:article="article"></module-article>
+  </main>
 </template>
 
 <script>
+  import ModuleArticle from '../module/module-article.vue';
   import ModuleRelatedPosts from '../module/module-related-posts.vue';
 
   export default {
-    name: 'page-homepage',
+    name: 'page-article',
 
     components: {
+      'module-article': ModuleArticle,
       'module-related-posts': ModuleRelatedPosts,
     },
 
@@ -23,15 +26,16 @@
         }),
 
         store.dispatch('fetch', {
-          slug: route.params.slug,
           endpoint: 'news'
         })
       ])
     },
 
     computed: {
-      news () {
-        // return this.$store.state.news;
+      article () {
+        return this.$store.state['news'].find(element => {
+          return element.slug === this.$route.params.news;
+        });
       }
     }
   }

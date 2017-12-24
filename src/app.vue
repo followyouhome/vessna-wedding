@@ -15,7 +15,7 @@
   import appHeader from './components/global/header.vue';
   import config from '../config';
   import ImageDeferred from './components/atoms/image-deferred.vue';
-  import ModuleFooter from './components/module/module-footer.vue';
+  import ModuleFooter from './components/global/module-footer.vue';
   import ModuleNav from './components/module/module-nav.vue';
 
   Vue.component('image-deferred', ImageDeferred)

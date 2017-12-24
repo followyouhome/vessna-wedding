@@ -1,15 +1,15 @@
 <template>
-    <module-dress-grid v-bind:collection="collection"></module-dress-grid>
+    <module-grid-dress v-bind:collection="collection"></module-grid-dress>
 </template>
 
 <script>
-  import ModuleDressCollection from '../module/module-dress-grid.vue';
+  import ModuleDressCollection from '../module/module-grid-dress.vue';
 
   export default {
     name: 'page-dress-collection',
 
     components: {
-      'module-dress-grid': ModuleDressCollection,
+      'module-grid-dress': ModuleDressCollection,
     },
 
     state : {
@@ -23,7 +23,7 @@
           namespace: 'config',
           id: 'navigation'
         }),
-        
+
         store.dispatch('fetch', {
           endpoint: 'dress-collection',
           id: route.params.collection
@@ -40,32 +40,6 @@
       })
     },
 
-    beforeCreate() {
-      console.log("beforeCreate")
-    },
-
-    created() {
-      console.log("created")
-    },
-
-    beforeMount() {
-      console.log("beforeMount")
-    },
-
-    mounted() {
-      console.log("mounted")
-    },
-
-    beforeUpdate() {
-      console.log("beforeUpdate")
-    },
-
-    updated() {
-      console.log("updated")
-    },
-
-
-   
     computed: {
       collection () {
         return this.$store.state['dress-collection'][this.$route.params.collection];

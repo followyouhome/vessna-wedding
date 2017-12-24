@@ -9,7 +9,8 @@ var Dress = new keystone.List('Dress', {
   plural: 'Платья',
   autokey: { path: 'slug', from: 'name', unique: true },
   inherits: Promo,
-  hidden: false
+  sortable: false,
+  hidden: false,
 });
 
 Dress.add('Параметры', {

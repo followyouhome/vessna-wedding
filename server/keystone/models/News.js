@@ -5,8 +5,11 @@ const Promo = require('./Promo');
 
 var News = new keystone.List('News', {
   label: 'Новости',
+  singular: 'Новость',
+  plural: 'Новости',
   autokey: { path: 'slug', from: 'name', unique: true },
   inherits: Promo,
+  sortable: false,
   hidden: false
 });
 
@@ -17,10 +20,10 @@ News.add('Статья', {
   	type: Types.Select,
   	default: 'draft',
   	index: true,
-  	options: [{ 
+  	options: [{
   		label: 'Черновик', value: 'draft'
   	}, {
-  		label: 'Опубликовано', value: 'pubished'
+  		label: 'Опубликовано', value: 'published'
   	}, {
   		label: 'Архив', value: 'archived'
   	}]

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import ModuleDressCollection from '../module/module-dress-grid.vue';
+  // import ModuleDressCollection from '../module/module-dress-grid.vue';
 
   export default {
     name: 'page-dress',
@@ -25,7 +25,7 @@
       //     namespace: 'config',
       //     id: 'navigation'
       //   }),
-        
+
       //   store.dispatch('fetch', {
       //     endpoint: 'dress-collection',
       //     id: route.params.slug
@@ -67,7 +67,7 @@
     },
 
 
-   
+
     computed: {
       // collection () {
       //   return this.$store.state['dress-collection'][this.$route.params.slug];

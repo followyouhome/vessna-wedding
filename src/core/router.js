@@ -23,21 +23,36 @@ export function createRouter (store) {
   return new Router({
     mode: 'history',
     routes: [
+      // Static pages
       {
         name: ROUTES.PAGE_HOMEPAGE,
         path: '/',
         component: () => import('../components/pages/page-homepage.vue')
       },
+      // {
+      //   name: ROUTES.PAGE_CONTACT,
+      //   path: '/contact',
+      //   component: () => import('../components/pages/page-homepage.vue')
+      // },
+      // {
+      //   name: ROUTES.PAGE_LANDING,
+      //   path: '/:slug',
+      //   component: () => import('../components/pages/page-homepage.vue')
+      // },
+
+      // News pages
       {
         name: ROUTES.PAGE_NEWS_HUB,
         path: '/news',
         component: () => import('../components/pages/page-news-hub.vue')
       },
       {
-        name: ROUTES.PAGE_NEWS_ARTICLE,
-        path: '/news/:slug',
-        component: () => import('../components/pages/page-news-article.vue')
+        name: ROUTES.PAGE_NEWS,
+        path: '/news/:news',
+        component: () => import('../components/pages/page-news.vue')
       },
+
+      // Dress pages
       {
         name: ROUTES.PAGE_DRESS_COLLECTION,
         path: '/collection/:collection',
@@ -48,7 +63,7 @@ export function createRouter (store) {
         path: '/collection/:collection/:dress',
         component: () => import('../components/pages/page-dress.vue')
       },
-      
+
 
 
 
