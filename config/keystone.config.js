@@ -1,5 +1,5 @@
-const path = require('path');
 const pkg = require('../package.json');
+const path = require('path');
 const config = require('../config');
 
 module.exports = {
@@ -8,7 +8,6 @@ module.exports = {
   'mongo': 'mongodb://localhost:27017/' + pkg.name,
   'updates': path.resolve(__dirname, '../server/keystone/updates'),
   'auto update': true,
-
   'port': config.port,
   'session': true,
   'session store': 'mongo',
@@ -19,7 +18,6 @@ module.exports = {
   'auth': true,
   'user model': 'user',
   'cookie secret': '24634sdfhsdfgh346y34',
-  'cloudinary config': 'cloudinary://973344584935212:qmo8nmPl9pORLT-AjS4UEWgrcqM@vessna',
   'logger options': {
     skip: (req, res) => res.statusCode < 400
   }

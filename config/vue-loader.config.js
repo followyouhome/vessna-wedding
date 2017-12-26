@@ -5,8 +5,6 @@ let scss = require('./css-loader.config').use;
 const cssLoader = _.find(scss, { loader : 'css-loader' });
 cssLoader.options.modules = false;
 
-console.log(scss);
-
 module.exports = {
   test: /\.vue$/,
   loader: 'vue-loader',
