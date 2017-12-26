@@ -16,7 +16,7 @@
           id: 'navigation'
         }),
 
-        store.dispatch('fetch', {
+        store.dispatch('fetchAll', {
           endpoint: 'news'
         })
       ])

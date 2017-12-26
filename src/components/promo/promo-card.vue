@@ -23,7 +23,7 @@
 
 <script>
 	export default {
-		name: 'promo-news',
+		name: 'promo-card',
 
 		props: ['promo']
 	}

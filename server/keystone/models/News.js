@@ -5,9 +5,10 @@ const Promo = require('./Promo');
 
 var News = new keystone.List('News', {
   label: 'Новости',
-  singular: 'Новость',
   plural: 'Новости',
+  singular: 'Новость',
   autokey: { path: 'slug', from: 'name', unique: true },
+  defaultSort: '-publishedDate',
   inherits: Promo,
   sortable: false,
   hidden: false
@@ -32,6 +33,11 @@ News.add('Статья', {
   publishedDate: { label: 'Дата публикации', type: Types.Date, default: Date.now },
   footnote: { label: 'Сноска', type: String, required: true, default: 'Читать далее' },
   content: { label: 'Содержимое', type: Types.Html, wysiwyg: true }
+});
+
+News.schema.pre('save', function(next) {
+  this.promo.slug = this.slug;
+  next();
 });
 
 News.defaultColumns = 'name|25%, state|25%, author|25%, publishedDate|25%';

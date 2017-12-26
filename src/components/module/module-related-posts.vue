@@ -1,8 +1,8 @@
 <template>
 	<div class="module module--related-posts flickity-carousels">
-	    <div class="module__wrapper module--related-posts__wrapper">
-			<promo-topical v-for="post in news" v-bind:promo="post"></promo-topical>  
-	    </div>
+    <div class="module__wrapper module--related-posts__wrapper">
+			<promo-topical v-for="post in news" v-bind:promo="post.promo"></promo-topical>  
+    </div>
 	</div>
 </template>
 
@@ -23,7 +23,7 @@
 				endpoint: 'news'
 			});
 		},
-		
+
 		computed: {
 			news () {
 				return this.$store.state.news;
@@ -32,7 +32,7 @@
 
 		mounted () {
 			if (!isMobile.phone && !isMobile.tablet) {
-				
+
 				var Flickity = require('flickity');
 
 				Array.from(document.querySelectorAll('.flickity-carousels')).forEach(function (element) {
@@ -57,7 +57,7 @@
 					//     flickity.resize();
 					// }, 3000);
 				});
-				
+
 			} else {
 				Array.from(document.querySelectorAll('.flickity-carousels')).forEach(function (carousel) {
 					var wrapper = carousel.querySelector('.module__wrapper'),

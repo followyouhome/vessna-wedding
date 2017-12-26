@@ -25,8 +25,13 @@
           id: 'navigation'
         }),
 
-        store.dispatch('fetch', {
+        store.dispatch('fetchAll', {
           endpoint: 'news'
+        }),
+
+        store.dispatch('fetchMain', {
+          endpoint: 'news',
+          id: route.params.news
         })
       ])
     },

@@ -5,8 +5,8 @@ const Promo = require('./Promo');
 
 var Dress = new keystone.List('Dress', {
   label: 'Платья',
-  singular: 'Платье',
   plural: 'Платья',
+  singular: 'Платье',
   autokey: { path: 'slug', from: 'name', unique: true },
   inherits: Promo,
   sortable: false,

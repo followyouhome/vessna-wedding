@@ -21,7 +21,7 @@
 
 <script>
 	export default {
-		name: 'promo-news',
+		name: 'promo-collection',
 
 		props: ['promo']
 	}

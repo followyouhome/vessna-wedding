@@ -5,8 +5,8 @@ const Promo = require('./Promo');
 
 var DressCollection = new keystone.List('DressCollection', {
   label:'Коллекции',
-  singular: 'Коллекция',
   plural: 'Коллекции',
+  singular: 'Коллекция',
   autokey: { path: 'slug', from: 'name', unique: true },
   inherits: Promo,
   hidden: false
@@ -17,7 +17,7 @@ DressCollection.add('Коллекция', {
   type: {
   	label: 'Тип',
   	type: Types.Select,
-  	options: [{ 
+  	options: [{
   		label: 'Свадебные платья', value: 'wedding'
   	}, {
   		label: 'Вечерние платья', value: 'prom'
