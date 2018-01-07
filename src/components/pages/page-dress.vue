@@ -19,18 +19,18 @@
     // },
 
     asyncData ({ store, route }) {
-      // return Promise.all([
-      //   store.dispatch('fetch', {
-      //     endpoint: 'config',
-      //     namespace: 'config',
-      //     id: 'navigation'
-      //   }),
+      return Promise.all([
+        store.dispatch('fetch', {
+          endpoint: 'config',
+          namespace: 'config',
+          id: 'navigation'
+        }),
 
       //   store.dispatch('fetch', {
       //     endpoint: 'dress-collection',
       //     id: route.params.slug
       //   })
-      // ])
+      ])
     },
 
     beforeRouteUpdate (to, from, next) {

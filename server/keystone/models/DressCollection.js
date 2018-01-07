@@ -1,8 +1,6 @@
 const keystone = require('keystone');
 const Types = keystone.Field.Types;
-
 const Promo = require('./Promo');
-
 const {
   PAGE_DRESS_COLLECTION
 } = require('../../../config/constants.js');
@@ -18,7 +16,7 @@ var DressCollection = new keystone.List('DressCollection', {
 });
 
 DressCollection.add('Коллекция', {
-  name: { type: String, label: 'Название', required: true },
+  name: { label: 'Название', type: String, required: true },
   type: {
     type: Types.Select,
   	label: 'Тип',

@@ -1,7 +1,9 @@
 const keystone = require('keystone');
 const Types = keystone.Field.Types;
-
 const Promo = require('./Promo');
+const {
+  PAGE_NEWS
+} = require('../../../config/constants.js');
 
 var News = new keystone.List('News', {
   label: 'Новости',
@@ -35,9 +37,15 @@ News.add('Статья', {
   content: { label: 'Содержимое', type: Types.Html, wysiwyg: true }
 });
 
-News.schema.pre('save', function(next) {
-  this.promo.slug = this.slug;
-  next();
+News.schema.set('toJSON', {
+  transform: function(doc, ret, options) {
+      ret.route = PAGE_NEWS;
+      ret.params = {
+        'news': ret.slug
+      };
+
+      return ret;
+    }
 });
 
 News.defaultColumns = 'name|25%, state|25%, author|25%, publishedDate|25%';

@@ -4,7 +4,7 @@
 			<router-link class="promo__image-wrapper promo--card__image-wrapper" v-bind:to="{ name: item.route, params: item.params }">
 				<image-deferred v-bind:image="item.promo.image" v-if="item.promo.image"></image-deferred>
 	      <video-regular v-bind:video="item.promo.video" v-if="item.promo.video"></video-regular>
-			</router-link
+			</router-link>
       <div class="promo__content-wrapper promo--card__content-wrapper">
         <a class="promo--card__title" href="prom-and-party-dresses/vessna-2017">
         	<h4 class="promo__text-title">

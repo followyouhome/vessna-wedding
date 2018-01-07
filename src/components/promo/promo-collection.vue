@@ -1,19 +1,19 @@
 <template>
 	<div class="promo promo--collection">
 	    <div class="promo__wrapper promo--collection__wrapper">
-	        <a class="promo__image-wrapper promo--collection__image-wrapper" href="homepage/wedding-collections/2017-sensoria">
-	            <image-deferred v-bind:image="promo.image"></image-deferred>
-	        </a>
+					<router-link class="promo__image-wrapper promo--collection__image-wrapper" v-bind:to="{ name: item.route, params: item.params }">
+	            <image-deferred v-bind:image="item.promo.image"></image-deferred>
+	        </router-link>
 	        <div class="promo__content-wrapper promo--collection__content-wrapper">
-	            <a class="promo--collection__title" href="homepage/wedding-collections/2017-sensoria">
-	            	<h4 class="promo__text-title promo__text-title--normal-case">{{ promo.title }}</h4>
-	            </a>
-	            <a class="promo--collection__headline" href="homepage/wedding-collections/2017-sensoria">
-	            	<h4 class="promo__text-headline promo__text-headline--normal-case">{{ promo.headline }}</h4>
-	            </a>
-	            <a class="promo--collection__link" href="homepage/wedding-collections/2017-sensoria">
+							<router-link class="promo--collection__title" v-bind:to="{ name: item.route, params: item.params }">
+	            	<h4 class="promo__text-title promo__text-title--normal-case">{{ item.promo.title }}</h4>
+							</router-link>
+							<router-link class="promo--collection__headline" v-bind:to="{ name: item.route, params: item.params }">
+	            	<h4 class="promo__text-headline promo__text-headline--normal-case">{{ item.promo.headline }}</h4>
+							</router-link>
+							<router-link class="promo--collection__link" v-bind:to="{ name: item.route, params: item.params }">
 	            	<h4 class="promo__text-headline">Подробнее</h4>
-	            </a>
+							</router-link>
 	        </div>
 	    </div>
 	</div>
@@ -23,7 +23,7 @@
 	export default {
 		name: 'promo-collection',
 
-		props: ['promo']
+		props: ['item']
 	}
 </script>
 
