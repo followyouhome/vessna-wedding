@@ -11,6 +11,5 @@ module.exports = app => {
 
   require('./user')(app, base);
   require('./news')(app, base);
-  require('./homepage')(app, base);
   require('./dress-collection')(app, base);
 };

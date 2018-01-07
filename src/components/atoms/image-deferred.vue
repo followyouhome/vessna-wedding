@@ -1,9 +1,6 @@
 <template>
   <figure v-bind:class="['image-deferred', 'image-deferred--preloader', aspect]" v-bind:style="size" v-if="image">
-    <noscript>
-      <img v-bind:src="image.url" alt="" title="" itemprop="contentUrl">
-    </noscript>
-    <div class="image-deferred__image image-deferred__image--preloader" v-bind:data-src="image.url" data-alt="" data-title=""></div>
+    <img class="image-deferred__image image-deferred__image--preloader" v-bind:src="image.url" alt="" title="" itemprop="contentUrl" v-bind:data-src="image.url" data-alt="" data-title="">
   </figure>
 </template>
 
@@ -14,6 +11,9 @@
     props: ['image', 'aspect'],
 
     computed: {
+      env () {
+        return __VUE_ENV__ === 'client' ? 'client' : 'server';
+      },
       size: function() {
         if(this.aspect) {
           return "padding-top: 0;";

@@ -139,9 +139,8 @@ export function createStore() {
       main_promo: null
     },
     modules: {
-      config: {
-
-      }
+      config: {},
+      pages: {}
     },
 
     actions,

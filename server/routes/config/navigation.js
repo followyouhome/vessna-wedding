@@ -20,10 +20,12 @@ module.exports = (app, base) => {
 
       data = [{
         label: 'Главная страница',
-        route: PAGE_HOMEPAGE
+        route: PAGE_HOMEPAGE,
+        params: {}
       }, {
         label: 'Новости',
-        route: PAGE_NEWS_HUB
+        route: PAGE_NEWS_HUB,
+        params: {}
       }];
 
       query.exec((err, result) => {
@@ -32,11 +34,7 @@ module.exports = (app, base) => {
           route: '',
           items: result.reduce(function(result, element) {
             if(element.type === FILTER_WEDDING) {
-              result.push({
-                slug: element.slug,
-                label: element.name,
-                route: PAGE_DRESS_COLLECTION
-              });
+              result.push(element);
             }
 
             return result;
@@ -48,11 +46,7 @@ module.exports = (app, base) => {
           route: '',
           items: result.reduce(function(result, element) {
             if(element.type === FILTER_PROM) {
-              result.push({
-                slug: element.slug,
-                label: element.name,
-                route: PAGE_DRESS_COLLECTION
-              });
+              result.push(element);
             }
 
             return result;
@@ -63,7 +57,7 @@ module.exports = (app, base) => {
       });
     },
     (req, res) => {
-      responseHandler(res, null, data); 
+      responseHandler(res, null, data);
     }
   ]);
 };

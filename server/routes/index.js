@@ -6,6 +6,7 @@ module.exports = app => {
 
   require('./static')(app);
   require('./config')(app);
+  require('./pages')(app);
   require('./query')(app);
   require('./app')(app);
 };
