@@ -2,7 +2,7 @@ const keystone = require('keystone');
 const responseHandler = require('../../lib/response-handler');
 
 module.exports = (app, base) => {
-  var locals = app.locals;
+  let output = {};
 
   app.get(base + '/dress-collection/:slug', [
     (req, res, next) => {
@@ -11,7 +11,7 @@ module.exports = (app, base) => {
                       .findOne({ slug: req.params.slug });
 
       query.exec((err, result) => {
-        locals.collection = result;
+        output.collection = result;
         next();
       });
     },
@@ -19,16 +19,16 @@ module.exports = (app, base) => {
     (req, res, next) => {
       const query = keystone.list('Dress')
                       .model
-                      .find({ collections: locals.collection._id });
+                      .find({ collections: output.collection._id });
 
       query.exec((err, result) => {
-        locals.dresses = result;
+        output.dresses = result;
         next();
       });
     },
 
     (req, res) => {
-       responseHandler(res, null, locals);
+       responseHandler(res, null, output);
     }
   ]);
 };
