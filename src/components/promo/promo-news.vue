@@ -27,5 +27,63 @@
 </script>
 
 <style lang="scss">
+	.promo--news {
+		width: 300px;
 
+		&:hover {
+			.promo--news__wrapper {
+				box-shadow: none;
+			}
+		}
+	}
+
+	.promo--news__wrapper {
+		box-shadow: 0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.06);
+	}
+
+	.promo--news__content-wrapper {
+		padding: 25px 40px;
+
+		@media #{$phablet} {
+			padding: 10px 20px;
+		}
+
+		> *:last-child {
+
+		}
+	}
+
+	.promo--news__headline {
+		display: block;
+
+		text-decoration: none;
+
+		&:hover, &:focus {
+			outline: none;
+			color: $black;
+			text-decoration: none;
+		}
+
+		&:active {
+			text-decoration: none;
+
+			transform: translateY(2px);
+		}
+	}
+
+	.promo--news__line {
+		margin: 30px 0px 15px;
+
+		@media #{$phablet} {
+			margin: 20px 0 10px;
+		}
+	}
+
+	.promo--news__promo_footnote {
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
 </style>

@@ -25,5 +25,60 @@
 </script>
 
 <style lang="scss">
+  .promo--dress {
+    width: 300px;
 
+    .image-deferred {
+      width: auto;
+    }
+  }
+
+  .promo--dress--no-link {
+    .promo--dress__image-wrapper {
+      cursor: zoom-in;
+    }
+  }
+
+  .promo--dress--show-lightbox {
+    .promo--dress__image-wrapper {
+      cursor: zoom-in;
+    }
+  }
+
+  .promo--dress__content-wrapper {
+    position: relative;
+    padding: 25px 40px 20px;
+    min-height: 70px;
+    width: 100%;
+
+    @media #{$tablet} {
+      padding: 10px 20px 20px;
+
+    }
+
+    @media #{$phablet} {
+      padding: 10px 15px 15px;
+      min-height: 70px;
+    }
+  }
+
+  .promo--dress__headline {
+    display: block;
+    min-height: 24px;
+    text-decoration: none;
+    text-align: left;
+    color: $dark;
+  }
+
+  .promo--dress__subheadline {
+    display: block;
+    min-height: 20px;
+    text-align: right;
+  }
+
+  .promo--dress__image-wrapper {
+    img {
+      height: 100% !important;
+    }
+  }
 </style>

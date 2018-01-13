@@ -23,5 +23,53 @@
 </script>
 
 <style lang="scss">
+  .promo--label {
 
+  	width: percentage(1 / 2);
+
+  	@media #{large} {
+  		width: percentage(1 / 2);
+  	}
+
+  	@media #{medium} {
+  		width: percentage(1 / 2);
+  	}
+
+  	@media #{phablet} {
+  		width: 100%;
+  	}
+
+  	@media #{mobile} {
+  	}
+  }
+
+  .promo--label__wrapper {
+  	height: 80px;
+  	text-align: center;
+
+  	.vertical_align;
+
+  	@media #{phablet} {
+  		height: 70px;
+  	}
+
+  	@media #{mobile} {
+  		height: 60px;
+  	}
+  }
+
+  .promo--label__content-wrapper {
+  	display: inline-block;
+  	vertical-align: middle;
+
+  	text-align: center;
+  }
+
+  .promo--label__headline {
+  	margin: 0 20px;
+  }
+
+  .promo--label__copy {
+  	margin: 0 20px;
+  }
 </style>

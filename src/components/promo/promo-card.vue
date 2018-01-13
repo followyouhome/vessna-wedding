@@ -31,5 +31,97 @@
 </script>
 
 <style lang="scss">
+	.promo--card {
+		// max-width: 1000px;
 
+		&:nth-child(2n) {
+
+			.promo--card__content-wrapper {
+				left: 30px;
+				margin-right: 30px;
+			}
+
+			.promo--card__image-wrapper {
+				float: left;
+			}
+		}
+
+		&:nth-child(2n+1) {
+
+			.promo--card__content-wrapper {
+				right: 30px;
+				margin-left: 30px;
+			}
+
+			.promo--card__image-wrapper {
+				float: right;
+			}
+		}
+	}
+
+	.promo--card__wrapper {
+		padding: 40px 30px;
+
+		// .clearfix;
+
+		@media #{$tablet} {
+
+			.promo--card__image-wrapper:nth-child(n) {
+				width: 100%;
+				float: none;
+			}
+
+			.promo--card__content-wrapper:nth-child(n) {
+				left: 0;
+				right: 0;
+				margin-left: 0;
+				margin-right: 0;
+			}
+		}
+	}
+
+	.promo--card__content-wrapper {
+		display: block;
+		position: relative;
+		overflow: hidden;
+		top: 10px;
+
+		> *:nth-child(2):after {                          //Dot
+			content: '\25CF';
+			display: block;
+			color: $dark5;
+			font-size: 11px;
+			line-height: 33px;
+		}
+	}
+
+	.promo--card__image-wrapper {
+		width: 50%;
+
+		.image-deferred {
+			width: auto;
+		}
+	}
+
+	.promo--card__title {
+		display: block;
+		padding: 0 10%;
+		vertical-align: middle;
+		text-align: center;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+
+	.promo--card__tag {
+		text-align: center;
+		text-decoration: none;
+	}
+
+	.promo--card__copy {
+		vertical-align: middle;
+		text-align: center;
+	}
 </style>

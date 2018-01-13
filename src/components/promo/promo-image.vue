@@ -23,5 +23,81 @@
 </script>
 
 <style lang="scss">
+  .promo--image {
+  	width: 300px;
+  }
 
+  .promo--image__wrapper {
+  	transition: all 0.1s linear;												//Don't increase animation time
+
+  	&:hover {
+
+  		.promo--image__headline * {
+  			color: $yellow;
+  		}
+  	}
+
+  	&:active {
+  		opacity: 0.6;
+  		transform: translateY(2px);
+  	}
+  }
+
+  .promo--image__content-wrapper {
+  	padding: 25px 40px;
+
+  	> *:first-child:after {														//Horizontal line
+  		content: '';
+  		display: block;
+  		margin-top: 25px;
+  		border-bottom: 1px solid $gray1;
+  	}
+
+  	> * {
+  		margin-bottom: 25px;
+  	}
+
+  	> *:last-child {
+  		margin-bottom: 0;
+  	}
+
+  	@media #{phablet} {
+  		padding: 20px 25px;
+
+  		> * {
+  			margin-bottom: 15px;
+  		}
+
+  		> *:first-child:after {
+  			margin-top: 15px;
+  		}
+  	}
+  }
+
+  .promo--image__headline {
+  	display: block;
+  }
+
+  .promo--image__subheadline {
+  	display: block;
+
+  	&:hover * {
+  		color: $dark5;
+  	}
+
+  	@media #{medium} {															//Cool tap effect for tablets and mobiles
+      	margin-left: -10px;
+  		padding: 10px;
+
+  		&:before {
+  		    content: '';
+      		display: block;
+      		position: absolute;
+      		height: 100%;
+      		width: 100%;
+      		left: 0;
+      		top: 0;
+  		}
+  	}
+  }
 </style>

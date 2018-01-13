@@ -10,21 +10,24 @@ const productionLoaders = [
     options: {
       importLoaders: 2,
       modules: true,
-      
+
     }
   },
   { loader: 'sass-loader',
     options: {
-      
+
     }
   },
   // { loader: 'postcss-loader' },
   { loader: 'sass-resources-loader',
     options: {
-      resources: path.resolve(__dirname, '../src/styles/media.scss')
+      resources: [
+        path.resolve(__dirname, '../src/styles/colors.scss'),
+        path.resolve(__dirname, '../src/styles/media.scss')
+      ]
     }
   },
-  
+
 ];
 
 let devLoaders = [{ loader: 'vue-style-loader' }].concat(_.clone(productionLoaders, true));

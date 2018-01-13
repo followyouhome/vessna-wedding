@@ -35,5 +35,56 @@
 </script>
 
 <style lang="scss">
+	$userpicSize: 60px;
 
+	.promo--feedback {
+		width: 300px;
+	}
+
+	.promo--feedback__content-wrapper {
+		position: relative;
+		padding: 0 40px 20px;
+		width: 100%;
+
+		@media #{$tablet} {
+			padding: 0 25px 25px;
+		}
+
+		@media #{$phablet} {
+			padding: 0 20px 20px;
+		}
+	}
+
+	.promo--feedback__avatar {
+		position: relative;
+		left: 0;
+		right: 0;
+		margin: auto;
+		width: $userpicSize;
+		height: $userpicSize;
+		margin-top: -$userpicSize / 2;
+		margin-bottom: 20px;
+		overflow: hidden;
+
+		@media @phablet {
+			margin-bottom: 15px;
+		}
+
+		img {
+			border-radius: $userpicSize;
+		}
+	}
+
+	.promo--feedback__subheadline {
+		display: block;
+		text-align: center;
+	}
+
+	.promo--feedback__copy {
+
+	}
+
+	.promo--feedback__footnote {
+		display: inline-block;
+	}
 </style>
