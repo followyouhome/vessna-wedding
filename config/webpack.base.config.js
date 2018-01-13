@@ -1,8 +1,10 @@
 var path = require('path');
 var webpack = require('webpack');
+const CleanPlugin = require('clean-webpack-plugin');
 const BabiliPlugin = require('babili-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+
 
 const isProd = process.env.NODE_ENV === 'production';
 const resolve = file => path.resolve(__dirname, file);
@@ -32,7 +34,7 @@ var config = {
           name: '[name].[ext]?[hash]'
         }
       },
-      
+
     ]
   },
   performance: {
@@ -40,7 +42,7 @@ var config = {
     hints: isProd ? 'warning' : false
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json'], 
+    extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
     }
@@ -48,17 +50,19 @@ var config = {
   plugins: isProd
     ? [
       new BabiliPlugin(),
-
       new ExtractTextPlugin({
         filename: 'common.[chunkhash].css'
       })
     ]
     : [
+      new CleanPlugin(['dist/*.*', '!dist/.gitignore'], {
+        root: process.cwd()
+      }),
       new FriendlyErrorsPlugin({
         compilationSuccessInfo: {
           messages: ['You application is running at http://localhost:3000'],
         }
-      })
+      }),
     ]
 };
 

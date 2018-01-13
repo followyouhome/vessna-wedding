@@ -1,7 +1,3 @@
-.env
-/npm-debug.log
+npm-debug.log
 package-lock.json
-
-/.idea/
-/dist/
-/node_modules/
+node_modules
