@@ -1,7 +1,7 @@
 <template>
 	<div class="module module--selected-collections">
     <div class="module__wrapper module--selected-collections__wrapper">
-			<promo-collection v-for="item in items" v-bind:item="item"></promo-collection>
+			<promo-collection v-for="item in items" v-bind:item="item" v-bind:key="item.slug"></promo-collection>
     </div>
 	</div>
 </template>

@@ -1,7 +1,7 @@
 <template>
 	<div class="module module--related-posts flickity-carousels">
     <div class="module__wrapper module--related-posts__wrapper">
-			<promo-topical v-for="post in news" v-bind:promo="post.promo"></promo-topical>  
+			<promo-topical v-for="post in news" v-bind:promo="post.promo" v-bind:key="post.slug"></promo-topical>
     </div>
 	</div>
 </template>
@@ -14,20 +14,10 @@
 	export default {
 		name: 'module-related-posts',
 
+		props: ['news'],
+
 		components: {
 			'promo-topical': PromoTopical
-		},
-
-		asyncData ({ store }) {
-			return store.dispatch('fetch', {
-				endpoint: 'news'
-			});
-		},
-
-		computed: {
-			news () {
-				return this.$store.state.news;
-			}
 		},
 
 		mounted () {
@@ -53,9 +43,9 @@
 						wrapAround: false
 					});
 
-					// setTimeout(function() {
-					//     flickity.resize();
-					// }, 3000);
+					setTimeout(function() {
+					    flickity.resize();
+					}, 3000);
 				});
 
 			} else {

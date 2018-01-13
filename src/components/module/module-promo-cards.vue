@@ -1,7 +1,7 @@
 <template>
 	<div class="module module-promo-cards">
     <div class="module__wrapper module-promo-cards__wrapper">
-			<promo-card v-for="item in items" v-bind:item="item"></promo-card>
+			<promo-card v-for="item in items" v-bind:item="item" v-bind:key="item.slug"></promo-card>
     </div>
 	</div>
 </template>

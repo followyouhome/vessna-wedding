@@ -1,7 +1,7 @@
 <template>
   <main class="module-grid-news isotope-grid">
     <div class="isotope-grid__sizer"></div>
-    <promo-news v-for="post in news" v-bind:promo="post.promo"></promo-news>
+    <promo-news v-for="post in news" v-bind:promo="post.promo" v-bind:key="post.slug"></promo-news>
   </main>
 </template>
 
