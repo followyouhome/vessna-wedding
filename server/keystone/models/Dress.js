@@ -23,7 +23,7 @@ Dress.add('Параметры', {
   },
 });
 
-Dress.defaultColumns = 'name|50%, collections|50%,';
+Dress.defaultColumns = 'name|30%, collections|30%, promo.image|40%';
 Dress.register();
 
 module.exports = Dress;

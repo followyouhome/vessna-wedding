@@ -48,7 +48,7 @@ News.schema.set('toJSON', {
     }
 });
 
-News.defaultColumns = 'name|25%, state|25%, author|25%, publishedDate|25%';
+News.defaultColumns = 'name|25%, state|15%, author|15%, publishedDate|25%, promo.image|20%';
 News.register();
 
 module.exports = News;

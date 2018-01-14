@@ -66,7 +66,7 @@ DressCollection.schema.set('toJSON', {
 
 DressCollection.relationship({ path: 'dresses', ref: 'Dress', refPath: 'collections' });
 
-DressCollection.defaultColumns = 'name|40%, type|30%, state|30%';
+DressCollection.defaultColumns = 'name|30%, type|30%, state|20%, promo.image|20%';
 DressCollection.register();
 
 module.exports = DressCollection;

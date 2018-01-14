@@ -6,11 +6,11 @@
 	      <video-regular v-bind:video="item.promo.video" v-if="item.promo.video"></video-regular>
 			</router-link>
       <div class="promo__content-wrapper promo--card__content-wrapper">
-        <a class="promo--card__title" href="prom-and-party-dresses/vessna-2017">
+        <router-link class="promo--card__title" v-bind:to="{ name: item.route, params: item.params }">
         	<h4 class="promo__text-title">
         		<span class="font-peignot" v-html="item.promo.headline"></span>
         	</h4>
-        </a>
+        </router-link>
         <div class="promo--card__copy">
           <p class="promo__text-copy" v-html="item.promo.subline"></p>
         </div>
