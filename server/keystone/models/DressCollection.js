@@ -2,7 +2,7 @@ const keystone = require('keystone');
 const Types = keystone.Field.Types;
 const Promo = require('./Promo');
 const {
-  PAGE_DRESS_COLLECTION
+  PAGE_DRESS_COLLECTION, PAGE_DRESS_COLLECTION_PROM, PAGE_DRESS_COLLECTION_WEDDING, PAGE_DRESS_COLLECTION_CAPSULE
 } = require('../../../config/constants.js');
 
 var DressCollection = new keystone.List('DressCollection', {
@@ -21,17 +21,41 @@ DressCollection.add('Коллекция', {
     type: Types.Select,
   	label: 'Тип',
   	options: [{
-  		label: 'Свадебные платья', value: 'wedding'
+      label: 'Вечерние платья', value: 'prom',
   	}, {
-  		label: 'Вечерние платья', value: 'prom'
-  	}]
-  }
-  // dress: { label: 'Платья', type: Types.Relationship, ref: 'Dress', many: true },
+      label: 'Свадебные платья', value: 'wedding',
+  	}, {
+      label: 'Капсульная коллекция', value: 'capsule',
+    }],
+  },
+  state: {
+  	label: 'Статус',
+  	type: Types.Select,
+  	default: 'draft',
+  	options: [{
+  		label: 'Черновик', value: 'draft',
+  	}, {
+  		label: 'Опубликовано', value: 'published',
+  	}, {
+  		label: 'Архив', value: 'archived',
+  	}],
+  },
+  // dress: {
+  //   label: 'Платья',
+  //   type: Types.Relationship,
+  //   ref: 'Dress',
+  //   many: true
+  // },
 });
 
 DressCollection.schema.set('toJSON', {
   transform: function(doc, ret, options) {
-      ret.route = PAGE_DRESS_COLLECTION;
+      if (ret.type == 'prom') {
+        ret.route = PAGE_DRESS_COLLECTION_PROM;
+      } else if (ret.type == 'wedding') {
+        ret.route = PAGE_DRESS_COLLECTION_WEDDING;
+      }
+
       ret.params = {
         'collection': ret.slug
       };
@@ -42,7 +66,7 @@ DressCollection.schema.set('toJSON', {
 
 DressCollection.relationship({ path: 'dresses', ref: 'Dress', refPath: 'collections' });
 
-DressCollection.defaultColumns = 'name|25%, type|25%';
+DressCollection.defaultColumns = 'name|40%, type|30%, state|30%';
 DressCollection.register();
 
 module.exports = DressCollection;

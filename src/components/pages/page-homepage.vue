@@ -48,6 +48,10 @@
       __VUE_ENV__ === 'server' ? next() : fetch(store, to).then(() => next())
     },
 
+    beforeRouteUpdate (to, from, next) {
+      __VUE_ENV__ === 'server' ? next() : fetch(store, to).then(() => next())
+    },
+
     computed: {
       news () {
         return this.$store.state.news;

@@ -59,23 +59,25 @@ export function createRouter (store) {
         component: () => import('../components/pages/page-dress-collection.vue'),
       },
       {
+        name: ROUTES.PAGE_DRESS_COLLECTION_PROM,
+        path: '/prom-and-party-dresses/:collection',
+        component: () => import('../components/pages/page-dress-collection.vue'),
+      },
+      {
+        name: ROUTES.PAGE_DRESS_COLLECTION_WEDDING,
+        path: '/wedding-dresses/:collection',
+        component: () => import('../components/pages/page-dress-collection.vue'),
+      },
+      {
+        name: ROUTES.PAGE_DRESS_COLLECTION_CAPSULE,
+        path: '/capsule-collection/:collection',
+        component: () => import('../components/pages/page-dress-collection.vue'),
+      },
+      {
         name: ROUTES.PAGE_DRESS,
         path: '/collection/:collection/:dress',
         component: () => import('../components/pages/page-dress.vue')
       },
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
       /*------------------------*/

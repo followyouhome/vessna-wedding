@@ -3,6 +3,8 @@
 </template>
 
 <script>
+  import store from '../../core/store.js';
+
   export default {
     name: 'page',
 

@@ -93,12 +93,13 @@ Promo.schema.pre('save', function(next) {
   const cloudinary = /(http|https):\/\/res.cloudinary.com\/vessna\/image\/upload\/.*\//;
   const local = '/images/';
 
-  this.promo.image.url = this.promo.image.url.replace(cloudinary, local);
-  this.promo.image.secure_url = this.promo.image.url.replace(cloudinary, local);
+  if (this.promo.image.url) {
+    this.promo.image.url = this.promo.image.url.replace(cloudinary, local);
+  }
 
-  console.log(this.promo.image)
-  // console.log(keystone);
-
+  if (this.promo.image.secure_url) {
+    this.promo.image.secure_url = this.promo.image.url.replace(cloudinary, local);
+  }
 
   next(this);
 });

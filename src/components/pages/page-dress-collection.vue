@@ -37,10 +37,14 @@
       __VUE_ENV__ === 'server' ? next() : fetch(store, to).then(() => next())
     },
 
+    beforeRouteUpdate (to, from, next) {
+      __VUE_ENV__ === 'server' ? next() : fetch(store, to).then(() => next())
+    },
+
     computed: {
       collection () {
         return this.$store.state['dress-collection'][this.$route.params.collection];
       }
-    }
+    },
   }
 </script>

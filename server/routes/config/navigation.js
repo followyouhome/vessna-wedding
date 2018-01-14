@@ -33,7 +33,7 @@ module.exports = (app, base) => {
           label: 'Свадебные платья',
           route: '',
           items: result.reduce(function(result, element) {
-            if(element.type === FILTER_WEDDING) {
+            if(element.type === FILTER_WEDDING && element.state == 'published') {
               result.push(element);
             }
 
@@ -45,7 +45,7 @@ module.exports = (app, base) => {
           label: 'Вечерние платья',
           route: '',
           items: result.reduce(function(result, element) {
-            if(element.type === FILTER_PROM) {
+            if(element.type === FILTER_PROM && element.state == 'published') {
               result.push(element);
             }
 
