@@ -3163,52 +3163,6 @@ ul {
     }
 }
 
-.image-deferred {
-    position: relative;
-    overflow: hidden
-}
-
-.image-deferred:before {
-    content: "";
-    display: block
-}
-
-.image-deferred.fresco {
-    cursor: zoom-in
-}
-
-.image-deferred--preloader {
-    background-image: url("/public/images/sitewide/watermark.png");
-    background-size: 33%;
-    background-position: 50%
-}
-
-.image-deffered--size-1-2:before {
-    padding-top: 40%
-}
-
-.image-deffered--size-2-3:before {
-    padding-top: 150%
-}
-
-.image-deffered--size-3-2:before {
-    padding-top: 66.66666667%
-}
-
-.image-deferred__image,
-.image-deferred img {
-    position: absolute;
-    margin: auto;
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    top: 0
-}
-
-.image-deferred__image--loaded {
-    -webkit-animation: show-image .3s normal;
-    animation: show-image .3s normal
-}
 
 figure.image-parallax {
     position: absolute;

@@ -6,6 +6,18 @@ module.exports = (app, base) => {
 
   app.get(base + '/homepage', [
     (req, res, next) => {
+      const query = keystone.list('Page')
+                      .model
+                      .findOne({ slug: 'homepage' });
+
+      query.exec((err, result) => {
+        output.main_promo = result.main_promo;
+        next();
+      });
+    },
+
+    (req, res, next) => {
+
       const query = keystone.list('DressCollection')
                       .model
                       .find({ type: 'wedding' })
@@ -13,7 +25,6 @@ module.exports = (app, base) => {
 
       query.exec((err, result) => {
         output.wedding = result;
-        // console.log(result.name.test);
         next();
       });
     },

@@ -16,7 +16,11 @@ var Dress = new keystone.List('Dress', {
 Dress.add('Параметры', {
   name: { type: String, required: true },
   collections: { label: 'Коллекция', type: Types.Relationship, ref: 'DressCollection', many: true },
-  images: { label: 'Фотографии платья', type: Types.CloudinaryImages }
+  images: { label: 'Фотографии платья', type: Types.CloudinaryImages },
+  price: {
+    usd: { label: 'Цена в $', type: Types.Money, },
+    rub: { label: 'Цена в ₽', type: Types.Money, },
+  },
 });
 
 Dress.defaultColumns = 'name|50%, collections|50%,';

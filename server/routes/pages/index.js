@@ -7,4 +7,5 @@ module.exports = app => {
   base = '/api/pages';
 
   require('./homepage')(app, base);
+  require('./news')(app, base);
 };
