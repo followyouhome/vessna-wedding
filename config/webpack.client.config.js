@@ -39,7 +39,7 @@ module.exports = merge(baseConfig, {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
         VUE_ENV: '"client"'
       },
-      __VUE_ENV__: '"client"'
+      __VUE_ENV__: '"client"',
     }),
 
     new webpack.optimize.CommonsChunkPlugin({

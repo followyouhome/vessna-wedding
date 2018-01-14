@@ -55,9 +55,9 @@ var config = {
       })
     ]
     : [
-      new CleanPlugin(['dist/*.*', '!dist/.gitignore'], {
-        root: process.cwd()
-      }),
+      // new CleanPlugin(['dist/*.*', '!dist/.gitignore'], {
+      //   root: process.cwd()
+      // }),
       new FriendlyErrorsPlugin({
         compilationSuccessInfo: {
           messages: ['You application is running at http://localhost:3000'],

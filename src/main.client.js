@@ -68,7 +68,7 @@ function fetchAsyncData(to, from, next) {
     return next();
   }
 
-  Promise.all(asyncDataHooks.map(hook => hook({ store, route: to })))
+  Promise.all(asyncDataHooks.map(component => component.asyncData && component.asyncData.call(component, { store, route: to })))
     .then(() => next())
     .catch(next);
 }

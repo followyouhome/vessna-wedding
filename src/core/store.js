@@ -40,6 +40,7 @@ const actions = {
       .then(function ({ data }) {
         if (id && !global) {
           store.commit('setItem', { namespace, id, data });
+          store.commit('setMainPromo', { namespace, id, data });
         } else {
           store.commit('replaceItems', { namespace, data, global });
         }
@@ -88,6 +89,29 @@ const actions = {
       .catch(err => {
         console.error(err);
       });
+  },
+
+  fetchPage (store, { id }) {
+    const namespace = 'pages';
+    const endpoint = 'pages';
+
+    let uri = base + '/' + endpoint;
+
+    if (id) {
+      uri += '/' + id;
+    }
+
+    return axios
+      .get(uri, settings)
+      .then(function ({ data }) {
+        if (id) {
+          store.commit('setItem', { namespace, id, data });
+          store.commit('setMainPromo', { namespace, id, data });
+        }
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
 };
 
@@ -104,7 +128,7 @@ const mutations = {
   },
 
   setMainPromo (state, { namespace, id, data }) {
-    if (data.main_promo) {
+    if (data.main_promo && data.main_promo.media !='null') {
       state.main_promo = data.main_promo;
     } else {
       state.main_promo = null;
@@ -120,30 +144,27 @@ const mutations = {
   }
 };
 
-export function createStore() {
-
-  if (process.env.VUE_ENV === 'server') {
-    settings.headers = { cookie: Vue.cookies.getCookieString() };
-  }
-
-  return new Vuex.Store({
-    namespaced: true,
-    state: {
-      global: {
-        user: {
-          _id: Vue.cookies.get('uid') || ''
-        }
-      },
-      items: [],
-      'dress-collection': {},
-      main_promo: null
-    },
-    modules: {
-      config: {},
-      pages: {}
-    },
-
-    actions,
-    mutations,
-  });
+if (__VUE_ENV__ === 'server' && Vue.cookies) {
+  settings.headers = { cookie: Vue.cookies.getCookieString() };
 }
+
+export default new Vuex.Store({
+  namespaced: true,
+  state: {
+    global: {
+      user: {
+        _id: Vue.cookies && Vue.cookies.get('uid') || ''
+      }
+    },
+    items: [],
+    'dress-collection': {},
+    main_promo: null
+  },
+  modules: {
+    config: {},
+    pages: {}
+  },
+
+  actions,
+  mutations,
+});

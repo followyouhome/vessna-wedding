@@ -44,9 +44,9 @@ export default context => {
         reject({ code: 404 });
       }
 
-      Promise.all(matchedComponents.map(({ asyncData }) => asyncData && asyncData({
-        store,
-        route: router.currentRoute
+      Promise.all(matchedComponents.map(component => component.asyncData && component.asyncData.call(component, {
+          store,
+          route: router.currentRoute
       }))).then(() => {
         context.state = store.state;
         resolve(app);

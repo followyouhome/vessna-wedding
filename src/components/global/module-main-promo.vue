@@ -1,5 +1,5 @@
 <template>
-  <header class="main-promo [[+dir]] [[+pos]]">
+  <header class="main-promo [[+dir]] [[+pos]]" v-if="promo.media != 'null'">
     <div class="main-promo__hgroup">
       <div class="main-promo__hgroup__content">
         <h2>{{promo.subline}}</h2>
@@ -10,8 +10,8 @@
       </div>
     </div>
     <div class="main-promo__wrapper">
-      <image-deferred v-bind:image="promo.image" v-if="promo.image"></image-deferred>
-      <video-regular v-bind:video="promo.video" v-if="promo.video"></video-regular>
+      <image-deferred v-bind:image="promo.image" v-if="promo.media == 'image'"></image-deferred>
+      <video-regular v-bind:video="promo.video" v-if="promo.media == 'video'"></video-regular>
     </div>
   </header>
 </template>

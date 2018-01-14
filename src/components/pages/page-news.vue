@@ -6,11 +6,29 @@
 </template>
 
 <script>
+  import Page from './page.vue';
   import ModuleArticle from '../module/module-article.vue';
   import ModuleRelatedPosts from '../module/module-related-posts.vue';
 
+  import store from '../../core/store.js';
+
+  function fetch(store, route) {
+    return Promise.all([
+      store.dispatch('fetchAll', {
+        endpoint: 'news'
+      }),
+
+      store.dispatch('fetchMain', {
+        endpoint: 'news',
+        id: route.params.news
+      })
+    ])
+  }
+
   export default {
     name: 'page-article',
+
+    extends: Page,
 
     components: {
       'module-article': ModuleArticle,
@@ -19,21 +37,13 @@
 
     asyncData ({ store, route }) {
       return Promise.all([
-        store.dispatch('fetch', {
-          endpoint: 'config',
-          namespace: 'config',
-          id: 'navigation'
-        }),
-
-        store.dispatch('fetchAll', {
-          endpoint: 'news'
-        }),
-
-        store.dispatch('fetchMain', {
-          endpoint: 'news',
-          id: route.params.news
-        })
+        this.extends.asyncData({store, route}),
+        fetch(store, route)
       ])
+    },
+
+    beforeRouteEnter (to, from, next) {
+      __VUE_ENV__ === 'server' ? next() : fetch(store, to).then(() => next())
     },
 
     computed: {

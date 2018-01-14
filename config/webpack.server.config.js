@@ -42,7 +42,7 @@ module.exports = merge(baseConfig, {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
         VUE_ENV: '"server"'
       },
-      __VUE_ENV__: '"server"'
+      __VUE_ENV__: '"server"',
     }),
 
     new VueSSRServerPlugin()

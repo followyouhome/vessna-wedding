@@ -1,18 +1,35 @@
 <template>
   <div>
-    <module-related-posts></module-related-posts>
+    <module-related-posts v-bind:news="news"></module-related-posts>
     <module-selected-collections v-bind:items="wedding"></module-selected-collections>
     <module-promo-cards v-bind:items="prom"></module-promo-cards>
   </div>
 </template>
 
 <script>
+  import Page from './page.vue';
   import ModuleRelatedPosts from '../module/module-related-posts.vue';
   import ModuleSelectedCollections from '../module/module-selected-collections.vue';
   import ModulePromoCards from '../module/module-promo-cards.vue';
 
+  import store from '../../core/store.js';
+
+  function fetch (store, route) {
+    return Promise.all([
+      store.dispatch('fetchPage', {
+        id: 'homepage'
+      }),
+
+      store.dispatch('fetchAll', {
+        endpoint: 'news'
+      })
+    ])
+  }
+
   export default {
     name: 'page-homepage',
+
+    extends: Page,
 
     components: {
       'module-related-posts': ModuleRelatedPosts,
@@ -22,28 +39,24 @@
 
     asyncData ({ store, route }) {
       return Promise.all([
-        store.dispatch('fetch', {
-          endpoint: 'config',
-          namespace: 'config',
-          id: 'navigation'
-        }),
-
-        store.dispatch('fetch', {
-          endpoint: 'pages',
-          namespace: 'pages',
-          id: 'homepage'
-        }),
-
-        store.dispatch('fetchAll', {
-          endpoint: 'news'
-        })
+        this.extends.asyncData({store, route}),
+        fetch(store, route)
       ])
     },
 
+    beforeRouteEnter (to, from, next) {
+      __VUE_ENV__ === 'server' ? next() : fetch(store, to).then(() => next())
+    },
+
     computed: {
+      news () {
+        return this.$store.state.news;
+      },
+
       wedding () {
         return this.$store.state.pages.homepage.wedding;
       },
+
       prom () {
         return this.$store.state.pages.homepage.prom;
       }

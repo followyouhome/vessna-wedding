@@ -3,41 +3,38 @@
 </template>
 
 <script>
+  import Page from './page.vue';
   import ModuleDressCollection from '../module/module-grid-dress.vue';
+
+  import store from '../../core/store.js';
+
+  function fetch (store, route) {
+    return Promise.all([
+      store.dispatch('fetch', {
+        endpoint: 'dress-collection',
+        id: route.params.collection
+      })
+    ])
+  }
 
   export default {
     name: 'page-dress-collection',
+
+    extends: Page,
 
     components: {
       'module-grid-dress': ModuleDressCollection,
     },
 
-    state : {
-      collection: null
-    },
-
     asyncData ({ store, route }) {
       return Promise.all([
-        store.dispatch('fetch', {
-          endpoint: 'config',
-          namespace: 'config',
-          id: 'navigation'
-        }),
-
-        store.dispatch('fetch', {
-          endpoint: 'dress-collection',
-          id: route.params.collection
-        })
+        this.extends.asyncData({store, route}),
+        fetch(store, route)
       ])
     },
 
-    beforeRouteUpdate (to, from, next) {
-      this.$store.dispatch('fetch', {
-        endpoint: 'dress-collection',
-        id: to.params.collection
-      }).then(() => {
-        next();
-      })
+    beforeRouteEnter (to, from, next) {
+      __VUE_ENV__ === 'server' ? next() : fetch(store, to).then(() => next())
     },
 
     computed: {
