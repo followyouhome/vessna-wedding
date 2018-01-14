@@ -33,6 +33,7 @@ Promo.add('Промо', {
       { label: 'Видео', value: 'video' },
       { label: 'Аудио', value: 'audio' },
     ], default: 'null' },
+    alt: { label: 'Альтернативный текст', type: Types.Text, dependsOn: { 'promo.media': 'image' } },
     image: {
       label: 'Изображение',
       type: Types.CloudinaryImage,
@@ -66,6 +67,7 @@ Promo.add('Промо', {
       { label: 'Видео', value: 'video' },
       { label: 'Аудио', value: 'audio' },
     ], default: 'null' },
+    alt: { label: 'Альтернативный текст', type: Types.Text, dependsOn: { 'main_promo.media': 'image' } },
     image: {
       label: 'Изображение',
       type: Types.CloudinaryImage,
