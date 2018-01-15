@@ -8,6 +8,7 @@
           </transition>
         </main>
         <module-footer></module-footer>
+        <module-popup-container v-if="popup"></module-popup-container>
     </div>
 </template>
 
@@ -16,6 +17,7 @@
   import ModuleNav from './components/global/module-nav.vue';
   import ModuleFooter from './components/global/module-footer.vue';
   import ModuleMainPromo from './components/global/module-main-promo.vue';
+  import ModulePopupContainer from './components/global/module-popup-container';
   import ImageDeferred from './components/atoms/image-deferred.vue';
   import VideoRegular from './components/atoms/video-regular.vue';
 
@@ -28,19 +30,16 @@
       'module-nav': ModuleNav,
       'module-footer': ModuleFooter,
       'module-main-promo': ModuleMainPromo,
-    },
-
-    asyncData ({ store }) {
-      return store.dispatch('fetch', {
-        endpoint: 'config',
-        namespace: 'config',
-        id: 'navigation',
-      });
+      'module-popup-container': ModulePopupContainer,
     },
 
     computed: {
       main_promo () {
         return this.$store.state['main_promo'];
+      },
+
+      popup () {
+        return this.$store.state['popup'];
       },
     },
   };

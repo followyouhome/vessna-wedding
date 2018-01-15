@@ -152,6 +152,7 @@ export default new Vuex.Store({
   namespaced: true,
   state: {
     global: {
+      popup: null,
       user: {
         _id: Vue.cookies && Vue.cookies.get('uid') || '',
       },

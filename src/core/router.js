@@ -27,7 +27,7 @@ export function createRouter (store) {
       {
         name: ROUTES.PAGE_HOMEPAGE,
         path: '/',
-        component: () => import('../components/pages/page-homepage.vue')
+        component: () => import('../components/pages/page-homepage.vue'),
       },
       // {
       //   name: ROUTES.PAGE_CONTACT,
@@ -105,7 +105,7 @@ export function createRouter (store) {
       {
         name: 'login',
         path: '/user/login',
-        component: () => import('../components/login.vue'),
+        component: () => import('../components/popup/login.vue'),
         beforeEnter: (to, from, next) => {
           if (store.state.global.user._id) {
             return next(keystoneConfig['signin redirect']);
