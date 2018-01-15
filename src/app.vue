@@ -12,7 +12,7 @@
 </template>
 
 <script>
-  import Vue from 'vue'
+  import Vue from 'vue';
   import ModuleNav from './components/global/module-nav.vue';
   import ModuleFooter from './components/global/module-footer.vue';
   import ModuleMainPromo from './components/global/module-main-promo.vue';
@@ -27,23 +27,23 @@
     components: {
       'module-nav': ModuleNav,
       'module-footer': ModuleFooter,
-      'module-main-promo': ModuleMainPromo
+      'module-main-promo': ModuleMainPromo,
     },
 
     asyncData ({ store }) {
       return store.dispatch('fetch', {
         endpoint: 'config',
         namespace: 'config',
-        id: 'navigation'
+        id: 'navigation',
       });
     },
 
     computed: {
       main_promo () {
         return this.$store.state['main_promo'];
-      }
-    }
-  }
+      },
+    },
+  };
 </script>
 
 <style>

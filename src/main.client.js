@@ -26,7 +26,7 @@ import Cookies from './lib/cookies';
 Vue.use({
   install: (Vue) => {
     Vue.cookies = new Cookies();
-  }
+  },
 });
 
 import {createApp} from './app';
@@ -59,7 +59,7 @@ function fetchAsyncData(to, from, next) {
 
   let diffed = false;
   const activated = matched.filter((c, i) => {
-    return diffed || (diffed = (prevMatched[i] !== c))
+    return diffed || (diffed = (prevMatched[i] !== c));
   });
 
   const asyncDataHooks = activated.map(c => c.asyncData).filter(_ => _);

@@ -6,7 +6,7 @@ import Vuex from 'vuex';
 const base = config.api.base || '/api';
 
 const settings = {
-  proxy: { port: config.port }
+  proxy: { port: config.port },
 };
 
 Vue.use(Vuex);
@@ -112,7 +112,7 @@ const actions = {
       .catch(err => {
         console.error(err);
       });
-  }
+  },
 };
 
 const mutations = {
@@ -141,7 +141,7 @@ const mutations = {
     } else {
       state[namespace] = data;
     }
-  }
+  },
 };
 
 if (__VUE_ENV__ === 'server' && Vue.cookies) {
@@ -153,16 +153,16 @@ export default new Vuex.Store({
   state: {
     global: {
       user: {
-        _id: Vue.cookies && Vue.cookies.get('uid') || ''
-      }
+        _id: Vue.cookies && Vue.cookies.get('uid') || '',
+      },
     },
     items: [],
     'dress-collection': {},
-    main_promo: null
+    main_promo: null,
   },
   modules: {
     config: {},
-    pages: {}
+    pages: {},
   },
 
   actions,

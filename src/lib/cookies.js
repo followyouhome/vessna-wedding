@@ -17,7 +17,7 @@ export default function(context) {
     return cookie;
 
     function format(name, value) {
-      return name + '=' + encodeURIComponent(value)
+      return name + '=' + encodeURIComponent(value);
     }
   };
 

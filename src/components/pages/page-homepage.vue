@@ -17,13 +17,13 @@
   function fetch (store, route) {
     return Promise.all([
       store.dispatch('fetchPage', {
-        id: 'homepage'
+        id: 'homepage',
       }),
 
       store.dispatch('fetchAll', {
-        endpoint: 'news'
-      })
-    ])
+        endpoint: 'news',
+      }),
+    ]);
   }
 
   export default {
@@ -40,16 +40,16 @@
     asyncData ({ store, route }) {
       return Promise.all([
         this.extends.asyncData({store, route}),
-        fetch(store, route)
-      ])
+        fetch(store, route),
+      ]);
     },
 
     beforeRouteEnter (to, from, next) {
-      __VUE_ENV__ === 'server' ? next() : fetch(store, to).then(() => next())
+      __VUE_ENV__ === 'server' ? next() : fetch(store, to).then(() => next());
     },
 
     beforeRouteUpdate (to, from, next) {
-      __VUE_ENV__ === 'server' ? next() : fetch(store, to).then(() => next())
+      __VUE_ENV__ === 'server' ? next() : fetch(store, to).then(() => next());
     },
 
     computed: {
@@ -63,7 +63,7 @@
 
       prom () {
         return this.$store.state.pages.homepage.prom;
-      }
-    }
-  }
+      },
+    },
+  };
 </script>

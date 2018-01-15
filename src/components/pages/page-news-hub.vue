@@ -11,13 +11,13 @@
   function fetch(store, route) {
     return Promise.all([
       store.dispatch('fetchPage', {
-        id: 'news'
+        id: 'news',
       }),
 
       store.dispatch('fetchAll', {
-        endpoint: 'news'
-      })
-    ])
+        endpoint: 'news',
+      }),
+    ]);
   }
 
   export default {
@@ -26,29 +26,29 @@
     extends: Page,
 
     components: {
-      'module-grid-news': ModuleGridNews
+      'module-grid-news': ModuleGridNews,
     },
 
     asyncData ({ store, route }) {
       return Promise.all([
         this.extends.asyncData({store, route}),
-        fetch(store, route)
-      ])
+        fetch(store, route),
+      ]);
     },
 
     beforeRouteEnter (to, from, next) {
-      __VUE_ENV__ === 'server' ? next() : fetch(store, to).then(() => next())
+      __VUE_ENV__ === 'server' ? next() : fetch(store, to).then(() => next());
     },
 
     beforeRouteUpdate (to, from, next) {
-      __VUE_ENV__ === 'server' ? next() : fetch(store, to).then(() => next())
+      __VUE_ENV__ === 'server' ? next() : fetch(store, to).then(() => next());
     },
 
 
     computed: {
       news () {
         return this.$store.state.news;
-      }
-    }
-  }
+      },
+    },
+  };
 </script>

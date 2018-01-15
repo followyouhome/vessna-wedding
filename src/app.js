@@ -4,7 +4,7 @@ import {createRouter} from './core/router';
 import store from './core/store';
 import {sync} from 'vuex-router-sync';
 
-Vue.config.devtools = true
+Vue.config.devtools = true;
 
 export function createApp() {
   // const store = createStore();

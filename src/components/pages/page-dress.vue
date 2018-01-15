@@ -23,14 +23,14 @@
         store.dispatch('fetch', {
           endpoint: 'config',
           namespace: 'config',
-          id: 'navigation'
+          id: 'navigation',
         }),
 
       //   store.dispatch('fetch', {
       //     endpoint: 'dress-collection',
       //     id: route.params.slug
       //   })
-      ])
+      ]);
     },
 
     beforeRouteUpdate (to, from, next) {
@@ -42,29 +42,6 @@
       // })
     },
 
-    beforeCreate() {
-      console.log("beforeCreate")
-    },
-
-    created() {
-      console.log("created")
-    },
-
-    beforeMount() {
-      console.log("beforeMount")
-    },
-
-    mounted() {
-      console.log("mounted")
-    },
-
-    beforeUpdate() {
-      console.log("beforeUpdate")
-    },
-
-    updated() {
-      console.log("updated")
-    },
 
 
 
@@ -72,6 +49,6 @@
       // collection () {
       //   return this.$store.state['dress-collection'][this.$route.params.slug];
       // }
-    }
-  }
+    },
+  };
 </script>

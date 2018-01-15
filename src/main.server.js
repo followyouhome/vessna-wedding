@@ -24,7 +24,7 @@ export default context => {
     Vue.use({
       install: (Vue) => {
         Vue.cookies = new Cookies(context.cookie || '');
-      }
+      },
     });
 
     const { app, router, store } = createApp();
@@ -46,11 +46,11 @@ export default context => {
 
       Promise.all(matchedComponents.map(component => component.asyncData && component.asyncData.call(component, {
           store,
-          route: router.currentRoute
+          route: router.currentRoute,
       }))).then(() => {
         context.state = store.state;
         resolve(app);
-      }).catch(reject)
+      }).catch(reject);
     }, reject);
   });
-}
+};

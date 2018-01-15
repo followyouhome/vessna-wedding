@@ -7,10 +7,9 @@
     "build:server": "cross-env NODE_ENV=production webpack --config config/webpack.server.config.js --progress --hide-modules",
     "watch:client": "cross-env NODE_ENV=develop webpack --config config/webpack.client.config.js --progress --hide-modules --watch",
     "watch:server": "cross-env NODE_ENV=develop webpack --config config/webpack.server.config.js --progress --hide-modules --watch",
-    "db": "mongod",
-    "db:clean": "sudo rm -rf /data/db && sudo mkdir /data/db && sudo chmod -R 777 /data/db",
-    "start": "cross-env NODE_ENV=develop node server",
-    "dev": "node bin/start-all-servers"
+    "lint": "eslint src/** --ext",
+    "start": "cross-env NODE_ENV=production node server",
+    "dev": "cross-env NODE_ENV=develop node server"
   },
   "dependencies": {
     "axios": "^0.17.1",
@@ -48,6 +47,9 @@
     "cookie": "^0.3.1",
     "css-loader": "^0.28.4",
     "cssnano": "^3.10.0",
+    "eslint": "^4.15.0",
+    "eslint-plugin-html": "^4.0.1",
+    "eslint-plugin-vue": "^4.2.0",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^1.1.5",
     "forever-monitor": "^1.7.1",

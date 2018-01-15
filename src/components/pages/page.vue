@@ -13,11 +13,11 @@
         store.dispatch('fetch', {
           endpoint: 'config',
           namespace: 'config',
-          id: 'navigation'
-        })
-      ])
+          id: 'navigation',
+        }),
+      ]);
     },
-  }
+  };
 </script>
 
 <style lang="scss">
