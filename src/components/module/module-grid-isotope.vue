@@ -25,8 +25,8 @@
                     itemSelector: '.promo',
                     layoutMode: 'masonry',
                     masonry: {
-                        columnWidth: document.querySelector('.isotope-grid .isotope-grid__sizer')
-                    }
+                        columnWidth: document.querySelector('.isotope-grid .isotope-grid__sizer'),
+                    },
                 });
 
                 window.addEventListener('isotopeLayout', function() {
@@ -40,10 +40,10 @@
           });
         }
       }
-    }
-  }
+    },
+  };
 </script>
 
-<style>
+<style lang="scss">
 
 </style>

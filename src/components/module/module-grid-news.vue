@@ -18,8 +18,8 @@
 
     components: {
       'promo-news': PromoNews,
-    }
-  }
+    },
+  };
 </script>
 
 <style lang="scss">

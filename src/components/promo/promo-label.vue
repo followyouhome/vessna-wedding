@@ -18,8 +18,8 @@
   export default {
     name: 'promo-label',
 
-    props: ['promo']
-  }
+    props: ['promo'],
+  };
 </script>
 
 <style lang="scss">

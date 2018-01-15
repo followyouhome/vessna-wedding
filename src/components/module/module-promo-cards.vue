@@ -15,23 +15,23 @@
 		props: ['items'],
 
 		components: {
-			'promo-card': PromoCard
+			'promo-card': PromoCard,
 		},
 
 		asyncData ({ store }) {
 			return store.dispatch('fetch', {
-				endpoint: 'news'
+				endpoint: 'news',
 			});
 		},
 
 		computed: {
 			news () {
 				return this.$store.state.news;
-			}
-		}
-	}
+			},
+		},
+	};
 </script>
 
-<style>
+<style lang="scss">
 
 </style>

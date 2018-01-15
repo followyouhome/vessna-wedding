@@ -10,8 +10,8 @@
   export default {
     name: 'promo-text',
 
-    props: ['promo']
-  }
+    props: ['promo'],
+  };
 </script>
 
 <style lang="scss">

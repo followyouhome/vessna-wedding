@@ -7,7 +7,7 @@
 </template>
 
 <script>
-	import isMobile from 'ismobilejs'
+	import isMobile from 'ismobilejs';
 
 	import PromoTopical from '../promo/promo-topical.vue';
 
@@ -17,7 +17,7 @@
 		props: ['news'],
 
 		components: {
-			'promo-topical': PromoTopical
+			'promo-topical': PromoTopical,
 		},
 
 		mounted () {
@@ -40,7 +40,7 @@
 						pageDots: element.classList.contains('module--flickity-carousel--show-dots') ? true : false,
 						resize: true,
 						setGallerySize: true,
-						wrapAround: false
+						wrapAround: false,
 					});
 
 					setTimeout(function() {
@@ -66,10 +66,10 @@
 					}) + 'px';
 				});
 			}
-		}
-	}
+		},
+	};
 </script>
 
-<style>
+<style lang="scss">
 
 </style>

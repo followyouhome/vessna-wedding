@@ -22,8 +22,8 @@
 	export default {
 		name: 'promo-news',
 
-		props: ['promo']
-	}
+		props: ['promo'],
+	};
 </script>
 
 <style lang="scss">

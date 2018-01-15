@@ -18,8 +18,8 @@
 
     components: {
       'promo-dress': PromoDress,
-    }
-  }
+    },
+  };
 </script>
 
 <style lang="scss">

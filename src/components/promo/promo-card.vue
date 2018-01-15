@@ -26,8 +26,8 @@
 	export default {
 		name: 'promo-card',
 
-		props: ['item']
-	}
+		props: ['item'],
+	};
 </script>
 
 <style lang="scss">

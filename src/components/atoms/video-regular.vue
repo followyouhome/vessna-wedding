@@ -20,9 +20,8 @@
 
     computed: {
 
-    }
-
-  }
+    },
+  };
 </script>
 
 <style>

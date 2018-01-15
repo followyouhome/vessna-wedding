@@ -25,7 +25,7 @@
         } else {
           return "padding-top: " + this.image.height / this.image.width * 100 + "%";
         }
-      }
+      },
     },
 
     mounted () {
@@ -52,11 +52,11 @@
             });
           },
         }).ready(function() {
-          this.checkImagesNeedReplacing(this.divs)
+          this.checkImagesNeedReplacing(this.divs);
         });
       }
-    }
-  }
+    },
+  };
 </script>
 
 <style lang="scss">

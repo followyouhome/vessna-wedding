@@ -13,10 +13,10 @@
 	export default {
 		name: 'module-social-sidebar',
 
-		props: ['article']
-	}
+		props: ['article'],
+	};
 </script>
 
-<style>
+<style lang="scss">
 
 </style>

@@ -17,8 +17,8 @@
 	export default {
 		name: 'promo-topical',
 
-		props: ['promo']
-	}
+		props: ['promo'],
+	};
 </script>
 
 <style lang="scss">

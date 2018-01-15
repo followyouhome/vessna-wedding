@@ -10,8 +10,8 @@
 	export default {
 		name: 'module-article',
 
-		props: ['article']
-	}
+		props: ['article'],
+	};
 </script>
 
 <style lang="scss">

@@ -20,8 +20,8 @@
   export default {
     name: 'promo-dress',
 
-    props: ['promo']
-  }
+    props: ['promo'],
+  };
 </script>
 
 <style lang="scss">

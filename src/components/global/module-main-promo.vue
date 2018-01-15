@@ -23,7 +23,11 @@
     computed: {
       promo () {
         return this.$store.state.main_promo;
-      }
-    }
-  }
+      },
+    },
+  };
 </script>
+
+<style lang="scss">
+
+</style>

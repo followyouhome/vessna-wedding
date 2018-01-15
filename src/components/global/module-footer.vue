@@ -73,6 +73,10 @@
 
 <script>
   export default {
-    name: 'module-footer'
-  }
+    name: 'module-footer',
+  };
 </script>
+
+<style lang="scss">
+
+</style>

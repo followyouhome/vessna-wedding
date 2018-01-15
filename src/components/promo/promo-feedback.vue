@@ -30,8 +30,8 @@
 	export default {
 		name: 'promo-feedback',
 
-		props: ['promo']
-	}
+		props: ['promo'],
+	};
 </script>
 
 <style lang="scss">

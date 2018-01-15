@@ -23,11 +23,11 @@
 	export default {
 		name: 'promo-collection',
 
-		props: ['item']
-	}
+		props: ['item'],
+	};
 </script>
 
-<style>
+<style lang="scss">
 	.promo--collection {
 		width: 500px;
 	}
