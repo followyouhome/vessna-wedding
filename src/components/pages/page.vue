@@ -3,7 +3,7 @@
 </template>
 
 <script>
-  import store from '../../core/store.js';
+  import store from '../../core/store/';
 
   export default {
     name: 'page',

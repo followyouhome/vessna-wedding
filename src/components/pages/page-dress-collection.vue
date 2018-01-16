@@ -6,7 +6,7 @@
   import Page from './page.vue';
   import ModuleDressCollection from '../module/module-grid-dress.vue';
 
-  import store from '../../core/store.js';
+  import store from '../../core/store/';
 
   function fetch (store, route) {
     return Promise.all([

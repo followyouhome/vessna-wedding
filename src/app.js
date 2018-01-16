@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import App from './app.vue';
 import {createRouter} from './core/router';
-import store from './core/store';
+import store from './core/store/';
 import {sync} from 'vuex-router-sync';
 
 Vue.config.devtools = true;

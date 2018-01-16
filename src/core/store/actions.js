@@ -1,17 +1,24 @@
 import axios from 'axios';
-import config from '../../config';
-import Vue from 'vue';
-import Vuex from 'vuex';
 
-const base = config.api.base || '/api';
+import Vue from 'vue';
+
+import {
+  MAIN_PROMO_SET
+} from './mutation-types';
+
+import config from '../../../config';
 
 const settings = {
   proxy: { port: config.port },
 };
 
-Vue.use(Vuex);
+if (__VUE_ENV__ === 'server' && Vue.cookies) {
+  settings.headers = { cookie: Vue.cookies.getCookieString() };
+}
 
-const actions = {
+const base = config.api.base || '/api';
+
+export default {
   login(store, { email, password }) {
     return axios
       .post(base + '/user/login', { email, password }, settings)
@@ -40,7 +47,7 @@ const actions = {
       .then(function ({ data }) {
         if (id && !global) {
           store.commit('setItem', { namespace, id, data });
-          store.commit('setMainPromo', { namespace, id, data });
+          store.commit(MAIN_PROMO_SET, { namespace, id, data });
         } else {
           store.commit('replaceItems', { namespace, data, global });
         }
@@ -83,7 +90,7 @@ const actions = {
       .then(function ({ data }) {
         if (id) {
           store.commit('setItem', { namespace, id, data });
-          store.commit('setMainPromo', { namespace, id, data });
+          store.commit(MAIN_PROMO_SET, { namespace, id, data });
         }
       })
       .catch(err => {
@@ -106,7 +113,7 @@ const actions = {
       .then(function ({ data }) {
         if (id) {
           store.commit('setItem', { namespace, id, data });
-          store.commit('setMainPromo', { namespace, id, data });
+          store.commit(MAIN_PROMO_SET, { namespace, id, data });
         }
       })
       .catch(err => {
@@ -114,58 +121,3 @@ const actions = {
       });
   },
 };
-
-const mutations = {
-
-  setItem (state, { namespace, id, data }) {
-    // const idx = state[namespace].findIndex(item => item._id === id);
-
-    // if (idx > 0) {
-      state[namespace][id] = data;
-    // } else {
-    //   state[namespace].push(data);
-    // }
-  },
-
-  setMainPromo (state, { namespace, id, data }) {
-    if (data.main_promo && data.main_promo.media !='null') {
-      state.main_promo = data.main_promo;
-    } else {
-      state.main_promo = null;
-    }
-  },
-
-  replaceItems (state, { namespace, data, global }) {
-    if (global) {
-      state.global[namespace] = Object.assign({}, data);
-    } else {
-      state[namespace] = data;
-    }
-  },
-};
-
-if (__VUE_ENV__ === 'server' && Vue.cookies) {
-  settings.headers = { cookie: Vue.cookies.getCookieString() };
-}
-
-export default new Vuex.Store({
-  namespaced: true,
-  state: {
-    global: {
-      popup: null,
-      user: {
-        _id: Vue.cookies && Vue.cookies.get('uid') || '',
-      },
-    },
-    items: [],
-    'dress-collection': {},
-    main_promo: null,
-  },
-  modules: {
-    config: {},
-    pages: {},
-  },
-
-  actions,
-  mutations,
-});

@@ -6,7 +6,7 @@
   import Page from './page.vue';
   import ModuleGridNews from '../module/module-grid-news.vue';
 
-  import store from '../../core/store.js';
+  import store from '../../core/store/';
 
   function fetch(store, route) {
     return Promise.all([

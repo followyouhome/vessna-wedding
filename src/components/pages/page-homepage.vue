@@ -12,7 +12,7 @@
   import ModuleSelectedCollections from '../module/module-selected-collections.vue';
   import ModulePromoCards from '../module/module-promo-cards.vue';
 
-  import store from '../../core/store.js';
+  import store from '../../core/store/';
 
   function fetch (store, route) {
     return Promise.all([
