@@ -10,22 +10,23 @@ const productionLoaders = [
     options: {
       importLoaders: 2,
       modules: true,
-
-    }
+    },
   },
-  { loader: 'sass-loader',
+  {
+    loader: 'sass-loader',
     options: {
 
-    }
+    },
   },
   // { loader: 'postcss-loader' },
   { loader: 'sass-resources-loader',
     options: {
       resources: [
+        path.resolve(__dirname, '../src/styles/media.scss'),
         path.resolve(__dirname, '../src/styles/colors.scss'),
-        path.resolve(__dirname, '../src/styles/media.scss')
-      ]
-    }
+        path.resolve(__dirname, '../src/styles/variables.scss'),
+      ],
+    },
   },
 
 ];
@@ -38,7 +39,7 @@ module.exports = {
   use: isProd
     ? ExtractTextPlugin.extract({
       use: productionLoaders,
-      fallback: 'vue-style-loader'
+      fallback: 'vue-style-loader',
     })
-    : devLoaders
+    : devLoaders,
 };
