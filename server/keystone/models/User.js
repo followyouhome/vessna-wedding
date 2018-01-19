@@ -1,13 +1,20 @@
 const keystone = require('keystone');
 const Types = keystone.Field.Types;
 
-const User = new keystone.List('user');
-
-User.add({
-  name: { type: Types.Name, required: true, index: true },
-  email: { type: Types.Email, initial: true, required: true, index: true },
-  password: { type: Types.Password, initial: true },
-  canAccessKeystone: { type: Boolean, initial: true }
+const User = new keystone.List('user', {
+  label: 'Пользователи',
+  plural: 'Пользователи',
+  singular: 'Пользователь',
 });
 
+User.add({
+  name: { label: 'Имя', type: Types.Text, required: true, index: true },
+  email: { label: 'Адрес', type: Types.Email, initial: true, index: true },
+  password: { label: 'Пароль', type: Types.Password, initial: true },
+  canAccessKeystone: { label: 'Доступ', type: Boolean, initial: false },
+});
+
+User.defaultColumns = 'name|40%, email|40%, canAccessKeystone|20%';
 User.register();
+
+module.exports = User;

@@ -1,6 +1,6 @@
 {
   "plugins": [
-    "vue",
+    "vue", "html"
   ],
   "parserOptions": {
     "ecmaVersion": 6,

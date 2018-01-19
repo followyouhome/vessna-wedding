@@ -27,6 +27,11 @@
           </ul>
         </div>
       </li>
+      <li class="navigation__main-list__item">
+        <div class="navigation__main-list__item__link" @click="show">
+          <span class="navigation__main-text" itemprop="name">Войти</span>
+        </div>
+      </li>
     </ul>
   </nav>
 </template>
@@ -38,9 +43,15 @@
     computed: {
       items () {
         return this.$store.state.config.navigation;
-      }
-    }
-  }
+      },
+    },
+
+    methods: {
+      show() {
+        this.$store.commit('POPUP_SET', { popup: 'login' });
+      },
+    },
+  };
 </script>
 
 <style lang="scss">

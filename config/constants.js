@@ -14,5 +14,5 @@ module.exports = {
   PAGE_DRESS_COLLECTION_WEDDING: 'page-dress-collection-wedding',
   PAGE_DRESS_COLLECTION_CAPSULE: 'page-dress-collection-capsule',
   PAGE_DRESS_COLLECTION: 'page-dress-collection',
-	PAGE_DRESS: 'page-dress'
-}
+	PAGE_DRESS: 'page-dress',
+};

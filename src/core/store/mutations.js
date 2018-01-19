@@ -4,12 +4,12 @@ import {
 } from './mutation-types.js';
 
 export default {
-  [POPUP_SET] () {
-
+  [POPUP_SET] (state, { popup }) {
+    state.popup = popup;
   },
 
-  [POPUP_UNSET] () {
-
+  [POPUP_UNSET] (state) {
+    state.popup = null;
   },
 
   [MAIN_PROMO_SET] (state, { namespace, id, data }) {

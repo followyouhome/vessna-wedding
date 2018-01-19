@@ -8,29 +8,34 @@
           </transition>
         </main>
         <module-footer></module-footer>
-        <module-popup-container v-if="popup"></module-popup-container>
+        <global-popup-container v-if="popup"></global-popup-container>
+        <!--<script src='https://www.google.com/recaptcha/api.js'></script>-->
+        <div class="g-recaptcha" data-sitekey="6Lf__kAUAAAAAAfyKZ7h_54WlKBUOrQTkvmAbhEC"></div>
     </div>
 </template>
 
 <script>
   import Vue from 'vue';
+  import VueRecaptcha from 'vue-recaptcha';
   import ModuleNav from './components/global/module-nav.vue';
   import ModuleFooter from './components/global/module-footer.vue';
   import ModuleMainPromo from './components/global/module-main-promo.vue';
-  import ModulePopupContainer from './components/global/module-popup-container';
+  import GlobalPopupContainer from './components/global/global-popup-container';
   import ImageDeferred from './components/atoms/image-deferred.vue';
   import VideoRegular from './components/atoms/video-regular.vue';
 
+  Vue.component('vue-recaptcha', VueRecaptcha);
   Vue.component('image-deferred', ImageDeferred);
   Vue.component('video-regular', VideoRegular);
 
   export default {
     name: 'app',
+
     components: {
       'module-nav': ModuleNav,
       'module-footer': ModuleFooter,
       'module-main-promo': ModuleMainPromo,
-      'module-popup-container': ModulePopupContainer,
+      'global-popup-container': GlobalPopupContainer,
     },
 
     computed: {

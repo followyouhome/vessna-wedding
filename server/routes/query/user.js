@@ -3,7 +3,47 @@ const keystone = require('keystone');
 const uidCookie = require('../../lib/uid-cookie');
 const responseHandler = require('../../lib/response-handler');
 
+const User = keystone.list('user');
+
+//function errorHandler(res, )
+
 module.exports = (app, base) => {
+
+  app.post(base + '/user/signup', (req, res) => {
+    const data = req.body;
+
+    User.model.findOne({ email: data.email }).exec((err, user) => {
+      if (err) {
+        return res.status(401).json({ error: 'Ошибка базы данных, попробуйте позже' });
+      }
+
+      if (user) {
+        return res.status(401).json({ error: 'Пользователь с таким адресом уже зарегистрирован' });
+      }
+
+      return new User.model({
+        name: data.name,
+        email: data.email,
+        password: data.password,
+        canAccessKeystone: false,
+      }).save(err => {
+
+        if(err) {
+          return res.status(401).json({ error: 'PIDOR' });
+        }
+
+        responseHandler(res, null, {a: "KEK"});
+
+        // keystone.session.signin({ email: req.body.email, password: req.body.password }, req, res, function() {
+        //   uidCookie.set(req, res);
+        //   responseHandler(res, null, formatUser(req.user));
+        // }, function(err) {
+        //   responseHandler(res, err);
+        // });
+      });
+    });
+  });
+
   // user login
   app.post(base + '/user/login', (req, res) => {
     if (!req.body.email || !req.body.password) {

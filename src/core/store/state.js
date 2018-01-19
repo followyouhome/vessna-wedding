@@ -1,6 +1,7 @@
 import Vue from 'vue';
 
 export default {
+  popup: null,
   global: {
     popup: null,
     user: {

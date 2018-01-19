@@ -105,7 +105,7 @@ export function createRouter (store) {
       {
         name: 'login',
         path: '/user/login',
-        component: () => import('../components/popup/login.vue'),
+        component: () => import('../components/popup/popup-login.vue'),
         beforeEnter: (to, from, next) => {
           if (store.state.global.user._id) {
             return next(keystoneConfig['signin redirect']);
