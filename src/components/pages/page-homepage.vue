@@ -1,7 +1,17 @@
 <template>
   <div>
     <module-related-posts v-bind:news="news"></module-related-posts>
+    <div class="module module--article">
+      <div class="module__wrapper module--article__wrapper">
+          <h2>Свадебные и вечерние платья оптом</h2>
+      </div>
+    </div>
     <module-selected-collections v-bind:items="wedding"></module-selected-collections>
+    <div class="module module--article">
+      <div class="module__wrapper module--article__wrapper">
+          <h2>Вечерние платья оптом</h2>
+      </div>
+    </div>
     <module-promo-cards v-bind:items="prom"></module-promo-cards>
   </div>
 </template>

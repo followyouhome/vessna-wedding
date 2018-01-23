@@ -4,7 +4,6 @@ const responseHandler = require('../../lib/response-handler');
 const {
   PAGE_HOMEPAGE,
   PAGE_NEWS_HUB,
-  PAGE_DRESS_COLLECTION
 } = require('../../../config/constants.js');
 
 const FILTER_WEDDING = 'wedding';
@@ -21,36 +20,34 @@ module.exports = (app, base) => {
       data = [{
         label: 'Главная страница',
         route: PAGE_HOMEPAGE,
-        params: {}
       }, {
         label: 'Новости',
         route: PAGE_NEWS_HUB,
-        params: {}
       }];
 
       query.exec((err, result) => {
         data.push({
           label: 'Свадебные платья',
-          route: '',
+          path: '/wedding-dresses',
           items: result.reduce(function(result, element) {
             if(element.type === FILTER_WEDDING && element.state == 'published') {
               result.push(element);
             }
 
             return result;
-          }, [])
+          }, []),
         });
 
         data.push({
           label: 'Вечерние платья',
-          route: '',
+          path: '/prom-and-party-dresses',
           items: result.reduce(function(result, element) {
             if(element.type === FILTER_PROM && element.state == 'published') {
               result.push(element);
             }
 
             return result;
-          }, [])
+          }, []),
         });
 
         next();
@@ -58,6 +55,6 @@ module.exports = (app, base) => {
     },
     (req, res) => {
       responseHandler(res, null, data);
-    }
+    },
   ]);
 };

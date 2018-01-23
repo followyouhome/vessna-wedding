@@ -20,8 +20,8 @@ module.exports = (app, base) => {
 
       const query = keystone.list('DressCollection')
                       .model
-                      .find({ type: 'wedding' })
-                      .sort({ sortOrder: 1 })
+                      .find({ type: 'wedding', state: 'published' })
+                      .sort({ sortOrder: 1 });
 
       query.exec((err, result) => {
         output.wedding = result;
@@ -32,7 +32,7 @@ module.exports = (app, base) => {
     (req, res, next) => {
       const query = keystone.list('DressCollection')
                       .model
-                      .find({ type: 'prom' })
+                      .find({ type: 'prom', state: 'published' })
                       .sort({ sortOrder: 1 });
 
       query.exec((err, result) => {
