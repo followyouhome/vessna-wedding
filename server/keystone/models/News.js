@@ -1,7 +1,7 @@
 const keystone = require('keystone');
 const Types = keystone.Field.Types;
-const Promo = require('./Promo');
-const Seo = require('./Seo');
+const Promo = require('../partials/Promo');
+const Seo = require('../partials/Seo');
 
 const {
   PAGE_NEWS

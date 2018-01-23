@@ -1,7 +1,7 @@
 const keystone = require('keystone');
 const Types = keystone.Field.Types;
 
-const Promo = require('./Promo');
+const Promo = require('../partials/Promo');
 
 var Dress = new keystone.List('Dress', {
   label: 'Платья',
