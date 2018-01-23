@@ -37,6 +37,15 @@
       'module-selected-collections': ModuleSelectedCollections,
     },
 
+    metaInfo () {
+      return {
+        title: 'Свадебные и вечерние наряды от Vessna',
+        meta: [
+          { name: 'description', content: 'Свадебные платья от производителя. Вечерние платья оптом от производителя.' },
+        ],
+      };
+    },
+
     asyncData ({ store, route }) {
       return Promise.all([
         this.extends.asyncData({store, route}),

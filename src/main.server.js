@@ -29,6 +29,7 @@ export default context => {
 
     const { app, router, store } = createApp();
     const { url } = context;
+    const meta = app.$meta();
     const fullPath = router.resolve(url).route.fullPath;
 
     if (fullPath !== url) {
@@ -36,6 +37,7 @@ export default context => {
     }
 
     router.push(context.url); // // sets the router's location
+    context.meta = meta;
 
     router.onReady(() => {
       const matchedComponents = router.getMatchedComponents();

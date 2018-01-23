@@ -38,6 +38,12 @@
       'global-popup-container': GlobalPopupContainer,
     },
 
+    metaInfo: {
+      htmlAttrs: {
+        lang: 'ru-ru',
+      },
+    },
+
     computed: {
       main_promo () {
         return this.$store.state['main_promo'];

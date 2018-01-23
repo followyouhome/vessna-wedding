@@ -29,6 +29,15 @@
       'module-grid-news': ModuleGridNews,
     },
 
+    metaInfo () {
+      return {
+        title: 'Новости',
+        meta: [
+          { name: 'description', content: 'Новые коллекции, события, акции.'},
+        ],
+      };
+    },
+
     asyncData ({ store, route }) {
       return Promise.all([
         this.extends.asyncData({store, route}),

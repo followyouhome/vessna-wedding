@@ -1,6 +1,8 @@
 const keystone = require('keystone');
 const Types = keystone.Field.Types;
 const Promo = require('./Promo');
+const Seo = require('./Seo');
+
 const {
   PAGE_NEWS
 } = require('../../../config/constants.js');
@@ -16,7 +18,7 @@ var News = new keystone.List('News', {
   hidden: false
 });
 
-News.add('Статья', {
+News.add('Мета-инфо', Seo, 'Статья', {
   name: { label: 'Название', type: String, required: true },
   state: {
   	label: 'Статус',

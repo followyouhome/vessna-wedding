@@ -1,7 +1,9 @@
 const keystone = require('keystone');
 const Types = keystone.Field.Types;
 const Promo = require('./Promo');
-const ROUTES = require('../../../config/constants.js');
+const Seo = require('./Seo');
+
+const routes = require('../../../config/constants.js');
 
 var Page = new keystone.List('Page', {
   label: 'Страницы',
@@ -14,16 +16,16 @@ var Page = new keystone.List('Page', {
   hidden: false,
 });
 
-Page.add('Страница', {
+Page.add('Мета-инфо', Seo, 'Страница', {
   name: { label: 'Название', type: String, required: true },
   slug: { label: 'Путь', type: String },
-  route: { label: 'Роут', type: Types.Select, options: Object.values(ROUTES)},
+  route: { label: 'Роут', type: Types.Select, options: Object.values(routes)},
 });
 
 Page.schema.set('toJSON', {
   transform: function(doc, ret, options) {
-      return ret;
-    }
+    return ret;
+  },
 });
 
 Page.defaultColumns = 'name|30%, slug|30%, route|40%';
