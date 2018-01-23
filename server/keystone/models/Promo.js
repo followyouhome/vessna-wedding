@@ -18,7 +18,7 @@ keystone.set('cloudinary config', 'cloudinary://973344584935212:qmo8nmPl9pORLT-A
 
 const Promo = new keystone.List('Promo', {
   label: 'Промо',
-  hidden: true
+  hidden: true,
 });
 
 Promo.add('Промо', {
@@ -41,18 +41,18 @@ Promo.add('Промо', {
       uploadOptions: { use_filename: true, unique_filename: false },
       generateFilename: function(file, attemptNumber, callback) {
         callback(null, file.originalname);
-      }
+      },
     },
     audio: {
       label: '.mp3',
       type: Types.File,
       dependsOn: { 'promo.media': 'audio' },
-      storage: storage
+      storage: storage,
     },
     video: {
       webm: { label: '.webm', type: Types.File, dependsOn: { 'promo.media': 'video' },  storage: storage },
       mp4: { label: '.mp4', type: Types.File, dependsOn: { 'promo.media': 'video' },  storage: storage },
-      ogv: { label: '.ogv', type: Types.File, dependsOn: { 'promo.media': 'video' },  storage: storage }
+      ogv: { label: '.ogv', type: Types.File, dependsOn: { 'promo.media': 'video' },  storage: storage },
     },
   },
 }, 'Большое промо', {
@@ -75,20 +75,20 @@ Promo.add('Промо', {
       uploadOptions: { use_filename: true, unique_filename: false },
       generateFilename: function(file, attemptNumber, callback) {
         callback(null, file.originalname);
-      }
+      },
     },
     audio: {
       label: '.mp3',
       type: Types.File,
       dependsOn: { 'main_promo.media': 'audio' },
-      storage: storage
+      storage: storage,
     },
     video: {
       webm: { label: '.webm', type: Types.File, dependsOn: { 'main_promo.media': 'video' },  storage: storage },
       mp4: { label: '.mp4', type: Types.File, dependsOn: { 'main_promo.media': 'video' },  storage: storage },
-      ogv: { label: '.ogv', type: Types.File, dependsOn: { 'main_promo.media': 'video' },  storage: storage }
+      ogv: { label: '.ogv', type: Types.File, dependsOn: { 'main_promo.media': 'video' },  storage: storage },
     },
-  }
+  },
 });
 
 Promo.schema.pre('save', function(next) {

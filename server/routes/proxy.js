@@ -6,7 +6,7 @@ module.exports = app => {
     let query = '';
 
     if(req.query.w) {
-      query += `w_${req.query.w}`
+      query += `w_${req.query.w}`;
     }
 
     const image = request(`${cloudinary}/${query}/${req.params.filename}`);
@@ -14,4 +14,4 @@ module.exports = app => {
     req.pipe(image);
     image.pipe(res);
   });
-}
+};
