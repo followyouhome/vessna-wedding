@@ -61,6 +61,17 @@ Promo.add('Промо', {
     headline: { label: 'Заголовок', type: Types.Text, dependsOn: { 'main_promo.media': ['image', 'video', 'audio'] } },
     subline: { label: 'Подзаголовок', type: Types.Text, dependsOn: { 'main_promo.media': ['image', 'video', 'audio'] } },
     text: { label: 'Текст', type: Types.Html, wysiwyg: true, dependsOn: { 'main_promo.media': ['image', 'video', 'audio'] } },
+    align: { label: 'Расположение',type: Types.Select, options: [
+      { label: '↖', value : 'top-left' },
+      { label: '↑', value: 'top-center' },
+      { label: '↗', value: 'right-top' },
+      { label: '←', value : 'middle-left' },
+      { label: '·', value: 'middle-center' },
+      { label: '→', value: 'middle-right' },
+      { label: '↙', value: 'bottom-left' },
+      { label: '↓', value: 'bottom-center' },
+      { label: '↘', value: 'bottom-right' },
+    ]},
     media: { label: 'Медиа', type: Types.Select, options: [
       { label: 'Отсутствует', value : 'null' },
       { label: 'Изображение', value: 'image' },
