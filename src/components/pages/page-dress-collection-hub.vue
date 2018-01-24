@@ -1,7 +1,7 @@
 <template>
     <div>
-      <module-article v-bind:article="article"></module-article>
-      <module-promo-cards v-bind:items="collections"></module-promo-cards>
+      <module-article v-if="article.content" v-bind:article="article"></module-article>
+      <module-promo-cards v-if="collections" v-bind:items="collections"></module-promo-cards>
     </div>
 </template>
 
@@ -57,19 +57,25 @@
 
     computed: {
       collections () {
-        let collections = {};
+        const collections = this.$store.state['dress-collection'];
+        let result = {};
 
-        for (let collection in this.$store.state['dress-collection']) {
-          if (this.$store.state['dress-collection'][collection].type == FILTER[this.$route.path]) {
-            collections[collection] = this.$store.state['dress-collection'][collection];
+        for (let collection in collections) {
+          if (collections[collection].type == FILTER[this.$route.path]) {
+            result[collection] = collections[collection];
           }
         }
 
-        return collections;
+        return result;
       },
+
       article () {
         return this.$store.state.pages['dress-collection'];
       },
     },
   };
 </script>
+
+<style lang="scss">
+
+</style>
