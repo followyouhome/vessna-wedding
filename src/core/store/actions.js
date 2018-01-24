@@ -115,7 +115,7 @@ export default {
       });
   },
 
-  fetchPage (store, { id }) {
+  fetchPage (store, { id, path }) {
     const namespace = 'pages';
     const endpoint = 'pages';
 
@@ -123,6 +123,10 @@ export default {
 
     if (id) {
       uri += '/' + id;
+    }
+
+    if (path) {
+      uri += '/' + path;
     }
 
     return axios

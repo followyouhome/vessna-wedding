@@ -20,6 +20,7 @@ Page.add('Мета-инфо', Seo, 'Страница', {
   name: { label: 'Название', type: String, required: true },
   slug: { label: 'Путь', type: String },
   route: { label: 'Роут', type: Types.Select, options: Object.values(routes)},
+  content: { label: 'Содержимое', type: Types.Html, wysiwyg: true },
 });
 
 Page.schema.set('toJSON', {

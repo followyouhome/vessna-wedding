@@ -4,6 +4,23 @@ const responseHandler = require('../../lib/response-handler');
 module.exports = (app, base) => {
   let output = {};
 
+  app.get(base + '/dress-collection/', [
+    (req, res, next) => {
+      const query = keystone.list('DressCollection')
+                      .model
+                      .find();
+
+      query.exec((err, result) => {
+        output = result;
+        next();
+      });
+    },
+
+    (req, res) => {
+       responseHandler(res, null, output);
+    },
+  ]);
+
   app.get(base + '/dress-collection/:slug', [
     (req, res, next) => {
       const query = keystone.list('DressCollection')
@@ -29,6 +46,6 @@ module.exports = (app, base) => {
 
     (req, res) => {
        responseHandler(res, null, output);
-    }
+    },
   ]);
 };

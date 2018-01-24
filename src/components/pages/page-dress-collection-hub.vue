@@ -1,20 +1,31 @@
 <template>
     <div>
-      Test hub
+      <module-article v-bind:article="article"></module-article>
+      <module-promo-cards v-bind:items="collections"></module-promo-cards>
     </div>
 </template>
 
 <script>
   import Page from './page.vue';
-  // import ModuleDressCollection from '../module/module-grid-dress.vue';
+  import ModuleArticle from '../module/module-article.vue';
+  import ModulePromoCards from '../module/module-promo-cards.vue';
 
   import store from '../../core/store/';
 
+  const FILTER = {
+    '/wedding-dresses': 'wedding',
+    '/prom-and-party-dresses': 'prom',
+  };
+
   function fetch (store, route) {
     return Promise.all([
-      store.dispatch('fetch', {
+      store.dispatch('fetchPage', {
+        id: 'dress-collection',
+        path: route.path.substr(1),
+      }),
+
+      store.dispatch('fetchAll', {
         endpoint: 'dress-collection',
-        id: route.params.collection,
       }),
     ]);
   }
@@ -25,7 +36,8 @@
     extends: Page,
 
     components: {
-      // 'module-grid-dress': ModuleDressCollection,
+      'module-promo-cards': ModulePromoCards,
+      'module-article': ModuleArticle,
     },
 
     asyncData ({ store, route }) {
@@ -44,8 +56,11 @@
     },
 
     computed: {
-      collection () {
-        return this.$store.state['dress-collection'][this.$route.params.collection];
+      collections () {
+        return this.$store.state['dress-collection'].filter(element => element.type == FILTER[this.$route.path]);
+      },
+      article () {
+        return this.$store.state.pages['dress-collection'];
       },
     },
   };

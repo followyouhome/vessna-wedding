@@ -13,7 +13,7 @@
   <nav class="navigation">
     <ul class="navigation__main-list" itemscope="" itemtype="http://www.schema.org/SiteNavigationElement">
       <li class="navigation__main-list__item" v-for="item in items">
-        <router-link class="navigation__main-list__item__link" v-bind:to="{ name: item.route || null, path: item.path || null, params: item.params || null }">
+        <router-link class="navigation__main-list__item__link" v-bind:to="{ name: item.route || null, path: item.path || null }">
           <span class="navigation__main-text" itemprop="name">{{ item.label }}</span>
           <span class="navigation__icon icon-bars" v-if="item.items"></span>
         </router-link>
