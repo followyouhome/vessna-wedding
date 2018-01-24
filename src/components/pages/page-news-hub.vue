@@ -31,9 +31,9 @@
 
     metaInfo () {
       return {
-        title: 'Новости',
+        title: this.seo.name,
         meta: [
-          { name: 'description', content: 'Новые коллекции, события, акции.'},
+          { name: 'description', content: this.seo.description },
         ],
       };
     },
@@ -57,6 +57,10 @@
     computed: {
       news () {
         return this.$store.state.news;
+      },
+
+      seo () {
+        return this.$store.state.pages.news.seo;
       },
     },
   };

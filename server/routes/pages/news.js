@@ -12,6 +12,7 @@ module.exports = (app, base) => {
 
       query.exec((err, result) => {
         output.main_promo = result.main_promo;
+        output.seo = result.seo;
         next();
       });
     },
