@@ -40,6 +40,15 @@
       'module-article': ModuleArticle,
     },
 
+    metaInfo () {
+      return {
+        title: this.article.seo.name,
+        meta: [
+          { name: 'description', content: this.article.seo.description },
+        ],
+      };
+    },
+
     asyncData ({ store, route }) {
       return Promise.all([
         this.extends.asyncData({store, route}),

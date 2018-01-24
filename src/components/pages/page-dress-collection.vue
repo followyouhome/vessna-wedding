@@ -26,6 +26,15 @@
       'module-grid-dress': ModuleDressCollection,
     },
 
+    metaInfo () {
+      return {
+        title: this.collection.seo.name,
+        meta: [
+          { name: 'description', content: this.collection.seo.description },
+        ],
+      };
+    },
+
     asyncData ({ store, route }) {
       return Promise.all([
         this.extends.asyncData({store, route}),
