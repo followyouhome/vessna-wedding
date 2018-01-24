@@ -57,7 +57,15 @@
 
     computed: {
       collections () {
-        return this.$store.state['dress-collection'].filter(element => element.type == FILTER[this.$route.path]);
+        let collections = {};
+
+        for (let collection in this.$store.state['dress-collection']) {
+          if (this.$store.state['dress-collection'][collection].type == FILTER[this.$route.path]) {
+            collections[collection] = this.$store.state['dress-collection'][collection];
+          }
+        }
+
+        return collections;
       },
       article () {
         return this.$store.state.pages['dress-collection'];

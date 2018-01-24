@@ -11,7 +11,12 @@ module.exports = (app, base) => {
                       .find();
 
       query.exec((err, result) => {
-        output = result;
+        output = {};
+
+        for(let collection of result) {
+          output[collection.slug] = collection;
+        }
+
         next();
       });
     },
