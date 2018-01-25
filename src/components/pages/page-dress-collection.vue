@@ -28,9 +28,9 @@
 
     metaInfo () {
       return {
-        title: this.collection.seo.name,
+        title: this.seo.name,
         meta: [
-          { name: 'description', content: this.collection.seo.description },
+          { name: 'description', content: this.seo.description },
         ],
       };
     },
@@ -53,6 +53,10 @@
     computed: {
       collection () {
         return this.$store.state['dress-collection'][this.$route.params.collection];
+      },
+
+      seo() {
+        return this.$store.state['dress-collection'][this.$route.params.collection].collection.seo;
       },
     },
   };

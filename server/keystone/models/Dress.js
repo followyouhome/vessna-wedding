@@ -1,7 +1,7 @@
 const keystone = require('keystone');
 const Types = keystone.Field.Types;
-
 const Promo = require('../partials/Promo');
+const Seo = require('../partials/Seo');
 
 var Dress = new keystone.List('Dress', {
   label: 'Платья',
@@ -13,13 +13,13 @@ var Dress = new keystone.List('Dress', {
   hidden: false,
 });
 
-Dress.add('Параметры', {
+Dress.add('Мета-инфо', Seo, 'Параметры', {
   name: { type: String, required: true },
   collections: { label: 'Коллекция', type: Types.Relationship, ref: 'DressCollection', many: true },
   images: { label: 'Фотографии платья', type: Types.CloudinaryImages },
   price: {
-    usd: { label: 'Цена в $', type: Types.Money, },
-    rub: { label: 'Цена в ₽', type: Types.Money, },
+    usd: { label: 'Цена в $', type: Types.Money },
+    rub: { label: 'Цена в ₽', type: Types.Money },
   },
 });
 

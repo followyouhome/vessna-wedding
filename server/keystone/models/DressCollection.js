@@ -1,6 +1,7 @@
 const keystone = require('keystone');
 const Types = keystone.Field.Types;
 const Promo = require('../partials/Promo');
+const Seo = require('../partials/Seo');
 const {
   PAGE_DRESS_COLLECTION, PAGE_DRESS_COLLECTION_PROM, PAGE_DRESS_COLLECTION_WEDDING, PAGE_DRESS_COLLECTION_CAPSULE
 } = require('../../../config/constants.js');
@@ -15,7 +16,7 @@ var DressCollection = new keystone.List('DressCollection', {
   hidden: false
 });
 
-DressCollection.add('Коллекция', {
+DressCollection.add('Мета-инфо', Seo, 'Коллекция', {
   name: { label: 'Название', type: String, required: true },
   type: {
     type: Types.Select,
