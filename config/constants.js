@@ -2,7 +2,7 @@ module.exports = {
 	// Static pages
   PAGE_HOMEPAGE: 'page-homepage',
 	PAGE_CONTACT: 'page-contact',
-  PAGE_LANDING: 'page-landing',
+  PAGE_CUSTOM: 'page-custom',
 
   // News pages
   PAGE_NEWS_HUB: 'page-news-hub',
