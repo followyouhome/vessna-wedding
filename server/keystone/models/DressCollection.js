@@ -4,7 +4,7 @@ const MainPromo = require('../partials/MainPromo');
 const Promo = require('../partials/Promo');
 const Seo = require('../partials/Seo');
 const {
-  PAGE_DRESS_COLLECTION, PAGE_DRESS_COLLECTION_PROM, PAGE_DRESS_COLLECTION_WEDDING, PAGE_DRESS_COLLECTION_CAPSULE
+  PAGE_DRESS_COLLECTION, PAGE_DRESS_COLLECTION_PROM, PAGE_DRESS_COLLECTION_WEDDING, PAGE_DRESS_COLLECTION_CAPSULE,
 } = require('../../../config/constants.js');
 
 const Inherit = [
@@ -57,18 +57,18 @@ DressCollection.add(...Inherit, 'Коллекция', {
 
 DressCollection.schema.set('toJSON', {
   transform: function(doc, ret, options) {
-      if (ret.type == 'prom') {
-        ret.route = PAGE_DRESS_COLLECTION_PROM;
-      } else if (ret.type == 'wedding') {
-        ret.route = PAGE_DRESS_COLLECTION_WEDDING;
-      }
-
-      ret.params = {
-        'collection': ret.slug
-      };
-
-      return ret;
+    if (ret.type == 'prom') {
+      ret.route = PAGE_DRESS_COLLECTION_PROM;
+    } else if (ret.type == 'wedding') {
+      ret.route = PAGE_DRESS_COLLECTION_WEDDING;
     }
+
+    ret.params = {
+      'collection': ret.slug,
+    };
+
+    return ret;
+  },
 });
 
 DressCollection.relationship({ path: 'dresses', ref: 'Dress', refPath: 'options.collections' });
