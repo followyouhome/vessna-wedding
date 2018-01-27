@@ -11,12 +11,6 @@ const storage = new keystone.Storage({
   schema: { container: true, etag: true, url: true },
 });
 
-// keystone.set('cloudinary config', 'cloudinary://973344584935212:qmo8nmPl9pORLT-AjS4UEWgrcqM@vessna' );
-// keystone.set('cloudinary upload options', { backup: true, use_filename: true } );
-// keystone.set('cloudinary secure', true);
-// keystone.set('cloudinary use_filename', true);
-
-
 const Promo =  {
   promo: {
     slug: { type: String, hidden: true },
@@ -51,50 +45,31 @@ const Promo =  {
       ogv: { label: '.ogv', type: Types.File, dependsOn: { 'promo.media': 'video' },  storage: storage },
     },
   },
-  main_promo: {
-    slug: { type: String, hidden: true },
-    headline: { label: 'Заголовок', type: Types.Text, dependsOn: { 'main_promo.media': ['image', 'video', 'audio'] } },
-    subline: { label: 'Подзаголовок', type: Types.Text, dependsOn: { 'main_promo.media': ['image', 'video', 'audio'] } },
-    text: { label: 'Текст', type: Types.Html, wysiwyg: true, dependsOn: { 'main_promo.media': ['image', 'video', 'audio'] } },
-    align: { label: 'Расположение',type: Types.Select, options: [
-      { label: '↖', value : 'top-left' },
-      { label: '↑', value: 'top-center' },
-      { label: '↗', value: 'right-top' },
-      { label: '←', value : 'middle-left' },
-      { label: '·', value: 'middle-center' },
-      { label: '→', value: 'middle-right' },
-      { label: '↙', value: 'bottom-left' },
-      { label: '↓', value: 'bottom-center' },
-      { label: '↘', value: 'bottom-right' },
-    ]},
-    media: { label: 'Медиа', type: Types.Select, options: [
-      { label: 'Отсутствует', value : 'null' },
-      { label: 'Изображение', value: 'image' },
-      { label: 'Видео', value: 'video' },
-      { label: 'Аудио', value: 'audio' },
-    ], default: 'null' },
-    alt: { label: 'Альтернативный текст', type: Types.Text, dependsOn: { 'main_promo.media': 'image' } },
-    image: {
-      label: 'Изображение',
-      type: Types.CloudinaryImage,
-      dependsOn: { 'main_promo.media': 'image' },
-      uploadOptions: { use_filename: true, unique_filename: false },
-      generateFilename: function(file, attemptNumber, callback) {
-        callback(null, file.originalname);
-      },
-    },
-    audio: {
-      label: '.mp3',
-      type: Types.File,
-      dependsOn: { 'main_promo.media': 'audio' },
-      storage: storage,
-    },
-    video: {
-      webm: { label: '.webm', type: Types.File, dependsOn: { 'main_promo.media': 'video' },  storage: storage },
-      mp4: { label: '.mp4', type: Types.File, dependsOn: { 'main_promo.media': 'video' },  storage: storage },
-      ogv: { label: '.ogv', type: Types.File, dependsOn: { 'main_promo.media': 'video' },  storage: storage },
-    },
+};
+
+const Methods = {
+  toJSON: function (ret) {
+    delete ret.__v;
+    delete ret._id;
+
+    if(ret.promo.media == 'null') {
+      delete ret.promo;
+    }
+
+    return ret;
+  },
+  save: function () {
+    const cloudinary = /(http|https):\/\/res.cloudinary.com\/vessna\/image\/upload\/.*\//;
+    const local = '/images/';
+
+    if (this.promo.image.url) {
+      this.promo.image.url = this.promo.image.url.replace(cloudinary, local);
+    }
+
+    if (this.promo.image.secure_url) {
+      this.promo.image.secure_url = this.promo.image.url.replace(cloudinary, local);
+    }
   },
 };
 
-module.exports = Promo;
+module.exports = { schema: Promo, methods: Methods };

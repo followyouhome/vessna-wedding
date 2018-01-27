@@ -1,22 +1,28 @@
 const keystone = require('keystone');
 const Types = keystone.Field.Types;
-const Promo = require('./Promo');
+const MainPromo = require('../partials/MainPromo');
+const Promo = require('../partials/Promo');
 const Seo = require('../partials/Seo');
 const {
   PAGE_DRESS_COLLECTION, PAGE_DRESS_COLLECTION_PROM, PAGE_DRESS_COLLECTION_WEDDING, PAGE_DRESS_COLLECTION_CAPSULE
 } = require('../../../config/constants.js');
 
-var DressCollection = new keystone.List('DressCollection', {
+const Inherit = [
+  'Мета-инфо', Seo,
+  'Промо', Promo.schema,
+  'Большое промо', MainPromo.schema,
+];
+
+const DressCollection = new keystone.List('DressCollection', {
   label:'Коллекции',
   plural: 'Коллекции',
   singular: 'Коллекция',
   sortable: true,
   autokey: { path: 'slug', from: 'name', unique: true },
-  inherits: Promo,
   hidden: false
 });
 
-DressCollection.add('Мета-инфо', Seo, 'Коллекция', {
+DressCollection.add(...Inherit, 'Коллекция', {
   name: { label: 'Название', type: String, required: true },
   type: {
     type: Types.Select,
@@ -65,7 +71,7 @@ DressCollection.schema.set('toJSON', {
     }
 });
 
-DressCollection.relationship({ path: 'dresses', ref: 'Dress', refPath: 'collections' });
+DressCollection.relationship({ path: 'dresses', ref: 'Dress', refPath: 'options.collections' });
 
 DressCollection.defaultColumns = 'name|30%, type|30%, state|20%, promo.image|20%';
 DressCollection.register();

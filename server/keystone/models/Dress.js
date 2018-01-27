@@ -1,11 +1,18 @@
 const keystone = require('keystone');
 const Types = keystone.Field.Types;
+const MainPromo = require('../partials/MainPromo');
 const Promo = require('../partials/Promo');
 const Seo = require('../partials/Seo');
 
 keystone.set('cloudinary config', 'cloudinary://973344584935212:qmo8nmPl9pORLT-AjS4UEWgrcqM@vessna' );
 
-var Dress = new keystone.List('Dress', {
+const Inherit = [
+  'Мета-инфо', Seo,
+  'Промо', Promo.schema,
+  'Большое промо', MainPromo.schema,
+];
+
+const Dress = new keystone.List('Dress', {
   label: 'Платья',
   plural: 'Платья',
   singular: 'Платье',
@@ -14,41 +21,38 @@ var Dress = new keystone.List('Dress', {
   hidden: false,
 });
 
-Dress.add('Мета-инфо', Seo, 'Промо', Promo, 'Параметры', {
+Dress.add(...Inherit, 'Параметры', {
   name: { label: 'Название', type: String, required: true },
-  params: {
-    collections: { label: 'Коллекция', type: Types.Relationship, ref: 'DressCollection', many: true },
-    images: {
-      label: 'Фотографии платья',
-      type: Types.CloudinaryImages,
-      uploadOptions: { use_filename: true, unique_filename: false },
-      generateFilename: function(file, attemptNumber, callback) {
-        callback(null, file.originalname);
-      },
+  collections: { label: 'Коллекция', type: Types.Relationship, ref: 'DressCollection', many: true },
+  images: {
+    label: 'Фотографии платья',
+    type: Types.CloudinaryImages,
+    uploadOptions: { use_filename: true, unique_filename: false },
+    generateFilename: function(file, attemptNumber, callback) {
+      callback(null, file.originalname);
     },
-    price: {
-      usd: { label: 'Цена в $', type: Types.Money },
-      rub: { label: 'Цена в ₽', type: Types.Money },
-    },
+  },
+  price: {
+    usd: { label: 'Цена в $', type: Types.Money },
+    rub: { label: 'Цена в ₽', type: Types.Money },
   },
 });
 
 Dress.schema.set('toJSON', {
   transform: function(doc, ret, options) {
-      delete ret.__v;
-      delete ret._id;
+    ret = Promo.methods.toJSON(ret);
+    ret = MainPromo.methods.toJSON(ret);
 
-      if(ret.main_promo.media == 'null') {
-        delete ret.main_promo;
-      }
-
-      return ret;
-    },
+    return ret;
+  },
 });
 
 Dress.schema.pre('save', function(next) {
   const cloudinary = /(http|https):\/\/res.cloudinary.com\/vessna\/image\/upload\/.*\//;
   const local = '/images/';
+
+  Promo.methods.save.call(this);
+  MainPromo.methods.save.call(this);
 
   if(this.images && this.images.length) {
     for(let i = 0; i < this.images.length; i++) {
@@ -60,14 +64,6 @@ Dress.schema.pre('save', function(next) {
         this.images[i].secure_url = this.images[i].url.replace(cloudinary, local);
       }
     }
-  }
-
-  if (this.promo.image.url) {
-    this.promo.image.url = this.promo.image.url.replace(cloudinary, local);
-  }
-
-  if (this.promo.image.secure_url) {
-    this.promo.image.secure_url = this.promo.image.url.replace(cloudinary, local);
   }
 
   next(this);
