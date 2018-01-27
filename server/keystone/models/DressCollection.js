@@ -71,7 +71,7 @@ DressCollection.schema.set('toJSON', {
   },
 });
 
-DressCollection.relationship({ path: 'dresses', ref: 'Dress', refPath: 'options.collections' });
+DressCollection.relationship({ path: 'dresses', ref: 'Dress', refPath: 'collections' });
 
 DressCollection.defaultColumns = 'name|30%, type|30%, state|20%, promo.image|20%';
 DressCollection.register();
