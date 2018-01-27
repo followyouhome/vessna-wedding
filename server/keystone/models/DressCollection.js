@@ -19,7 +19,7 @@ const DressCollection = new keystone.List('DressCollection', {
   singular: 'Коллекция',
   sortable: true,
   autokey: { path: 'slug', from: 'name', unique: true },
-  hidden: false
+  hidden: false,
 });
 
 DressCollection.add(...Inherit, 'Коллекция', {
