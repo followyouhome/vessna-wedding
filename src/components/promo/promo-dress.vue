@@ -1,22 +1,22 @@
 <template>
   <div class="promo promo--dress promo--width-2">
     <div class="promo__wrapper promo--dress__wrapper">
-      <a v-bind:href="promo.image.url"
+      <a v-bind:href="dress.promo.image.url"
         class="promo__image-wrapper promo--dress__image-wrapper promo--dress__image-wrapper--no-link fresco"
-        v-if="promo.image"
-        v-bind:to="{ name: 'page-dress', params: { collection: 'vessna-2017', dress: promo.slug }}"
+        v-if="dress.promo.image"
+        v-bind:to="{ name: 'page-dress', params: { collection: 'vessna-2017', dress: dress.slug }}"
         v-bind:data-dress-info="images"
-        v-bind:data-fresco-group="promo.headline"
+        v-bind:data-fresco-group="dress.headline"
         v-bind:data-fresco-group-options="options"
       >
-        <image-deferred v-bind:image="promo.image"></image-deferred>
+        <image-deferred v-bind:image="dress.promo.image"></image-deferred>
       </a>
       <div class="promo__content-wrapper promo--dress__content-wrapper">
         <div class="promo--dress__headline promo--dress__headline--no-link">
-           <h4 class="promo__text-headline">{{promo.headline}}</h4>
+           <h4 class="promo__text-headline">{{dress.headline}}</h4>
         </div>
         <div class="promo--dress__subheadline">
-           <p class="promo__text-subheadline">{{promo.subline}}</p>
+           <p class="promo__text-subheadline">{{dress.subline}}</p>
         </div>
       </div>
     </div>
@@ -27,14 +27,14 @@
   export default {
     name: 'promo-dress',
 
-    props: ['promo'],
+    props: ['dress'],
 
     computed: {
       options () {
         return 'overflow: true, thumbnails: \"vertical\", onClick: \"close\"';
       },
       images () {
-        return "[" + this.promo.images.map(element => "\"" + element.url + "\"") + "]";
+        return "[" + this.dress.images.map(element => "\"" + element.url + "\"") + "]";
       },
     },
 

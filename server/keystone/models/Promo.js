@@ -11,13 +11,17 @@ const storage = new keystone.Storage({
   schema: { container: true, etag: true, url: true },
 });
 
-// keystone.set('cloudinary config', 'cloudinary://973344584935212:qmo8nmPl9pORLT-AjS4UEWgrcqM@vessna' );
+keystone.set('cloudinary config', 'cloudinary://973344584935212:qmo8nmPl9pORLT-AjS4UEWgrcqM@vessna' );
 // keystone.set('cloudinary upload options', { backup: true, use_filename: true } );
 // keystone.set('cloudinary secure', true);
 // keystone.set('cloudinary use_filename', true);
 
+const Promo = new keystone.List('Promo', {
+  label: 'Промо',
+  hidden: true,
+});
 
-const Promo =  {
+Promo.add('Промо', {
   promo: {
     slug: { type: String, hidden: true },
     headline: { label: 'Заголовок', type: Types.Text, dependsOn: { 'promo.media': ['image', 'video', 'audio'] } },
@@ -51,6 +55,7 @@ const Promo =  {
       ogv: { label: '.ogv', type: Types.File, dependsOn: { 'promo.media': 'video' },  storage: storage },
     },
   },
+}, 'Большое промо', {
   main_promo: {
     slug: { type: String, hidden: true },
     headline: { label: 'Заголовок', type: Types.Text, dependsOn: { 'main_promo.media': ['image', 'video', 'audio'] } },
@@ -95,6 +100,24 @@ const Promo =  {
       ogv: { label: '.ogv', type: Types.File, dependsOn: { 'main_promo.media': 'video' },  storage: storage },
     },
   },
-};
+});
+
+Promo.schema.pre('save', function(next) {
+  const cloudinary = /(http|https):\/\/res.cloudinary.com\/vessna\/image\/upload\/.*\//;
+  const local = '/images/';
+
+  if (this.promo.image.url) {
+    this.promo.image.url = this.promo.image.url.replace(cloudinary, local);
+  }
+
+  if (this.promo.image.secure_url) {
+    this.promo.image.secure_url = this.promo.image.url.replace(cloudinary, local);
+  }
+
+  next(this);
+});
+
+Promo.defaultColumns = '';
+Promo.register();
 
 module.exports = Promo;

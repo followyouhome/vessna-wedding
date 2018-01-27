@@ -1,7 +1,7 @@
 <template>
   <main class="module-grid-dress isotope-grid">
     <div class="isotope-grid__sizer"></div>
-    <promo-dress v-for="dress in collection.dresses" v-bind:promo="dress" v-bind:key="dress.slug"></promo-dress>
+    <promo-dress v-for="dress in collection.dresses" v-bind:dress="dress" v-bind:key="dress.slug"></promo-dress>
   </main>
 </template>
 
