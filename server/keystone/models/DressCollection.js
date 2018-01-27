@@ -8,7 +8,7 @@ const {
 } = require('../../../config/constants.js');
 
 const Inherit = [
-  'Мета-инфо', Seo,
+  'Мета-инфо', Seo.schema,
   'Промо', Promo.schema,
   'Большое промо', MainPromo.schema,
 ];

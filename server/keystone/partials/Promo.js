@@ -11,6 +11,8 @@ const storage = new keystone.Storage({
   schema: { container: true, etag: true, url: true },
 });
 
+keystone.set('cloudinary config', 'cloudinary://973344584935212:qmo8nmPl9pORLT-AjS4UEWgrcqM@vessna' );
+
 const Promo =  {
   promo: {
     slug: { type: String, hidden: true },

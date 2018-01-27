@@ -1,6 +1,8 @@
 const keystone = require('keystone');
 const Types = keystone.Field.Types;
 
+keystone.set('cloudinary config', 'cloudinary://973344584935212:qmo8nmPl9pORLT-AjS4UEWgrcqM@vessna' );
+
 const Seo = {
   seo: {
     name: { label: 'Мета-заголовок', type: Types.Text },
@@ -16,4 +18,4 @@ const Seo = {
   },
 };
 
-module.exports = Seo;
+module.exports = { schema: Seo };

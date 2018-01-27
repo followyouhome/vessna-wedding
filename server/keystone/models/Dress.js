@@ -7,7 +7,7 @@ const Seo = require('../partials/Seo');
 keystone.set('cloudinary config', 'cloudinary://973344584935212:qmo8nmPl9pORLT-AjS4UEWgrcqM@vessna' );
 
 const Inherit = [
-  'Мета-инфо', Seo,
+  'Мета-инфо', Seo.schema,
   'Промо', Promo.schema,
   'Большое промо', MainPromo.schema,
 ];

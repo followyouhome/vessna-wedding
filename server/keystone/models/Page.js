@@ -1,22 +1,27 @@
 const keystone = require('keystone');
 const Types = keystone.Field.Types;
-const Promo = require('./Promo');
+const MainPromo = require('../partials/MainPromo');
+const Promo = require('../partials/Promo');
 const Seo = require('../partials/Seo');
 
 const routes = require('../../../config/constants.js');
+
+const Inherit = [
+  'Мета-инфо', Seo.schema,
+  'Промо', Promo.schema,
+  'Большое промо', MainPromo.schema,
+];
 
 var Page = new keystone.List('Page', {
   label: 'Страницы',
   plural: 'Страницы',
   singular: 'Страница',
-  autokey: { path: 'slug', from: 'name', unique: true },
   defaultSort: '-publishedDate',
-  inherits: Promo,
   sortable: false,
   hidden: false,
 });
 
-Page.add('Мета-инфо', Seo, 'Страница', {
+Page.add(...Inherit, 'Страница', {
   name: { label: 'Название', type: String, required: true },
   slug: { label: 'Путь', type: String },
   route: { label: 'Роут', type: Types.Select, options: Object.values(routes)},
