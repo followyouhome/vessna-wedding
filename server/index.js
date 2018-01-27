@@ -1,5 +1,12 @@
+const fs = require('fs');
 const keystone = require('keystone');
-require('./keystone/models');
+const types = require('./keystone/models');
+
+const pattern = '<script src="<%= adminPath %>/js/admin.js"></script>\n';
+const template = fs.readFileSync('node_modules/keystone/admin/server/templates/index.html', 'utf-8');
+const updated = template.replace(pattern, pattern + '<script src="/public/scripts/hooks.js"></script>');
+
+fs.writeFileSync('node_modules/keystone/admin/server/templates/index.html', updated, 'utf-8');
 
 keystone.init(require('../config/keystone.config'));
 keystone.set('routes', require('./routes'));
