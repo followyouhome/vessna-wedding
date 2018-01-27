@@ -18,6 +18,7 @@ const Dress = new keystone.List('Dress', {
   singular: 'Платье',
   autokey: { path: 'slug', from: 'name', unique: true },
   sortable: false,
+  perPage: 25,
   hidden: false,
 });
 
