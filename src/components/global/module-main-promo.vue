@@ -24,6 +24,12 @@
       promo () {
         return this.$store.state.main_promo;
       },
+      video () {
+        return this.promo.video;
+      },
+      image () {
+        return this.promo.image;
+      },
       align () {
         const align = this.$store.state.main_promo.align;
         let result = '';
