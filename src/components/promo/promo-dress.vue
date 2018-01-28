@@ -13,10 +13,10 @@
       </a>
       <div class="promo__content-wrapper promo--dress__content-wrapper">
         <div class="promo--dress__headline promo--dress__headline--no-link">
-           <h4 class="promo__text-headline">{{dress.headline}}</h4>
+           <h4 class="promo__text-headline">{{dress.promo.headline}}</h4>
         </div>
         <div class="promo--dress__subheadline">
-           <p class="promo__text-subheadline">{{dress.subline}}</p>
+           <p class="promo__text-subheadline">{{dress.promo.subline}}</p>
         </div>
       </div>
     </div>

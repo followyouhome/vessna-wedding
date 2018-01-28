@@ -6,10 +6,10 @@
 	        </router-link>
 	        <div class="promo__content-wrapper promo--collection__content-wrapper">
 							<router-link class="promo--collection__title" v-bind:to="{ name: item.route, params: item.params }">
-	            	<h4 class="promo__text-title promo__text-title--normal-case">{{ item.promo.title }}</h4>
+	            	<h4 class="promo__text-title promo__text-title--normal-case" v-html="item.promo.title"></h4>
 							</router-link>
 							<router-link class="promo--collection__headline" v-bind:to="{ name: item.route, params: item.params }">
-	            	<h4 class="promo__text-headline promo__text-headline--normal-case">{{ item.promo.headline }}</h4>
+	            	<h4 class="promo__text-headline promo__text-headline--normal-case" v-html="item.promo.headline"></h4>
 							</router-link>
 							<router-link class="promo--collection__link" v-bind:to="{ name: item.route, params: item.params }">
 	            	<h4 class="promo__text-headline">Подробнее</h4>

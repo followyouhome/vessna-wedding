@@ -1,7 +1,7 @@
 <template>
 	<div class="module module--related-posts flickity-carousels">
     <div class="module__wrapper module--related-posts__wrapper">
-			<promo-topical v-for="post in news" v-bind:promo="post.promo" v-bind:key="post.slug"></promo-topical>
+			<promo-topical v-for="post in news" v-bind:item="post" v-bind:key="post.slug"></promo-topical>
     </div>
 	</div>
 </template>

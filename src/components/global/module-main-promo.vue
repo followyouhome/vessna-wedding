@@ -2,8 +2,8 @@
   <header v-bind:class="['main-promo', align]" v-if="promo.media != 'null'">
     <div class="main-promo__hgroup">
       <div class="main-promo__hgroup__content">
-        <h2>{{promo.subline}}</h2>
-        <h1>{{promo.headline}}</h1>
+        <h2 v-html="promo.subline"></h2>
+        <h1 v-html="promo.headline">}</h1>
         <svg class="ellipse ellipse--blur">
           <ellipse cx="50%" cy="50%" rx="50%" ry="50%"></ellipse>
         </svg>
