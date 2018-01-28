@@ -11,4 +11,5 @@ module.exports = app => {
   app.use(compression({ threshold: 0 }));
   app.use('/dist', serve('../../dist', true));
   app.use('/public', serve('../../public', true));
+  app.use('/assets', serve('../../assets', true));
 };

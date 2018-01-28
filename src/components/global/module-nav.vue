@@ -27,11 +27,11 @@
           </ul>
         </div>
       </li>
-      <li class="navigation__main-list__item">
+      <!-- <li class="navigation__main-list__item">
         <div class="navigation__main-list__item__link" @click="show">
           <span class="navigation__main-text" itemprop="name">Войти</span>
         </div>
-      </li>
+      </li> -->
     </ul>
   </nav>
 </template>
