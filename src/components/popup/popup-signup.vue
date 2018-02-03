@@ -6,7 +6,7 @@
             <input v-model.trim="email" type="email">
             <label>Пароль</label>
             <input v-model="password" type="password">
-            <input type="submit" class="button" value="Submit">
+            <input type="submit" class="form__button-submit" value="Submit">
         </form>
     </fieldset>
 </template>
