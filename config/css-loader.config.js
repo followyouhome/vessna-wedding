@@ -22,6 +22,7 @@ const productionLoaders = [
   { loader: 'sass-resources-loader',
     options: {
       resources: [
+        path.resolve(__dirname, '../src/styles/fonts.scss'),
         path.resolve(__dirname, '../src/styles/media.scss'),
         path.resolve(__dirname, '../src/styles/colors.scss'),
         path.resolve(__dirname, '../src/styles/variables.scss'),

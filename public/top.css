@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'Akzidenz Grotesk';
+    src: url('/public/fonts/AkzidenzGroteskPro/AkzidenzGroteskPro.eot');
+    src: url('/public/fonts/AkzidenzGroteskPro/AkzidenzGroteskPro.eot?#iefix') format('embedded-opentype'), url('/public/fonts/AkzidenzGroteskPro/AkzidenzGroteskPro.woff2') format('woff2'), url('/public/fonts/AkzidenzGroteskPro/AkzidenzGroteskPro.woff') format('woff'), url('/public/fonts/AkzidenzGroteskPro/AkzidenzGroteskPro.ttf') format('truetype'), url('/public/fonts/AkzidenzGroteskPro/AkzidenzGroteskPro.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 .hamburger {
     display: inline-block;
     position: relative;
