@@ -12,5 +12,6 @@ module.exports = app => {
   require('./config')(app);
   require('./pages')(app);
   require('./query')(app);
+  require('./forms')(app);
   require('./app')(app);
 };

@@ -1,10 +1,10 @@
 <template>
-  <div class="promo promo-subscribe promo--fade-in">
+  <div :class="['promo', 'promo-subscribe', this.fadein ? 'promo--fade-in' : '']">
     <div class="promo__wrapper promo-subscribe__wrapper">
       <h2 class="promo__headline promo-subscribe__headline">{{headline}}</h2>
       <p class="promo__subline promo-subscribe__subline">{{subline}}</p>
-      <form class="promo-subscribe__form">
-        <input class="promo-subscribe__form-input" type="email" placeholder="EMAIL">
+      <form class="promo-subscribe__form" v-on:submit.prevent="subscribe">
+        <input class="promo-subscribe__form-input" type="email" placeholder="EMAIL" v-model="email">
         <input class="promo-subscribe__form-submit" type="submit" value="Подписаться">
       </form>
     </div>
@@ -21,9 +21,20 @@
 
     data () {
       return {
+        fadein: true,
         headline: 'Сделайте первый шаг',
         subline: 'Будьте в курсе наших акций, ивентов и новостей',
+        email: 'test@mail.com',
       };
+    },
+
+    methods: {
+      subscribe () {
+        this.$store.dispatch('subscribe', { email: this.email })
+          .then((data) => {
+            console.log(data);
+          });
+      },
     },
   };
 </script>

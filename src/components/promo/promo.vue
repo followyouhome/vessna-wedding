@@ -11,8 +11,8 @@
       if (__VUE_ENV__ === 'client') {
         if (this.$el.classList.contains('promo--fade-in')) {
           InView('.promo--fade-in')
-            .on('enter', () => this.$el.classList.toggle('promo--fade-in'))
-            .on('exit', () => this.$el.classList.toggle('promo--fade-in'));
+            .on('enter', () => this.fadein = false)
+            .on('exit', () => this.fadein = true);
         }
       }
     },

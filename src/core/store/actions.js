@@ -19,6 +19,27 @@ if (__VUE_ENV__ === 'server' && Vue.cookies) {
 const base = config.api.base || '/api';
 
 export default {
+  subscribe(store, payload) {
+    return axios
+      .post(base + '/forms/subscribe', payload, settings)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  },
+
+
+
+
+
+
+
+
+
+
+
   signup(store, payload) {
     return axios
       .post(base + '/user/signup', payload, settings)
