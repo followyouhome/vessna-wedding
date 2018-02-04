@@ -31,11 +31,12 @@
     mounted () {
       if(__VUE_ENV__ === 'client') {
         const Imager = require('imager.js');
+        const pixelRatio = window.devicePixelRatio || 1;
 
         return new Imager('.image-deferred__image--preloader', {
           className: 'image-deferred__image image-deferred__image--loaded',
           lazyload: true,
-          availableWidths: image => image.clientWidth,
+          availableWidths: image => image.clientWidth * pixelRatio,
           onImagesReplaced: images => {
             images.forEach(image => {
               image.addEventListener('load', function(e) {
