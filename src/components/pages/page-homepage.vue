@@ -13,6 +13,8 @@
       </div>
     </div>
     <module-promo-cards v-bind:items="prom"></module-promo-cards>
+    <promo-full-screen-quote></promo-full-screen-quote>
+    <promo-subscribe/>
   </div>
 </template>
 
@@ -21,6 +23,9 @@
   import ModuleRelatedPosts from '../module/module-related-posts.vue';
   import ModuleSelectedCollections from '../module/module-selected-collections.vue';
   import ModulePromoCards from '../module/module-promo-cards.vue';
+  import PromoFullScreenQuote from '../promo/promo-full-screen-quote.vue';
+  import PromoSubscribe from '../promo/promo-subscribe.vue';
+
 
   import store from '../../core/store/';
 
@@ -45,6 +50,8 @@
       'module-related-posts': ModuleRelatedPosts,
       'module-promo-cards': ModulePromoCards,
       'module-selected-collections': ModuleSelectedCollections,
+      'promo-full-screen-quote': PromoFullScreenQuote,
+      'promo-subscribe': PromoSubscribe,
     },
 
     metaInfo () {
@@ -90,3 +97,7 @@
     },
   };
 </script>
+
+<style lang="scss">
+
+</style>

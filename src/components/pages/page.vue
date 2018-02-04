@@ -21,5 +21,13 @@
 </script>
 
 <style lang="scss">
-
+  .promo {
+    z-index: $z-default;
+    position: relative;
+  }
+  .module {
+    z-index: $z-default;
+    position: relative;
+    background: white;
+  }
 </style>
