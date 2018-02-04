@@ -24,7 +24,7 @@
         fadein: true,
         headline: 'Сделайте первый шаг',
         subline: 'Будьте в курсе наших акций, ивентов и новостей',
-        email: 'test@mail.com',
+        email: '',
       };
     },
 

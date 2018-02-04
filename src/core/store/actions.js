@@ -4,6 +4,7 @@ import Vue from 'vue';
 
 import {
   MAIN_PROMO_SET,
+  USER_LOGOUT,
 } from './mutation-types';
 
 import config from '../../../config';
@@ -55,13 +56,23 @@ export default {
 
 
 
-
-
   login(store, { email, password }) {
     return axios
       .post(base + '/user/login', { email, password }, settings)
       .then(({ data }) => {
         store.commit('replaceItems', { namespace: 'user', data, global: true });
+        return data;
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  },
+
+  logout(store) {
+    return axios
+      .post(base + '/user/logout', {}, settings)
+      .then(({ data }) => {
+        store.commit('USER_LOGOUT');
         return data;
       })
       .catch(err => {

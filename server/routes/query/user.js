@@ -54,13 +54,14 @@ module.exports = (app, base) => {
       uidCookie.set(req, res);
       responseHandler(res, null, formatUser(req.user));
     }, function(err) {
-      responseHandler(res, err);
+      return res.status(401).json({ error: 'wrong login or password' });
     });
   });
 
   // user logout
   app.post(base + '/user/logout', (req, res) => {
     keystone.session.signout(req, res, function(err) {
+      console.log("KEK");
       uidCookie.remove(req, res);
       responseHandler(res, err, {});
     });

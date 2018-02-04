@@ -25,7 +25,9 @@
     </div>
     <div class="video-wrapper">
       <video autoplay="true" loop="true" muted="true">
-         <source :src="video" type="video/mp4">
+        <source :src="video_mp4" type="video/mp4;">
+        <source :src="video_webm" type="video/webm;">
+        <source :src="video_ogv" type="video/ogg;">
       </video>
     </div>
   </div>
@@ -41,7 +43,9 @@
         text2: 'Moscow Wedding Fashion',
         text3: 'А вы?',
         color: '#fafafa',
-        video: 'https://cdn.shopify.com/s/files/1/1979/7831/files/AnnaDanceAboutPage-reformatted.mp4?44195721965624219',
+        video_webm: 'https://vessna.blob.core.windows.net/vessna/vessna-quote.webm',
+        video_mp4: 'https://vessna.blob.core.windows.net/vessna/vessna-quote.mp4',
+        video_ogv: 'https://vessna.blob.core.windows.net/vessna/vessna-quote.ogv',
       };
     },
   };
@@ -83,7 +87,7 @@
     height: 100vh;
 
     video {
-      height: 100vh;
+      width: 100vw;
     }
   }
 </style>

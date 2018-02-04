@@ -1,6 +1,7 @@
 import {
   POPUP_SET, POPUP_UNSET,
   MAIN_PROMO_SET,
+  USER_LOGOUT,
 } from './mutation-types.js';
 
 export default {
@@ -18,6 +19,10 @@ export default {
     } else {
       state.main_promo = null;
     }
+  },
+
+  [USER_LOGOUT] (state) {
+    state.global.user = null;
   },
 
   setItem (state, { namespace, id, data }) {

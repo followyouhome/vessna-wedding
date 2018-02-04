@@ -28,8 +28,38 @@
         </div>
       </li>
       <li class="navigation__main-list__item">
-        <div class="navigation__main-list__item__link" @click="show">
-          <span class="navigation__main-text" itemprop="name">Войти</span>
+        <div class="navigation__main-list__item__link">
+          <span class="navigation__main-text" itemprop="name">Для клиентов</span>
+          <span class="navigation__icon icon-bars"></span>
+        </div>
+        <div class="navigation__bar">
+          <ul class="navigation__secondary-list">
+            <li class="navigation__secondary-list__item" v-if="!user">
+              <div class="navigation__secondary-list__item__link" @click="login">
+                <span class="navigation__secondary-text">Войти, чтобы видеть цены</span>
+              </div>
+            </li>
+            <li class="navigation__secondary-list__item" v-if="!user">
+              <div class="navigation__secondary-list__item__link" @click="signup">
+                <span class="navigation__secondary-text">Зарегестрироваться</span>
+              </div>
+            </li>
+            <li class="navigation__secondary-list__item" v-if="user">
+              <div class="navigation__secondary-list__item__link" @click="logout">
+                <span class="navigation__secondary-text">Выход</span>
+              </div>
+            </li>
+            <li class="navigation__secondary-list__item" v-if="user">
+              <div class="navigation__secondary-list__item__link">
+                <span class="navigation__secondary-text">Прайсы</span>
+              </div>
+            </li>
+            <li class="navigation__secondary-list__item" v-if="user">
+              <div class="navigation__secondary-list__item__link">
+                <span class="navigation__secondary-text">Контент</span>
+              </div>
+            </li>
+          </ul>
         </div>
       </li>
     </ul>
@@ -44,10 +74,19 @@
       items () {
         return this.$store.state.config.navigation;
       },
+      user () {
+        return this.$store.state.global && this.$store.state.global.user && this.$store.state.global.user._id != '';
+      },
     },
 
     methods: {
-      show() {
+      login () {
+        this.$store.commit('POPUP_SET', { popup: 'login' });
+      },
+      logout () {
+        this.$store.dispatch('logout');
+      },
+      signup () {
         this.$store.commit('POPUP_SET', { popup: 'login' });
       },
     },

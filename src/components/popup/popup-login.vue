@@ -30,8 +30,7 @@
       login() {
         this.$store.dispatch('login', this)
           .then((data) => {
-            this.$router.push({ name: 'profile' });
-            this.$store.state.global.uid = data._id;
+            this.$store.commit('POPUP_UNSET');
           });
       },
     },
