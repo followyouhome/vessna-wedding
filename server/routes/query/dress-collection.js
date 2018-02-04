@@ -33,7 +33,9 @@ module.exports = (app, base) => {
                       .findOne({ slug: req.params.slug });
 
       query.exec((err, result) => {
+        output = {};
         output.collection = result;
+        output.main_promo = result.main_promo;
         next();
       });
     },

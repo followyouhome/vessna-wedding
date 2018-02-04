@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <module-main-promo v-if="main_promo"></module-main-promo>
+        <global-main-promo v-if="main_promo"></global-main-promo>
         <module-nav></module-nav>
         <main>
           <transition name="fade">
@@ -19,7 +19,7 @@
   import VueRecaptcha from 'vue-recaptcha';
   import ModuleNav from './components/global/module-nav.vue';
   import ModuleFooter from './components/global/module-footer.vue';
-  import ModuleMainPromo from './components/global/module-main-promo.vue';
+  import GlobalMainPromo from './components/global/global-main-promo.vue';
   import GlobalPopupContainer from './components/global/global-popup-container';
   import ImageDeferred from './components/atoms/image-deferred.vue';
   import VideoRegular from './components/atoms/video-regular.vue';
@@ -34,7 +34,7 @@
     components: {
       'module-nav': ModuleNav,
       'module-footer': ModuleFooter,
-      'module-main-promo': ModuleMainPromo,
+      'global-main-promo': GlobalMainPromo,
       'global-popup-container': GlobalPopupContainer,
     },
 

@@ -71,5 +71,8 @@
 </script>
 
 <style lang="scss">
-
+	.module--related-posts {
+		padding: 10px 0 0 0;
+    margin-top: 0;
+	}
 </style>
