@@ -31,7 +31,17 @@ export default {
       });
   },
 
-
+  login(store, { email, password }) {
+    return axios
+      .post(base + '/user/login', { email, password }, settings)
+      .then(({ data }) => {
+        store.commit('replaceItems', { namespace: 'user', data, global: true });
+        return data;
+      })
+      .catch(err => {
+        return err;
+      });
+  },
 
 
 
@@ -56,17 +66,7 @@ export default {
 
 
 
-  login(store, { email, password }) {
-    return axios
-      .post(base + '/user/login', { email, password }, settings)
-      .then(({ data }) => {
-        store.commit('replaceItems', { namespace: 'user', data, global: true });
-        return data;
-      })
-      .catch(err => {
-        console.error(err);
-      });
-  },
+
 
   logout(store) {
     return axios

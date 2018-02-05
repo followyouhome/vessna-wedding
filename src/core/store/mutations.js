@@ -1,5 +1,5 @@
 import {
-  POPUP_SET, POPUP_UNSET,
+  POPUP_SET, POPUP_UNSET, POPUP_RESET,
   MAIN_PROMO_SET,
   USER_LOGOUT,
 } from './mutation-types.js';
@@ -11,6 +11,10 @@ export default {
 
   [POPUP_UNSET] (state) {
     state.popup = null;
+  },
+
+  [POPUP_RESET] (state) {
+    state = state;
   },
 
   [MAIN_PROMO_SET] (state, { namespace, id, data }) {

@@ -6,7 +6,7 @@
       <input class="form__input-text" v-model.trim="email" type="email" placeholder="Email">
       <input class="form__input-text" v-model="password" type="password" placeholder="Пароль">
       <div class="popup__recaptcha g-recaptcha" :id="config.selector" data-callback="loginRecaptcha" :data-sitekey="config.sitekey"></div>
-      <input type="submit" class="form__button-submit" value="Войти" :disabled="disabled" :title="disabled ? 'Заполните все поля' : 'Нажмите, чтобы войти'">
+      <input type="submit" :class="['form__button-submit', this.status.request ? 'request' : '', this.status.success ? 'success' : '', this.status.fail ? 'fail' : '' ]" value="Войти" :disabled="disabled" :title="disabled ? 'Заполните все поля' : 'Нажмите, чтобы войти'">
     </form>
     <div class="popup__close" @click="close" title="Закрыть окно">✖</div>
   </fieldset>
@@ -22,13 +22,18 @@
   }
 
   export default {
-    name: 'login',
+    name: 'popup-login',
 
     data() {
       return {
         email: '',
         password: '',
         recaptcha: false,
+        status: {
+          request: false,
+          success: false,
+          fail: false,
+        },
         config: {
           selector: 'popup-login__recaptcha',
           sitekey: '6Lf__kAUAAAAAAfyKZ7h_54WlKBUOrQTkvmAbhEC',
@@ -70,9 +75,27 @@
         this.$store.commit('POPUP_UNSET');
       },
       login() {
+        this.status.request = true;
+
         this.$store.dispatch('login', this)
           .then((data) => {
-            this.$store.commit('POPUP_UNSET');
+            this.status.request = false;
+
+            if (data._id) {
+              this.status.success = true;
+
+              setTimeout(() => {
+                this.status.success = true;
+                this.$store.commit('POPUP_UNSET');
+              }, 1000);
+            } else {
+              this.status.fail = true;
+
+              setTimeout(() => {
+                this.status.fail = false;
+                this.$store.commit('POPUP_RESET');
+              }, 1000);
+            }
           });
       },
     },
@@ -80,6 +103,24 @@
 </script>
 
 <style lang="scss">
+  @-webkit-keyframes fail {
+    0%   { transform: translateX(0);}
+    12%   { transform: translateX(-3px);}
+    25%   { transform: translateX(0);}
+    37%   { transform: translateX(3px);}
+    50%   { transform: translateX(0);}
+    62%   { transform: translateX(-3px);}
+    75%   { transform: translateX(0);}
+    87%   { transform: translateX(3px);}
+    100% { transform: translateX(0); }
+  }
+
+  @-webkit-keyframes request {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+  }
+
   .popup-login {
     position: relative;
     width: 300px;
@@ -115,6 +156,11 @@
   .form__button-submit {
     width: 100%;
     margin-top: 10px;
+    transition: background linear 0.2s;
+
+    &:focus {
+      outline: none;
+    }
 
     &:disabled {
       cursor: default;
@@ -124,6 +170,33 @@
       &:hover {
         background: inherit;
         color: inherit;
+      }
+    }
+
+    &.request {
+      animation: request 1s infinite;
+    }
+
+    &.success {
+      background: $green;
+      color: $white;
+
+      &:hover {
+        opacity: 0.9;
+        background: $green;
+        color: $white;
+      }
+    }
+
+    &.fail {
+      animation: fail 0.3s 1;
+      background: $red;
+      color: $white;
+
+      &:hover {
+        opacity: 0.9;
+        background: $red;
+        color: $white;
       }
     }
   }
