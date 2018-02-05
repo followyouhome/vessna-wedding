@@ -16,7 +16,7 @@
            <h4 class="promo__text-headline"><span class="font-peignot">{{dress.promo.headline}}</span></h4>
         </div>
         <div class="promo--dress__subheadline">
-           <p class="promo__text-subheadline">{{dress.promo.subline}} <span class="font-peignot" v-if="user && price">{{price}} RUB</span></p>
+           <p class="promo__text-subheadline">{{dress.promo.subline}} <span class="font-peignot" v-if="user && price">{{price}} ₽</span></p>
         </div>
       </div>
     </div>

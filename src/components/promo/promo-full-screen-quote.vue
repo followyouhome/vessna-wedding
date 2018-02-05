@@ -64,6 +64,7 @@
 
   .quote-wrapper {
     position: relative;
+    opacity: 0.8;
     z-index: $z-default;
 
     &:before, &:after {
