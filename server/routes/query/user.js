@@ -26,6 +26,9 @@ module.exports = (app, base) => {
         email: data.email,
         password: data.password,
         canAccessKeystone: false,
+        phone: data.phone,
+        city: data.city,
+        shop: data.shop,
       }).save(err => {
         keystone.session.signin({ email: req.body.email, password: req.body.password }, req, res, function() {
           uidCookie.set(req, res);

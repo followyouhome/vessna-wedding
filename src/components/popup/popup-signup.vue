@@ -55,8 +55,6 @@
       signup () {
         this.status.request = true;
 
-        debugger
-
         this.$store.dispatch('signup', this.form)
           .then((data) => {
             this.status.request = false;
