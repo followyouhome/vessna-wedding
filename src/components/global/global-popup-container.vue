@@ -35,17 +35,6 @@
 </script>
 
 <style lang="scss">
-  @keyframes fade-in {
-    from {
-      transform: translateY(-3rem);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-
   .global-popup-container {
     display: flex;
     align-items: center;
@@ -59,9 +48,5 @@
     height: 100%;
     width: 100%;
     background: rgba(255, 255, 255, 0.9);
-  }
-
-  .popup {
-    animation: fade-in 0.3s normal;
   }
 </style>

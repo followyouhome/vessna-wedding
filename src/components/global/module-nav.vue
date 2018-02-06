@@ -1,14 +1,3 @@
-<!--
-  items: [{
-    label: '',
-    route: '',
-    items: [{
-      label: ''
-      route: ''
-    }]
-  }]
--->
-
 <template>
   <nav class="navigation">
     <ul class="navigation__main-list" itemscope="" itemtype="http://www.schema.org/SiteNavigationElement">
@@ -41,7 +30,7 @@
             </li>
             <li class="navigation__secondary-list__item" v-if="!user">
               <div class="navigation__secondary-list__item__link" @click="signup">
-                <span class="navigation__secondary-text">Зарегестрироваться</span>
+                <span class="navigation__secondary-text">Зарегистрироваться</span>
               </div>
             </li>
             <li class="navigation__secondary-list__item" v-if="user">
@@ -74,20 +63,23 @@
       items () {
         return this.$store.state.config.navigation;
       },
+
       user () {
         return this.$store.state.global && this.$store.state.global.user && this.$store.state.global.user._id != '';
       },
     },
 
     methods: {
+      signup () {
+        this.$store.commit('POPUP_SET', { popup: 'signup' });
+      },
+
       login () {
         this.$store.commit('POPUP_SET', { popup: 'login' });
       },
+
       logout () {
         this.$store.dispatch('logout');
-      },
-      signup () {
-        this.$store.commit('POPUP_SET', { popup: 'login' });
       },
     },
   };
