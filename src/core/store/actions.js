@@ -43,22 +43,15 @@ export default {
       });
   },
 
-
-
-
-
-
-
-
-
   signup(store, payload) {
     return axios
       .post(base + '/user/signup', payload, settings)
-      .then(response => {
-        console.log(response);
+      .then(({ data }) => {
+        store.commit('replaceItems', { namespace: 'user', data, global: true });
+        return data;
       })
-      .catch(error => {
-        console.log(error);
+      .catch(err => {
+        return err;
       });
   },
 

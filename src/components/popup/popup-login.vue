@@ -3,8 +3,8 @@
     <!--<script src='https://www.google.com/recaptcha/api.js?hl=ru'></script>-->
     <legend class="popup-login__title">Вход</legend>
     <form v-on:submit.prevent="login">
-      <input class="form__input-text" v-model.trim="email" type="email" placeholder="Email">
-      <input class="form__input-text" v-model="password" type="password" placeholder="Пароль">
+      <input class="form__input-text" v-model.trim="form.email" type="email" placeholder="Email">
+      <input class="form__input-text" v-model="form.password" type="password" placeholder="Пароль">
       <div class="popup__recaptcha g-recaptcha" :id="config.selector" data-callback="loginRecaptcha" :data-sitekey="config.sitekey"></div>
       <input type="submit" :class="['form__button-submit', this.status.request ? 'request' : '', this.status.success ? 'success' : '', this.status.fail ? 'fail' : '' ]" value="Войти" :disabled="disabled" :title="disabled ? 'Заполните все поля' : 'Нажмите, чтобы войти'">
     </form>
@@ -23,15 +23,17 @@
 
     data() {
       return {
-        email: '',
-        password: '',
+        form: {
+          email: '',
+          password: '',
+        },
       };
     },
 
     computed: {
       disabled () {
-        return !this.email.length
-          || !this.password.length
+        return !this.form.email.length
+          || !this.form.password.length
           || !this.status.recaptcha;
       },
     },
@@ -40,7 +42,7 @@
       login() {
         this.status.request = true;
 
-        this.$store.dispatch('login', this)
+        this.$store.dispatch('login', this.form)
           .then((data) => {
             this.status.request = false;
 

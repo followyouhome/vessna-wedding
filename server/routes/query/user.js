@@ -27,19 +27,12 @@ module.exports = (app, base) => {
         password: data.password,
         canAccessKeystone: false,
       }).save(err => {
-
-        if(err) {
-          return res.status(401).json({ error: 'PIDOR' });
-        }
-
-        responseHandler(res, null, {a: "KEK"});
-
-        // keystone.session.signin({ email: req.body.email, password: req.body.password }, req, res, function() {
-        //   uidCookie.set(req, res);
-        //   responseHandler(res, null, formatUser(req.user));
-        // }, function(err) {
-        //   responseHandler(res, err);
-        // });
+        keystone.session.signin({ email: req.body.email, password: req.body.password }, req, res, function() {
+          uidCookie.set(req, res);
+          responseHandler(res, null, formatUser(req.user));
+        }, function(err) {
+          return res.status(401).json({ error: 'wrong login or password' });
+        });
       });
     });
   });
