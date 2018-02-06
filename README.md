@@ -12,6 +12,7 @@ All new website builded as isomorphic app. Using _Keystonejs_ as CMF and _Vue js
   - `npm run build`
   - `npm start`
   - Restore database dump with `mongorestore -d Vessna-Wedding Vessna-Wedding`
+  - Add project to pm2 with `pm2 start --name Vessna-Wedding npm -- start`
 
 # Development
 

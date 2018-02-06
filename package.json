@@ -8,7 +8,7 @@
     "watch:client": "cross-env NODE_ENV=develop webpack --config config/webpack.client.config.js --progress --hide-modules --watch",
     "watch:server": "cross-env NODE_ENV=develop webpack --config config/webpack.server.config.js --progress --hide-modules --watch",
     "lint": "eslint src/** --ext",
-    "start": "cross-env NODE_ENV=production PORT=80 node server",
+    "start": "cross-env NODE_ENV=production node server",
     "dev": "cross-env NODE_ENV=develop node server",
     "dev:macos": "ttab 'mongod --dbpath ~/Documents/Mongo/Vessna-Wedding' && ttab 'npm run watch:server' && ttab 'npm run watch:client' && npm run dev",
     "dev:windows": "echo 'todo'"
