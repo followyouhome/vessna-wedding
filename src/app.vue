@@ -16,7 +16,7 @@
 
 <script>
   import Vue from 'vue';
-  import VueRecaptcha from 'vue-recaptcha';
+  import NoSSR from 'vue-no-ssr';
   import ModuleNav from './components/global/module-nav.vue';
   import ModuleFooter from './components/global/module-footer.vue';
   import GlobalMainPromo from './components/global/global-main-promo.vue';
@@ -24,7 +24,7 @@
   import ImageDeferred from './components/atoms/image-deferred.vue';
   import VideoRegular from './components/atoms/video-regular.vue';
 
-  Vue.component('vue-recaptcha', VueRecaptcha);
+  Vue.component('no-ssr', NoSSR);
   Vue.component('image-deferred', ImageDeferred);
   Vue.component('video-regular', VideoRegular);
 

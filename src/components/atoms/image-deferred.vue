@@ -1,6 +1,6 @@
 <template>
   <figure v-bind:class="['image-deferred', 'image-deferred--preloader', aspect]" v-bind:style="size" v-if="image">
-    <img class="image-deferred__image image-deferred__image--preloader"
+    <div class="image-deferred__image image-deferred__image--preloader"
       v-bind:src="image.url"
       alt=""
       title=""
@@ -8,15 +8,24 @@
       data-alt=""
       data-title=""
       itemprop="contentUrl"
-    />
+    ></div>
+    <noscript v-if="server"><img :src="image.url" alt="" title="" itemprop="contentUrl"></noscript>
+    <noscript v-else></noscript>
   </figure>
 </template>
 
 <script>
+
   export default {
     name: 'image-deferred',
 
     props: ['image', 'aspect'],
+
+    data () {
+      return {
+        server: __VUE_ENV__ === 'server',
+      };
+    },
 
     computed: {
       size: function() {
@@ -36,24 +45,16 @@
         return new Imager('.image-deferred__image--preloader', {
           className: 'image-deferred__image image-deferred__image--loaded',
           lazyload: true,
+          lazyloadOffset: 300,
           availableWidths: image => image.clientWidth * pixelRatio,
           onImagesReplaced: images => {
             images.forEach(image => {
               image.addEventListener('load', function(e) {
                 image.parentNode.classList.add('image--effect-fadein');
                 image.parentNode.classList.remove('image-deferred--preloader');
-
-                // var p = new Parallax('.image-parallax .image-deferred__image--loaded', {
-                //     offsetYBounds: 50,
-                //     intensity: 30,
-                //     center: 1,
-                //     safeHeight: 0.15
-                // }).init();
               });
             });
           },
-        }).ready(function() {
-          this.checkImagesNeedReplacing(this.divs);
         });
       }
     },
