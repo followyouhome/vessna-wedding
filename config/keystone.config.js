@@ -10,7 +10,7 @@ module.exports = {
   'auto update': true,
   'port': config.port,
   'ssl port': 443,
-  'ssl': 'force',
+  // 'ssl': 'force',
   'session': true,
   'session store': 'mongo',
   'signin url': '/user/login',
