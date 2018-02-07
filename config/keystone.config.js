@@ -10,6 +10,9 @@ module.exports = {
   'auto update': true,
   'port': config.port,
   'ssl port': 3001,
+  'ssl public port': 443,
+  'ssl cert': '../' + 'cert.pem', // path to generated certificate (generated at `$HOME/letsencrypt/etc` by default)
+  'ssl key': '../' + 'privkey.pem', // path to generated private key (same default as ssl cert)
   'ssl': true,
   'session': true,
   'session store': 'mongo',
@@ -21,11 +24,11 @@ module.exports = {
   'user model': 'user',
   'cookie secret': '24634sdfhsdfgh346y34',
   'logger options': {
-    skip: (req, res) => res.statusCode < 400
+    skip: (req, res) => res.statusCode < 400,
   },
   letsencrypt: (process.env.NODE_ENV === 'production') && {
     email: 'vessnaws@gmail.com',
-    domains: ['local.vessna.wedding'],
+    domains: ['vessna.wedding'],
     register: true,
     tos: true,
   },
