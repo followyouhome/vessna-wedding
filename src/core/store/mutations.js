@@ -1,7 +1,7 @@
 import {
   POPUP_SET, POPUP_UNSET, POPUP_RESET,
   MAIN_PROMO_SET,
-  USER_LOGOUT,
+  USER_LOGIN, USER_LOGOUT,
 } from './mutation-types.js';
 
 export default {
@@ -25,8 +25,13 @@ export default {
     }
   },
 
+  [USER_LOGIN] (state, user) {
+    state.global.user = {'kek': 1};
+  },
+
   [USER_LOGOUT] (state) {
     state.global.user = null;
+    Vue.cookies.remove('uid');
   },
 
   setItem (state, { namespace, id, data }) {

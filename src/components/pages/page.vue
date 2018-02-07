@@ -3,6 +3,7 @@
 </template>
 
 <script>
+  import Vue from 'vue';
   import store from '../../core/store/';
 
   export default {
@@ -16,6 +17,14 @@
           id: 'navigation',
         }),
       ]);
+    },
+
+    mounted () {
+      if (__VUE_ENV__ === 'client') {
+        if (Vue.cookie.get('uid') && Vue.cookie.get('uid') !== this.$store.state.global.user._id) {
+          this.$store.state.global.user._id = Vue.cookie.get('uid');
+        }
+      }
     },
   };
 </script>

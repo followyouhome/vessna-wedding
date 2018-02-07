@@ -36,6 +36,19 @@ export default {
       .post(base + '/user/login', { email, password }, settings)
       .then(({ data }) => {
         store.commit('replaceItems', { namespace: 'user', data, global: true });
+        Vue.cookies.set('uid', data._id);
+        return data;
+      })
+      .catch(err => {
+        return err;
+      });
+  },
+
+  logout(store) {
+    return axios
+      .post(base + '/user/logout', {}, settings)
+      .then(({ data }) => {
+        store.commit('USER_LOGOUT');
         return data;
       })
       .catch(err => {
@@ -52,24 +65,6 @@ export default {
       })
       .catch(err => {
         return err;
-      });
-  },
-
-
-
-
-
-
-
-  logout(store) {
-    return axios
-      .post(base + '/user/logout', {}, settings)
-      .then(({ data }) => {
-        store.commit('USER_LOGOUT');
-        return data;
-      })
-      .catch(err => {
-        console.error(err);
       });
   },
 

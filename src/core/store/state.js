@@ -5,7 +5,7 @@ export default {
   global: {
     popup: null,
     user: {
-      _id: Vue.cookies && Vue.cookies.get('uid') || '',
+      _id: '',
     },
   },
   items: [],
