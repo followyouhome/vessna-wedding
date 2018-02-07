@@ -9,7 +9,7 @@ module.exports = {
   'updates': path.resolve(__dirname, '../server/keystone/updates'),
   'auto update': true,
   'port': config.port,
-  'ssl port': 3001,
+  'ssl port': 443,
   'ssl': 'force',
   'session': true,
   'session store': 'mongo',
@@ -23,7 +23,7 @@ module.exports = {
   'logger options': {
     skip: (req, res) => res.statusCode < 400
   },
-    letsencrypt: (process.env.NODE_ENV === 'production') && {
+  letsencrypt: (process.env.NODE_ENV === 'production') && {
     email: 'vessnaws@gmail.com',
     domains: ['vessna.wedding', 'local.vessna.wedding'],
     register: true,
