@@ -1,15 +1,15 @@
 <template>
-  <header v-bind:class="['main-promo', align]" v-if="promo.media != 'null'">
-    <div class="main-promo__hgroup" v-if="promo.headline || promo.subline ">
-      <div class="main-promo__hgroup__content">
-        <div class="main-promo__hgroup__wrapper">
-          <h1 v-html="promo.headline"></h1>
+  <header v-bind:class="['global-main-promo', align]" v-if="promo.media != 'null'">
+    <div class="global-main-promo__hgroup" v-if="promo.headline || promo.subline ">
+      <div class="global-main-promo__hgroup__content">
+        <div class="global-main-promo__hgroup__wrapper">
+          <h1><span :class="headline.size" v-html="headline.text"></span></h1>
           <hr>
           <h2 v-html="promo.subline"></h2>
         </div>
       </div>
     </div>
-    <div class="main-promo__wrapper">
+    <div class="global-main-promo__wrapper">
       <image-deferred v-bind:image="promo.image" v-if="promo.media == 'image'"></image-deferred>
       <video-regular v-bind:video="promo.video" v-if="promo.media == 'video'"></video-regular>
     </div>
@@ -24,50 +24,72 @@
       promo () {
         return this.$store.state.main_promo;
       },
+
+      headline () {
+        return {
+          text: this.promo.headline,
+          size: this.fontsize(this.promo.headline),
+        };
+      },
+
       video () {
         return this.promo.video;
       },
+
       image () {
         return this.promo.image;
       },
+
       align () {
         const align = this.$store.state.main_promo.align;
         let result = '';
 
         if (align) {
           if (align.indexOf("top") != -1) {
-            result += ' main-promo--hgroup-top';
+            result += ' global-main-promo--hgroup-top';
           }
 
           if (align.indexOf("middle") != -1) {
-            result += ' main-promo--hgroup-middle';
+            result += ' global-main-promo--hgroup-middle';
           }
 
           if (align.indexOf("bottom") != -1) {
-            result += ' main-promo--hgroup-bottom';
+            result += ' global-main-promo--hgroup-bottom';
           }
 
           if (align.indexOf("left") != -1) {
-            result += ' main-promo--hgroup-left';
+            result += ' global-main-promo--hgroup-left';
           }
 
           if (align.indexOf("center") != -1) {
-            result += ' main-promo--hgroup-center';
+            result += ' global-main-promo--hgroup-center';
           }
 
           if (align.indexOf("right") != -1) {
-            result += ' main-promo--hgroup-right';
+            result += ' global-main-promo--hgroup-right';
           }
         }
 
         return result;
       },
     },
+
+    methods: {
+      fontsize (text) {
+        const length = text.replace(/(<([^>]+)>)/ig, '').length;
+
+        if (length > 30) {
+          return 'smaller';
+        } else if (length < 15) {
+          return 'bigger';
+        }
+      },
+    },
   };
 </script>
 
 <style lang="scss">
-  .main-promo {
+  .global-main-promo {
     position: relative;
     overflow: hidden;
 
@@ -97,18 +119,18 @@
       }
     }
 
-    &.main-promo__image--position-bottom .image-deferred img {
+    &.global-main-promo__image--position-bottom .image-deferred img {
       top: 0;
       bottom: auto;
     }
 
-    &.main-promo__image--position-top .image-deferred img {
+    &.global-main-promo__image--position-top .image-deferred img {
       top: auto;
       bottom: 0;
     }
   }
 
-  .main-promo__wrapper {
+  .global-main-promo__wrapper {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -116,7 +138,7 @@
     z-index: $z-default;
   }
 
-  .main-promo__hgroup {
+  .global-main-promo__hgroup {
     display: flex;
     align-items: center;
     position: absolute;
@@ -134,8 +156,8 @@
       width: 80vw;
     }
 
-    .main-promo--hgroup-left & {
-      left: 10%;
+    .global-main-promo--hgroup-left & {
+      left: 13%;
 
       @media #{$medium} {
         left: 7%;
@@ -151,12 +173,12 @@
       }
     }
 
-    .main-promo--hgroup-center & {
+    .global-main-promo--hgroup-center & {
       left: 0;
       right: 0;
     }
 
-    .main-promo--hgroup-right & {
+    .global-main-promo--hgroup-right & {
       right: 10%;
 
       @media #{$medium} {
@@ -173,30 +195,30 @@
       }
     }
 
-    .main-promo--hgroup-top & {
+    .global-main-promo--hgroup-top & {
 
-      .main-promo__hgroup__content {
+      .global-main-promo__hgroup__content {
         position: absolute;
         top: 10%;
       }
     }
 
-    .main-promo--hgroup-middle & {
+    .global-main-promo--hgroup-middle & {
 
-      .main-promo__hgroup__content {
+      .global-main-promo__hgroup__content {
         vertical-align: middle;
       }
     }
 
-    .main-promo--hgroup-bottom & {
-      .main-promo__hgroup__content {
+    .global-main-promo--hgroup-bottom & {
+      .global-main-promo__hgroup__content {
         position: absolute;
         bottom: 10%;
       }
     }
   }
 
-  .main-promo__hgroup__content {
+  .global-main-promo__hgroup__content {
     display: inline-block;
     position: relative;
     padding: 20px;
@@ -236,6 +258,10 @@
       @media #{$phablet} {
         font-size: 1rem;
       }
+
+      @media #{$mobile} {
+        font-size: 1rem;
+      }
     }
 
     h1 {
@@ -243,6 +269,28 @@
       font-weight: lighter;
       text-transform: uppercase;
       letter-spacing: 2px;
+
+      > span {
+        display: block;
+      }
+
+      .bigger {
+        font-size: 1.5em;
+      }
+
+      .smaller {
+        @media #{$large} {
+          font-size: 0.6em;
+        }
+
+        @media #{$medium} {
+          font-size: 0.7em;
+        }
+
+        @media #{$mobile} {
+          font-size: 0.75em;
+        }
+      }
 
       @media #{$medium} {
         font-size: 4rem;
@@ -255,6 +303,10 @@
       @media #{$phablet} {
         font-size: 2rem;
       }
+
+      @media #{$mobile} {
+        font-size: 1.3rem;
+      }
     }
 
     hr {
@@ -265,9 +317,17 @@
     }
   }
 
-  .main-promo__hgroup__wrapper {
+  .global-main-promo__hgroup__wrapper {
     padding: 25px;
     border: 1px solid rgb(214, 214, 214);
     background: white;
+
+    @media #{$phablet} {
+      padding: 20px;
+    }
+
+    @media #{$mobile} {
+      padding: 15px;
+    }
   }
 </style>
