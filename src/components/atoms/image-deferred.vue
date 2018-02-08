@@ -1,15 +1,15 @@
 <template>
   <figure v-bind:class="['image-deferred', 'image-deferred--preloader', aspect]" v-bind:style="size" v-if="image">
     <div class="image-deferred__image image-deferred__image--preloader"
-      v-bind:src="image.url"
+      v-bind:src="image.secure_url || image.url"
       alt=""
       title=""
-      v-bind:data-src="image.url + '?w={width}'"
+      v-bind:data-src="(image.secure_url || image.url) + '?w={width}'"
       data-alt=""
       data-title=""
       itemprop="contentUrl"
     ></div>
-    <noscript v-if="server"><img :src="image.url" alt="" title="" itemprop="contentUrl"></noscript>
+    <noscript v-if="server"><img :src="image.secure_url || image.url" alt="" title="" itemprop="contentUrl"></noscript>
     <noscript v-else></noscript>
   </figure>
 </template>

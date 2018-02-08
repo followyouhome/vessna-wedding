@@ -11,9 +11,10 @@ module.exports = {
   'port': config.port,
   'ssl port': 3001,
   'ssl public port': 443,
-  'ssl cert': '../' + 'cert.pem', // path to generated certificate (generated at `$HOME/letsencrypt/etc` by default)
-  'ssl key': '../' + 'privkey.pem', // path to generated private key (same default as ssl cert)
-  'ssl': true,
+  'ssl cert': '$HOME/letsencrypt/etc/live/vessna.wedding/' + 'cert.pem', // path to generated ce$
+  'ssl key': ';$HOME/letsencrypt/etc/live/vessna.wedding/' + 'privkey.pem', // path to generated$
+  'ssl ca': '$HOME/letsencrypt/etc/live/vessna.wedding/' + 'fullchain.pem',
+  'ssl': (process.env.NODE_ENV === 'production') && true,
   'session': true,
   'session store': 'mongo',
   'signin url': '/user/login',
@@ -27,6 +28,8 @@ module.exports = {
     skip: (req, res) => res.statusCode < 400,
   },
   letsencrypt: (process.env.NODE_ENV === 'production') && {
+    production: true,
+    server: 'https://acme-v01.api.letsencrypt.org/directory',
     email: 'vessnaws@gmail.com',
     domains: ['vessna.wedding'],
     register: true,

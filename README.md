@@ -17,3 +17,14 @@ All new website builded as isomorphic app. Using _Keystonejs_ as CMF and _Vue js
 # Development
 
 To run all required processes on local environment run `npm run dev:local`
+
+# SSH
+
+HTTPS encryption provided by Let'n'Crypt. Sometimes it's necessary to renew existing certificates manually. The most easiest way is to run:
+
+* `cd ~/letsencrypt/etc/live/`
+* `rm -rf vessna-wedding`
+
+Also if website was runned into staging mode also need to remove provider with:
+
+* `cd ~/letsencrypt/etc/accounts/` and remove all child folders

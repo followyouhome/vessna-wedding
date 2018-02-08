@@ -1,7 +1,7 @@
 <template>
   <div class="promo promo-full-screen-quote">
     <div class="quote-wrapper">
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg-root" width="100%" height="10em">
+      <svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" id="svg-root" width="100%" height="10em">
        <defs>
           <mask id="maskedtext">
              <rect width="100%" height="100%" x="0" y="0" fill="#fff"></rect>

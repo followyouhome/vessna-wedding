@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer row" itemscope="" itemtype="http://schema.org/ClothingStore">
+  <footer class="footer row" itemscope="" itemtype="https://schema.org/ClothingStore">
     <div class="footer__column footer__column-phones col-lg-2 col-md-4 col-md-6 col-xs-12 col-lg-offset-2">
       <ul class="footer__column-phones__list">
         <li class="footer__column-phones__list__item"><a class="footer__text-phone icon-velcom" href="tel:+375291560600" itemprop="telephone">+ 375 29 156 06 00</a>
@@ -14,7 +14,7 @@
       <div class="footer__column-address__content">
         <div class="footer__text-address">
           <p itemprop="name">ЧПУП "ВесснаВС"</p>
-          <p itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+          <p itemprop="address" itemscope="" itemtype="https://schema.org/PostalAddress">
             <span itemprop="addressLocality">Беларусь, Брест</span>,
             <br>
             <span itemprop="streetAddress">ул. Васнецова 50</span>,

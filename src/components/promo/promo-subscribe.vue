@@ -98,7 +98,7 @@
     font-size: 2rem;
     padding: 0 20px;
     vertical-align: middle;
-    background: #1c1d21 url("http://bbd.basicagencydev.com/wp-content/themes/bbdakota/assets/svg/icon-arrow-right-white.svg") no-repeat center;
+    background: #1c1d21 url("https://bbd.basicagencydev.com/wp-content/themes/bbdakota/assets/svg/icon-arrow-right-white.svg") no-repeat center;
     border: 20px solid rgb(28,29,34);
     text-indent: -9999px;
 
