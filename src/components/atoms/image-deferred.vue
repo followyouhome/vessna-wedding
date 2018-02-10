@@ -1,14 +1,11 @@
 <template>
   <figure v-bind:class="['image-deferred', 'image-deferred--preloader', aspect]" v-bind:style="size" v-if="image">
-    <div class="image-deferred__image image-deferred__image--preloader"
-      v-bind:src="image.secure_url || image.url"
+    <img ref="placeholder" class="image-deferred__image image-deferred__image--preloader"
+      v-lazy="src + '?width=' + width"
       alt=""
       title=""
-      v-bind:data-src="(image.secure_url || image.url) + '?w={width}'"
-      data-alt=""
-      data-title=""
       itemprop="contentUrl"
-    ></div>
+    />
     <noscript v-if="server"><img :src="image.secure_url || image.url" alt="" title="" itemprop="contentUrl"></noscript>
     <noscript v-else></noscript>
   </figure>
@@ -24,6 +21,8 @@
     data () {
       return {
         server: __VUE_ENV__ === 'server',
+        pixel: __VUE_ENV__ === 'client' ? window.location.href : null,
+        src: this.image.secure_url || this.image.url,
       };
     },
 
@@ -35,26 +34,18 @@
           return "padding-top: " + this.image.height / this.image.width * 100 + "%";
         }
       },
+
+      width: function() {
+        return __VUE_ENV__ === 'client' ? this.$refs.placeholder.width : null;
+      }
+
     },
 
     mounted () {
       if(__VUE_ENV__ === 'client') {
-        const Imager = require('imager.js');
-        const pixelRatio = window.devicePixelRatio || 1;
-
-        return new Imager('.image-deferred__image--preloader', {
-          className: 'image-deferred__image image-deferred__image--loaded',
-          lazyload: true,
-          lazyloadOffset: 300,
-          availableWidths: image => image.clientWidth * pixelRatio,
-          onImagesReplaced: images => {
-            images.forEach(image => {
-              image.addEventListener('load', function(e) {
-                image.parentNode.classList.add('image--effect-fadein');
-                image.parentNode.classList.remove('image-deferred--preloader');
-              });
-            });
-          },
+        this.$Lazyload.$on('loaded', function ({ el }) {
+          el.parentNode.classList.add('image--effect-fadein');
+          el.parentNode.classList.remove('image-deferred--preloader');
         });
       }
     },
