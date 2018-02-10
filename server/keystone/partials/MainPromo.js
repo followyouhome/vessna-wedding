@@ -40,7 +40,7 @@ const MainPromo =  {
     image: {
       label: 'Изображение',
       type: Types.CloudinaryImage,
-      dependsOn: { 'main_promo.media': 'image' },
+      dependsOn: { 'main_promo.media': ['image', 'video'] },
       uploadOptions: { use_filename: true, unique_filename: false },
       generateFilename: function(file, attemptNumber, callback) {
         callback(null, file.originalname);

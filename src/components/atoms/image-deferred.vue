@@ -36,7 +36,7 @@
       },
 
       width: function() {
-        return __VUE_ENV__ === 'client' ? this.$refs.placeholder.width : null;
+        return __VUE_ENV__ === 'client' ? this.$refs.placeholder && this.$refs.placeholder.width : null;
       }
 
     },
