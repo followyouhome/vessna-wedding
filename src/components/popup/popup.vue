@@ -3,10 +3,12 @@
 </template>
 
 <script>
+  const sitekey = '6Lf__kAUAAAAAAfyKZ7h_54WlKBUOrQTkvmAbhEC';
   let component;
 
   if (  __VUE_ENV__ === 'client') {
     window.loginRecaptcha = () => component.status.recaptcha = true;
+    window.initRecaptcha = () => grecaptcha.render('popup__recaptcha', { 'sitekey' : sitekey });
   }
 
   export default {
@@ -24,8 +26,8 @@
         config: {
           animation: 300,
           selector: 'popup__recaptcha',
-          sitekey: '6Lf__kAUAAAAAAfyKZ7h_54WlKBUOrQTkvmAbhEC',
-          url: 'https://www.google.com/recaptcha/api.js?hl=ru',
+          sitekey: sitekey,
+          url: 'https://www.google.com/recaptcha/api.js?hl=ru&render=explicit&onload=initRecaptcha',
           id: 'recaptcha',
         },
       };
@@ -35,6 +37,8 @@
       if (__VUE_ENV__ === 'client') {
         component = this;
 
+        window.addEventListener('keydown', this.keyboardListener);
+
         if (!document.getElementById('recaptcha')) {
           const script = document.createElement("script");
 
@@ -43,11 +47,14 @@
 
           document.head.appendChild(script);
         } else {
-          grecaptcha.render('popup__recaptcha', {
-            'sitekey' : this.config.sitekey,
-          });
+          window.initRecaptcha();
         }
+
       }
+    },
+
+    destroyed () {
+      window.removeEventListener('keydown', this.keyboardListener);
     },
 
     methods: {
@@ -55,6 +62,13 @@
         this.status.available = false;
 
         setTimeout(() => { this.$store.commit('POPUP_UNSET'); }, this.config.animation);
+      },
+
+      keyboardListener (event) {
+        console.log("ASD");
+        if (event.keyCode === 27) {
+          setTimeout(() => { this.$store.commit('POPUP_UNSET'); }, this.config.animation);
+        }
       },
     },
   };
@@ -173,8 +187,10 @@
   }
 
   .popup__recaptcha {
+    position: relative;
     margin: 10px 0;
     width: 302px;
+    overflow: hidden;
   }
 
   .form__input-text {
