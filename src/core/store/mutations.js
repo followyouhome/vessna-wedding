@@ -6,10 +6,12 @@ import {
 
 export default {
   [POPUP_SET] (state, { popup }) {
+    document.body.style.overflow = 'hidden';
     state.popup = popup;
   },
 
   [POPUP_UNSET] (state) {
+    document.body.style.overflow = 'auto';
     state.popup = null;
   },
 

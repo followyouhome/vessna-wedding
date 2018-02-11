@@ -2,11 +2,9 @@
     <div id="app">
         <global-main-promo v-if="main_promo"></global-main-promo>
         <module-nav></module-nav>
-        <main>
-          <transition name="fade">
-            <router-view></router-view>
-          </transition>
-        </main>
+        <transition name="fade">
+          <router-view></router-view>
+        </transition>
         <module-footer></module-footer>
         <global-popup-container v-if="popup"></global-popup-container>
         <!--<script src='https://www.google.com/recaptcha/api.js'></script>-->

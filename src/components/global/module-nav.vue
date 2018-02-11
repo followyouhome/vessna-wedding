@@ -65,7 +65,7 @@
       },
 
       user () {
-        return this.$store.state.global && this.$store.state.global.user && this.$store.state.global.user._id != '';
+        return this.$store.state.global && this.$store.state.global.user && this.$store.state.global.user._id;
       },
     },
 

@@ -35,6 +35,10 @@ DressCollection.add(...Inherit, 'Коллекция', {
       label: 'Капсульная коллекция', value: 'capsule',
     }],
   },
+  resources: {
+    type: Types.Text,
+    label: 'Ресурсы',
+  },
   state: {
   	label: 'Статус',
   	type: Types.Select,

@@ -11,7 +11,6 @@
     mounted () {
       if(__VUE_ENV__ === 'client') {
         if (!isMobile.phone) {
-
           var isotope = document.querySelectorAll('.isotope-grid');
 
           window.events = window.events || {};
@@ -21,21 +20,21 @@
             var Isotope = require('isotope-layout');
 
             Array.from(isotope).forEach(function (element) {
-                var gallery = new Isotope(element, {
-                    itemSelector: '.promo',
-                    layoutMode: 'masonry',
-                    masonry: {
-                        columnWidth: document.querySelector('.isotope-grid .isotope-grid__sizer'),
-                    },
-                });
+              var gallery = new Isotope(element, {
+                itemSelector: '.promo',
+                layoutMode: 'masonry',
+                masonry: {
+                    columnWidth: document.querySelector('.isotope-grid .isotope-grid__sizer'),
+                },
+              });
 
-                window.addEventListener('isotopeLayout', function() {
-                    gallery.layout();
-                });
+              window.addEventListener('isotopeLayout', function() {
+                gallery.layout();
+              });
             });
 
             setInterval(function() {
-                window.dispatchEvent(window.events.isotopeLayout);
+              window.dispatchEvent(window.events.isotopeLayout);
             }, 1000);
           });
         }

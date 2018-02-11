@@ -5,7 +5,7 @@ export default {
   global: {
     popup: null,
     user: {
-      _id: '',
+      _id: null,
     },
   },
   items: [],

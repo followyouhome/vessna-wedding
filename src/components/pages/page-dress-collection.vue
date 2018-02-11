@@ -1,10 +1,14 @@
 <template>
-    <module-grid-dress v-bind:collection="collection"></module-grid-dress>
+  <main>
+    <module-grid-dress :collection="collection"/>
+    <module-shared-folder :collection="collection"/>
+  </main>
 </template>
 
 <script>
   import Page from './page.vue';
   import ModuleDressCollection from '../module/module-grid-dress.vue';
+  import ModuleSharedFolder from '../module/module-shared-folder.vue';
 
   import store from '../../core/store/';
 
@@ -24,6 +28,7 @@
 
     components: {
       'module-grid-dress': ModuleDressCollection,
+      'module-shared-folder': ModuleSharedFolder,
     },
 
     metaInfo () {
