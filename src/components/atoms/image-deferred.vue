@@ -1,7 +1,8 @@
 <template>
-  <figure v-bind:class="['image-deferred', 'image-deferred--preloader', aspect]" v-bind:style="size" v-if="image">
-    <img ref="placeholder" class="image-deferred__image image-deferred__image--preloader"
-      v-lazy="src + '?width=' + width"
+  <figure v-bind:class="['image-deferred', 'image-deferred--preloader', aspect]" v-bind:style="size">
+    <img class="image-deferred__image image-deferred__image--preloader"
+      v-if="show"
+      v-lazy="url"
       alt=""
       title=""
       itemprop="contentUrl"
@@ -20,14 +21,14 @@
 
     data () {
       return {
-        server: __VUE_ENV__ === 'server',
-        pixel: __VUE_ENV__ === 'client' ? window.location.href : null,
+        show: false,
+        pixel: __VUE_ENV__ === 'client' ? window.devicePixelRatio : null,
         src: this.image.secure_url || this.image.url,
       };
     },
 
     computed: {
-      size: function() {
+      size: function () {
         if(this.aspect) {
           return "padding-top: 0;";
         } else {
@@ -35,13 +36,18 @@
         }
       },
 
-      width: function() {
-        return __VUE_ENV__ === 'client' ? this.$refs.placeholder && this.$refs.placeholder.width : null;
-      }
+      width () {
+        return __VUE_ENV__ === 'client' ? this.$el && this.$el.offsetWidth * this.pixel : null;
+      },
 
+      url: function () {
+        return this.src + (this.width ? `?w=${this.width}` : '');
+      },
     },
 
     mounted () {
+      this.show = true;
+
       if(__VUE_ENV__ === 'client') {
         this.$Lazyload.$on('loaded', function ({ el }) {
           el.parentNode.classList.add('image--effect-fadein');
