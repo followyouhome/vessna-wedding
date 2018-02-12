@@ -153,7 +153,7 @@
     }
 
     @media #{$phablet} {
-      width: 80vw;
+      width: 60vw;
     }
 
     .global-main-promo--hgroup-left & {

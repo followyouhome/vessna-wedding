@@ -19,7 +19,7 @@ User.add({
   shop: { label: 'Салон', type: Types.Text },
 });
 
-User.defaultColumns = 'name|40%, email|40%, canAccessKeystone|20%';
+User.defaultColumns = 'name|20%, email|20%, canAccessKeystone|20%, canAccessContent|20%, subscribed|20%';
 User.register();
 
 module.exports = User;

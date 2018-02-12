@@ -1,7 +1,7 @@
 <template>
   <div class="module module-shared-folder" v-if="recourses">
     <div class="module__wrapper module-shared-folder__wrapper">
-      <tabs class="module-shared-folder__tabs" v-if="authorized">
+      <tabs class="module-shared-folder__tabs" v-if="authorized && available">
         <tab :name="logo.yandex">
           <div class="module-shared-folder__yandex-wrapper">
             <div class="module-shared-folder__yandex-macbook"></div>
@@ -14,6 +14,12 @@
           <iframe src="https://drive.google.com/embeddedfolderview?id=0Bw_AFjU52L_BMjV1ME4xcm02M2c#grid" style=""></iframe>
         </tab> -->
       </tabs>
+      <div class="module-shared-folder__login" v-if="authorized && !available">
+        <div class="module-shared-folder__yandex-devices"></div>
+        <h3 class="module-shared-folder__yandex-headline">Доступно после первого заказа</h3>
+        <p class="module-shared-folder__yandex-subline">Если вы все еще видите это сообщение, обратитесь к нам через электронную почту.</p>
+        <p class="module-shared-folder__yandex-copy">Скорее всего нам надо просто поставить одну галочку в админке.</p>
+      </div>
       <div class="module-shared-folder__login" v-else>
         <div class="module-shared-folder__yandex-devices"></div>
         <h3 class="module-shared-folder__yandex-headline">Фото, видео и буклеты для клиентов</h3>
@@ -52,7 +58,11 @@
       },
 
       authorized () {
-        return this.$store.state.global.user._id;
+        return this.$store.state.global.user && this.$store.state.global.user._id;
+      },
+
+      available () {
+        return this.$store.state.global.user && this.$store.state.global.user.canAccessContent;
       },
     },
 
@@ -177,7 +187,7 @@
   .module-shared-folder__yandex-subline {
     position: relative;
     margin-left: 50%;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
     line-height: 23px;
@@ -187,6 +197,24 @@
       text-align: center;
       font-size: 1rem;
       line-height: 1.5em;
+    }
+  }
+
+  .module-shared-folder__yandex-copy {
+    position: relative;
+    margin-left: 50%;
+    margin-bottom: 25px;
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: $dark5;
+
+    @media #{$phablet} {
+      margin: 0 0 10px;
+      text-align: center;
+      font-size: 0.9rem;
+      line-height: 1em;
     }
   }
 

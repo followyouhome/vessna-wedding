@@ -22,6 +22,7 @@
     data () {
       return {
         show: false,
+        server: __VUE_ENV__ === 'server' ? true : false,
         pixel: __VUE_ENV__ === 'client' ? window.devicePixelRatio : null,
         src: this.image.secure_url || this.image.url,
       };
