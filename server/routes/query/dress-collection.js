@@ -46,7 +46,14 @@ module.exports = (app, base) => {
                       .find({ collections: output.collection._id });
 
       query.exec((err, result) => {
-        output.dresses = result;
+        output.dresses = result.map(dress => {
+          if (!req.user) {
+            dress.price = null;
+          }
+
+          return dress;
+        });
+
         next();
       });
     },
