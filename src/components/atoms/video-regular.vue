@@ -18,19 +18,19 @@
 
     computed: {
       poster () {
-        return this.promo.image.secure_url;
+        return this.promo.image && this.promo.image .secure_url;
       },
 
       webm () {
-        return this.promo.video.webm;
+        return this.promo.video && this.promo.video.webm;
       },
 
       mp4 () {
-        return this.promo.video.mp4;
+        return this.promo.video && this.promo.video.mp4;
       },
 
       ogv () {
-        return this.promo.video.ogv;
+        return this.promo.video && this.promo.video.ogv;
       },
     },
 
