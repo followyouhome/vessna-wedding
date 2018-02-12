@@ -12,23 +12,23 @@
   export default {
     name: 'video-regular',
 
-    props: ['video'],
+    props: ['promo'],
 
     computed: {
       poster () {
-        return this.video.poster;
+        return this.promo.image.secure_url;
       },
 
       webm () {
-        return this.video.webm;
+        return this.promo.video.webm;
       },
 
       mp4 () {
-        return this.video.mp4;
+        return this.promo.video.mp4;
       },
 
       ogv () {
-        return this.video.ogv;
+        return this.promo.video.ogv;
       },
     },
 

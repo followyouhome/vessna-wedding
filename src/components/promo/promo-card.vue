@@ -3,7 +3,7 @@
     <div class="promo__wrapper promo--card__wrapper">
 			<router-link class="promo__image-wrapper promo--card__image-wrapper" v-bind:to="{ name: item.route, params: item.params }">
 				<image-deferred v-bind:image="item.promo.image" v-if="item.promo.image"></image-deferred>
-	      <video-regular v-bind:video="item.promo.video" v-if="item.promo.video"></video-regular>
+	      <video-regular v-bind:promo="item.promo" v-if="item.promo.video"></video-regular>
 			</router-link>
       <div class="promo__content-wrapper promo--card__content-wrapper">
         <router-link class="promo--card__title" v-bind:to="{ name: item.route, params: item.params }">
