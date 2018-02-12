@@ -1,12 +1,10 @@
 <template>
   <figure class="video-regular" :style="`background-image: url(${poster});`">
-    <no-ssr>
-    	<video class="video-regular__video" autoplay loop muted preload="none" ref="video" v-if="webm.url" v-bind:src="webm.url">
-    		<source v-if="webm.url" v-bind:src="webm.url" type='video/webm; codecs="vp8, vorbis"'>
-    		<source v-if="mp4.url" v-bind:src="mp4.url" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-    		<source v-if="ogv.url" v-bind:src="ogv.url" type='video/ogg; codecs="theora, vorbis"'>
-    	</video>
-    </no-ssr>
+  	<video class="video-regular__video" autoplay loop muted preload="none" ref="video" v-show="show" v-bind:src="webm.url">
+  		<source v-if="webm.url" v-bind:src="webm.url" type='video/webm; codecs="vp8, vorbis"'>
+  		<source v-if="mp4.url" v-bind:src="mp4.url" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+  		<source v-if="ogv.url" v-bind:src="ogv.url" type='video/ogg; codecs="theora, vorbis"'>
+  	</video>
   </figure>
 </template>
 
@@ -15,6 +13,12 @@
     name: 'video-regular',
 
     props: ['promo'],
+
+    data () {
+      return {
+        show: false,
+      };
+    },
 
     computed: {
       poster () {
@@ -35,9 +39,15 @@
     },
 
     mounted () {
-      this.$refs.video.addEventListener('loadeddata', function() {
-        this.play();
-      }, false);
+      if (__VUE_ENV__ === 'client') {
+        setTimeout (() => {
+          this.show = true;
+
+          this.$refs.video && this.$refs.video.addEventListener('loadeddata', function() {
+            this.play();
+          }, 2000);
+        });
+      }
     },
   };
 </script>
