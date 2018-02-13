@@ -20,7 +20,7 @@
         <p class="module-shared-folder__yandex-subline">Если вы все еще видите это сообщение, обратитесь к нам через электронную почту.</p>
         <p class="module-shared-folder__yandex-copy">Скорее всего нам надо просто поставить одну галочку в админке.</p>
       </div>
-      <div class="module-shared-folder__login" v-else>
+      <div class="module-shared-folder__login" v-if="!authorized && !available">
         <div class="module-shared-folder__yandex-devices"></div>
         <h3 class="module-shared-folder__yandex-headline">Фото, видео и буклеты для клиентов</h3>
         <p class="module-shared-folder__yandex-subline">К этой коллекции у нас есть много дополнительного контента для вашего профиля Instagram, группы Вконтакте или сайта.</p>

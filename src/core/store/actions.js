@@ -37,6 +37,8 @@ export default {
       .then(({ data }) => {
         store.commit('replaceItems', { namespace: 'user', data, global: true });
         Vue.cookies.set('uid', data._id);
+        Vue.cookies.set('canAccessKeystone', data.canAccessKeystone);
+        Vue.cookies.set('canAccessContent', data.canAccessContent);
         return data;
       })
       .catch(err => {
