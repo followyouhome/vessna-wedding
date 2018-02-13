@@ -6,6 +6,8 @@ export default {
     popup: null,
     user: {
       _id: null,
+      canAccessContent: false,
+      canAccessKeystone: false,
     },
   },
   items: [],
