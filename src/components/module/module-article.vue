@@ -15,5 +15,7 @@
 </script>
 
 <style lang="scss">
-
+	.module--article {
+		background: $gray2;
+	}
 </style>

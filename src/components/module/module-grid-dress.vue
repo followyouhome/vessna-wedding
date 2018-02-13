@@ -1,8 +1,8 @@
 <template>
-  <main class="module-grid-dress isotope-grid" v-if="collection">
+  <div class="module-grid-dress isotope-grid" v-if="collection">
     <div class="isotope-grid__sizer"></div>
     <promo-dress v-for="dress in collection.dresses" v-bind:dress="dress" v-bind:key="dress.slug"></promo-dress>
-  </main>
+  </div>
 </template>
 
 <script>

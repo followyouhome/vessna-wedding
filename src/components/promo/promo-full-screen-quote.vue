@@ -1,10 +1,10 @@
 <template>
   <div class="promo promo-full-screen-quote">
     <div class="quote-wrapper">
-      <svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" id="svg-root" width="100%" height="10em">
+      <svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" id="svg-root" width="100%" height="240px">
        <defs>
           <mask id="maskedtext">
-             <rect width="100%" height="100%" x="0" y="0" fill="#fff"></rect>
+             <rect width="100%" height="240px" x="0" y="0" fill="#fff"></rect>
              <text>
                 <tspan text-anchor="middle" dx="50%" x="0" y="1em">{{text1}}</tspan>
              </text>
@@ -23,8 +23,8 @@
        <rect width="100%" height="100%" x="0" y="0" :fill="color" mask="url(#maskedtext)"></rect>
     </svg>
     </div>
-    <div class="video-wrapper">
-      <video autoplay="true" loop="true" muted="true">
+    <div class="video-wrapper" v-show="show">
+      <video ref="video" autoplay="true" loop="true" muted="true">
         <source :src="video_mp4" type="video/mp4;">
         <source :src="video_webm" type="video/webm;">
         <source :src="video_ogv" type="video/ogg;">
@@ -34,20 +34,44 @@
 </template>
 
 <script>
+  import InView from 'in-view';
+
   export default {
     name: 'promo-full-screen-quote',
 
     data () {
       return {
+        show: false,
         text1: 'Мы будем на',
         text2: 'Moscow Wedding Fashion',
-        text3: 'А вы?',
+        text3: '1-3 Марта 2017',
         color: '#fafafa',
         video_webm: 'https://vessna.blob.core.windows.net/vessna/vessna-quote.webm',
         video_mp4: 'https://vessna.blob.core.windows.net/vessna/vessna-quote.mp4',
         video_ogv: 'https://vessna.blob.core.windows.net/vessna/vessna-quote.ogv',
       };
     },
+
+    computed: {
+      // show () {
+      //   return false;
+      // },
+    },
+
+    mounted () {
+      if (__VUE_ENV__ === 'client') {
+        console.log(this.show);
+        InView('.promo-full-screen-quote .quote-wrapper')
+          .on('enter', el => {
+            this.show = true;
+            console.log("ENTER")
+          })
+          .on('exit', el => {
+            this.show = false;
+            console.log("OUT");
+          });
+      }
+    }
   };
 </script>
 
@@ -60,11 +84,19 @@
 
     transform: none;
     border: none;
+
+    @media #{$large} {
+      height: 130vh;
+    }
+
+    @media #{$tablet} {
+      display: none;
+    }
   }
 
   .quote-wrapper {
     position: relative;
-    opacity: 0.8;
+    opacity: 0.9;
     z-index: $z-default;
 
     &:before, &:after {
@@ -89,6 +121,12 @@
 
     video {
       width: 100vw;
+      height: auto;
+
+      @media #{$large} {
+        height: 100vh;
+        width: auto;
+      }
     }
   }
 </style>

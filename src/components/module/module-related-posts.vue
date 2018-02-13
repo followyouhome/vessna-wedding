@@ -72,7 +72,8 @@
 
 <style lang="scss">
 	.module--related-posts {
-		padding: 10px 0 0 0;
+		padding: 10px 0 0;
     margin-top: 0;
+		background: $gray2;
 	}
 </style>

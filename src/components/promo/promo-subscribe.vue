@@ -44,6 +44,10 @@
     border: none;
     border-top: 1px solid $gray2;
     background: $white2;
+
+    @media #{$tablet} {
+      display: none;
+    }
   }
 
   .promo-subscribe__wrapper {
