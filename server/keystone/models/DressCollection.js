@@ -75,6 +75,28 @@ DressCollection.schema.set('toJSON', {
   },
 });
 
+DressCollection.schema.pre('save', function(next) {
+  const cloudinary = /(http|https):\/\/res.cloudinary.com\/vessna\/image\/upload\/.*\//;
+  const local = '/images/';
+
+  Promo.methods.save.call(this);
+  MainPromo.methods.save.call(this);
+
+  if(this.images && this.images.length) {
+    for(let i = 0; i < this.images.length; i++) {
+      if (this.images[i].url) {
+        this.images[i].url = this.images[i].url.replace(cloudinary, local);
+      }
+
+      if (this.images[i].secure_url) {
+        this.images[i].secure_url = this.images[i].url.replace(cloudinary, local);
+      }
+    }
+  }
+
+  next(this);
+});
+
 DressCollection.relationship({ path: 'dresses', ref: 'Dress', refPath: 'collections' });
 
 DressCollection.defaultColumns = 'name|30%, type|30%, state|20%, promo.image|20%';

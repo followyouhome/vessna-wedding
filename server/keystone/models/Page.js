@@ -34,6 +34,28 @@ Page.schema.set('toJSON', {
   },
 });
 
+Page.schema.pre('save', function(next) {
+  const cloudinary = /(http|https):\/\/res.cloudinary.com\/vessna\/image\/upload\/.*\//;
+  const local = '/images/';
+
+  Promo.methods.save.call(this);
+  MainPromo.methods.save.call(this);
+
+  if(this.images && this.images.length) {
+    for(let i = 0; i < this.images.length; i++) {
+      if (this.images[i].url) {
+        this.images[i].url = this.images[i].url.replace(cloudinary, local);
+      }
+
+      if (this.images[i].secure_url) {
+        this.images[i].secure_url = this.images[i].url.replace(cloudinary, local);
+      }
+    }
+  }
+
+  next(this);
+});
+
 Page.defaultColumns = 'name|30%, slug|30%, route|40%';
 Page.register();
 

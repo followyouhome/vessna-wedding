@@ -55,6 +55,28 @@ News.schema.set('toJSON', {
     },
 });
 
+News.schema.pre('save', function(next) {
+  const cloudinary = /(http|https):\/\/res.cloudinary.com\/vessna\/image\/upload\/.*\//;
+  const local = '/images/';
+
+  Promo.methods.save.call(this);
+  MainPromo.methods.save.call(this);
+
+  if(this.images && this.images.length) {
+    for(let i = 0; i < this.images.length; i++) {
+      if (this.images[i].url) {
+        this.images[i].url = this.images[i].url.replace(cloudinary, local);
+      }
+
+      if (this.images[i].secure_url) {
+        this.images[i].secure_url = this.images[i].url.replace(cloudinary, local);
+      }
+    }
+  }
+
+  next(this);
+});
+
 News.defaultColumns = 'name|25%, state|15%, author|15%, publishedDate|25%, promo.image|20%';
 News.register();
 
