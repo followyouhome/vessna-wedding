@@ -1,14 +1,18 @@
 <template>
   <main>
     <module-grid-dress :collection="collection"/>
+    <module-article :article="collection.collection.description"/>
+    <module-feedback-grid :feedbacks="feedbacks"/>
     <module-shared-folder :collection="collection"/>
   </main>
 </template>
 
 <script>
   import Page from './page.vue';
+  import ModuleArticle from '../module/module-article.vue';
   import ModuleDressCollection from '../module/module-grid-dress.vue';
   import ModuleSharedFolder from '../module/module-shared-folder.vue';
+  import ModuleFeedbackGrid from '../module/module-feedback-grid.vue';
 
   import store from '../../core/store/';
 
@@ -27,8 +31,10 @@
     extends: Page,
 
     components: {
+      'module-article': ModuleArticle,
       'module-grid-dress': ModuleDressCollection,
       'module-shared-folder': ModuleSharedFolder,
+      'module-feedback-grid': ModuleFeedbackGrid,
     },
 
     metaInfo () {
@@ -62,6 +68,10 @@
 
       seo() {
         return this.$store.state['dress-collection'][this.$route.params.collection].collection.seo;
+      },
+
+      feedbacks () {
+        return this.$store.state['dress-collection'][this.$route.params.collection].collection.feedbacks;
       },
     },
   };

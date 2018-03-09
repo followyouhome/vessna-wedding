@@ -11,6 +11,8 @@
 
 	import PromoTopical from '../promo/promo-topical.vue';
 
+	const POST_LIMIT = 7;
+
 	export default {
 		name: 'module-related-posts',
 
@@ -22,7 +24,7 @@
 
 		computed: {
 			posts () {
-				return this.news.slice(0, 5);
+				return this.news.slice(0, POST_LIMIT);
 			},
 		},
 

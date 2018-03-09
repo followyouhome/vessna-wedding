@@ -1,5 +1,5 @@
 <template>
-  <figure v-bind:class="['image-deferred', 'image-deferred--preloader', aspect]" v-bind:style="size">
+  <figure v-bind:class="['image-deferred', 'image-deferred--preloader', aspect]" :style="size">
     <img class="image-deferred__image image-deferred__image--preloader"
       v-if="show"
       v-lazy="url"
@@ -31,7 +31,7 @@
     computed: {
       size: function () {
         if(this.aspect) {
-          return "padding-top: 0;";
+          return '';
         } else {
           return "padding-top: " + this.image.height / this.image.width * 100 + "%";
         }
@@ -47,9 +47,9 @@
     },
 
     mounted () {
-      this.show = true;
-
       if(__VUE_ENV__ === 'client') {
+        this.show = true;
+
         this.$Lazyload.$on('loaded', function ({ el }) {
           el.parentNode.classList.add('image--effect-fadein');
           el.parentNode.classList.remove('image-deferred--preloader');
@@ -90,6 +90,10 @@
     background-image: url("/public/images/watermark.png");
     background-size: 33%;
     background-position: 50%;
+  }
+
+  .image-deffered--size-1-1:before {
+    padding-top: 100%;
   }
 
   .image-deffered--size-1-2:before {

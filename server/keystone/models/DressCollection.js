@@ -24,6 +24,18 @@ const DressCollection = new keystone.List('DressCollection', {
 
 DressCollection.add(...Inherit, 'Коллекция', {
   name: { label: 'Название', type: String, required: true },
+  state: {
+    label: 'Статус',
+    type: Types.Select,
+    default: 'draft',
+    options: [{
+      label: 'Черновик', value: 'draft',
+    }, {
+      label: 'Опубликовано', value: 'published',
+    }, {
+      label: 'Архив', value: 'archived',
+    }],
+  },
   type: {
     type: Types.Select,
   	label: 'Тип',
@@ -35,28 +47,20 @@ DressCollection.add(...Inherit, 'Коллекция', {
       label: 'Капсульная коллекция', value: 'capsule',
     }],
   },
+  description: {
+    type: Types.Html,
+  	label: 'Описание',
+    wysiwyg: true,
+  },
   resources: {
     type: Types.Text,
     label: 'Ресурсы',
   },
-  state: {
-  	label: 'Статус',
-  	type: Types.Select,
-  	default: 'draft',
-  	options: [{
-  		label: 'Черновик', value: 'draft',
-  	}, {
-  		label: 'Опубликовано', value: 'published',
-  	}, {
-  		label: 'Архив', value: 'archived',
-  	}],
+}, 'Отзывы о коллекции', {
+  feedbacks: {
+    headline: { type: Types.Text, label: 'Заголовок' },
+    links: { label: 'Отзывы', type: Types.Relationship, ref: 'Feedback', many: true },
   },
-  // dress: {
-  //   label: 'Платья',
-  //   type: Types.Relationship,
-  //   ref: 'Dress',
-  //   many: true
-  // },
 });
 
 DressCollection.schema.set('toJSON', {

@@ -1,6 +1,6 @@
 <template>
 	<article class="module module--article" v-if="article">
-		<div class="module__wrapper module--article__wrapper" v-html="article.content">
+		<div class="module__wrapper module--article__wrapper" v-html="article.content || article">
 
 		</div>
 	</article>

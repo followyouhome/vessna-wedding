@@ -3,3 +3,4 @@ require('./Page');
 require('./News');
 require('./Dress');
 require('./DressCollection');
+require('./Feedback');
