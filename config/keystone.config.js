@@ -11,8 +11,8 @@ module.exports = {
   'port': config.port,
   'ssl port': 3001,
   'ssl public port': 443,
-  'ssl cert': '$HOME/letsencrypt/etc/live/vessna.wedding/' + 'cert.pem', // path to generated ce$
-  'ssl key': ';$HOME/letsencrypt/etc/live/vessna.wedding/' + 'privkey.pem', // path to generated$
+  'ssl cert': '$HOME/letsencrypt/etc/live/vessna.wedding/' + 'cert.pem',
+  'ssl key': ';$HOME/letsencrypt/etc/live/vessna.wedding/' + 'privkey.pem',
   'ssl ca': '$HOME/letsencrypt/etc/live/vessna.wedding/' + 'fullchain.pem',
   'ssl': (process.env.NODE_ENV === 'production') && true,
   'session': true,

@@ -1,5 +1,5 @@
 <template>
-	<article class="module module-feedback-greed" v-if="feedbacks">
+	<article class="module module-feedback-greed" v-if="feedbacks && feedbacks.links && feedbacks.links.length">
 		<div class="module__wrapper">
 			<div class="images-wrapper">
 				<promo-feedback v-for="link in links" :feedback="link" :key="link.name"/>
