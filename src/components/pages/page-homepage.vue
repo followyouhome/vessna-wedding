@@ -13,7 +13,6 @@
       </div>
     </div>
     <module-promo-cards v-bind:items="prom"></module-promo-cards>
-    <promo-full-screen-quote></promo-full-screen-quote>
     <promo-subscribe/>
   </div>
 </template>
