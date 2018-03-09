@@ -1,9 +1,10 @@
 <template>
-	<div class="promo promo--feedback promo--effect-fadein promo--width-2">
+	<div class="promo promo--feedback">
 		<div class="promo__wrapper promo--feedback__wrapper">
-			<div class="promo__image-wrapper promo--feedback__image-wrapper">
-		    <image-deferred v-bind:image="promo.photo"></image-deferred>
+			<div class="promo__image-wrapper promo--feedback__image-wrapper" v-if="image">
+		    <image-deferred :image="image" :aspect="'image-deffered--size-1-1'"></image-deferred>
       </div>
+			<!--
       <div class="promo__content-wrapper promo--feedback__content-wrapper">
     		<div class="promo__avatar promo--feedback__avatar">
   		    <image-deferred v-bind:image="promo.user_pic"></image-deferred>
@@ -21,7 +22,7 @@
           <a class="promo--feedback__footnote" href="[[+wall_link]]" target="_blank" rel="nofollow">
             <span class="promo__text-footnote">Читать далее</span>
           </a>
-      </div>
+      </div> -->
 		</div>
 	</div>
 </template>
@@ -30,7 +31,15 @@
 	export default {
 		name: 'promo-feedback',
 
-		props: ['promo'],
+		props: ['feedback'],
+
+		computed: {
+			image () {
+				return {
+					url: this.feedback.link || this.feedback.image,
+				};
+			},
+		},
 	};
 </script>
 
@@ -66,7 +75,7 @@
 		margin-bottom: 20px;
 		overflow: hidden;
 
-		@media @phablet {
+		@media #{$phablet} {
 			margin-bottom: 15px;
 		}
 
