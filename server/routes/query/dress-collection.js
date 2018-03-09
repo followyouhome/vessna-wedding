@@ -31,7 +31,8 @@ module.exports = (app, base) => {
     (req, res, next) => {
       const query = keystone.list('DressCollection')
                       .model
-                      .findOne({ slug: req.params.slug });
+                      .findOne({ slug: req.params.slug })
+                      .populate('feedbacks.links');
 
       query.exec((err, result) => {
         output = {};
