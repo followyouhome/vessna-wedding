@@ -1,7 +1,7 @@
 <template>
 	<div class="module module--related-posts flickity-carousels">
     <div class="module__wrapper module--related-posts__wrapper">
-			<promo-topical v-for="post in news" v-bind:item="post" v-bind:key="post.slug"></promo-topical>
+			<promo-topical v-for="post in posts" v-bind:item="post" v-bind:key="post.slug"></promo-topical>
     </div>
 	</div>
 </template>
@@ -18,6 +18,12 @@
 
 		components: {
 			'promo-topical': PromoTopical,
+		},
+
+		computed: {
+			posts () {
+				return this.news.slice(0, 5);
+			},
 		},
 
 		mounted () {
@@ -70,10 +76,19 @@
 	};
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	.module--related-posts {
 		padding: 10px 0 0;
     margin-top: 0;
 		background: $gray2;
+		overflow: scroll;
+	}
+
+	.module__wrapper {
+		display: flex;
+	}
+
+	.promo {
+		flex-shrink: 0;
 	}
 </style>
