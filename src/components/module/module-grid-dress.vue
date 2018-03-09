@@ -1,7 +1,7 @@
 <template>
   <div class="module-grid-dress isotope-grid" v-if="collection">
     <div class="isotope-grid__sizer"></div>
-    <promo-dress v-for="dress in collection.dresses" v-bind:dress="dress" v-bind:key="dress.slug"></promo-dress>
+    <promo-dress v-for="dress in dresses" v-bind:dress="dress" v-bind:key="dress.slug"></promo-dress>
   </div>
 </template>
 
@@ -18,6 +18,12 @@
 
     components: {
       'promo-dress': PromoDress,
+    },
+
+    computed: {
+      dresses () {
+        return this.collection.dresses.sort((a, b) => parseInt(a.name) - parseInt(b.name));
+      },
     },
   };
 </script>

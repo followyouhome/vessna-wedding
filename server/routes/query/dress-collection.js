@@ -8,7 +8,8 @@ module.exports = (app, base) => {
     (req, res, next) => {
       const query = keystone.list('DressCollection')
                       .model
-                      .find();
+                      .find()
+                      .sort('sortOrder');
 
       query.exec((err, result) => {
         output = {};
