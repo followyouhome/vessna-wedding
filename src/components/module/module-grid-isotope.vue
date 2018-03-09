@@ -8,34 +8,29 @@
   export default {
     name: 'module-grid--isotope',
 
+    data () {
+      return {
+        isotope: null,
+      };
+    },
+
     mounted () {
       if(__VUE_ENV__ === 'client') {
         if (!isMobile.phone) {
-          var isotope = document.querySelectorAll('.isotope-grid');
+          require.ensure(['isotope-layout'], require => {
+            const Isotope = require('isotope-layout');
 
-          window.events = window.events || {};
-          window.events.isotopeLayout = new CustomEvent('isotopeLayout');
-
-          require.ensure(['isotope-layout'], function(require) {
-            var Isotope = require('isotope-layout');
-
-            Array.from(isotope).forEach(function (element) {
-              var gallery = new Isotope(element, {
-                itemSelector: '.promo',
-                layoutMode: 'masonry',
-                masonry: {
-                    columnWidth: document.querySelector('.isotope-grid .isotope-grid__sizer'),
-                },
-              });
-
-              window.addEventListener('isotopeLayout', function() {
-                gallery.layout();
-              });
+            this.isotope = new Isotope(this.$el, {
+              itemSelector: '.promo',
+              layoutMode: 'masonry',
+              masonry: {
+                  columnWidth: this.$el.querySelector('.isotope-grid__sizer'),
+              },
             });
 
-            setInterval(function() {
-              window.dispatchEvent(window.events.isotopeLayout);
-            }, 1000);
+            window.addEventListener('isotopeLayout', function() {
+              this.isotope.layout();
+            });
           });
         }
       }
