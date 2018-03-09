@@ -40,12 +40,12 @@
             </li>
             <li class="navigation__secondary-list__item" v-if="user">
               <div class="navigation__secondary-list__item__link">
-                <span class="navigation__secondary-text">Прайсы</span>
+                <a class="navigation__secondary-text" target="_blank" href="https://yadi.sk/d/0vDMd0fh3T3bPW">Прайсы</a>
               </div>
             </li>
-            <li class="navigation__secondary-list__item" v-if="user">
+            <li class="navigation__secondary-list__item" v-if="available">
               <div class="navigation__secondary-list__item__link">
-                <span class="navigation__secondary-text">Контент</span>
+                <a class="navigation__secondary-text" target="_blank" href="https://yadi.sk/d/F8LsI7d13T3bcu">Контент</a>
               </div>
             </li>
           </ul>
@@ -67,6 +67,14 @@
       user () {
         return this.$store.state.global && this.$store.state.global.user && this.$store.state.global.user._id;
       },
+
+      authorized () {
+        return this.$store.state.global.user && this.$store.state.global.user._id;
+      },
+
+      available () {
+        return this.$store.state.global.user && this.$store.state.global.user.canAccessContent;
+      },
     },
 
     methods: {
@@ -85,7 +93,7 @@
   };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   $navigationHeight: 66px;
   $navigationMain: 1000;
   $navigationSecondary: $navigationMain + 1;
