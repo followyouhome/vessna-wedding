@@ -17,7 +17,7 @@
         </div>
         <div class="promo--dress__subheadline">
            <p class="promo__text-subheadline">{{dress.promo.subline}}</p>
-           <no-ssr><p class="font-peignot" v-if="user && price">{{price}} ₽</p></no-ssr>
+           <no-ssr><p class="font-peignot" v-if="user && price">${{price}}</p></no-ssr>
         </div>
       </div>
     </div>
@@ -41,7 +41,7 @@
         return this.$store.state.global && this.$store.state.global.user && this.$store.state.global.user._id != '';
       },
       price () {
-        return this.dress.price && this.dress.price.rub || null;
+        return this.dress.price && this.dress.price.usd || null;
       }
     },
 
