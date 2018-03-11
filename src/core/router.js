@@ -83,11 +83,6 @@ export function createRouter (store) {
         path: '/collection/:collection',
         component: () => import('../components/pages/page-dress-collection.vue'),
       },
-      {
-        name: ROUTES.PAGE_DRESS,
-        path: '/collection/:collection/:dress',
-        component: () => import('../components/pages/page-dress.vue')
-      },
 
 
       /*------------------------*/
