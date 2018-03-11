@@ -65,6 +65,8 @@ DressCollection.add(...Inherit, 'Коллекция', {
 
 DressCollection.schema.set('toJSON', {
   transform: function(doc, ret, options) {
+    ret = Seo.methods.toJSON(ret);
+
     if (ret.type == 'prom') {
       ret.route = PAGE_DRESS_COLLECTION_PROM;
     } else if (ret.type == 'wedding') {

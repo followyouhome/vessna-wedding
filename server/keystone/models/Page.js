@@ -30,6 +30,8 @@ Page.add(...Inherit, 'Страница', {
 
 Page.schema.set('toJSON', {
   transform: function(doc, ret, options) {
+    ret = Seo.methods.toJSON(ret);
+
     return ret;
   },
 });

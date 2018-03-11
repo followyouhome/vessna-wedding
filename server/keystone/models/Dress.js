@@ -41,6 +41,8 @@ Dress.add(...Inherit, 'Параметры', {
 
 Dress.schema.set('toJSON', {
   transform: function(doc, ret, options) {
+    ret = Seo.methods.toJSON(ret);
+
     ret = Promo.methods.toJSON(ret);
     ret = MainPromo.methods.toJSON(ret);
 

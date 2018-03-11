@@ -46,13 +46,15 @@ News.add(...Inherit, 'Статья', {
 
 News.schema.set('toJSON', {
   transform: function(doc, ret, options) {
-      ret.route = PAGE_NEWS;
-      ret.params = {
-        'news': ret.slug,
-      };
+    ret = Seo.methods.toJSON(ret);
 
-      return ret;
-    },
+    ret.route = PAGE_NEWS;
+    ret.params = {
+      'news': ret.slug,
+    };
+
+    return ret;
+  },
 });
 
 News.schema.pre('save', function(next) {
