@@ -1,6 +1,6 @@
 <template>
   <main id="article">
-    <module-related-posts ></module-related-posts>
+    <module-related-posts></module-related-posts>
     <module-article v-bind:article="article"></module-article>
   </main>
 </template>
@@ -35,15 +35,6 @@
       'module-related-posts': ModuleRelatedPosts,
     },
 
-    metaInfo () {
-      return {
-        title: this.article.seo.name,
-        meta: [
-          { name: 'description', content: this.article.seo.description },
-        ],
-      };
-    },
-
     asyncData ({ store, route }) {
       return Promise.all([
         this.extends.asyncData({store, route}),
@@ -65,6 +56,12 @@
         return this.$store.state['news'].find(element => {
           return element.slug === this.$route.params.news;
         });
+      },
+
+      seo () {
+        return this.$store.state['news'].find(element => {
+          return element.slug === this.$route.params.news;
+        }).seo;
       },
     },
   };

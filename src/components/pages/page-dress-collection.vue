@@ -37,15 +37,6 @@
       'module-feedback-grid': ModuleFeedbackGrid,
     },
 
-    metaInfo () {
-      return {
-        title: this.seo.name,
-        meta: [
-          { name: 'description', content: this.seo.description },
-        ],
-      };
-    },
-
     asyncData ({ store, route }) {
       return Promise.all([
         this.extends.asyncData({store, route}),

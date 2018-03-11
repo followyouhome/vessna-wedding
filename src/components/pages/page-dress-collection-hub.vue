@@ -40,15 +40,6 @@
       'module-article': ModuleArticle,
     },
 
-    metaInfo () {
-      return {
-        title: this.article.seo.name,
-        meta: [
-          { name: 'description', content: this.article.seo.description },
-        ],
-      };
-    },
-
     asyncData ({ store, route }) {
       return Promise.all([
         this.extends.asyncData({store, route}),
@@ -80,6 +71,10 @@
 
       article () {
         return this.$store.state.pages['dress-collection'];
+      },
+
+      seo () {
+        return this.$store.state.pages['dress-collection'].seo;
       },
     },
   };
