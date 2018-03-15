@@ -24,7 +24,7 @@
 
 		computed: {
 			posts () {
-				return this.news.slice(0, POST_LIMIT);
+				return this.news && this.news.slice(0, POST_LIMIT);
 			},
 		},
 
