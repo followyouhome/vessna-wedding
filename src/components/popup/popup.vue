@@ -27,7 +27,6 @@
           animation: 300,
           selector: 'popup__recaptcha',
           sitekey: sitekey,
-          scale: 1,
           url: 'https://www.google.com/recaptcha/api.js?hl=ru&render=explicit&onload=initRecaptcha',
           id: 'recaptcha',
         },
@@ -116,11 +115,6 @@
     100% { opacity: 1; }
   }
 
-  .popup {
-    margin: auto;
-    box-sizing: border-box;
-  }
-
   .popup--show {
     animation: fade-in 0.3s normal;
     opacity: 1;
@@ -197,16 +191,6 @@
     margin: 10px 0;
     width: 302px;
     overflow: hidden;
-    transform-origin: left;
-  }
-
-  .form--columns {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .form__column {
-    
   }
 
   .form__input-text {
@@ -217,7 +201,5 @@
     margin: 10px;
     height: 1px;
     box-sizing: border-box;
-    border: none;
-    background: $gray1;
   }
 </style>

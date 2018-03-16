@@ -1,22 +1,17 @@
 <template>
-  <fieldset :class="['popup', 'popup-signup', this.status.available ? 'popup--show' : 'popup--hide']" ref="popup">
+  <fieldset :class="['popup', 'popup-signup', this.status.available ? 'popup--show' : 'popup--hide']">
     <legend class="popup-signup__title">Регистрация</legend>
-    <form class="form form--columns" v-on:submit.prevent="signup" ref="form">
-      <div class="form__column">
-        <input class="form__input-text" v-model.trim="form.name" type="name" placeholder="Имя">
-        <input class="form__input-text" v-model.trim="form.email" type="email" placeholder="Email">
-        <input class="form__input-text" v-model="form.password" type="password" placeholder="Пароль">
-      </div>
+    <form v-on:submit.prevent="signup">
+      <input class="form__input-text" v-model.trim="form.name" type="name" placeholder="Имя">
+      <input class="form__input-text" v-model.trim="form.email" type="email" placeholder="Email">
+      <input class="form__input-text" v-model="form.password" type="password" placeholder="Пароль">
       <hr class="form__divider">
-      <div class="form__column">
-        <input class="form__input-text" v-model.trim="form.phone" type="phone" placeholder="Телефон">
-        <input class="form__input-text" v-model.trim="form.city" type="text" placeholder="Город">
-        <input class="form__input-text" v-model.trim="form.shop" type="text" placeholder="Салон">
-      </div>
-      <div class="form__column">
-        <div class="popup__recaptcha g-recaptcha" :id="config.selector" data-callback="loginRecaptcha" :data-sitekey="config.sitekey" :style="`transform: scale(${config.scale});`" ref="recaptcha"></div>
-        <input type="submit" :class="['form__button-submit', this.status.request ? 'request' : '', this.status.success ? 'success' : '', this.status.fail ? 'fail' : '' ]" value="Войти" :disabled="disabled" :title="disabled ? 'Заполните все поля' : 'Нажмите, чтобы войти'">
-      </div>
+      <input class="form__input-text" v-model.trim="form.phone" type="phone" placeholder="Телефон">
+      <input class="form__input-text" v-model.trim="form.city" type="text" placeholder="Город">
+      <input class="form__input-text" v-model.trim="form.shop" type="text" placeholder="Салон">
+
+      <div class="popup__recaptcha g-recaptcha" :id="config.selector" data-callback="loginRecaptcha" :data-sitekey="config.sitekey"></div>
+      <input type="submit" :class="['form__button-submit', this.status.request ? 'request' : '', this.status.success ? 'success' : '', this.status.fail ? 'fail' : '' ]" value="Войти" :disabled="disabled" :title="disabled ? 'Заполните все поля' : 'Нажмите, чтобы войти'">
     </form>
     <div class="popup__close" @click="close" title="Закрыть окно">✖</div>
   </fieldset>
@@ -56,12 +51,6 @@
       },
     },
 
-    mounted () {
-      if (__VUE_ENV__ === 'client') {
-        this.config.scale = this.$refs.form.offsetWidth / this.$refs.recaptcha.offsetWidth;
-      }
-    },
-
     methods: {
       signup () {
         this.status.request = true;
@@ -95,11 +84,6 @@
     border: 1px solid $gray1;
     background: $white;
     box-shadow: 10px -10px 15px 10px $white;
-
-    @media #{$mobile} {
-      width: 90%;
-      min-width: 220px;
-    }
   }
 
   .popup-signup__title {
