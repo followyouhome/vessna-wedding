@@ -28,11 +28,11 @@
                 <span class="navigation__secondary-text">Войти, чтобы видеть цены</span>
               </div>
             </li>
-            <li class="navigation__secondary-list__item" v-if="!user">
+            <!-- <li class="navigation__secondary-list__item" v-if="!user">
               <div class="navigation__secondary-list__item__link" @click="signup">
                 <span class="navigation__secondary-text">Зарегистрироваться</span>
               </div>
-            </li>
+            </li> -->
             <li class="navigation__secondary-list__item" v-if="user">
               <div class="navigation__secondary-list__item__link" @click="logout">
                 <span class="navigation__secondary-text">Выход</span>
