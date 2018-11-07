@@ -19,6 +19,8 @@ import * as ROUTES from '../../config/constants';
 
 Vue.use(Router);
 
+import routes from '../router/index.js';
+
 export function createRouter (store) {
   return new Router({
     mode: 'history',
@@ -87,38 +89,9 @@ export function createRouter (store) {
 
       /*------------------------*/
 
+      ...routes,
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      {
-        name: 'login',
-        path: '/user/login',
-        component: () => import('../components/popup/popup-login.vue'),
-        beforeEnter: (to, from, next) => {
-          if (store.state.global.user._id) {
-            return next(keystoneConfig['signin redirect']);
-          }
-
-          next();
-        }
-      },
+      
       // {
       //   name: 'logout',
       //   path: '/user/logout',

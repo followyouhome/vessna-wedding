@@ -4,3 +4,4 @@ require('./News');
 require('./Dress');
 require('./DressCollection');
 require('./Feedback');
+require('./Setting');
