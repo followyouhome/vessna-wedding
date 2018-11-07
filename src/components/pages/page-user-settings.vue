@@ -1,6 +1,6 @@
 <template>
   <main>
-    <form-user-settings/>
+    <form-user-settings :user="user"/>
   </main>
 </template>
 
@@ -25,7 +25,6 @@
         },
       };
     },
-
   };
 </script>
 

@@ -1,6 +1,9 @@
 <template>
   <form>
-    user settings
+
+    <p>
+      <button>Сохранить</button>
+    </p>
   </form>
 </template>
 
