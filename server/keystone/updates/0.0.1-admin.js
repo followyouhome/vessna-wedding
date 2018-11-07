@@ -7,7 +7,9 @@ module.exports = done => {
     name: 'Владислав',
     email: 'vladislav@vessna.by',
     password: 'test42Test',
-    canAccessKeystone: true,
+    access: {
+      keystone: true,
+    },
   }).save();
 
   new Page.model({

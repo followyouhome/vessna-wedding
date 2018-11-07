@@ -48,7 +48,7 @@ Setting.add({
   },
 });
 
-Setting.defaultColumns = 'name|20%';
+Setting.defaultColumns = 'name|30%, key|30%, type|40%';
 Setting.register();
 
 module.exports = Setting;
