@@ -10,7 +10,7 @@
   import ModuleArticle from '../module/module-article.vue';
   import ModulePromoCards from '../module/module-promo-cards.vue';
 
-  import store from '../../core/store/';
+  import store from '../../store/';
 
   const FILTER = {
     '/wedding-dresses': 'wedding',

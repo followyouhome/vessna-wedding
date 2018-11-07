@@ -7,7 +7,7 @@ import {
   USER_LOGOUT,
 } from './mutation-types';
 
-import config from '../../../config';
+import config from '../../config';
 
 const settings = {
   proxy: { port: config.port },

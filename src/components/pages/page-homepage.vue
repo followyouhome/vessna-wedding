@@ -25,7 +25,7 @@
   import PromoFullScreenQuote from '../promo/promo-full-screen-quote.vue';
   import PromoSubscribe from '../promo/promo-subscribe.vue';
 
-  import store from '../../core/store/';
+  import store from '../../store/';
 
   function fetch (store, route) {
     return Promise.all([

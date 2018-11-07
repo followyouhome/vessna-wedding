@@ -14,7 +14,7 @@
   import ModuleSharedFolder from '../module/module-shared-folder.vue';
   import ModuleFeedbackGrid from '../module/module-feedback-grid.vue';
 
-  import store from '../../core/store/';
+  import store from '../../store/';
 
   function fetch (store, route) {
     return Promise.all([

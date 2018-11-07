@@ -10,7 +10,7 @@
   import ModuleArticle from '../module/module-article.vue';
   import ModuleRelatedPosts from '../module/module-related-posts.vue';
 
-  import store from '../../core/store/';
+  import store from '../../store/';
 
   function fetch(store, route) {
     return Promise.all([

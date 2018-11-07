@@ -4,7 +4,7 @@
 
 <script>
   import Vue from 'vue';
-  import store from '../../core/store/';
+  import store from '../../store/';
 
   export default {
     name: 'page',

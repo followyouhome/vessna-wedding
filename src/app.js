@@ -4,7 +4,7 @@ import VueMeta from 'vue-meta';
 import VueCookie from 'vue-cookie';
 import VueLazyload from 'vue-lazyload';
 import {createRouter} from './core/router';
-import store from './core/store/';
+import store from './store/';
 import {sync} from 'vuex-router-sync';
 
 Vue.config.devtools = true;
