@@ -31,45 +31,6 @@ export default {
       });
   },
 
-  login(store, { email, password }) {
-    return axios
-      .post(base + '/user/login', { email, password }, settings)
-      .then(({ data }) => {
-        store.commit('replaceItems', { namespace: 'user', data, global: true });
-        Vue.cookies.set('uid', data._id);
-        Vue.cookies.set('canAccessKeystone', data.canAccessKeystone);
-        Vue.cookies.set('canAccessContent', data.canAccessContent);
-        return data;
-      })
-      .catch(err => {
-        return err;
-      });
-  },
-
-  logout(store) {
-    return axios
-      .post(base + '/user/logout', {}, settings)
-      .then(({ data }) => {
-        store.commit('USER_LOGOUT');
-        return data;
-      })
-      .catch(err => {
-        return err;
-      });
-  },
-
-  signup(store, payload) {
-    return axios
-      .post(base + '/user/signup', payload, settings)
-      .then(({ data }) => {
-        store.commit('replaceItems', { namespace: 'user', data, global: true });
-        return data;
-      })
-      .catch(err => {
-        return err;
-      });
-  },
-
   fetch(store, { endpoint, namespace, id, params, global }) {
     if (!namespace) {
       namespace = endpoint;

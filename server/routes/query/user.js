@@ -1,77 +1,84 @@
-const _ = require('lodash');
 const keystone = require('keystone');
-const uidCookie = require('../../lib/uid-cookie');
-const responseHandler = require('../../lib/response-handler');
 
 const User = keystone.list('user');
 
-//function errorHandler(res, )
+function userFormat (user) {
+  return {
+    name: user.name,
+    info: user.info,
+    email: user.email,
+    access: user.access,
+  };
+}
 
-module.exports = (app, base) => {
-
-  app.post(base + '/user/signup', (req, res) => {
-    const data = req.body;
-
-    User.model.findOne({ email: data.email }).exec((err, user) => {
-      if (err) {
-        return res.status(401).json({ error: 'Ошибка базы данных, попробуйте позже' });
-      }
-
-      if (user) {
-        return res.status(401).json({ error: 'Пользователь с таким адресом уже зарегистрирован' });
-      }
-
-      return new User.model({
-        name: data.name,
-        email: data.email,
-        password: data.password,
-        canAccessKeystone: false,
-        phone: data.phone,
-        city: data.city,
-        shop: data.shop,
-      }).save(err => {
-        keystone.session.signin({ email: req.body.email, password: req.body.password }, req, res, function() {
-          uidCookie.set(req, res);
-          responseHandler(res, null, formatUser(req.user));
-        }, function(err) {
-          return res.status(401).json({ error: 'wrong login or password' });
-        });
-      });
+function userCreate (user) {
+  return new User.model({
+    name: user.name,
+    email: user.email,
+    password: user.password,
+    phone: user.phone,
+    city: user.city,
+    shop: user.shop,
+  }).save(err => {
+    keystone.session.signin({ email: req.body.email, password: req.body.password }, req, res, function() {
+      uidCookie.set(req, res);
+      responseHandler(res, null, userFormat(req.user));
+    }, function(err) {
+      return res.status(401).json({ error: 'wrong login or password' });
     });
   });
+}
 
-  // user login
+module.exports = (app, base) => {
+  /**
+   * @name Get user info
+   */
+  app.get(base + '/user/:id', (req, res) => {
+    if (req.user) {
+      return res.json(userFormat(req.user));
+    }
+
+    return res.sendStatus(401).json({ error: 'not authorized' });
+  });
+
+  /**
+   * @name User login
+   */
   app.post(base + '/user/login', (req, res) => {
     if (!req.body.email || !req.body.password) {
       return res.status(401).json({ error: 'email and password required' });
     }
 
-    keystone.session.signin({ email: req.body.email, password: req.body.password }, req, res, function() {
-      uidCookie.set(req, res);
-      responseHandler(res, null, formatUser(req.user));
-    }, function(err) {
+    keystone.session.signin({ email: req.body.email, password: req.body.password }, req, res, () => {
+      res.cookie('uid', req.user._id, { httpOnly: false });
+
+      return res.status(200).json({ user: userFormat(req.user) });
+    }, (err) => {
       return res.status(401).json({ error: 'wrong login or password' });
     });
   });
 
-  // user logout
+  /**
+   * @name User logout
+   */
   app.post(base + '/user/logout', (req, res) => {
-    keystone.session.signout(req, res, function(err) {
-      uidCookie.remove(req, res);
-      responseHandler(res, err, {});
+    keystone.session.signout(req, res, (err) => {
+      res.clearCookie('uid');
+
+      return res.status(200).json({ user: null });
     });
   });
 
-  // restrict GET users/:id to the active user session
-  app.get(base + '/users/:id', (req, res) => {
-    if (req.user && req.user._id.toString() === req.params.id) {
-      return res.json(formatUser(req.user)).end(); // no reason to make a DB call here
-    }
+  /**
+   * @name User signup
+   */
+  app.post(base + '/user/signup', (req, res) => {
+    User.model.findOne({ email: data.email }).exec((err, user) => {
+      if (err || user) {
+        return res.status(401).json({ error: 'cannot create user' });
+      }
 
-    return res.sendStatus(404).end();
+      return res.status(200).json({user: userCreate(req.body) })
+    });
   });
-
-  function formatUser(user) {
-    return _.omit(user.toJSON(), 'password')
-  }
 };

@@ -58,6 +58,12 @@ User.add({
   },
 });
 
+User.schema.virtual('canAccessKeystone').get(
+  function () {
+    return this.access.keystone;
+  }
+);
+
 User.defaultColumns = 'name|20%, email|20%, access.keystone|20%, access.content|20%, access.subscription|20%';
 User.register();
 
