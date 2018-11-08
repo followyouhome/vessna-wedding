@@ -12,7 +12,8 @@
     "dev": "cross-env NODE_ENV=develop node server",
     "dev:macos": "ttab 'mongod --dbpath ~/Documents/Mongo/Vessna-Wedding' && ttab 'npm run watch:server' && ttab 'npm run watch:client' && npm run dev",
     "dev:windows": "echo 'todo'",
-    "debug": "cross-env NODE_ENV=develop nodemon --inspect=0.0.0.0:9229 server"
+    "debug": "cross-env NODE_ENV=develop nodemon --inspect=0.0.0.0:9229 server",
+    "docs": "jsdoc2md server/routes/query/*.js > server/README.md"
   },
   "dependencies": {
     "axios": "^0.17.1",
@@ -83,6 +84,7 @@
     "eslint": "^4.15.0",
     "eslint-plugin-html": "^4.0.1",
     "eslint-plugin-vue": "^4.2.0",
+    "jsdoc-to-markdown": "^4.0.1",
     "nodemon": "^1.15.1"
   }
 }
