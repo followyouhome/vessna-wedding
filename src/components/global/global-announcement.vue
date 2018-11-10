@@ -28,6 +28,7 @@
   }
 
   .global-announcement__text {
+    font: 1rem/1 $RistrettoProRegular;
     color: $white;
   }
 </style>

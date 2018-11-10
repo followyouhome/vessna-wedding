@@ -11,3 +11,63 @@
 // }
 
 $AkzidensGrotesk: 'Akzidenz Grotesk';
+
+/**
+ * Ristretto Pro
+ */
+
+@font-face {
+  font-family: 'RistrettoPro-Black';
+  src: url('/public/fonts/RistrettoPro/RistrettoPro-Black.woff') format('woff'),
+}
+
+$RistrettoProBlack: 'RistrettoPro-Black';
+
+@font-face {
+  font-family: 'RistrettoPro-Bold';
+  src: url('/public/fonts/RistrettoPro/RistrettoPro-Bold.woff') format('woff'),
+}
+
+$RistrettoProBold: 'RistrettoPro-Bold';
+
+@font-face {
+  font-family: 'RistrettoPro-Light';
+  src: url('/public/fonts/RistrettoPro/RistrettoPro-Light.woff') format('woff'),
+}
+
+$RistrettoProLight: 'RistrettoPro-Light';
+
+@font-face {
+  font-family: 'RistrettoPro-ExtraLight';
+  src: url('/public/fonts/RistrettoPro/RistrettoPro-ExtraLight.woff') format('woff'),
+}
+
+$RistrettoProExtraLight: 'RistrettoPro-ExtraLight';
+
+@font-face {
+  font-family: 'RistrettoPro-Thin';
+  src: url('/public/fonts/RistrettoPro/RistrettoPro-Thin.woff') format('woff'),
+}
+
+$RistrettoProThin: 'RistrettoPro-Thin';
+
+@font-face {
+  font-family: 'RistrettoPro-Medium';
+  src: url('/public/fonts/RistrettoPro/RistrettoPro-Medium.woff') format('woff'),
+}
+
+$RistrettoProMedium: 'RistrettoPro-Medium';
+
+@font-face {
+  font-family: 'RistrettoPro-SemiBold';
+  src: url('/public/fonts/RistrettoPro/RistrettoPro-SemiBold.woff') format('woff'),
+}
+
+$RistrettoProSemiBold: 'RistrettoPro-SemiBold';
+
+@font-face {
+  font-family: 'RistrettoPro-Regular';
+  src: url('/public/fonts/RistrettoPro/RistrettoPro-Regular.woff') format('woff'),
+}
+
+$RistrettoProRegular: 'RistrettoPro-Regular';
