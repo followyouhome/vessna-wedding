@@ -6,7 +6,7 @@ import {
 const base = '/api';
 
 const state = {
-  test: null,
+  uid: null,
 };
 
 const actions = {
@@ -14,7 +14,6 @@ const actions = {
     return axios
       .post(base + '/user/login', { email, password })
       .then(({ data }) => {
-        debugger
         store.commit(USER_LOGIN, data);
       })
       .catch(err => {
@@ -49,9 +48,6 @@ const actions = {
 
 const mutations = {
   [USER_LOGIN] (state, payload) {
-    debugger
-
-
     Vue.cookies.set('uid', data._id);
     Vue.cookies.set('canAccessKeystone', data.canAccessKeystone);
     Vue.cookies.set('canAccessContent', data.canAccessContent);

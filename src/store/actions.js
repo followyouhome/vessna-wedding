@@ -42,6 +42,8 @@ export default {
       uri += '/' + id;
     }
 
+    settings.headers = { cookie: Vue.cookies.getCookieString() };
+
     return axios
       .get(uri, Object.assign({ params }, settings))
       .then(function ({ data }) {

@@ -33,12 +33,12 @@ module.exports = (app, base) => {
   /**
    * @name Get user info
    */
-  app.get(base + '/user/:id', (req, res) => {
+  app.get(base + '/user', (req, res) => {
     if (req.user) {
-      return res.json(userFormat(req.user));
+      return res.status(200).json(userFormat(req.user));
     }
 
-    return res.sendStatus(401).json({ error: 'not authorized' });
+    return res.status(200).json(null);
   });
 
   /**
@@ -52,9 +52,9 @@ module.exports = (app, base) => {
     keystone.session.signin({ email: req.body.email, password: req.body.password }, req, res, () => {
       res.cookie('uid', req.user._id, { httpOnly: false });
 
-      return res.status(200).json({ user: userFormat(req.user) });
+      return res.status(200).json(userFormat(req.user));
     }, (err) => {
-      return res.status(401).json({ error: 'wrong login or password' });
+      return res.status(400).json({ error: 'wrong login or password' });
     });
   });
 
@@ -65,7 +65,7 @@ module.exports = (app, base) => {
     keystone.session.signout(req, res, (err) => {
       res.clearCookie('uid');
 
-      return res.status(200).json({ user: null });
+      return res.status(200).json(null);
     });
   });
 
@@ -75,7 +75,7 @@ module.exports = (app, base) => {
   app.post(base + '/user/signup', (req, res) => {
     User.model.findOne({ email: data.email }).exec((err, user) => {
       if (err || user) {
-        return res.status(401).json({ error: 'cannot create user' });
+        return res.status(400).json({ error: 'cannot create user' });
       }
 
       return res.status(200).json({user: userCreate(req.body) })

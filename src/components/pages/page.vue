@@ -41,6 +41,10 @@
           namespace: 'config',
           id: 'navigation',
         }),
+        store.dispatch('fetch', {
+          namespace: 'user',
+          endpoint: 'user',
+        }),
       ]);
     },
 
