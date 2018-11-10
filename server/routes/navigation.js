@@ -1,18 +1,20 @@
 const keystone = require('keystone');
-const responseHandler = require('../../lib/response-handler');
+const responseHandler = require('../lib/response-handler');
 
 const {
   PAGE_HOMEPAGE,
   PAGE_NEWS_HUB,
   PAGE_DRESS_COLLECTION_HUB,
-} = require('../../../config/constants.js');
+} = require('../../config/constants.js');
 
 const FILTER_WEDDING = 'wedding';
 const FILTER_PROM = 'prom';
 
 var data;
 
-module.exports = (app, base) => {
+module.exports = (app) => {
+  const base = '/api';
+
   app.get(base + '/navigation', [
     (req, res, next) => {
       const query = keystone.list('DressCollection')

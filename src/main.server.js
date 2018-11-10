@@ -27,7 +27,8 @@ export default context => {
       },
     });
 
-    const { app, router, store } = createApp();
+
+    const { app, root, router, store } = createApp();
     const { url } = context;
     const meta = app.$meta();
     const fullPath = router.resolve(url).route.fullPath;
@@ -46,10 +47,12 @@ export default context => {
         reject({ code: 404 });
       }
 
-      Promise.all(matchedComponents.map(component => component.asyncData && component.asyncData.call(component, {
-          store,
-          route: router.currentRoute,
-      }))).then(() => {
+      // console.log(root)
+
+      Promise.all([
+        root.asyncData.call(root, { store, route: router.currentRoute }),
+        ...matchedComponents.map(component => component.asyncData && component.asyncData.call(component, { store, route: router.currentRoute }))
+      ]).then(() => {
         context.state = store.state;
         resolve(app);
       }).catch(reject);

@@ -49,9 +49,6 @@ const actions = {
 const mutations = {
   [USER_LOGIN] (state, payload) {
     Vue.cookies.set('uid', data._id);
-    Vue.cookies.set('canAccessKeystone', data.canAccessKeystone);
-    Vue.cookies.set('canAccessContent', data.canAccessContent);
-
 
     return data;
   },

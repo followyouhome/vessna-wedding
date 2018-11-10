@@ -9,7 +9,8 @@ module.exports = app => {
   require('./proxy')(app);
   require('./sitemap')(app);
   require('./static')(app);
-  require('./config')(app);
+  require('./setting')(app);
+  require('./navigation')(app);
   require('./pages')(app);
   require('./query')(app);
   require('./forms')(app);

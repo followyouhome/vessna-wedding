@@ -1,6 +1,6 @@
 <template>
   <div>
-    <module-related-posts v-bind:news="news"></module-related-posts>
+    <!-- <module-related-posts v-bind:news="news"></module-related-posts>
     <div class="module module--article">
       <div class="module__wrapper module--article__wrapper">
           <h2>Свадебные и вечерние платья оптом</h2>
@@ -13,7 +13,7 @@
       </div>
     </div>
     <module-promo-cards v-bind:items="prom"></module-promo-cards>
-    <promo-subscribe/>
+    <promo-subscribe/> -->
   </div>
 </template>
 

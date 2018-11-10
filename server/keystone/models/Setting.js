@@ -48,6 +48,18 @@ Setting.add({
   },
 });
 
+Setting.schema.set('toJSON', {
+  transform: (doc, ret, options) => {
+    if (ret.type === 'string') {
+      ret.val = ret.value.string;
+    } else if (ret.type === 'boolean') {
+      ret.val = ret.value.boolean;
+    }
+
+    return ret;
+  },
+});
+
 Setting.defaultColumns = 'name|30%, key|30%, type|40%';
 Setting.register();
 

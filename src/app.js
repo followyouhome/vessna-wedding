@@ -1,13 +1,11 @@
 import Vue from 'vue';
-import App from './app.vue';
 import VueMeta from 'vue-meta';
 import VueCookie from 'vue-cookie';
 import VueLazyload from 'vue-lazyload';
-import {createRouter} from './core/router';
+import { sync } from 'vuex-router-sync';
+import root from './app.vue';
 import store from './store/';
-import {sync} from 'vuex-router-sync';
-
-Vue.config.devtools = true;
+import { createRouter } from './core/router';
 
 Vue.use(VueMeta);
 Vue.use(VueCookie);
@@ -19,9 +17,9 @@ export function createApp() {
 
   sync(store, router);
 
-  const app = new Vue({router, store, render: h => h(App)});
+  const app = new Vue({ router, store, render: h => h(root) });
 
   Vue.config.devtools = true;
 
-  return {app, router, store};
+  return { app, root, router, store };
 }

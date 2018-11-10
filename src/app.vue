@@ -1,23 +1,26 @@
 <template>
-    <div id="app">
-        <global-main-promo v-if="main_promo"></global-main-promo>
-        <module-nav></module-nav>
-        <transition name="fade">
-          <router-view></router-view>
-        </transition>
-        <module-footer></module-footer>
-        <global-popup-container v-if="popup"></global-popup-container>
-        <!--<script src='https://www.google.com/recaptcha/api.js'></script>-->
-        <div class="g-recaptcha" data-sitekey="6Lf__kAUAAAAAAfyKZ7h_54WlKBUOrQTkvmAbhEC"></div>
-    </div>
+  <div id="app">
+    <global-announcement :announcement="setting.announcement" v-if="setting.announcement"/>
+    <global-navigation :navigation="navigation" v-if="navigation"/>
+    <transition name="fade">
+      <router-view></router-view>
+    </transition>
+      <!-- <global-main-promo v-if="main_promo"></global-main-promo>
+
+      <module-footer></module-footer>
+      <global-popup-container v-if="popup"></global-popup-container>
+      <script src='https://www.google.com/recaptcha/api.js'></script>
+      <div class="g-recaptcha" data-sitekey="6Lf__kAUAAAAAAfyKZ7h_54WlKBUOrQTkvmAbhEC"></div> -->
+  </div>
 </template>
 
 <script>
   import Vue from 'vue';
   import NoSSR from 'vue-no-ssr';
-  import ModuleNav from './components/global/module-nav.vue';
   import ModuleFooter from './components/global/module-footer.vue';
   import GlobalMainPromo from './components/global/global-main-promo.vue';
+  import GlobalNavigation from './components/global/global-navigation.vue';
+  import GlobalAnnouncement from './components/global/global-announcement.vue';
   import GlobalPopupContainer from './components/global/global-popup-container';
   import ImageDeferred from './components/atoms/image-deferred.vue';
   import VideoRegular from './components/atoms/video-regular.vue';
@@ -30,9 +33,10 @@
     name: 'app',
 
     components: {
-      'module-nav': ModuleNav,
       'module-footer': ModuleFooter,
       'global-main-promo': GlobalMainPromo,
+      'global-navigation': GlobalNavigation,
+      'global-announcement': GlobalAnnouncement,
       'global-popup-container': GlobalPopupContainer,
     },
 
@@ -42,14 +46,42 @@
       },
     },
 
+    asyncData ({ store, route }) {
+      return Promise.all([
+        store.dispatch('fetch', {
+          namespace: 'user',
+          endpoint: 'user',
+        }),
+
+        store.dispatch('fetch', {
+          namespace: 'setting',
+          endpoint: 'setting',
+        }),
+
+        store.dispatch('fetch', {
+          endpoint: 'navigation',
+          namespace: 'navigation',
+        }),
+      ]);
+    },
+
     computed: {
-      main_promo () {
-        return this.$store.state['main_promo'];
+      setting () {
+        return this.$store.state.setting;
       },
 
-      popup () {
-        return this.$store.state['popup'];
+      navigation () {
+        return this.$store.state.navigation;
       },
+
+
+      // main_promo () {
+      //   return this.$store.state['main_promo'];
+      // },
+      //
+      // popup () {
+      //   return this.$store.state['popup'];
+      // },
     },
   };
 </script>

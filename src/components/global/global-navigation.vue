@@ -59,9 +59,11 @@
   export default {
     name: 'module-nav',
 
+    props: ['navigation'],
+
     computed: {
       items () {
-        return this.$store.state.config.navigation;
+        return this.navigation;
       },
 
       user () {
