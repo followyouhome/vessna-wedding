@@ -14,7 +14,7 @@
 
     components: {
       'popup-login': PopupLogin,
-      'popup-signup': PopupSignup
+      'popup-signup': PopupSignup,
     },
 
     computed: {
@@ -28,7 +28,7 @@
         if(e.path[0] === this.$el) {
           this.$store.commit('POPUP_UNSET');
         }
-      }
+      },
     },
   };
 

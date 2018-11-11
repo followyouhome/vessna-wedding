@@ -42,7 +42,7 @@
       },
       price () {
         return this.dress.price && this.dress.price.rub || null;
-      }
+      },
     },
 
     mounted () {

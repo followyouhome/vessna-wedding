@@ -10,7 +10,7 @@
  */
 
 import axios from 'axios';
-import Vue from 'vue'
+import Vue from 'vue';
 import Router from 'vue-router';
 import config from '../../config';
 import keystoneConfig from '../../config/keystone.config';
@@ -46,12 +46,12 @@ export function createRouter (store) {
       {
         name: ROUTES.PAGE_NEWS_HUB,
         path: '/news',
-        component: () => import('../components/pages/page-news-hub.vue')
+        component: () => import('../components/pages/page-news-hub.vue'),
       },
       {
         name: ROUTES.PAGE_NEWS,
         path: '/news/:news',
-        component: () => import('../components/pages/page-news.vue')
+        component: () => import('../components/pages/page-news.vue'),
       },
 
       // Dress pages
@@ -91,7 +91,7 @@ export function createRouter (store) {
 
       ...routes,
 
-      
+
       // {
       //   name: 'logout',
       //   path: '/user/logout',
@@ -121,6 +121,6 @@ export function createRouter (store) {
       //     next();
       //   }
       // }
-    ]
+    ],
   });
 }

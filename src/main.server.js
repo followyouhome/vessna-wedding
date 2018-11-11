@@ -51,7 +51,7 @@ export default context => {
 
       Promise.all([
         root.asyncData.call(root, { store, route: router.currentRoute }),
-        ...matchedComponents.map(component => component.asyncData && component.asyncData.call(component, { store, route: router.currentRoute }))
+        ...matchedComponents.map(component => component.asyncData && component.asyncData.call(component, { store, route: router.currentRoute })),
       ]).then(() => {
         context.state = store.state;
         resolve(app);

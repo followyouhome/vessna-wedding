@@ -64,14 +64,14 @@
         InView('.promo-full-screen-quote .quote-wrapper')
           .on('enter', el => {
             this.show = true;
-            console.log("ENTER")
+            console.log("ENTER");
           })
           .on('exit', el => {
             this.show = false;
             console.log("OUT");
           });
       }
-    }
+    },
   };
 </script>
 

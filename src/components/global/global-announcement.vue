@@ -11,7 +11,7 @@
     name: 'GlobalAnnouncement',
 
     props: ['announcement'],
-  }
+  };
 </script>
 
 <style lang="scss">

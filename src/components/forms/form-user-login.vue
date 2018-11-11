@@ -22,7 +22,7 @@
         state: {
           request: false,
           recaptcha: false,
-        }
+        },
       };
     },
 
@@ -36,12 +36,12 @@
 
     methods: {
       login() {
-        debugger
+        debugger;
         this.state.request = true;
         //
         this.$store.dispatch('login', this.form)
           .then((data) => {
-            debugger
+            debugger;
             this.state.request = false;
         //
         //     if (data._id) {
