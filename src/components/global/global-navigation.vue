@@ -14,41 +14,52 @@
           </li>
         </ul>
       </li>
-      <!-- <li class="navigation__main-list__item">
-        <div class="navigation__main-list__item__link">
-          <span class="navigation__main-text" itemprop="name">Для клиентов</span>
-          <span class="navigation__icon icon-bars"></span>
+      <li class="global-navigation__main-list__item">
+        <div class="global-navigation__main-list__item__link">
+          <span class="global-navigation__text" itemprop="name">Сотрудничество</span>
+          <span class="global-navigation__icon icon-bars"></span>
         </div>
-        <div class="navigation__bar">
-          <ul class="navigation__secondary-list">
-            <li class="navigation__secondary-list__item" v-if="!user">
-              <div class="navigation__secondary-list__item__link" @click="login">
-                <span class="navigation__secondary-text">Войти, чтобы видеть цены</span>
-              </div>
-            </li>
-            <li class="navigation__secondary-list__item" v-if="!user">
-              <div class="navigation__secondary-list__item__link" @click="signup">
-                <span class="navigation__secondary-text">Зарегистрироваться</span>
-              </div>
-            </li>
-            <li class="navigation__secondary-list__item" v-if="user">
-              <div class="navigation__secondary-list__item__link" @click="logout">
-                <span class="navigation__secondary-text">Выход</span>
-              </div>
-            </li>
-            <li class="navigation__secondary-list__item" v-if="user">
-              <div class="navigation__secondary-list__item__link">
-                <a class="navigation__secondary-text" target="_blank" href="https://yadi.sk/d/0vDMd0fh3T3bPW">Прайсы</a>
-              </div>
-            </li>
-            <li class="navigation__secondary-list__item" v-if="available">
-              <div class="navigation__secondary-list__item__link">
-                <a class="navigation__secondary-text" target="_blank" href="https://yadi.sk/d/F8LsI7d13T3bcu">Контент</a>
-              </div>
-            </li>
-          </ul>
+        <ul class="global-navigation__secondary-list">
+          <li class="global-navigation__secondary-list__item">
+            <div class="global-navigation__secondary-list__item__link">
+              <span class="global-navigation__text">Обратная связь</span>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li class="global-navigation__main-list__item">
+        <div class="global-navigation__main-list__item__link">
+          <span class="global-navigation__text" itemprop="name">Для клиентов</span>
+          <span class="global-navigation__icon icon-bars"></span>
         </div>
-      </li> -->
+        <!-- <ul class="navigation__secondary-list">
+          <li class="navigation__secondary-list__item" v-if="!user">
+            <div class="navigation__secondary-list__item__link" @click="login">
+              <span class="navigation__secondary-text">Войти, чтобы видеть цены</span>
+            </div>
+          </li>
+          <li class="navigation__secondary-list__item" v-if="!user">
+            <div class="navigation__secondary-list__item__link" @click="signup">
+              <span class="navigation__secondary-text">Зарегистрироваться</span>
+            </div>
+          </li>
+          <li class="navigation__secondary-list__item" v-if="user">
+            <div class="navigation__secondary-list__item__link" @click="logout">
+              <span class="navigation__secondary-text">Выход</span>
+            </div>
+          </li>
+          <li class="navigation__secondary-list__item" v-if="user">
+            <div class="navigation__secondary-list__item__link">
+              <a class="navigation__secondary-text" target="_blank" href="https://yadi.sk/d/0vDMd0fh3T3bPW">Прайсы</a>
+            </div>
+          </li>
+          <li class="navigation__secondary-list__item" v-if="available">
+            <div class="navigation__secondary-list__item__link">
+              <a class="navigation__secondary-text" target="_blank" href="https://yadi.sk/d/F8LsI7d13T3bcu">Контент</a>
+            </div>
+          </li>
+        </ul> -->
+      </li>
     </ul>
   </nav>
 </template>
@@ -166,6 +177,7 @@
     text-align: center;
     background: $white;
     border-top: 1px solid $gray1;
+    z-index: $z-default + 1;
 
     .global-navigation__main-list__item:hover & {
       display: block;

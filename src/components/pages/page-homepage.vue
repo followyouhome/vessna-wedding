@@ -33,10 +33,6 @@
         namespace: 'page',
         endpoint: 'page/homepage',
       }),
-
-      // store.dispatch('fetchAll', {
-      //   endpoint: 'news',
-      // }),
     ]);
   }
 

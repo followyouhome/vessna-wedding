@@ -17,6 +17,17 @@ module.exports = (app, base) => {
       });
     },
 
+    (req, res, next) => {
+      const query = keystone.list('News')
+                      .model
+                      .find();
+
+      query.exec((err, result) => {
+        output.news = result;
+        next();
+      });
+    },
+
     (req, res) => {
        responseHandler(res, null, output);
     }
