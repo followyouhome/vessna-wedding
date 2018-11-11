@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <module-related-posts v-bind:news="news"></module-related-posts>
+    <!-- <module-related-posts v-bind:news="news"></module-related-posts>-->
     <div class="module module--article">
       <div class="module__wrapper module--article__wrapper">
           <h2>Свадебные и вечерние платья оптом</h2>
@@ -13,7 +13,7 @@
       </div>
     </div>
     <module-promo-cards v-bind:items="prom"></module-promo-cards>
-    <promo-subscribe/> -->
+    <promo-subscribe/>
   </div>
 </template>
 
@@ -29,18 +29,19 @@
 
   function fetch (store, route) {
     return Promise.all([
-      store.dispatch('fetchPage', {
-        id: 'homepage',
+      store.dispatch('fetch', {
+        namespace: 'page',
+        endpoint: 'page/homepage',
       }),
 
-      store.dispatch('fetchAll', {
-        endpoint: 'news',
-      }),
+      // store.dispatch('fetchAll', {
+      //   endpoint: 'news',
+      // }),
     ]);
   }
 
   export default {
-    name: 'page-homepage',
+    name: 'PageHomepage',
 
     extends: Page,
 
@@ -73,15 +74,11 @@
       },
 
       wedding () {
-        return this.$store.state.pages.homepage.wedding;
+        return this.$store.state.page.wedding;
       },
 
       prom () {
-        return this.$store.state.pages.homepage.prom;
-      },
-
-      seo () {
-        return this.$store.state.pages.homepage.seo;
+        return this.$store.state.page.prom;
       },
     },
   };

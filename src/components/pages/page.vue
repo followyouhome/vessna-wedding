@@ -1,5 +1,5 @@
 <template>
-
+  <main class="page"></main>
 </template>
 
 <script>
@@ -31,13 +31,20 @@
           { property: 'twitter:site', content: '@vessna_dress' },
           { property: 'twitter:card', content: 'summary_large_image' },
         ],
+        htmlAttrs: {
+          lang: 'ru-ru',
+        },
       };
     },
 
     asyncData ({ store, route }) {
-      return Promise.all([
 
-      ]);
+    },
+
+    computed: {
+      seo () {
+        return this.$store.state.page.seo;
+      },
     },
 
     mounted () {

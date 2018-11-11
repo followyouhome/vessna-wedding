@@ -99,31 +99,4 @@ export default {
         console.error(err);
       });
   },
-
-  fetchPage (store, { id, path }) {
-    const namespace = 'pages';
-    const endpoint = 'pages';
-
-    let uri = base + '/' + endpoint;
-
-    if (id) {
-      uri += '/' + id;
-    }
-
-    if (path) {
-      uri += '/' + path;
-    }
-
-    return axios
-      .get(uri, settings)
-      .then(function ({ data }) {
-        if (id) {
-          store.commit('setItem', { namespace, id, data });
-          store.commit(MAIN_PROMO_SET, { namespace, id, data });
-        }
-      })
-      .catch(err => {
-        console.error(err);
-      });
-  },
 };

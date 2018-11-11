@@ -4,7 +4,7 @@ const config = require('../../../config');
 module.exports = app => {
   let base = config.api.base;
 
-  base = '/api/pages';
+  base = '/api/page';
 
   require('./dress-collection')(app, base);
   require('./homepage')(app, base);

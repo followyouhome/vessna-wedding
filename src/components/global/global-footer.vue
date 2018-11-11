@@ -73,7 +73,7 @@
 
 <script>
   export default {
-    name: 'module-footer',
+    name: 'GlobalFooter',
   };
 </script>
 

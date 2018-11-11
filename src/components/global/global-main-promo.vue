@@ -18,13 +18,11 @@
 
 <script>
   export default {
-    name: 'global-main-promo',
+    name: 'GlobalMainPromo',
+
+    props: ['promo'],
 
     computed: {
-      promo () {
-        return this.$store.state.main_promo;
-      },
-
       headline () {
         return {
           text: this.promo.headline,
@@ -41,7 +39,7 @@
       },
 
       align () {
-        const align = this.$store.state.main_promo.align;
+        const align = this.promo.align;
         let result = '';
 
         if (align) {
