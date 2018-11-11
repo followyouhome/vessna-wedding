@@ -10,12 +10,9 @@
 
   function fetch(store, route) {
     return Promise.all([
-      store.dispatch('fetchPage', {
-        id: 'news',
-      }),
-
-      store.dispatch('fetchAll', {
-        endpoint: 'news',
+      store.dispatch('fetch', {
+        namespace: 'page',
+        endpoint: 'page/news',
       }),
     ]);
   }
@@ -44,14 +41,9 @@
       __VUE_ENV__ === 'server' ? next() : fetch(store, to).then(() => next());
     },
 
-
     computed: {
       news () {
-        return this.$store.state.news;
-      },
-
-      seo () {
-        return this.$store.state.pages.news.seo;
+        return this.$store.state.page.news;
       },
     },
   };
