@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <module-related-posts v-bind:news="news"></module-related-posts>-->
+    <module-related-posts v-bind:news="news"></module-related-posts>
     <div class="module module--article">
       <div class="module__wrapper module--article__wrapper">
           <h2>Свадебные и вечерние платья оптом</h2>
@@ -70,7 +70,7 @@
 
     computed: {
       news () {
-        return this.$store.state.news;
+        return this.$store.state.page.news;
       },
 
       wedding () {

@@ -41,6 +41,18 @@ module.exports = (app, base) => {
       });
     },
 
+    (req, res, next) => {
+      const query = keystone.list('News')
+                      .model
+                      .find({ state: 'published' })
+                      .sort({ sortOrder: 1 });
+
+      query.exec((err, result) => {
+        output.news = result;
+        next();
+      });
+    },
+
     (req, res) => {
        responseHandler(res, null, output);
     }
