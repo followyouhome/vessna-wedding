@@ -5,7 +5,7 @@ import VueLazyload from 'vue-lazyload';
 import { sync } from 'vuex-router-sync';
 import root from './app.vue';
 import store from './store/';
-import { createRouter } from './core/router';
+import { createRouter } from './router/';
 
 Vue.use(VueMeta);
 Vue.use(VueCookie);
