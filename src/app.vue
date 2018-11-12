@@ -58,19 +58,19 @@
 
     computed: {
       popup () {
-        return this.$store.state.popup;
+        return this.$store.state && this.$store.state.popup;
       },
 
       setting () {
-        return this.$store.state.setting;
+        return this.$store.state && this.$store.state.setting;
       },
 
       navigation () {
-        return this.$store.state.navigation;
+        return this.$store.state && this.$store.state.navigation;
       },
 
       main_promo () {
-        return this.$store.state.page.main_promo;
+        return this.$store.state && this.$store.state.page && this.$store.state.page.main_promo;
       },
     },
   };
