@@ -78,5 +78,70 @@
 </script>
 
 <style lang="scss">
+  .footer {
+      height: 200px;
+      margin: 0;
+      width: 100%;
+      bottom: 0;
+      overflow: hidden;
+      box-sizing: border-box;
+      background: #4f5458;
+      text-align: center;
+      font-size: 0
+  }
 
+  @media screen and (max-width:1023px) {
+      .footer {
+          padding: 20px 0
+      }
+  }
+
+  @media screen and (max-width:767px) {
+      .footer {
+          position: relative;
+          padding: 20px 0;
+          height: auto
+      }
+  }
+
+  .patternlab .footer {
+      position: static
+  }
+
+  .footer__column {
+      display: inline-block;
+      position: relative;
+      top: 40px;
+      width: 33.33333333%;
+      vertical-align: top
+  }
+
+  @media screen and (max-width:1023px) {
+      .footer__column {
+          width: 100%;
+          top: 0
+      }
+  }
+
+  .footer__column-address__content {
+      position: relative;
+      top: 20px
+  }
+
+  @media screen and (max-width:1023px) {
+      .footer__column-address__content {
+          top: 0
+      }
+  }
+
+  .footer__column-phones__list__item {
+      margin: 0 10px;
+      list-style: none
+  }
+
+  @media screen and (max-width:1023px) {
+      .footer__column-phones__list__item {
+          display: inline-block
+      }
+  }
 </style>

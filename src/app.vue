@@ -76,7 +76,21 @@
   };
 </script>
 
-<style>
+<style lang="scss">
+  html {
+    height: 100%;
+  }
+
+  body {
+    height: 100%;
+  }
+
+  #app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+  }
+
   .fade-enter-active, .fade-leave-active {
     transition-property: opacity;
     transition-duration: .2s;

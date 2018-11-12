@@ -6,7 +6,9 @@ module.exports = app => {
 
   base = '/api/page';
 
-  require('./dress-collection')(app, base);
+  require('./empty')(app, base);
   require('./homepage')(app, base);
+  require('./dress-collection')(app, base);
   require('./news')(app, base);
+
 };
