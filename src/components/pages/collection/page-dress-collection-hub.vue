@@ -6,11 +6,11 @@
 </template>
 
 <script>
-  import Page from './page.vue';
-  import ModuleArticle from '../module/module-article.vue';
-  import ModulePromoCards from '../module/module-promo-cards.vue';
+  import Page from '@/components/pages/page.vue';
+  import ModuleArticle from '@/components/module/module-article.vue';
+  import ModulePromoCards from '@/components/module/module-promo-cards.vue';
 
-  import store from '../../store/';
+  import store from '@/store/';
 
   const FILTER = {
     '/wedding-dresses': 'wedding',

@@ -8,13 +8,13 @@
 </template>
 
 <script>
-  import Page from './page.vue';
-  import ModuleArticle from '../module/module-article.vue';
-  import ModuleDressCollection from '../module/module-grid-dress.vue';
-  import ModuleSharedFolder from '../module/module-shared-folder.vue';
-  import ModuleFeedbackGrid from '../module/module-feedback-grid.vue';
+  import Page from '@/components/pages/page.vue';
+  import ModuleArticle from '@/components/module/module-article.vue';
+  import ModuleDressCollection from '@/components/module/module-grid-dress.vue';
+  import ModuleSharedFolder from '@/components/module/module-shared-folder.vue';
+  import ModuleFeedbackGrid from '@/components/module/module-feedback-grid.vue';
 
-  import store from '../../store/';
+  import store from '@/store/';
 
   function fetch (store, route) {
     return Promise.all([
