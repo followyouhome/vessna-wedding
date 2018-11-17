@@ -10,7 +10,4 @@ export default {
       canAccessKeystone: false,
     },
   },
-  items: [],
-  'dress-collection': {},
-  main_promo: null,
 };

@@ -13,8 +13,6 @@ export default new Vuex.Store({
   namespaced: true,
 
   modules: {
-    config: {},
-    pages: {},
     user,
   },
 
