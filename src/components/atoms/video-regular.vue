@@ -23,7 +23,7 @@
 
     computed: {
       poster () {
-        return this.promo.image && this.promo.image .secure_url;
+        return this.promo.image && this.promo.image.secure_url;
       },
 
       width () {
@@ -31,7 +31,11 @@
       },
 
       url: function () {
-        return this.poster + (this.width ? `?w=${this.width}` : '');
+        if (this.poster) {
+          return this.poster + (this.width ? `?w=${this.width}` : '');
+        } else {
+          return '';
+        }
       },
 
       webm () {
