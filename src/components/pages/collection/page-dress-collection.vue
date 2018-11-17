@@ -1,9 +1,9 @@
 <template>
   <main>
-    <module-grid-dress :collection="collection"/>
-    <module-article :article="collection.collection.description"/>
-    <module-feedback-grid :feedbacks="feedbacks"/>
-    <module-shared-folder :collection="collection"/>
+    <module-grid-dress :items="dresses"/>
+    <!-- <module-article :article="collection.collection.description"/> -->
+    <!-- <module-feedback-grid :feedbacks="feedbacks"/> -->
+    <!-- <module-shared-folder :collection="collection"/> -->
   </main>
 </template>
 
@@ -19,14 +19,14 @@
   function fetch (store, route) {
     return Promise.all([
       store.dispatch('fetch', {
-        endpoint: 'dress-collection',
-        id: route.params.collection,
+        namespace: 'page',
+        endpoint: 'page/collection/' + route.params.collection,
       }),
     ]);
   }
 
   export default {
-    name: 'page-dress-collection',
+    name: 'PageDressCollection',
 
     extends: Page,
 
@@ -53,16 +53,8 @@
     },
 
     computed: {
-      collection () {
-        return this.$store.state['dress-collection'][this.$route.params.collection];
-      },
-
-      seo() {
-        return this.$store.state['dress-collection'][this.$route.params.collection].collection.seo;
-      },
-
-      feedbacks () {
-        return this.$store.state['dress-collection'][this.$route.params.collection].collection.feedbacks;
+      dresses () {
+        return this.$store.state.page.dresses;
       },
     },
   };

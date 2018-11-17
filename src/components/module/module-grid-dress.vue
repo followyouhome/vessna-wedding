@@ -1,20 +1,20 @@
 <template>
-  <div class="module-grid-dress isotope-grid" v-if="collection">
+  <div class="module-grid-dress isotope-grid">
     <div class="isotope-grid__sizer"></div>
     <promo-dress v-for="dress in dresses" v-bind:dress="dress" v-bind:key="dress.slug"></promo-dress>
   </div>
 </template>
 
 <script>
-  import ModuleGridIsotope from './module-grid-isotope';
-  import PromoDress from '../promo/promo-dress.vue';
+  import ModuleGridIsotope from '@/components/module/module-grid-isotope';
+  import PromoDress from '@/components/promo/promo-dress.vue';
 
   export default {
-    name: 'module-grid-dress',
+    name: 'ModuleGridDress',
 
     extends: ModuleGridIsotope,
 
-    props: ['collection'],
+    props: ['items'],
 
     components: {
       'promo-dress': PromoDress,
@@ -22,7 +22,7 @@
 
     computed: {
       dresses () {
-        return this.collection.dresses.sort((a, b) => parseInt(a.name) - parseInt(b.name));
+        return this.items.sort((a, b) => parseInt(a.name) - parseInt(b.name));
       },
     },
   };

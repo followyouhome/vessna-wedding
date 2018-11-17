@@ -43,7 +43,7 @@
 
     computed: {
       seo () {
-        return this.$store.state.page.seo;
+        return this.$store.state.page && this.$store.state.page.seo;
       },
     },
 

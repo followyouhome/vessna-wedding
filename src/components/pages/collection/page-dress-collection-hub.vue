@@ -1,6 +1,6 @@
 <template>
     <div>
-      <module-article v-if="article.content" v-bind:article="article"></module-article>
+      <!-- <module-article v-if="article.content" v-bind:article="article"></module-article> -->
       <module-promo-cards v-if="collections" v-bind:items="collections"></module-promo-cards>
     </div>
 </template>
@@ -12,26 +12,17 @@
 
   import store from '@/store/';
 
-  const FILTER = {
-    '/wedding-dresses': 'wedding',
-    '/prom-and-party-dresses': 'prom',
-  };
-
   function fetch (store, route) {
     return Promise.all([
-      store.dispatch('fetchPage', {
-        id: 'dress-collection',
-        path: route.path.substr(1),
-      }),
-
-      store.dispatch('fetchAll', {
-        endpoint: 'dress-collection',
+      store.dispatch('fetch', {
+        namespace: 'page',
+        endpoint: 'page/collection?slug=' + route.path.replace(/\//g, ''),
       }),
     ]);
   }
 
   export default {
-    name: 'page-dress-collection-hub',
+    name: 'PageDressCollectionHub',
 
     extends: Page,
 
@@ -57,24 +48,7 @@
 
     computed: {
       collections () {
-        const collections = this.$store.state['dress-collection'];
-        let result = {};
-
-        for (let collection in collections) {
-          if (collections[collection].type == FILTER[this.$route.path]) {
-            result[collection] = collections[collection];
-          }
-        }
-
-        return result;
-      },
-
-      article () {
-        return this.$store.state.pages['dress-collection'];
-      },
-
-      seo () {
-        return this.$store.state.pages['dress-collection'].seo;
+        return this.$store.state.page.collections;
       },
     },
   };

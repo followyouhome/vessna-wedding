@@ -103,9 +103,9 @@
 
       getRoute (item) {
         return {
-          path: item.path || null,
-          name: item.route || null,
-          params: item.params || null,
+          path: item.path || undefined,
+          name: item.route || undefined,
+          params: item.params || undefined,
         };
       },
     },
