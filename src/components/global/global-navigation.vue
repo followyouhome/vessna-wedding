@@ -32,33 +32,33 @@
           <span class="global-navigation__text" itemprop="name">Для клиентов</span>
           <span class="global-navigation__icon icon-bars"></span>
         </div>
-        <!-- <ul class="navigation__secondary-list">
-          <li class="navigation__secondary-list__item" v-if="!user">
-            <div class="navigation__secondary-list__item__link" @click="login">
-              <span class="navigation__secondary-text">Войти, чтобы видеть цены</span>
+        <ul class="global-navigation__secondary-list">
+          <li class="global-navigation__secondary-list__item" v-if="!user">
+            <div class="global-navigation__secondary-list__item__link" @click="login">
+              <span class="global-navigation__text">Войти</span>
             </div>
           </li>
-          <li class="navigation__secondary-list__item" v-if="!user">
-            <div class="navigation__secondary-list__item__link" @click="signup">
-              <span class="navigation__secondary-text">Зарегистрироваться</span>
+          <li class="global-navigation__secondary-list__item" v-if="!user">
+            <div class="global-navigation__secondary-list__item__link" @click="signup">
+              <span class="global-navigation__text">Зарегистрироваться</span>
             </div>
           </li>
-          <li class="navigation__secondary-list__item" v-if="user">
+          <!-- <li class="navigation__secondary-list__item" v-if="user">
             <div class="navigation__secondary-list__item__link" @click="logout">
               <span class="navigation__secondary-text">Выход</span>
             </div>
-          </li>
-          <li class="navigation__secondary-list__item" v-if="user">
+          </li> -->
+          <!-- <li class="navigation__secondary-list__item" v-if="user">
             <div class="navigation__secondary-list__item__link">
               <a class="navigation__secondary-text" target="_blank" href="https://yadi.sk/d/0vDMd0fh3T3bPW">Прайсы</a>
             </div>
-          </li>
-          <li class="navigation__secondary-list__item" v-if="available">
+          </li> -->
+          <!-- <li class="navigation__secondary-list__item" v-if="available">
             <div class="navigation__secondary-list__item__link">
               <a class="navigation__secondary-text" target="_blank" href="https://yadi.sk/d/F8LsI7d13T3bcu">Контент</a>
             </div>
-          </li>
-        </ul> -->
+          </li> -->
+        </ul>
       </li>
     </ul>
   </nav>

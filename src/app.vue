@@ -58,7 +58,7 @@
 
     computed: {
       popup () {
-        return this.$store.state && this.$store.state.popup;
+        return this.$store.state && this.$store.state.popup && this.$store.state.popup.item;
       },
 
       setting () {
