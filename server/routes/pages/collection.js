@@ -33,7 +33,6 @@ module.exports = (app, base) => {
 
   app.get(base + '/collection/', [
     (req, res, next) => {
-      console.log("OLOLO");
       const query = keystone.list('Page')
                       .model
                       .findOne({ slug: req.query.slug });

@@ -23,17 +23,6 @@ const state = {
 };
 
 const actions = {
-  subscribe(store, payload) {
-    return axios
-      .post(base + '/forms/subscribe', payload, settings)
-      .then(response => {
-        console.log(response);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  },
-
   fetch(store, { endpoint, namespace, id, params, global }) {
     if (!namespace) {
       namespace = endpoint;

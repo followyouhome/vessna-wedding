@@ -1,13 +1,23 @@
 import axios from 'axios';
 import {
-  USER_LOGIN, USER_LOGOUT,
+  USER_LOGIN, USER_LOGOUT, USER_SUBSCRIBE, USER_UNSUBSCRIBE,
 } from '../mutation-types.js';
+
+import Vue from 'vue';
+
+import config from '../../../config';
 
 const base = '/api';
 
-const state = {
-  uid: null,
+const settings = {
+  proxy: { port: config.port },
 };
+
+if (__VUE_ENV__ === 'server' && Vue.cookies) {
+  settings.headers = { cookie: Vue.cookies.getCookieString() };
+}
+
+const state = {};
 
 const actions = {
   login(store, { email, password }) {
@@ -25,7 +35,7 @@ const actions = {
     return axios
       .post(base + '/user/logout', {})
       .then(({ data }) => {
-        store.commit('USER_LOGOUT');
+        store.commit(USER_LOGOUT);
         return data;
       })
       .catch(err => {
@@ -44,6 +54,21 @@ const actions = {
         return err;
       });
   },
+
+  subscribe(store, payload) {
+    return axios
+      .post(base + '/forms/subscribe', payload, settings)
+      .then(response => {
+        this.commit(USER_SUBSCRIBE);
+
+        return Promise.resolve(response);
+      })
+      .catch(error => {
+        this.commit(USER_UNSUBSCRIBE);
+
+        return Promise.reject(error);
+      });
+  },
 };
 
 const mutations = {
@@ -55,6 +80,14 @@ const mutations = {
 
   [USER_LOGOUT] () {
 
+  },
+
+  [USER_SUBSCRIBE] (state) {
+    state.subscribed = true;
+  },
+
+  [USER_UNSUBSCRIBE] (state) {
+    state.subscribed = false;
   },
 };
 

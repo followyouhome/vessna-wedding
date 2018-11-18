@@ -1,43 +1,32 @@
 const _ = require('lodash');
 const keystone = require('keystone');
-const nodemailer = require('nodemailer');
 const responseHandler = require('../../lib/response-handler');
+const Mailchimp = require('mailchimp-api-v3');
+const mailchimp = new Mailchimp('155e7ae12dca44f917cbd729e4810e89-us19');
 
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'vessnaws@gmail.com',
-    pass: 'catchmeifyoucan',
-  },
-});
+const { subscriberFormat } = require('../../lib/format');
 
-const mail = {
-  from: 'vessnaws@gmail.com',
-  to: 'contact@vessna.by',
-  subject: 'Новый запрос на подписку',
-  text: '',
-};
+const LIST = '2f4b4fb4cc';
 
 module.exports = (app, base) => {
-
+  /**
+   * @name Get user info
+   */
   app.post(base + '/subscribe', (req, res) => {
-    const data = req.body;
+    const email = req.body.email;
 
-    if (!data.email) {
-
+    if (!email) {
+      return res.status(401).json({ error: 'email is required' });
     }
 
-    mail.text = data.email;
+    mailchimp.post({ path : `/lists/${LIST}/members` }, subscriberFormat(email))
+      .then(function (result) {
+        res.cookie('subscribed', true, { httpOnly: false });
 
-    transporter.sendMail(mail, function(error, info){
-      if (error) {
-        console.log(error);
-        res.end('fails');
-
-      } else {
-        console.log('Email sent: ' + info.response);
-        res.end('success');
-      }
-    });
+        return res.status(200).json(result);
+      })
+      .catch(err => {
+        return res.status(500).json({ error: err });
+      });
   });
 };

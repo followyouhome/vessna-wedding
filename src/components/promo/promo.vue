@@ -55,4 +55,13 @@
       transform: translateY(10px);
     }
   }
+
+  .promo--fade-out {
+    opacity: 0;
+    transform: translateY(5px);
+
+    .promo__wrapper > * {
+      transform: translateY(10px);
+    }
+  }
 </style>

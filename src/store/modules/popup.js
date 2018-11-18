@@ -2,9 +2,7 @@ import {
   POPUP_SET, POPUP_UNSET, POPUP_RESET,
 } from '../mutation-types.js';
 
-const state = {
-  item: null,
-};
+const state = {};
 
 const actions = {
 

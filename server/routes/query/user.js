@@ -38,7 +38,7 @@ module.exports = (app, base) => {
       return res.status(200).json(userFormat(req.user));
     }
 
-    return res.status(200).json(null);
+    return res.status(200).json({});
   });
 
   /**
@@ -65,7 +65,7 @@ module.exports = (app, base) => {
     keystone.session.signout(req, res, (err) => {
       res.clearCookie('uid');
 
-      return res.status(200).json(null);
+      return res.status(200).json({});
     });
   });
 
@@ -78,7 +78,7 @@ module.exports = (app, base) => {
         return res.status(400).json({ error: 'cannot create user' });
       }
 
-      return res.status(200).json({user: userCreate(req.body) })
+      return res.status(200).json({user: userCreate(req.body) });
     });
   });
 };

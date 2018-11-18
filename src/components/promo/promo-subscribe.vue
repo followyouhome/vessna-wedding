@@ -1,12 +1,20 @@
 <template>
-  <div :class="['promo', 'promo-subscribe', this.fadein ? 'promo--fade-in' : '']">
-    <div class="promo__wrapper promo-subscribe__wrapper">
-      <h2 class="promo__headline promo-subscribe__headline">{{headline}}</h2>
-      <p class="promo__subline promo-subscribe__subline">{{subline}}</p>
+  <div :class="['promo', 'promo-subscribe', this.state.request ? 'promo-subscribe--request' : '', this.fadein ? 'promo--fade-in' : '', this.fadeout ? 'promo--fade-out' : '']" v-if="show">
+    <div class="promo__wrapper promo-subscribe__wrapper" v-if="!state.success && !state.error">
+      <h2 class="promo__headline promo-subscribe__headline">{{label.headline}}</h2>
+      <p class="promo__subline promo-subscribe__subline">{{label.subline}}</p>
       <form class="promo-subscribe__form" v-on:submit.prevent="subscribe">
-        <input class="promo-subscribe__form-input" type="email" placeholder="EMAIL" v-model="email">
-        <input class="promo-subscribe__form-submit" type="submit" value="Подписаться">
+        <input class="promo-subscribe__form-input" type="email" placeholder="EMAIL" v-model="email" :disabled="state.request">
+        <input class="promo-subscribe__form-submit" type="submit" value="Подписаться" :disabled="state.request">
       </form>
+    </div>
+    <div class="promo__wrapper promo-subscribe__wrapper" v-if="state.success">
+      <h2 class="promo__headline promo-subscribe__headline">{{success.headline}}</h2>
+      <p class="promo__subline promo-subscribe__subline">{{success.subline}}</p>
+    </div>
+    <div class="promo__wrapper promo-subscribe__wrapper" v-if="state.error">
+      <h2 class="promo__headline promo-subscribe__headline">{{error.headline}}</h2>
+      <p class="promo__subline promo-subscribe__subline">{{error.subline}}</p>
     </div>
   </div>
 </template>
@@ -21,26 +29,69 @@
 
     data () {
       return {
+        show: true,
         fadein: true,
-        headline: 'Сделайте первый шаг',
-        subline: 'Будьте в курсе наших акций, ивентов и новостей',
+        fadeout: false,
         email: '',
+        state: {
+          request: false,
+          success: false,
+          error: false,
+        },
+        label: {
+          headline: 'Сделайте первый шаг',
+          subline: 'Будьте в курсе наших акций, ивентов и новостей',
+        },
+        error: {
+          headline: 'Произошла ошибка',
+          subline: 'Попробуйте повторить свой запрос позже',
+        },
+        success: {
+          headline: 'Вы подписаны',
+          subline: 'Будем оставаться на связи',
+        },
       };
     },
 
     methods: {
       subscribe () {
+        this.state.request = true;
+
         this.$store.dispatch('subscribe', { email: this.email })
-          .then((data) => {
-            console.log(data);
+          .then(data => {
+            this.state.success = true;
+          })
+          .catch(error => {
+            this.state.error = true;
+          })
+          .finally(() => {
+            this.state.request = false;
+
+            setTimeout(() => {
+              this.fadeout = true;
+            }, 2000);
+
+            setTimeout(() => {
+              this.show = false;
+            }, 2500);
           });
       },
     },
   };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
+  @keyframes move {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 28px 0;
+    }
+  }
+
   .promo-subscribe {
+    min-height: 410px;
     border: none;
     border-top: 1px solid $gray2;
     background: $white2;
@@ -89,8 +140,18 @@
     letter-spacing: 2px;
     color: $black;
 
+    .promo-subscribe--request & {
+      background-image: repeating-linear-gradient(-45deg, $white, $white 11px, $gray1 10px, $gray1 20px);
+      background-size: 28px 28px;
+      animation: move .5s linear infinite;
+    }
+
     &:focus {
       outline: none;
+    }
+
+    &:disabled {
+      opacity: 0.5;
     }
   }
 
@@ -108,6 +169,14 @@
 
     &:hover {
       opacity: 0.8;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:disabled {
+      opacity: 0.5;
     }
   }
 
