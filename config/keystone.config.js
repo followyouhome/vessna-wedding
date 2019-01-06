@@ -8,7 +8,7 @@ module.exports = {
   'mongo': process.env.MONGODB_URI,
   'updates': path.resolve(__dirname, '../server/keystone/updates'),
   'auto update': true,
-  'port': config.port,
+  'port': process.env.PORT || 3000,
   'ssl port': 3001,
   'ssl public port': 443,
   'ssl cert': '$HOME/letsencrypt/etc/live/vessna.wedding/' + 'cert.pem',
