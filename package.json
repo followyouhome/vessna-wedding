@@ -1,6 +1,9 @@
 {
   "name": "Vessna-Wedding",
   "version": "0.0.1",
+  "engines": {
+    "node": "11.x"
+  },
   "scripts": {
     "build": "rimraf dist && npm run build:client && npm run build:server",
     "build:client": "cross-env NODE_ENV=production webpack --config config/webpack.client.config.js --progress --hide-modules",
