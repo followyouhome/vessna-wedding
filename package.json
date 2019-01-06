@@ -51,6 +51,7 @@
     "keystone-express-sitemap": "^1.2.0",
     "keystone-storage-adapter-azure": "^1.1.0",
     "lodash": "^4.17.11",
+    "loopback-connector-mongodb": "^3.9.2",
     "lru-cache": "^4.1.1",
     "mailchimp-api-v3": "^1.12.1",
     "memory-fs": "^0.4.1",
