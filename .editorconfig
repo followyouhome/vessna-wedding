@@ -11,9 +11,7 @@ insert_final_newline = true
 [*.{js,vue}]
 charset = utf-8
 
-
 # Space indentation
-[Makefile]
+[*]
 indent_style = space
 indent_size = 2
-
