@@ -4,9 +4,9 @@ const Page = keystone.list('Page');
 
 module.exports = done => {
   new User.model({
-    name: 'Владислав',
-    email: 'vladislav@vessna.by',
-    password: 'test42Test',
+    name: process.env.ADMIN_NAME,
+    email: process.env.ADMIN_EMAIL,
+    password: process.env.ADMIN_PASSWORD,
     access: {
       keystone: true,
     },
