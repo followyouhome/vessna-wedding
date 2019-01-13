@@ -16,7 +16,7 @@
     "start": "cross-env NODE_ENV=production node server",
     "dev": "cross-env NODE_ENV=develop node server",
     "dev:macos": "ttab 'mongod --dbpath ~/Documents/Mongo/Vessna-Wedding' && ttab 'npm run watch:server' && ttab 'npm run watch:client' && npm run dev",
-    "dev:windows": "echo 'todo'",
+    "dev:windows": "start \"\" powershell -NoExit -Command \"mongod --dbpath $(Resolve-Path ~/Documents/Mongo/Vessna-Wedding)\" && start powershell -NoExit -Command \"npm run watch:server\" && start powershell -NoExit -Command \"npm run watch:client\" && start powershell -NoExit -Command \"npm run dev\";",
     "debug": "cross-env NODE_ENV=develop nodemon --inspect=0.0.0.0:9229 server",
     "docs": "jsdoc2md server/routes/query/*.js > server/README.md"
   },
@@ -91,7 +91,9 @@
     "eslint-plugin-html": "^4.0.1",
     "eslint-plugin-vue": "^4.2.0",
     "jsdoc-to-markdown": "^4.0.1",
-    "nodemon": "^1.18.9",
+    "nodemon": "^1.18.9"
+  },
+  "optionalDependencies": {
     "ttab": "^0.6.1"
   }
 }
