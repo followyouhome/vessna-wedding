@@ -45,6 +45,7 @@ module.exports = merge(baseConfig, {
       __VUE_ENV__: '"server"',
     }),
 
-    new VueSSRServerPlugin()
+    new VueSSRServerPlugin(),
+    new webpack.EnvironmentPlugin(['PORT'])
   ]
 });

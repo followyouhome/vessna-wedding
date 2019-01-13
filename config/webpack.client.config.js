@@ -61,6 +61,8 @@ module.exports = merge(baseConfig, {
       minChunks: Infinity
     }),
 
-    new VueSSRClientPlugin()
+    new VueSSRClientPlugin(),
+
+    new webpack.EnvironmentPlugin(['PORT'])
   ]
 });

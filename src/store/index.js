@@ -9,14 +9,14 @@ import config from '../../config';
 Vue.use(Vuex);
 
 const settings = {
-  proxy: { port: config.port },
+  proxy: { port: process.env.PORT, host: '127.0.0.1' },
 };
 
 if (__VUE_ENV__ === 'server' && Vue.cookies) {
   settings.headers = { cookie: Vue.cookies.getCookieString() };
 }
 
-const base = config.api.base || '/api';
+const base = '/api';
 
 const state = {
 
