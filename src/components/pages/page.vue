@@ -60,6 +60,81 @@
 </script>
 
 <style lang="scss">
+  .main {
+    &--width-limit {
+      margin: auto;
+      max-width: 1200px;
+    }
+
+    &--layout-1-1 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+
+      & > * {
+        width: 50%;
+      }
+
+      @media #{$tablet} {
+        display: block;
+        flex-direction: column;
+
+        & > * {
+          width: 100%;
+        }
+      }
+    }
+
+    &--layout-1-2 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+
+      & > *:nth-child(1) {
+        width: 33%;
+      }
+
+      & > *:nth-child(2) {
+        width: 67%;
+      }
+
+      @media #{$tablet} {
+        display: block;
+        flex-direction: column;
+
+        & > * {
+          width: 100%;
+        }
+      }
+    }
+
+    &--layout-2-1 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+
+      & > *:nth-child(1) {
+        width: 67%;
+      }
+
+      & > *:nth-child(2) {
+        width: 33%;
+      }
+
+      @media #{$tablet} {
+        display: block;
+        flex-direction: column;
+
+        & > * {
+          width: 100%;
+        }
+      }
+    }
+  }
+
   .promo {
     z-index: $z-default;
     position: relative;
