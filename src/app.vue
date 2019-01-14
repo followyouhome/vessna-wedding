@@ -21,10 +21,12 @@
   import GlobalPopupContainer from './components/global/global-popup-container';
   import ImageDeferred from './components/atoms/image-deferred.vue';
   import VideoRegular from './components/atoms/video-regular.vue';
+  import VectorLogo from './components/atoms/vector-logo.vue';
 
   Vue.component('no-ssr', NoSSR);
   Vue.component('image-deferred', ImageDeferred);
   Vue.component('video-regular', VideoRegular);
+  Vue.component('vector-logo', VectorLogo);
 
   export default {
     name: 'App',
@@ -89,6 +91,10 @@
     display: flex;
     flex-direction: column;
     min-height: 100%;
+  }
+
+  .main {
+    flex: 1;
   }
 
   .fade-enter-active, .fade-leave-active {
