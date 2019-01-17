@@ -23,7 +23,7 @@ const state = {
 };
 
 const actions = {
-  fetch(store, { endpoint, namespace, id, params, global }) {
+  fetch (store, { endpoint, namespace, id, params, global }) {
     if (!namespace) {
       namespace = endpoint;
     }
@@ -50,7 +50,7 @@ const actions = {
       });
   },
 
-  fetchAll(store, { endpoint, namespace }) {
+  fetchAll (store, { endpoint, namespace }) {
     if (!namespace) {
       namespace = endpoint;
     }

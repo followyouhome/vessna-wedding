@@ -31,10 +31,10 @@
 		mounted () {
 			if (!isMobile.phone && !isMobile.tablet) {
 
-				var Flickity = require('flickity');
+				let Flickity = require('flickity');
 
 				Array.from(document.querySelectorAll('.flickity-carousels')).forEach(function (element) {
-					var flickity = new Flickity(element, {
+					let flickity = new Flickity(element, {
 						accessibility: true,
 						adaptiveHeight: false,                                      //If false - initial height is the max required height
 						autoPlay: false,
@@ -51,23 +51,23 @@
 						wrapAround: false,
 					});
 
-					setTimeout(function() {
+					setTimeout(function () {
 					    flickity.resize();
 					}, 3000);
 				});
 
 			} else {
 				Array.from(document.querySelectorAll('.flickity-carousels')).forEach(function (carousel) {
-					var wrapper = carousel.querySelector('.module__wrapper'),
+					let wrapper = carousel.querySelector('.module__wrapper'),
 						items = Array.prototype.slice.call(carousel.querySelectorAll('.promo'));
 
-					if(!wrapper) {
+					if (!wrapper) {
 						return;
 					}
 
 					carousel.style.overflow = 'scroll';
 
-					wrapper.style.width = items.reduce(function(width, item) {
+					wrapper.style.width = items.reduce(function (width, item) {
 						width = width.offsetWidth || width;
 
 						return width += item.offsetWidth;

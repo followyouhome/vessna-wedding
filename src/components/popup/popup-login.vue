@@ -21,7 +21,7 @@
 
     extends: Popup,
 
-    data() {
+    data () {
       return {
         form: {
           email: '',
@@ -39,7 +39,7 @@
     },
 
     methods: {
-      login() {
+      login () {
         this.status.request = true;
 
         this.$store.dispatch('login', this.form)

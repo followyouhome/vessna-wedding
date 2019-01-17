@@ -1,6 +1,7 @@
 const fs = require('fs');
 const keystone = require('keystone');
 
+require('./keystone/models');
 require('dotenv').config();
 
 const pattern = '<script src="<%= adminPath %>/js/admin.js"></script>\n';

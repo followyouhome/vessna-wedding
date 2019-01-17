@@ -12,7 +12,7 @@
 
   import store from '@/store/';
 
-  function fetch(store, route) {
+  function fetch (store, route) {
     return Promise.all([
       store.dispatch('fetchAll', {
         endpoint: 'news',

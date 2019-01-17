@@ -11,7 +11,7 @@ Vue.use(VueMeta);
 Vue.use(VueCookie);
 Vue.use(VueLazyload);
 
-export function createApp() {
+export function createApp () {
 
   const router = createRouter(store);
 

@@ -1,9 +1,9 @@
 import Cookies from 'universal-cookie';
 
-export default function(context) {
+export default function (context) {
   const cookies = new Cookies(context);
 
-  cookies.getCookieString = function() {
+  cookies.getCookieString = function () {
     const all = cookies.getAll();
     const cookieNames = Object.keys(all);
 
@@ -16,7 +16,7 @@ export default function(context) {
 
     return cookie;
 
-    function format(name, value) {
+    function format (name, value) {
       return name + '=' + encodeURIComponent(value);
     }
   };

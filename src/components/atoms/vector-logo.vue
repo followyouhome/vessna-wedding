@@ -53,8 +53,8 @@
         images: [
           'https://img-fotki.yandex.ru/get/7/yoksel.4f/0_39955_f25b22ae_M', // TODO move this to db
           'https://basicagency.com/imager/uploads/case-studies/BB-Dakota/4286/bb-dakota-fashion-ecommerce-user-experience-web-design-case-study-brand-guidelines-carousel-image-1_09b81fab2c119efd1c977773f4d64d1d.jpg',
-        ]
-      }
+        ],
+      };
     },
 
     computed: {
@@ -66,10 +66,10 @@
     methods: {
       updateIndex () {
         this.index = Math.floor(Math.random() * this.images.length);
-        console.log(this.index)
+        console.log(this.index);
       },
     },
-  }
+  };
 </script>
 
 <style lang="scss">

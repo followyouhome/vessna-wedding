@@ -26,7 +26,7 @@
 
     extends: Popup,
 
-    data() {
+    data () {
       return {
         form: {
           name: '',

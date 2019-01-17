@@ -53,7 +53,7 @@ router.onReady(() => {
  * @see https://ssr.vuejs.org/en/data.html
  * @see https://router.vuejs.org/en/api/router-instance.html
  */
-function fetchAsyncData(to, from, next) {
+function fetchAsyncData (to, from, next) {
   const matched = router.getMatchedComponents(to);
   const prevMatched = router.getMatchedComponents(from);
 

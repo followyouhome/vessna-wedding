@@ -25,7 +25,7 @@
 
     methods: {
       check (e) {
-        if(e.path[0] === this.$el) {
+        if (e.path[0] === this.$el) {
           this.$store.commit('POPUP_UNSET');
         }
       },

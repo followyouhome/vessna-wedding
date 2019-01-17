@@ -10,10 +10,19 @@
       <input class="form__input-text" v-model="form.password" type="password" placeholder="Пароль">
     </div>
     <div class="form__row">
-      <div class="popup__recaptcha g-recaptcha" :id="config.selector" data-callback="loginRecaptcha" :data-sitekey="config.sitekey"></div>
+      <captcha-google v-on:success="captcha"/>
     </div>
     <div class="form__row">
-      <input type="submit" class="form__button-submit" value="Войти" :title="disabled ? 'Заполните все поля' : 'Нажмите, чтобы войти'">
+      <input type="submit" value="Войти"
+        :disabled="!recaptcha"
+        :title="!recaptcha ? 'Заполните все поля' : 'Нажмите, чтобы войти'"
+        :class="[
+          'form__button-submit',
+          request ? 'request' : '',
+          success ? 'success' : '',
+          fail ? 'fail' : '',
+        ]"
+      />
     </div>
   </form>
 </template>
@@ -26,7 +35,7 @@
 
     extends: Form,
 
-    data() {
+    data () {
       return {
         config: {
           selector: '',
@@ -48,9 +57,12 @@
     },
 
     methods: {
-      login() {
+      captcha () {
+        this.recaptcha = true;
+      },
+      login () {
         this.submit().then(() => {
-          
+
         }).catch(() => {
 
         });

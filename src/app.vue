@@ -19,11 +19,13 @@
   import GlobalNavigation from './components/global/global-navigation.vue';
   import GlobalAnnouncement from './components/global/global-announcement.vue';
   import GlobalPopupContainer from './components/global/global-popup-container';
+  import CaptchaGoogle from './components/atoms/captcha-google.vue';
   import ImageDeferred from './components/atoms/image-deferred.vue';
   import VideoRegular from './components/atoms/video-regular.vue';
   import VectorLogo from './components/atoms/vector-logo.vue';
 
   Vue.component('no-ssr', NoSSR);
+  Vue.component('captcha-google', CaptchaGoogle);
   Vue.component('image-deferred', ImageDeferred);
   Vue.component('video-regular', VideoRegular);
   Vue.component('vector-logo', VectorLogo);

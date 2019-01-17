@@ -20,7 +20,7 @@ if (__VUE_ENV__ === 'server' && Vue.cookies) {
 const state = {};
 
 const actions = {
-  login(store, { email, password }) {
+  login (store, { email, password }) {
     return axios
       .post(base + '/user/login', { email, password })
       .then(({ data }) => {
@@ -31,7 +31,7 @@ const actions = {
       });
   },
 
-  logout(store) {
+  logout (store) {
     return axios
       .post(base + '/user/logout', {})
       .then(({ data }) => {
@@ -43,7 +43,7 @@ const actions = {
       });
   },
 
-  registration(store, payload) {
+  registration (store, payload) {
     return axios
       .post(base + '/user/signup', payload)
       .then(({ data }) => {
@@ -55,7 +55,7 @@ const actions = {
       });
   },
 
-  subscribe(store, payload) {
+  subscribe (store, payload) {
     return axios
       .post(base + '/forms/subscribe', payload, settings)
       .then(response => {

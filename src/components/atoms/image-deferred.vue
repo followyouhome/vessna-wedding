@@ -30,7 +30,7 @@
 
     computed: {
       size: function () {
-        if(this.aspect) {
+        if (this.aspect) {
           return '';
         } else {
           return "padding-top: " + this.image.height / this.image.width * 100 + "%";
@@ -47,7 +47,7 @@
     },
 
     mounted () {
-      if(__VUE_ENV__ === 'client') {
+      if (__VUE_ENV__ === 'client') {
         this.show = true;
 
         this.$Lazyload.$on('loaded', function ({ el }) {

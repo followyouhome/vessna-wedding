@@ -15,7 +15,7 @@
     },
 
     mounted () {
-      if(__VUE_ENV__ === 'client') {
+      if (__VUE_ENV__ === 'client') {
         if (!isMobile.phone) {
           require.ensure(['isotope-layout'], require => {
             const Isotope = require('isotope-layout');
@@ -28,7 +28,7 @@
               },
             });
 
-            window.addEventListener('isotopeLayout', function() {
+            window.addEventListener('isotopeLayout', function () {
               this.isotope.layout();
             });
           });

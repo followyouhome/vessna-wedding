@@ -56,7 +56,7 @@
         setTimeout (() => {
           this.show = true;
 
-          this.$refs.video && this.$refs.video.addEventListener('loadeddata', function() {
+          this.$refs.video && this.$refs.video.addEventListener('loadeddata', function () {
             this.play();
           }, 2000);
         });
