@@ -42,7 +42,7 @@ const MainPromo =  {
       type: Types.CloudinaryImage,
       dependsOn: { 'main_promo.media': ['image', 'video'] },
       uploadOptions: { use_filename: true, unique_filename: false },
-      generateFilename: function(file, attemptNumber, callback) {
+      generateFilename: function (file, attemptNumber, callback) {
         callback(null, file.originalname);
       },
     },
@@ -61,11 +61,11 @@ const MainPromo =  {
 };
 
 const Methods = {
-  toJSON: function(ret) {
+  toJSON: function (ret) {
     delete ret.__v;
     delete ret._id;
 
-    if(ret.main_promo.media == 'null') {
+    if (ret.main_promo.media == 'null') {
       delete ret.main_promo;
     }
 

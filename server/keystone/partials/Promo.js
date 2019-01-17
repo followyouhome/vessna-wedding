@@ -31,7 +31,7 @@ const Promo =  {
       type: Types.CloudinaryImage,
       dependsOn: { 'promo.media': ['image', 'video'] },
       uploadOptions: { use_filename: true, unique_filename: false },
-      generateFilename: function(file, attemptNumber, callback) {
+      generateFilename: function (file, attemptNumber, callback) {
         callback(null, file.originalname);
       },
     },
@@ -54,7 +54,7 @@ const Methods = {
     delete ret.__v;
     delete ret._id;
 
-    if(ret.promo.media == 'null') {
+    if (ret.promo.media == 'null') {
       delete ret.promo;
     }
 

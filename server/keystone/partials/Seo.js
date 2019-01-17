@@ -11,7 +11,7 @@ const Schema = {
       label: 'Мета-изображение',
       type: Types.CloudinaryImage,
       uploadOptions: { use_filename: true, unique_filename: false },
-      generateFilename: function(file, attemptNumber, callback) {
+      generateFilename: function (file, attemptNumber, callback) {
         callback(null, file.originalname);
       },
     },
