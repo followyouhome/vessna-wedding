@@ -13,6 +13,8 @@
   "rules": {
     "semi": 2,
     "comma-dangle": ["error", "always-multiline"],
+    "keyword-spacing": ["error", { "before": true , "after": true }],
+    "space-before-function-paren": ["error", "always"],
     "no-trailing-spaces": "error"
   }
 }
