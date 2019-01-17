@@ -5,7 +5,7 @@ module.exports = app => {
     const cloudinary = 'http://res.cloudinary.com/vessna/image/upload';
     let query = '';
 
-    if(req.query.w) {
+    if (req.query.w) {
       query += `w_${req.query.w}`;
     }
 

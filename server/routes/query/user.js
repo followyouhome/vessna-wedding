@@ -19,11 +19,11 @@ function userCreate (user) {
     phone: user.phone,
     city: user.city,
     shop: user.shop,
-  }).save(err => {
-    keystone.session.signin({ email: req.body.email, password: req.body.password }, req, res, function() {
+  }).save(() => {
+    keystone.session.signin({ email: req.body.email, password: req.body.password }, req, res, function () {
       uidCookie.set(req, res);
       responseHandler(res, null, userFormat(req.user));
-    }, function(err) {
+    }, () => {
       return res.status(401).json({ error: 'wrong login or password' });
     });
   });
@@ -53,7 +53,7 @@ module.exports = (app, base) => {
       res.cookie('uid', req.user._id, { httpOnly: false });
 
       return res.status(200).json(userFormat(req.user));
-    }, (err) => {
+    }, () => {
       return res.status(400).json({ error: 'wrong login or password' });
     });
   });
@@ -62,7 +62,7 @@ module.exports = (app, base) => {
    * @name User logout
    */
   app.post(base + '/user/logout', (req, res) => {
-    keystone.session.signout(req, res, (err) => {
+    keystone.session.signout(req, res, () => {
       res.clearCookie('uid');
 
       return res.status(200).json({});

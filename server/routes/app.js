@@ -34,7 +34,7 @@ module.exports = app => {
       // for component caching
       cache: LRU({
         max: 1000,
-        maxAge: 1000 * 60 * 15
+        maxAge: 1000 * 60 * 15,
       }),
 
       // this is only needed when vue-server-renderer is npm-linked
@@ -42,7 +42,7 @@ module.exports = app => {
 
       // recommended for performance
       runInNewContext: false,
-    }))
+    }));
   }
 
   if (isProd) {
@@ -64,14 +64,14 @@ module.exports = app => {
     enableHMR.then(() => render(req, res));
   });
 
-  function render(req, res) {
+  function render (req, res) {
     res.setHeader('Content-Type', 'text/html');
     uidCookie.set(req, res);
 
     const context = {
       title: config.title,
       url: req.url,
-      cookie: req.headers.cookie
+      cookie: req.headers.cookie,
     };
 
     renderer.renderToString(context, (err, html) => {

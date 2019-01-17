@@ -10,7 +10,6 @@ module.exports = {
       res.cookie('canAccessContent', canAccessContent, { httpOnly: false });
     }
   },
-
   remove: (req, res) => {
     res.clearCookie('uid');
     res.clearCookie('canAccessKeystone');

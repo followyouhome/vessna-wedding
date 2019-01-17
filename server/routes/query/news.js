@@ -19,7 +19,7 @@ module.exports = (app, base) => {
 
     (req, res) => {
        responseHandler(res, null, output);
-    }
+    },
   ]);
 
   app.get(base + '/news/:slug', [
@@ -36,6 +36,6 @@ module.exports = (app, base) => {
 
     (req, res) => {
        responseHandler(res, null, output);
-    }
+    },
   ]);
 };

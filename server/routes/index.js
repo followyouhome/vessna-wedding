@@ -1,5 +1,3 @@
-const keystone = require('keystone');
-
 module.exports = app => {
   app.use((req, res, next) => {
     res.locals = {};

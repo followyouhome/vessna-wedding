@@ -4,7 +4,7 @@ const path = require('path');
 
 const isProd = process.env.NODE_ENV === 'production';
 const serve = (relativePath, cache) => express.static(path.resolve(__dirname, relativePath), {
-  maxAge: cache && isProd ? 1000 * 60 * 60 * 24 * 30 : 0
+  maxAge: cache && isProd ? 1000 * 60 * 60 * 24 * 30 : 0,
 });
 
 module.exports = app => {

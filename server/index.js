@@ -1,6 +1,5 @@
 const fs = require('fs');
 const keystone = require('keystone');
-const types = require('./keystone/models');
 
 require('dotenv').config();
 
