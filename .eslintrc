@@ -13,10 +13,10 @@
   "rules": {
     "semi": 2,
     "comma-dangle": ["error", "always-multiline"],
-    "keyword-spacing": ["error", { "before": true , "after": true }],
+    "keyword-spacing": ["error", {"before": true , "after": true}],
+    "no-unused-vars": ["error", {"vars": "all", "args": "after-used", "ignoreRestSiblings": false}],
     "space-before-function-paren": ["error", "always"],
     "no-trailing-spaces": "error",
-    "no-unused-vars": "error",
     "no-var": "error"
   }
 }

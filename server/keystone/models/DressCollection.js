@@ -4,7 +4,7 @@ const MainPromo = require('../partials/MainPromo');
 const Promo = require('../partials/Promo');
 const Seo = require('../partials/Seo');
 const {
-  PAGE_DRESS_COLLECTION, PAGE_DRESS_COLLECTION_PROM, PAGE_DRESS_COLLECTION_WEDDING, PAGE_DRESS_COLLECTION_CAPSULE,
+  PAGE_DRESS_COLLECTION_PROM, PAGE_DRESS_COLLECTION_WEDDING,
 } = require('../../../config/constants.js');
 
 const Inherit = [
@@ -64,7 +64,7 @@ DressCollection.add(...Inherit, 'Коллекция', {
 });
 
 DressCollection.schema.set('toJSON', {
-  transform: function(doc, ret, options) {
+  transform: function (doc, ret) {
     ret = Seo.methods.toJSON(ret);
 
     if (ret.type == 'prom') {
@@ -81,15 +81,15 @@ DressCollection.schema.set('toJSON', {
   },
 });
 
-DressCollection.schema.pre('save', function(next) {
+DressCollection.schema.pre('save', function (next) {
   const cloudinary = /(http|https):\/\/res.cloudinary.com\/vessna\/image\/upload\/.*\//;
   const local = '/images/';
 
   Promo.methods.save.call(this);
   MainPromo.methods.save.call(this);
 
-  if(this.images && this.images.length) {
-    for(let i = 0; i < this.images.length; i++) {
+  if (this.images && this.images.length) {
+    for (let i = 0; i < this.images.length; i++) {
       if (this.images[i].url) {
         this.images[i].url = this.images[i].url.replace(cloudinary, local);
       }

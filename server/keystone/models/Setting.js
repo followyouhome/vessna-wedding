@@ -49,7 +49,7 @@ Setting.add({
 });
 
 Setting.schema.set('toJSON', {
-  transform: (doc, ret, options) => {
+  transform: (doc, ret) => {
     if (ret.type === 'string') {
       ret.val = ret.value.string;
     } else if (ret.type === 'boolean') {

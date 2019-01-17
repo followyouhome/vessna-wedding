@@ -12,7 +12,7 @@ const Inherit = [
   'Большое промо', MainPromo.schema,
 ];
 
-var Page = new keystone.List('Page', {
+const Page = new keystone.List('Page', {
   label: 'Страницы',
   plural: 'Страницы',
   singular: 'Страница',
@@ -29,22 +29,22 @@ Page.add(...Inherit, 'Страница', {
 });
 
 Page.schema.set('toJSON', {
-  transform: function(doc, ret, options) {
+  transform: function (doc, ret) {
     ret = Seo.methods.toJSON(ret);
 
     return ret;
   },
 });
 
-Page.schema.pre('save', function(next) {
+Page.schema.pre('save', function (next) {
   const cloudinary = /(http|https):\/\/res.cloudinary.com\/vessna\/image\/upload\/.*\//;
   const local = '/images/';
 
   Promo.methods.save.call(this);
   MainPromo.methods.save.call(this);
 
-  if(this.images && this.images.length) {
-    for(let i = 0; i < this.images.length; i++) {
+  if (this.images && this.images.length) {
+    for (let i = 0; i < this.images.length; i++) {
       if (this.images[i].url) {
         this.images[i].url = this.images[i].url.replace(cloudinary, local);
       }

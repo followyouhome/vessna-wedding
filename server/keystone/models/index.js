@@ -1,7 +1,6 @@
-require('./User');
-require('./Page');
-require('./News');
-require('./Dress');
-require('./DressCollection');
-require('./Feedback');
-require('./Setting');
+/**
+ * Require all files in current folder.
+ */
+require("fs").readdirSync(__dirname).forEach(file => {
+  require("./" + file);
+});

@@ -1,5 +1,4 @@
 const keystone = require('keystone');
-const Types = keystone.Field.Types;
 
 const Feedback = new keystone.List('Feedback', {
   label: 'Отзывы',

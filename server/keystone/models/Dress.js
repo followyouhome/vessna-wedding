@@ -29,7 +29,7 @@ Dress.add(...Inherit, 'Параметры', {
     label: 'Фотографии платья',
     type: Types.CloudinaryImages,
     uploadOptions: { use_filename: true, unique_filename: false },
-    generateFilename: function(file, attemptNumber, callback) {
+    generateFilename: function (file, attemptNumber, callback) {
       callback(null, file.originalname);
     },
   },
@@ -40,7 +40,7 @@ Dress.add(...Inherit, 'Параметры', {
 });
 
 Dress.schema.set('toJSON', {
-  transform: function(doc, ret, options) {
+  transform: function (doc, ret) {
     ret = Seo.methods.toJSON(ret);
 
     ret = Promo.methods.toJSON(ret);
@@ -50,15 +50,15 @@ Dress.schema.set('toJSON', {
   },
 });
 
-Dress.schema.pre('save', function(next) {
+Dress.schema.pre('save', function (next) {
   const cloudinary = /(http|https):\/\/res.cloudinary.com\/vessna\/image\/upload\/.*\//;
   const local = '/images/';
 
   Promo.methods.save.call(this);
   MainPromo.methods.save.call(this);
 
-  if(this.images && this.images.length) {
-    for(let i = 0; i < this.images.length; i++) {
+  if (this.images && this.images.length) {
+    for (let i = 0; i < this.images.length; i++) {
       if (this.images[i].url) {
         this.images[i].url = this.images[i].url.replace(cloudinary, local);
       }
