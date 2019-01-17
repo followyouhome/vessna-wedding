@@ -15,10 +15,8 @@ const productionLoaders = [
   {
     loader: 'sass-loader',
     options: {
-
     },
   },
-  // { loader: 'postcss-loader' },
   { loader: 'sass-resources-loader',
     options: {
       resources: [
@@ -29,7 +27,6 @@ const productionLoaders = [
       ],
     },
   },
-
 ];
 
 let devLoaders = [{ loader: 'vue-style-loader' }].concat(_.clone(productionLoaders, true));

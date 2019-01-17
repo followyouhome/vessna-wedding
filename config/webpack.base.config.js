@@ -1,21 +1,22 @@
-var path = require('path');
-var webpack = require('webpack');
+/**
+ * Webpack base configuration for both server and client.
+ */
+const path = require('path');
 const CleanPlugin = require('clean-webpack-plugin');
 const BabiliPlugin = require('babili-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 
-
 const isProd = process.env.NODE_ENV === 'production';
 const resolve = file => path.resolve(__dirname, file);
 
-var config = {
+const config = {
   devtool: isProd ? false : 'cheap-module-source-map',
   context: resolve('../src'),
   output: {
     path: resolve('../dist'),
     publicPath: '/dist/',
-    filename: '[name].[chunkhash].js'
+    filename: '[name].[chunkhash].js',
   },
   module: {
     rules: [
@@ -24,47 +25,46 @@ var config = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
           limit: 10000,
-          name: '[name].[ext]?[hash]'
-        }
+          name: '[name].[ext]?[hash]',
+        },
       },
-
-    ]
+    ],
   },
   performance: {
     maxEntrypointSize: 300000,
-    hints: isProd ? 'warning' : false
+    hints: isProd ? 'warning' : false,
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       '@': resolve('../src'),
       'vue$': 'vue/dist/vue.esm.js',
-    }
+    },
   },
   plugins: isProd
     ? [
       new BabiliPlugin(),
       new ExtractTextPlugin({
-        filename: 'common.[chunkhash].css'
-      })
+        filename: 'common.[chunkhash].css',
+      }),
     ]
     : [
-      // new CleanPlugin(['dist/*.*', '!dist/.gitignore'], {
-      //   root: process.cwd()
-      // }),
+      new CleanPlugin(['dist/*.*', '!dist/.gitignore'], {
+        root: process.cwd(),
+      }),
       new FriendlyErrorsPlugin({
         compilationSuccessInfo: {
           messages: ['You application is running at http://localhost:3000'],
-        }
+        },
       }),
-    ]
+    ],
 };
 
 module.exports = config;

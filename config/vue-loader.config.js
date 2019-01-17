@@ -11,10 +11,10 @@ module.exports = {
   options: {
     cssSourceMap: !isProd,
     cssModules: {
-      localIdentName: '[path][name]---[local]---[hash:base64:5]'
+      localIdentName: '[path][name]---[local]---[hash:base64:5]',
     },
     extractCSS: isProd,
     preserveWhitespace: !isProd,
-    loaders: { scss }
-  }
+    loaders: { scss },
+  },
 };
