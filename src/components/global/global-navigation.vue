@@ -33,16 +33,16 @@
           <span class="global-navigation__icon icon-bars"></span>
         </div>
         <ul class="global-navigation__secondary-list">
-          <li class="global-navigation__secondary-list__item" v-if="!user">
-            <div class="global-navigation__secondary-list__item__link" @click="login">
+          <li class="global-navigation__secondary-list__item">
+            <router-link class="global-navigation__secondary-list__item__link" to="/user/login">
               <span class="global-navigation__text">Войти</span>
-            </div>
+            </router-link>
           </li>
-          <li class="global-navigation__secondary-list__item" v-if="!user">
+          <!-- <li class="global-navigation__secondary-list__item" v-if="!user">
             <div class="global-navigation__secondary-list__item__link" @click="signup">
               <span class="global-navigation__text">Зарегистрироваться</span>
             </div>
-          </li>
+          </li> -->
           <!-- <li class="navigation__secondary-list__item" v-if="user">
             <div class="navigation__secondary-list__item__link" @click="logout">
               <span class="navigation__secondary-text">Выход</span>

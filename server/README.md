@@ -1,29 +1,28 @@
-## Members
+<a name="/user"></a>
 
-<dl>
-<dt><a href="#Get user info">Get user info</a></dt>
-<dd></dd>
-<dt><a href="#User login">User login</a></dt>
-<dd></dd>
-<dt><a href="#User logout">User logout</a></dt>
-<dd></dd>
-<dt><a href="#User signup">User signup</a></dt>
-<dd></dd>
-</dl>
+## ~/user()
+Get actual logged user from keystone
 
-<a name="Get user info"></a>
+**Kind**: inner function  
+<a name="/user"></a>
 
-## Get user info
-**Kind**: global variable  
-<a name="User login"></a>
+## ~/user()
+Login user to keystone
 
-## User login
-**Kind**: global variable  
-<a name="User logout"></a>
+**Kind**: inner function  
+<a name="/user/logout"></a>
 
-## User logout
-**Kind**: global variable  
-<a name="User signup"></a>
+## ~/user/logout()
+Logout user from keystone
 
-## User signup
-**Kind**: global variable  
+**Kind**: inner function  
+<a name="/user/signup"></a>
+
+## ~/user/signup()
+Signup user to newsletter
+
+**Kind**: inner function  
+**Todo**
+
+- [ ] Uncomplete
+

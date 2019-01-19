@@ -53,7 +53,7 @@ module.exports = (app, base) => {
       query.exec((err, result) => {
         output.collections = {};
 
-        for(let collection of result) {
+        for (let collection of result) {
           if (collection.type === FILTER[req.query.slug]) {
             output.collections[collection.slug] = collectionFormat(collection);
           }
@@ -70,7 +70,6 @@ module.exports = (app, base) => {
 
   app.get(base + '/collection/:slug', [
     (req, res, next) => {
-      console.log("AZAZA", req.params.slug);
       const query = keystone.list('DressCollection')
                       .model
                       .findOne({ slug: req.params.slug });

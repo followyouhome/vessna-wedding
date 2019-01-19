@@ -4,6 +4,7 @@ const User = keystone.list('user');
 
 function userFormat (user) {
   return {
+    uid: user._id,
     name: user.name,
     info: user.info,
     email: user.email,
@@ -31,7 +32,10 @@ function userCreate (user) {
 
 module.exports = (app, base) => {
   /**
-   * @name Get user info
+   * @name /user
+   * @kind function
+   * @description Get actual logged user from keystone
+   * @inner
    */
   app.get(base + '/user', (req, res) => {
     if (req.user) {
@@ -42,7 +46,10 @@ module.exports = (app, base) => {
   });
 
   /**
-   * @name User login
+   * @name /user/login
+   * @kind function
+   * @description Login user to keystone
+   * @inner
    */
   app.post(base + '/user/login', (req, res) => {
     if (!req.body.email || !req.body.password) {
@@ -59,18 +66,25 @@ module.exports = (app, base) => {
   });
 
   /**
-   * @name User logout
+   * @name /user/logout
+   * @kind function
+   * @description Logout user from keystone
+   * @inner
    */
   app.post(base + '/user/logout', (req, res) => {
     keystone.session.signout(req, res, () => {
       res.clearCookie('uid');
 
-      return res.status(200).json({});
+      return res.status(200).json(userFormat({}));
     });
   });
 
   /**
-   * @name User signup
+   * @name /user/signup
+   * @kind function
+   * @description Signup user to newsletter
+   * @todo Uncomplete
+   * @inner
    */
   app.post(base + '/user/signup', (req, res) => {
     User.model.findOne({ email: data.email }).exec((err, user) => {

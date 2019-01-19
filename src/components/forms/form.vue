@@ -20,14 +20,14 @@
         this.request = true;
 
         return new Promise((resolve, reject) => {
-          this.$store.dispatch('login', this.form).then((data) => {
+          this.$store.dispatch(this.action, this.form).then((data) => {
             this.success = true;
-            resolve();
+            this.request = false;
+            resolve(data);
           }).catch((err) => {
             this.fail = true;
-            reject();
-          }).finnaly(() => {
             this.request = false;
+            reject(err);
           });
         });
       },

@@ -1,6 +1,7 @@
 <template>
   <main class="main main--layout-1-1 main--width-limit">
-    <form-user-login/>
+    <form-user-login v-if="!user"/>
+    <form-user-logout v-if="user"/>
     <module-article :article="content"/>
   </main>
 </template>
@@ -9,10 +10,15 @@
   import Page from '@/components/pages/page.vue';
   import ModuleArticle from '@/components/module/module-article.vue';
   import FormUserLogin from '@/components/forms/form-user-login.vue';
+  import FormUserLogout from '@/components/forms/form-user-logout.vue';
 
   import store from '../../../store/';
 
-  function fetch (store, route) {
+  import {
+    mapGetters,
+  } from 'vuex';
+
+  function fetch (store) {
     return Promise.all([
       store.dispatch('fetch', {
         namespace: 'page',
@@ -22,13 +28,14 @@
   }
 
   export default {
-    name: 'page-user-login',
+    name: 'PageUserLogin',
 
     extends: Page,
 
     components: {
       'module-article': ModuleArticle,
       'form-user-login': FormUserLogin,
+      'form-user-logout': FormUserLogout,
     },
 
     asyncData ({ store, route }) {
@@ -38,6 +45,14 @@
       ]);
     },
 
+    beforeRouteEnter (to, from, next) {
+      __VUE_ENV__ === 'server' ? next() : fetch(store, to).then(() => next());
+    },
+
+    beforeRouteUpdate (to, from, next) {
+      __VUE_ENV__ === 'server' ? next() : fetch(store, to).then(() => next());
+    },
+
     data () {
       return {
 
@@ -45,6 +60,9 @@
     },
 
     computed: {
+      ...mapGetters({
+        user: 'isLogged',
+      }),
       content () {
         return this.$store.state.page.content;
       },

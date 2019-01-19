@@ -4,23 +4,16 @@ import axios from 'axios';
 
 import user from './modules/user';
 import popup from './modules/popup';
-import config from '../../config';
+import config from '@/../config';
 
 Vue.use(Vuex);
 
+const base = config.api.base;
 const settings = {
-  proxy: { port: process.env.PORT, host: '127.0.0.1' },
+  proxy: { port: process.env.PORT, host: 'localhost' },
 };
 
-if (__VUE_ENV__ === 'server' && Vue.cookies) {
-  settings.headers = { cookie: Vue.cookies.getCookieString() };
-}
-
-const base = '/api';
-
-const state = {
-
-};
+const state = {};
 
 const actions = {
   fetch (store, { endpoint, namespace, id, params, global }) {
@@ -34,7 +27,9 @@ const actions = {
       uri += '/' + id;
     }
 
-    // settings.headers = { cookie: Vue.cookies.getCookieString() };
+    if (__VUE_ENV__ === 'server' && Vue.cookies) {
+      settings.headers = { cookie: Vue.cookies.getCookieString() };
+    }
 
     return axios
       .get(uri, Object.assign({ params }, settings))

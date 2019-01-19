@@ -17,12 +17,24 @@ if (__VUE_ENV__ === 'server' && Vue.cookies) {
   settings.headers = { cookie: Vue.cookies.getCookieString() };
 }
 
-const state = {};
+const state = {
+  uid: null,
+  name: null,
+  info: null,
+  email: null,
+  access: null,
+};
+
+const getters = {
+  isLogged (state) {
+    return !!(state.uid && state.email);
+  },
+};
 
 const actions = {
   login (store, { email, password }) {
     return axios
-      .post(base + '/user/login', { email, password })
+      .post(base + `/user/login`, { email, password })
       .then(({ data }) => {
         store.commit(USER_LOGIN, data);
       })
@@ -34,9 +46,8 @@ const actions = {
   logout (store) {
     return axios
       .post(base + '/user/logout', {})
-      .then(({ data }) => {
+      .then(() => {
         store.commit(USER_LOGOUT);
-        return data;
       })
       .catch(err => {
         return err;
@@ -72,14 +83,20 @@ const actions = {
 };
 
 const mutations = {
-  [USER_LOGIN] (state, payload) {
-    Vue.cookies.set('uid', data._id);
-
-    return data;
+  [USER_LOGIN] (state, user) {
+    Vue.set(state, 'uid',  user.uid);
+    Vue.set(state, 'name',  user.name);
+    Vue.set(state, 'info',  user.info);
+    Vue.set(state, 'email',  user.email);
+    Vue.set(state, 'access',  user.access);
   },
 
-  [USER_LOGOUT] () {
-
+  [USER_LOGOUT] (state) {
+    Vue.set(state, 'uid',  null);
+    Vue.set(state, 'name', null);
+    Vue.set(state, 'info', null);
+    Vue.set(state, 'email', null);
+    Vue.set(state, 'access', null);
   },
 
   [USER_SUBSCRIBE] (state) {
@@ -93,6 +110,7 @@ const mutations = {
 
 export default {
   state,
+  getters,
   actions,
   mutations,
 };

@@ -1,5 +1,5 @@
 <template>
-  <form class="form form-user-login form--column" v-on:submit.prevent="login">
+  <form class="form form-user-login form--column" v-on:submit.prevent="submit">
     <div class="form__row">
       <legend class="popup-login__title">Вход</legend>
     </div>
@@ -31,16 +31,14 @@
   import Form from './form.vue';
 
   export default {
-    name: 'form-user-login',
+    name: 'FormUserLogout',
 
     extends: Form,
 
     data () {
       return {
-        config: {
-          selector: '',
-          sitekey: '',
-        },
+        recaptcha: true,
+        action: 'login',
         form: {
           email: '',
           password: '',
@@ -48,24 +46,9 @@
       };
     },
 
-    computed: {
-      disabled () {
-        // return !this.form.email.length
-          // || !this.form.password.length
-          // || !this.status.recaptcha;
-      },
-    },
-
     methods: {
       captcha () {
         this.recaptcha = true;
-      },
-      login () {
-        this.submit().then(() => {
-
-        }).catch(() => {
-
-        });
       },
     },
   };

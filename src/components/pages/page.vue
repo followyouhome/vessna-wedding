@@ -38,23 +38,18 @@
     },
 
     asyncData ({ store, route }) {
-
+      return Promise.all([
+        store.dispatch('fetch', {
+          namespace: 'user',
+          endpoint: 'user',
+        }),
+      ]);
     },
 
     computed: {
       seo () {
         return this.$store.state.page && this.$store.state.page.seo;
       },
-    },
-
-    mounted () {
-      if (__VUE_ENV__ === 'client') {
-        if (Vue.cookie.get('uid') && Vue.cookie.get('uid') !== this.$store.state.global.user._id) {
-          this.$store.state.global.user._id = Vue.cookie.get('uid');
-          this.$store.state.global.user.canAccessKeystone = Vue.cookie.get('canAccessKeystone') === 'true';
-          this.$store.state.global.user.canAccessContent = Vue.cookie.get('canAccessContent') === 'true';
-        }
-      }
     },
   };
 </script>
