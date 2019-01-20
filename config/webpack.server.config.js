@@ -25,7 +25,7 @@ module.exports = merge(baseConfig, {
     whitelist: /\.css$/, // Do not externalize CSS files in case we need to import it from a dep
   }),
   plugins: [
-    new EnvironmentPlugin(['PORT', 'NODE_ENV']),
+    new EnvironmentPlugin(['NODE_ENV']),
     new VueSSRServerPlugin(),
     new DefinePlugin({
       __VUE_ENV__: '"server"',

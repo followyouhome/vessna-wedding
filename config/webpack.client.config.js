@@ -21,7 +21,7 @@ module.exports = merge(baseConfig, {
       },
   },
   plugins: [
-    new EnvironmentPlugin(['PORT', 'NODE_ENV']),
+    new EnvironmentPlugin(['NODE_ENV']),
     new VueSSRClientPlugin(),
     new DefinePlugin({
       __VUE_ENV__: '"client"',
