@@ -2,7 +2,7 @@
   "name": "Vessna-Wedding",
   "version": "0.0.1",
   "engines": {
-    "node": "11.x",
+    "node": "10.x",
     "npm": "6.x"
   },
   "scripts": {
@@ -13,6 +13,7 @@
     "watch:server": "cross-env NODE_ENV=develop webpack --config config/webpack.server.config.js --progress --hide-modules --watch",
     "lint": "eslint src/** --fix --ext .js --ext .vue",
     "postinstall": "npm run build",
+    "prestart": "npm run build",
     "start": "cross-env NODE_ENV=production node server",
     "dev": "cross-env NODE_ENV=develop node server",
     "dev:macos": "ttab 'mongod --dbpath ~/Documents/Mongo/Vessna-Wedding' && ttab 'npm run watch:server' && ttab 'npm run watch:client' && npm run dev",
@@ -58,6 +59,7 @@
     "memory-fs": "^0.4.1",
     "mobile-detect": "^1.4.1",
     "mongodb": "^3.0.0-rc0",
+    "newrelic": "^5.1.0",
     "node-sass": "^4.11.0",
     "postcss-cssnext": "^3.0.2",
     "postcss-loader": "^2.0.6",
