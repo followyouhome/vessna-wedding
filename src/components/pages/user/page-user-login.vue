@@ -67,7 +67,6 @@
         return this.$store.state.page.content;
       },
     },
-
   };
 </script>
 

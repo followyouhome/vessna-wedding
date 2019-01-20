@@ -34,5 +34,8 @@
 </script>
 
 <style lang="scss">
-
+  .g-recaptcha {
+    margin: auto;
+    width: 304px;
+  }
 </style>
