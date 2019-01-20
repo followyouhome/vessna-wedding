@@ -19,7 +19,7 @@
           </li>
         </ul>
       </li>
-      <li class="global-navigation__main-list__item">
+      <!-- <li class="global-navigation__main-list__item">
         <div class="global-navigation__main-list__item__link">
           <span class="global-navigation__text" itemprop="name">Сотрудничество</span>
           <span class="global-navigation__icon icon-bars"></span>
@@ -31,7 +31,7 @@
             </div>
           </li>
         </ul>
-      </li>
+      </li> -->
       <li class="global-navigation__main-list__item">
         <div class="global-navigation__main-list__item__link">
           <span class="global-navigation__text" itemprop="name">Для клиентов</span>
@@ -48,21 +48,21 @@
               <span class="global-navigation__text">Зарегистрироваться</span>
             </router-link>
           </li>
-          <li class="global-navigation__secondary-list__item">
+          <!-- <li class="global-navigation__secondary-list__item">
             <router-link class="global-navigation__secondary-list__item__link" to="/user/settings">
               <span class="global-navigation__text">Настройки</span>
             </router-link>
-          </li>
-          <li class="global-navigation__secondary-list__item">
+          </li> -->
+          <!-- <li class="global-navigation__secondary-list__item">
             <div class="navigation__secondary-list__item__link">
               <a class="navigation__secondary-text" target="_blank" href="https://yadi.sk/d/0vDMd0fh3T3bPW">Прайсы</a>
             </div>
-          </li>
-          <li class="global-navigation__secondary-list__item">
+          </li> -->
+          <!-- <li class="global-navigation__secondary-list__item">
             <div class="navigation__secondary-list__item__link">
               <a class="navigation__secondary-text" target="_blank" href="https://yadi.sk/d/F8LsI7d13T3bcu">Контент</a>
             </div>
-          </li>
+          </li> -->
         </ul>
       </li>
     </ul>
