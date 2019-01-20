@@ -58,7 +58,7 @@ const actions = {
     return axios
       .post(base + '/user/signup', payload)
       .then(({ data }) => {
-        store.commit('replaceItems', { namespace: 'user', data, global: true });
+        store.commit(USER_LOGIN, data);
         return data;
       })
       .catch(err => {

@@ -4,29 +4,35 @@
       <legend class="popup-login__title">Регистрация</legend>
     </div>
     <div class="form__row">
-      <input class="form__input-text" v-model.trim="form.email" type="email" placeholder="Email">
+      <input class="form__input-text" v-model.trim="form.name" type="text" placeholder="Имя" required>
     </div>
     <div class="form__row">
-      <input class="form__input-text" v-model="form.password" type="password" placeholder="Пароль">
-    </div>
-    <hr class="form__divider"/>
-    <div class="form__row">
-      <input class="form__input-text" v-model="form.city" type="text" placeholder="Город">
+      <input class="form__input-text" v-model.trim="form.email" type="email" placeholder="Email" required>
     </div>
     <div class="form__row">
-      <input class="form__input-text" v-model="form.shop" type="text" placeholder="Магазин">
-    </div>
-    <div class="form__row">
-      <input class="form__input-text" v-model="form.phone" type="phone" placeholder="Телефон">
+      <input class="form__input-text" v-model="form.password" type="password" placeholder="Пароль" required>
     </div>
     <hr class="form__divider"/>
     <div class="form__row">
-      <input class="form__input-text" v-model="form.phone" type="checkbox" placeholder="Телефон">
-      <label>Подписаться на рассылку</label>
+      <input class="form__input-text" v-model="form.info.city" type="text" placeholder="Город" required>
     </div>
     <div class="form__row">
-      <input class="form__input-text" v-model="form.phone" type="checkbox" placeholder="Телефон">
-      <label>Согласие с пользовательским соглашением</label>
+      <input class="form__input-text" v-model="form.info.shop" type="text" placeholder="Магазин" required>
+    </div>
+    <div class="form__row">
+      <input class="form__input-text" v-model="form.info.phone" type="phone" placeholder="Телефон" required>
+    </div>
+    <hr class="form__divider"/>
+    <div class="form__row">
+      <input class="form__input-text" v-model="form.promocode" type="phone" placeholder="Промокод">
+    </div>
+    <div class="form__row">
+      <input class="form__input-checkbox" v-model="form.access.subscription" type="checkbox">
+      <label class="form__input-label">Подписаться на рассылку</label>
+    </div>
+    <div class="form__row">
+      <input class="form__input-checkbox" v-model="form.agreement" type="checkbox" required>
+      <label class="form__input-label">Согласие с пользовательским соглашением</label>
     </div>
     <hr class="form__divider"/>
     <div class="form__row">
@@ -64,9 +70,14 @@
           name: '',
           email: '',
           password: '',
-          shop: '',
-          city: '',
-          phone: '',
+          info: {
+            shop: '',
+            city: '',
+            phone: '',
+          },
+          access: {
+            subscription: '',
+          },
         },
       };
     },
@@ -76,9 +87,7 @@
     },
 
     methods: {
-      captcha () {
-        this.recaptcha = true;
-      },
+
     },
   };
 </script>

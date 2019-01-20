@@ -1903,27 +1903,6 @@ ul {
     filter: blur(20px)
 }
 
-.form__input-text {
-    padding: 0 10px;
-    margin: 10px 0;
-    height: 30px;
-    box-sizing: border-box;
-    resize: none;
-    border: 1px solid #e5e5e5;
-    border-radius: 1px;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .04);
-    background: #fff;
-    font-size: 12px;
-    line-height: 16px
-}
-
-.form__input-text:focus {
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .08);
-    background: #f8f8f8;
-    border: 1px solid #e5e5e5;
-    outline: 0
-}
-
 .form__input-row {
     margin-bottom: 10px
 }

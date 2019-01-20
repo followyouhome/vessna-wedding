@@ -12,24 +12,6 @@ function userFormat (user) {
   };
 }
 
-function userCreate (user) {
-  return new User.model({
-    name: user.name,
-    email: user.email,
-    password: user.password,
-    phone: user.phone,
-    city: user.city,
-    shop: user.shop,
-  }).save(() => {
-    keystone.session.signin({ email: req.body.email, password: req.body.password }, req, res, function () {
-      uidCookie.set(req, res);
-      responseHandler(res, null, userFormat(req.user));
-    }, () => {
-      return res.status(401).json({ error: 'wrong login or password' });
-    });
-  });
-}
-
 module.exports = (app, base) => {
   /**
    * @name /user
@@ -87,12 +69,35 @@ module.exports = (app, base) => {
    * @inner
    */
   app.post(base + '/user/signup', (req, res) => {
-    User.model.findOne({ email: data.email }).exec((err, user) => {
+    User.model.findOne({ email: req.body.email }).exec((err, user) => {
       if (err || user) {
         return res.status(400).json({ error: 'cannot create user' });
       }
 
-      return res.status(200).json({user: userCreate(req.body) });
+      user = req.body;
+
+      return new User.model({
+        name: user.name,
+        email: user.email,
+        password: user.password,
+        info: {
+          phone: user.info.phone,
+          city: user.info.city,
+          shop: user.info.shop,
+        },
+        access: {
+          content: false,
+          keystone: false,
+          subscription: user.access.subscription,
+        },
+      }).save(() => {
+        keystone.session.signin({ email: user.email, password: user.password }, req, res, function () {
+          res.cookie('uid', req.user._id, { httpOnly: false });
+          return res.status(200).json(userFormat(user));
+        }, () => {
+          return res.status(401).json({ error: 'wrong login or password' });
+        });
+      });
     });
   });
 };
