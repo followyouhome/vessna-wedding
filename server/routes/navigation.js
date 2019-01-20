@@ -20,9 +20,6 @@ module.exports = (app) => {
                       .model.find();
 
       data = [{
-        label: 'Главная страница',
-        route: PAGE_HOMEPAGE,
-      }, {
         label: 'Новости',
         route: PAGE_NEWS_HUB,
       }];

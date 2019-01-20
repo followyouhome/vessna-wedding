@@ -1,6 +1,11 @@
 <template>
-  <nav class="global-navigation">
+  <nav class="global-navigation" ref="navigation">
     <ul class="global-navigation__main-list" itemscope="" itemtype="https://www.schema.org/SiteNavigationElement">
+      <li class="global-navigation__main-list__item">
+          <router-link class="global-navigation__main-list__item__link" to="/">
+            <vector-logo/>
+          </router-link>
+      </li>
       <li class="global-navigation__main-list__item" v-for="item in items">
         <router-link class="global-navigation__main-list__item__link" v-bind:to="getRoute(item)">
           <span class="global-navigation__text" itemprop="name">{{ item.label }}</span>
@@ -35,29 +40,29 @@
         <ul class="global-navigation__secondary-list">
           <li class="global-navigation__secondary-list__item">
             <router-link class="global-navigation__secondary-list__item__link" to="/user/login">
-              <span class="global-navigation__text">Войти</span>
+              <span class="global-navigation__text">Войти в кабинет</span>
             </router-link>
           </li>
-          <!-- <li class="global-navigation__secondary-list__item" v-if="!user">
-            <div class="global-navigation__secondary-list__item__link" @click="signup">
+          <li class="global-navigation__secondary-list__item">
+            <router-link class="global-navigation__secondary-list__item__link" to="/user/registartion">
               <span class="global-navigation__text">Зарегистрироваться</span>
-            </div>
-          </li> -->
-          <!-- <li class="navigation__secondary-list__item" v-if="user">
-            <div class="navigation__secondary-list__item__link" @click="logout">
-              <span class="navigation__secondary-text">Выход</span>
-            </div>
-          </li> -->
-          <!-- <li class="navigation__secondary-list__item" v-if="user">
+            </router-link>
+          </li>
+          <li class="global-navigation__secondary-list__item">
+            <router-link class="global-navigation__secondary-list__item__link" to="/user/settings">
+              <span class="global-navigation__text">Настройки</span>
+            </router-link>
+          </li>
+          <li class="global-navigation__secondary-list__item">
             <div class="navigation__secondary-list__item__link">
               <a class="navigation__secondary-text" target="_blank" href="https://yadi.sk/d/0vDMd0fh3T3bPW">Прайсы</a>
             </div>
-          </li> -->
-          <!-- <li class="navigation__secondary-list__item" v-if="available">
+          </li>
+          <li class="global-navigation__secondary-list__item">
             <div class="navigation__secondary-list__item__link">
               <a class="navigation__secondary-text" target="_blank" href="https://yadi.sk/d/F8LsI7d13T3bcu">Контент</a>
             </div>
-          </li> -->
+          </li>
         </ul>
       </li>
     </ul>
@@ -65,10 +70,18 @@
 </template>
 
 <script>
+  import Stickyfill from 'stickyfill';
+
   export default {
     name: 'GlobalNavigation',
 
     props: ['navigation'],
+
+    data () {
+      return {
+
+      };
+    },
 
     computed: {
       items () {
@@ -109,6 +122,15 @@
         };
       },
     },
+
+    mounted () {
+      if (__VUE_ENV__ === 'client') {
+        const stickyfill = window.stickyfill || Stickyfill();
+
+        stickyfill.add(this.$refs.navigation);
+        window.stickyfill = stickyfill;
+      }
+    },
   };
 </script>
 
@@ -137,17 +159,26 @@
   }
 
   .global-navigation {
-    position: relative;
+    position: sticky;
+    top: 0;
     background: $white;
+    z-index: 100000;
+
+    &:hover + * {
+      opacity: 0.2;
+    }
   }
 
   .global-navigation__main-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 60px;
     text-align: center;
   }
 
   .global-navigation__main-list__item {
-    display: inline-block;
+    position: relative;
     margin: 0 0.5rem;
     height: 100%;
     list-style: none;
@@ -170,8 +201,11 @@
   .global-navigation__secondary-list {
     display: none;
     position: absolute;
-    height: 60px;
-    width: 100%;
+    padding: 16px;
+    height: auto;
+    width: auto;
+    min-width: 100%;
+    box-sizing: border-box;
     left: 0;
     top: 100%;
     text-align: center;
@@ -181,15 +215,15 @@
 
     .global-navigation__main-list__item:hover & {
       display: block;
-
     }
   }
 
   .global-navigation__secondary-list__item {
-    display: inline-block;
-    margin: 0 0.5rem;
+    display: block;
+    margin: 0.5rem;
     height: 100%;
     list-style: none;
+    text-align: left;
   }
 
   .global-navigation__secondary-list__item__link {

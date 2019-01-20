@@ -5,16 +5,19 @@
         <defs>
           <style type="text/css">
             .fil0 {
-              fill:#2B2A29;
-              fill-rule:nonzero;
+              fill: #FFF;
+              fill-rule: nonzero;
             }
           </style>
         </defs>
         <mask id="svg-mask">
             <use xlink:href="#svg-mask__inner" />
         </mask>
-        <symbol id="svg-mask__background">
+        <symbol id="svg-mask__image">
             <image :xlink:href="background" width="100%" height="100%" />
+        </symbol>
+        <symbol id="svg-mask__background">
+            <rect class="shape" height="3000" width="10000" fill="#000" />
         </symbol>
         <symbol id="svg-mask__inner">
           <g id="VESSNA">
@@ -36,10 +39,6 @@
     <div class="vector-logo__image">
 
     </div>
-
-
-
-
   </div>
 </template>
 
@@ -51,8 +50,7 @@
       return {
         index: 0,
         images: [
-          'https://img-fotki.yandex.ru/get/7/yoksel.4f/0_39955_f25b22ae_M', // TODO move this to db
-          'https://basicagency.com/imager/uploads/case-studies/BB-Dakota/4286/bb-dakota-fashion-ecommerce-user-experience-web-design-case-study-brand-guidelines-carousel-image-1_09b81fab2c119efd1c977773f4d64d1d.jpg',
+          'https://upload.wikimedia.org/wikipedia/commons/9/99/Black_square.jpg',
         ],
       };
     },
@@ -66,7 +64,6 @@
     methods: {
       updateIndex () {
         this.index = Math.floor(Math.random() * this.images.length);
-        console.log(this.index);
       },
     },
   };
@@ -74,6 +71,6 @@
 
 <style lang="scss">
   .vector-logo {
-    display: none;
+    width: 100px;
   }
 </style>
