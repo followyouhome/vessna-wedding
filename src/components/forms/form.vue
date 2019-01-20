@@ -55,6 +55,8 @@
   }
 
   .form {
+    box-sizing: border-box;
+
     &--row {
       display: flex;
       align-items: center;
@@ -76,6 +78,13 @@
     & > * {
       width: 100%;
     }
+  }
+
+  .form__divider {
+    width: 100%;
+    height: 1px;
+    border: none;
+    background: $gray3;
   }
 
   .form__button-submit {
