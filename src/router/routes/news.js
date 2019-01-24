@@ -6,6 +6,6 @@ export default [{
   component: () => import('@/components/pages/news/page-news-hub.vue'),
 }, {
   name: ROUTES.PAGE_NEWS,
-  path: '/news/:news',
+  path: '/news/:slug',
   component: () => import('@/components/pages/news/page-news.vue'),
 }];

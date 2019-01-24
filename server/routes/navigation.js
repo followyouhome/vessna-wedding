@@ -29,26 +29,13 @@ module.exports = (app) => {
           label: 'Свадебные платья',
           // route: PAGE_DRESS_COLLECTION_HUB,
           path: '/wedding-dresses',
-          items: result.reduce(function (result, element) {
-            if (element.type === FILTER_WEDDING && element.state == 'published') {
-              result.push(element);
-            }
-
-            return result;
-          }, []),
+          items: result.filter(item => item.type === FILTER_WEDDING && item.state == 'published').sort((a, b) => a.sortOrder - b.sortOrder),
         });
 
         data.push({
           label: 'Вечерние платья',
-          // route: PAGE_DRESS_COLLECTION_HUB,
           path: '/prom-and-party-dresses',
-          items: result.reduce(function (result, element) {
-            if (element.type === FILTER_PROM && element.state == 'published') {
-              result.push(element);
-            }
-
-            return result;
-          }, []),
+          items: result.filter(item => item.type === FILTER_PROM && item.state == 'published').sort((a, b) => a.sortOrder - b.sortOrder),
         });
 
         next();
