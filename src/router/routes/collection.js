@@ -7,7 +7,7 @@ export default [{
 },
 {
   name: ROUTES.PAGE_DRESS_COLLECTION_PROM,
-  path: '/prom-and-party-dresses/:collection',
+  path: '/prom-and-party-dresses/:slug',
   component: () => import('@/components/pages/collection/page-dress-collection.vue'),
 },
 {
@@ -17,16 +17,16 @@ export default [{
 },
 {
   name: ROUTES.PAGE_DRESS_COLLECTION_WEDDING,
-  path: '/wedding-dresses/:collection',
+  path: '/wedding-dresses/:slug',
   component: () => import('@/components/pages/collection/page-dress-collection.vue'),
 },
 {
   name: ROUTES.PAGE_DRESS_COLLECTION_CAPSULE,
-  path: '/capsule-collection/:collection',
+  path: '/capsule-collection/:slug',
   component: () => import('@/components/pages/collection/page-dress-collection.vue'),
 },
 {
   name: ROUTES.PAGE_DRESS_COLLECTION,
-  path: '/collection/:collection',
+  path: '/collection/:slug',
   component: () => import('@/components/pages/collection/page-dress-collection.vue'),
 }];

@@ -10,7 +10,7 @@ module.exports = {
 
   // Dress pages
   PAGE_DRESS_COLLECTION_HUB: 'page-dress-collection-hub',
-  PAGE_DRESS_COLLECTION_PROM: 'page-dress-collection-promo',
+  PAGE_DRESS_COLLECTION_PROM: 'page-dress-collection-prom',
   PAGE_DRESS_COLLECTION_WEDDING: 'page-dress-collection-wedding',
   PAGE_DRESS_COLLECTION_CAPSULE: 'page-dress-collection-capsule',
   PAGE_DRESS_COLLECTION: 'page-dress-collection',

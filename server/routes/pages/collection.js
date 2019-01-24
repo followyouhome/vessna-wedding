@@ -1,9 +1,15 @@
 const keystone = require('keystone');
 const responseHandler = require('../../lib/response-handler');
 
+const ROUTES = require('../../../config/constants.js');
 const FILTER = {
   'wedding-dresses': 'wedding',
   'prom-and-party-dresses': 'prom',
+};
+
+const FILTER2 = {
+  'wedding': ROUTES.PAGE_DRESS_COLLECTION_WEDDING,
+  'prom': ROUTES.PAGE_DRESS_COLLECTION_PROM,
 };
 
 function collectionFormat (collection) {
@@ -13,6 +19,12 @@ function collectionFormat (collection) {
     resources: collection.resources,
     main_promo: collection.main_promo,
     description: collection.description,
+    route: {
+      name: FILTER2[collection.type],
+      params: {
+        slug: collection.slug,
+      },
+    },
   };
 }
 

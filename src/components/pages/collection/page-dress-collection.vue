@@ -20,7 +20,7 @@
     return Promise.all([
       store.dispatch('fetch', {
         namespace: 'page',
-        endpoint: 'page/collection/' + route.params.collection,
+        endpoint: 'page/collection/' + route.params.slug,
       }),
     ]);
   }
