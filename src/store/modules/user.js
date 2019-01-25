@@ -10,7 +10,7 @@ import config from '../../../config';
 const base = '/api';
 
 const settings = {
-  proxy: { port: config.port },
+  proxy: { port: process.env.PORT, host: 'localhost' },
 };
 
 if (__VUE_ENV__ === 'server' && Vue.cookies) {

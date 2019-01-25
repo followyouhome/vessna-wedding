@@ -44,6 +44,11 @@
     asyncData ({ store, route }) {
       return Promise.all([
         store.dispatch('fetch', {
+          namespace: 'user',
+          endpoint: 'user',
+        }),
+
+        store.dispatch('fetch', {
           namespace: 'setting',
           endpoint: 'setting',
         }),
