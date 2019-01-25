@@ -1,6 +1,10 @@
 const glob = require('glob');
+const path = require('path');
+const config = require('../../config');
 
 module.exports = app => {
+  const base = config.api.base;
+
   app.use((req, res, next) => {
     res.locals = {};
     next();
@@ -13,9 +17,10 @@ module.exports = app => {
   require('./navigation')(app);
   require('./pages')(app);
   require('./forms')(app);
-  require('./app')(app);
 
-  glob.sync( './query/*.js' ).forEach(file => {
-    require(path.resolve(file));
+  glob.sync(`${__dirname}/query/*`).forEach(file => {
+    require(path.resolve(file))(app, base);
   });
+
+  require('./app')(app);
 };

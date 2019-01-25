@@ -7,13 +7,13 @@
           </router-link>
       </li>
       <li class="global-navigation__main-list__item" v-for="item in items">
-        <router-link class="global-navigation__main-list__item__link" v-bind:to="getRoute(item)">
+        <router-link class="global-navigation__main-list__item__link" v-bind:to="item.route">
           <span class="global-navigation__text" itemprop="name">{{ item.label }}</span>
           <span class="global-navigation__icon icon-bars" v-if="item.items"></span>
         </router-link>
         <ul class="global-navigation__secondary-list" v-if="item.items">
           <li class="global-navigation__secondary-list__item" v-for="item in item.items">
-            <router-link class="global-navigation__secondary-list__item__link" v-bind:to="getRoute(item)">
+            <router-link class="global-navigation__secondary-list__item__link" v-bind:to="item.route">
               <span class="global-navigation__text">{{ item.name }}</span>
             </router-link>
           </li>
@@ -112,14 +112,6 @@
 
       logout () {
         this.$store.dispatch('logout');
-      },
-
-      getRoute (item) {
-        return {
-          path: item.path || undefined,
-          name: item.route || undefined,
-          params: item.params || undefined,
-        };
       },
     },
 
