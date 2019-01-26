@@ -26,7 +26,7 @@ const state = {
 };
 
 const getters = {
-  isLogged (state) {
+  isUserAvailable (state) {
     return !!(state.uid && state.email);
   },
 };

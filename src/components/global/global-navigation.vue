@@ -38,21 +38,26 @@
           <span class="global-navigation__icon icon-bars"></span>
         </div>
         <ul class="global-navigation__secondary-list">
-          <li class="global-navigation__secondary-list__item" v-if="settings.login">
+          <li class="global-navigation__secondary-list__item" v-if="settings.login && !user">
             <router-link class="global-navigation__secondary-list__item__link" to="/user/login">
               <span class="global-navigation__text">Войти в кабинет</span>
             </router-link>
           </li>
-          <li class="global-navigation__secondary-list__item" v-if="settings.registration">
+          <li class="global-navigation__secondary-list__item" v-if="settings.login && user">
+            <router-link class="global-navigation__secondary-list__item__link" to="/user/login">
+              <span class="global-navigation__text">Выход</span>
+            </router-link>
+          </li>
+          <li class="global-navigation__secondary-list__item" v-if="settings.registration && !user">
             <router-link class="global-navigation__secondary-list__item__link" to="/user/registartion">
               <span class="global-navigation__text">Зарегистрироваться</span>
             </router-link>
           </li>
-          <!-- <li class="global-navigation__secondary-list__item">
+          <li class="global-navigation__secondary-list__item" v-if="user">
             <router-link class="global-navigation__secondary-list__item__link" to="/user/settings">
               <span class="global-navigation__text">Настройки</span>
             </router-link>
-          </li> -->
+          </li>
           <!-- <li class="global-navigation__secondary-list__item">
             <div class="navigation__secondary-list__item__link">
               <a class="navigation__secondary-text" target="_blank" href="https://yadi.sk/d/0vDMd0fh3T3bPW">Прайсы</a>
@@ -88,8 +93,11 @@
         return this.navigation;
       },
 
+      user () {
+        return this.$store.getters.isUserAvailable;
+      },
+
       settings () {
-        console.log(this.$store.state.settings);
         return this.$store.state.settings || {};
       },
     },
