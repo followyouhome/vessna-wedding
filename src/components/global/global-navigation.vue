@@ -38,12 +38,12 @@
           <span class="global-navigation__icon icon-bars"></span>
         </div>
         <ul class="global-navigation__secondary-list">
-          <li class="global-navigation__secondary-list__item">
+          <li class="global-navigation__secondary-list__item" v-if="settings.login">
             <router-link class="global-navigation__secondary-list__item__link" to="/user/login">
               <span class="global-navigation__text">Войти в кабинет</span>
             </router-link>
           </li>
-          <li class="global-navigation__secondary-list__item">
+          <li class="global-navigation__secondary-list__item" v-if="settings.registration">
             <router-link class="global-navigation__secondary-list__item__link" to="/user/registartion">
               <span class="global-navigation__text">Зарегистрироваться</span>
             </router-link>
@@ -88,16 +88,9 @@
         return this.navigation;
       },
 
-      user () {
-        return this.$store.state.global && this.$store.state.global.user && this.$store.state.global.user._id;
-      },
-
-      authorized () {
-        return this.$store.state.global.user && this.$store.state.global.user._id;
-      },
-
-      available () {
-        return this.$store.state.global.user && this.$store.state.global.user.canAccessContent;
+      settings () {
+        console.log(this.$store.state.settings);
+        return this.$store.state.settings || {};
       },
     },
 

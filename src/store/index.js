@@ -111,8 +111,8 @@ export default new Vuex.Store({
   namespaced: true,
 
   modules: {
-    user,
     popup,
+    user,
   },
 
   state,
