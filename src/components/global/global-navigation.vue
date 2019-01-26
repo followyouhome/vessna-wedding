@@ -38,14 +38,14 @@
           <span class="global-navigation__icon icon-bars"></span>
         </div>
         <ul class="global-navigation__secondary-list">
-          <li class="global-navigation__secondary-list__item" v-if="settings.login && !user">
-            <router-link class="global-navigation__secondary-list__item__link" to="/user/login">
-              <span class="global-navigation__text">Войти в кабинет</span>
-            </router-link>
-          </li>
           <li class="global-navigation__secondary-list__item" v-if="settings.login && user">
             <router-link class="global-navigation__secondary-list__item__link" to="/user/login">
               <span class="global-navigation__text">Выход</span>
+            </router-link>
+          </li>
+          <li class="global-navigation__secondary-list__item" v-if="settings.login && !user">
+            <router-link class="global-navigation__secondary-list__item__link" to="/user/login">
+              <span class="global-navigation__text">Войти в кабинет</span>
             </router-link>
           </li>
           <li class="global-navigation__secondary-list__item" v-if="settings.registration && !user">
@@ -58,16 +58,16 @@
               <span class="global-navigation__text">Настройки</span>
             </router-link>
           </li>
-          <!-- <li class="global-navigation__secondary-list__item">
-            <div class="navigation__secondary-list__item__link">
-              <a class="navigation__secondary-text" target="_blank" href="https://yadi.sk/d/0vDMd0fh3T3bPW">Прайсы</a>
+          <li class="global-navigation__secondary-list__item">
+            <div class="global-navigation__secondary-list__item__link">
+              <a class="global-navigation__text" target="_blank" rel="nofollow" href="https://yadi.sk/d/0vDMd0fh3T3bPW">Прайсы</a>
             </div>
-          </li> -->
-          <!-- <li class="global-navigation__secondary-list__item">
-            <div class="navigation__secondary-list__item__link">
-              <a class="navigation__secondary-text" target="_blank" href="https://yadi.sk/d/F8LsI7d13T3bcu">Контент</a>
+          </li>
+          <li class="global-navigation__secondary-list__item" v-if="user && user.access && user.access.content">
+            <div class="global-navigation__secondary-list__item__link">
+              <a class="global-navigation__text" target="_blank" rel="nofollow" href="https://yadi.sk/d/F8LsI7d13T3bcu">Контент</a>
             </div>
-          </li> -->
+          </li>
         </ul>
       </li>
     </ul>
@@ -94,7 +94,7 @@
       },
 
       user () {
-        return this.$store.getters.isUserAvailable;
+        return this.$store.getters.isUserAvailable && this.$store.state.user;
       },
 
       settings () {
