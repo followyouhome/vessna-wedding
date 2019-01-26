@@ -1,18 +1,18 @@
-const _ = require('lodash');
-const keystone = require('keystone');
-const responseHandler = require('../../lib/response-handler');
 const Mailchimp = require('mailchimp-api-v3');
-const mailchimp = new Mailchimp('155e7ae12dca44f917cbd729e4810e89-us19');
+const mailchimp = new Mailchimp(process.env.MAILCHIMP_KEY);
 
 const { subscriberFormat } = require('../../lib/format');
-
-const LIST = '2f4b4fb4cc';
+const { COOKIES } = require('../../../config/constants.js');
+const LIST = process.env.MAILCHIMP_LIST;
 
 module.exports = (app, base) => {
   /**
-   * @name Get user info
+   * @name /forms/subscribe
+   * @kind function
+   * @description Subscribe user to newsletter
+   * @inner
    */
-  app.post(base + '/subscribe', (req, res) => {
+  app.post(base + '/forms/subscribe', (req, res) => {
     const email = req.body.email;
 
     if (!email) {
@@ -21,7 +21,7 @@ module.exports = (app, base) => {
 
     mailchimp.post({ path : `/lists/${LIST}/members` }, subscriberFormat(email))
       .then(function (result) {
-        res.cookie('subscribed', true, { httpOnly: false });
+        res.cookie(COOKIES.STATE_USER_SUBSCRIBED, true, { httpOnly: false });
 
         return res.status(200).json(result);
       })
