@@ -16,7 +16,10 @@ module.exports = app => {
   require('./setting')(app);
   require('./navigation')(app);
   require('./pages')(app);
-  require('./forms')(app);
+
+  glob.sync(`${__dirname}/forms/*`).forEach(file => {
+    require(path.resolve(file))(app, base);
+  });
 
   glob.sync(`${__dirname}/query/*`).forEach(file => {
     require(path.resolve(file))(app, base);

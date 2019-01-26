@@ -20,7 +20,11 @@
 </template>
 
 <script>
+  import Vue from 'vue';
+
   import Promo from './promo.vue';
+
+  import { COOKIES } from '@/../config/constants.js';
 
   export default {
     name: 'promo-subscribe',
@@ -30,9 +34,9 @@
     data () {
       return {
         show: true,
+        email: '',
         fadein: true,
         fadeout: false,
-        email: '',
         state: {
           request: false,
           success: false,
@@ -53,15 +57,21 @@
       };
     },
 
+    computed: {
+      isSubscribed () {
+        return this.$store.state.user.access && this.$store.state.user.access.subscription || Vue.cookies.get(COOKIES.STATE_USER_SUBSCRIBED);
+      },
+    },
+
     methods: {
       subscribe () {
         this.state.request = true;
 
         this.$store.dispatch('subscribe', { email: this.email })
-          .then(data => {
+          .then(() => {
             this.state.success = true;
           })
-          .catch(error => {
+          .catch(() => {
             this.state.error = true;
           })
           .finally(() => {
@@ -76,6 +86,14 @@
             }, 2500);
           });
       },
+    },
+
+    mounted () {
+      if (this.isSubscribed) {
+        this.show = false;
+      } else {
+        this.email = this.$store.state.user.email || 'vladislav1@vessna.by';
+      }
     },
   };
 </script>
