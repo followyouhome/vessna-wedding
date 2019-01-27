@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {
-  USER_LOGIN, USER_LOGOUT, USER_SUBSCRIBE, USER_UNSUBSCRIBE,
+  USER_LOGIN, USER_LOGOUT, USER_UPDATE, USER_SUBSCRIBE, USER_UNSUBSCRIBE,
 } from '../mutation-types.js';
 
 import Vue from 'vue';
@@ -66,6 +66,18 @@ const actions = {
       });
   },
 
+  settings (store, payload) {
+    return axios
+      .post(base + '/user/settings', payload)
+      .then(({ data }) => {
+        store.commit(USER_UPDATE, data);
+        return data;
+      })
+      .catch(err => {
+        return err;
+      });
+  },
+
   subscribe (store, payload) {
     return axios
       .post(base + '/forms/subscribe', payload, settings)
@@ -97,6 +109,14 @@ const mutations = {
     Vue.set(state, 'info', null);
     Vue.set(state, 'email', null);
     Vue.set(state, 'access', null);
+  },
+
+  [USER_UPDATE] (state, user) {
+    Vue.set(state, 'uid',  user.uid);
+    Vue.set(state, 'name',  user.name);
+    Vue.set(state, 'info',  user.info);
+    Vue.set(state, 'email',  user.email);
+    Vue.set(state, 'access',  user.access);
   },
 
   [USER_SUBSCRIBE] (state) {

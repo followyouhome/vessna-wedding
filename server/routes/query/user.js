@@ -100,4 +100,27 @@ module.exports = (app, base) => {
       });
     });
   });
+
+  /**
+   * @name /user/settings
+   * @kind function
+   * @description Update user settings
+   * @inner
+   */
+  app.post(base + '/user/settings', (req, res) => {
+    const user = req.user;
+    const body = req.body;
+
+    if (user) {
+      user.access.currency = body.access.currency;
+
+      User.model.updateOne({ _id: user._id }, user).then(() => {
+        res.status(200).json(userFormat(user));
+      }).catch(err => {
+        res.status(401).json({ error: err });
+      });
+    } else {
+      res.status(401).json({ error: 'need login before' });
+    }
+  });
 };

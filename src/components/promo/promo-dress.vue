@@ -17,7 +17,7 @@
         </div>
         <div class="promo--dress__subheadline">
            <p class="promo__text-subheadline">{{dress.promo.subline}}</p>
-           <no-ssr><p class="font-peignot" v-if="user && price">{{price}} ₽</p></no-ssr>
+           <no-ssr><p class="font-peignot" v-if="price">{{price}}</p></no-ssr>
         </div>
       </div>
     </div>
@@ -26,7 +26,7 @@
 
 <script>
   export default {
-    name: 'promo-dress',
+    name: 'PromoDress',
 
     props: ['dress'],
 
@@ -34,14 +34,16 @@
       options () {
         return 'overflow: true, thumbnails: \"vertical\", onClick: \"close\"';
       },
+
       images () {
         return "[" + this.dress.images.map(element => "\"" + element.url + "\"") + "]";
       },
-      user () {
-        return this.$store.state.global && this.$store.state.global.user && this.$store.state.global.user._id != '';
-      },
+
       price () {
-        return this.dress.price && this.dress.price.rub || null;
+        const currency = this.$store.state.user && this.$store.state.user.access && this.$store.state.user.access.currency;
+        const show = this.$store.state.settings && this.$store.state.settings.prices;
+
+        return show && currency && this.dress.price && this.dress.price[currency] && this.formatPrice(this.dress.price[currency], currency);
       },
     },
 
@@ -65,10 +67,20 @@
     				});
     			});
         }
-
-        // console.log(this.$el.querySelector('.fresco'))
-        // window.a = this.$el;
       }
+    },
+
+    methods: {
+      formatPrice (price, currency) {
+        switch (currency) {
+          case 'rub': {
+            return `${price} ₽`;
+          } break;
+          case 'usd': {
+            return `$${price}`;
+          } break;
+        };
+      },
     },
   };
 </script>
