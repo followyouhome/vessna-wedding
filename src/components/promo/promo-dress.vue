@@ -49,7 +49,7 @@
 
     mounted () {
       if (__VUE_ENV__ === 'client') {
-        const Fresco = require('../../../public/scripts/fresco.js');
+        const Fresco = require('@/lib/fresco.js');
         const element = this.$el.querySelector('.fresco');
 
         if (element) {
