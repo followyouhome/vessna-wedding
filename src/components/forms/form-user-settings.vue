@@ -6,7 +6,7 @@
     <div class="form__row">
       <select class="form__input-selection" v-model.trim="form.access.currency" type="text" placeholder="Валюта" required>
         <option value="rub">RUB</option>
-        <option value="usd">USD</option>
+        <option value="usd" disabled>USD</option>
       </select>
     </div>
     <div class="form__row">
