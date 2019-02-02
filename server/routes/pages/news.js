@@ -8,6 +8,7 @@ module.exports = (app, base) => {
     (req, res, next) => {
       const query = keystone.list('Page')
                       .model
+                      .find({ state: 'published' })
                       .findOne({ slug: 'news' });
 
       query.exec((err, result) => {
@@ -30,6 +31,6 @@ module.exports = (app, base) => {
 
     (req, res) => {
        responseHandler(res, null, output);
-    }
+    },
   ]);
 };
