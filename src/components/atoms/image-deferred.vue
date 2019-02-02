@@ -24,7 +24,6 @@
         show: false,
         server: __VUE_ENV__ === 'server' ? true : false,
         pixel: __VUE_ENV__ === 'client' ? window.devicePixelRatio : null,
-        src: this.image.secure_url || this.image.url,
       };
     },
 
@@ -39,6 +38,10 @@
 
       width () {
         return __VUE_ENV__ === 'client' ? this.$el && this.$el.offsetWidth * this.pixel : null;
+      },
+
+      src () {
+        return this.image.secure_url || this.image.url;
       },
 
       url: function () {
@@ -74,7 +77,6 @@
   .image-deferred {
     position: relative;
     overflow: hidden;
-    // width: 300px;
 
     &:before {
       content: '';
