@@ -7,13 +7,13 @@
           </router-link>
       </li>
       <li class="global-navigation__main-list__item" v-for="item in items">
-        <router-link class="global-navigation__main-list__item__link" v-bind:to="getRoute(item)">
+        <router-link class="global-navigation__main-list__item__link" v-bind:to="item.route">
           <span class="global-navigation__text" itemprop="name">{{ item.label }}</span>
           <span class="global-navigation__icon icon-bars" v-if="item.items"></span>
         </router-link>
         <ul class="global-navigation__secondary-list" v-if="item.items">
           <li class="global-navigation__secondary-list__item" v-for="item in item.items">
-            <router-link class="global-navigation__secondary-list__item__link" v-bind:to="getRoute(item)">
+            <router-link class="global-navigation__secondary-list__item__link" v-bind:to="item.route">
               <span class="global-navigation__text">{{ item.name }}</span>
             </router-link>
           </li>
@@ -38,31 +38,36 @@
           <span class="global-navigation__icon icon-bars"></span>
         </div>
         <ul class="global-navigation__secondary-list">
-          <li class="global-navigation__secondary-list__item">
+          <li class="global-navigation__secondary-list__item" v-if="settings.login && user">
+            <router-link class="global-navigation__secondary-list__item__link" to="/user/login">
+              <span class="global-navigation__text">Выход</span>
+            </router-link>
+          </li>
+          <li class="global-navigation__secondary-list__item" v-if="settings.login && !user">
             <router-link class="global-navigation__secondary-list__item__link" to="/user/login">
               <span class="global-navigation__text">Войти в кабинет</span>
             </router-link>
           </li>
-          <li class="global-navigation__secondary-list__item">
+          <li class="global-navigation__secondary-list__item" v-if="settings.registration && !user">
             <router-link class="global-navigation__secondary-list__item__link" to="/user/registartion">
               <span class="global-navigation__text">Зарегистрироваться</span>
             </router-link>
           </li>
-          <!-- <li class="global-navigation__secondary-list__item">
+          <li class="global-navigation__secondary-list__item" v-if="user">
             <router-link class="global-navigation__secondary-list__item__link" to="/user/settings">
               <span class="global-navigation__text">Настройки</span>
             </router-link>
-          </li> -->
-          <!-- <li class="global-navigation__secondary-list__item">
-            <div class="navigation__secondary-list__item__link">
-              <a class="navigation__secondary-text" target="_blank" href="https://yadi.sk/d/0vDMd0fh3T3bPW">Прайсы</a>
+          </li>
+          <li class="global-navigation__secondary-list__item">
+            <div class="global-navigation__secondary-list__item__link">
+              <a class="global-navigation__text" target="_blank" rel="nofollow" href="https://yadi.sk/d/0vDMd0fh3T3bPW">Прайсы</a>
             </div>
-          </li> -->
-          <!-- <li class="global-navigation__secondary-list__item">
-            <div class="navigation__secondary-list__item__link">
-              <a class="navigation__secondary-text" target="_blank" href="https://yadi.sk/d/F8LsI7d13T3bcu">Контент</a>
+          </li>
+          <li class="global-navigation__secondary-list__item" v-if="user && user.access && user.access.content">
+            <div class="global-navigation__secondary-list__item__link">
+              <a class="global-navigation__text" target="_blank" rel="nofollow" href="https://yadi.sk/d/F8LsI7d13T3bcu">Контент</a>
             </div>
-          </li> -->
+          </li>
         </ul>
       </li>
     </ul>
@@ -89,15 +94,11 @@
       },
 
       user () {
-        return this.$store.state.global && this.$store.state.global.user && this.$store.state.global.user._id;
+        return this.$store.getters.isUserAvailable && this.$store.state.user;
       },
 
-      authorized () {
-        return this.$store.state.global.user && this.$store.state.global.user._id;
-      },
-
-      available () {
-        return this.$store.state.global.user && this.$store.state.global.user.canAccessContent;
+      settings () {
+        return this.$store.state.settings || {};
       },
     },
 
@@ -112,14 +113,6 @@
 
       logout () {
         this.$store.dispatch('logout');
-      },
-
-      getRoute (item) {
-        return {
-          path: item.path || undefined,
-          name: item.route || undefined,
-          params: item.params || undefined,
-        };
       },
     },
 

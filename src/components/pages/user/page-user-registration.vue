@@ -61,7 +61,7 @@
 
     computed: {
       ...mapGetters({
-        user: 'isLogged',
+        user: 'isUserAvailable',
       }),
       content () {
         return this.$store.state.page.content;

@@ -14,13 +14,9 @@
 
   function fetch (store, route) {
     return Promise.all([
-      store.dispatch('fetchAll', {
-        endpoint: 'news',
-      }),
-
-      store.dispatch('fetchMain', {
-        endpoint: 'news',
-        id: route.params.news,
+      store.dispatch('fetch', {
+        namespace: 'page',
+        endpoint: 'page/news/' + route.params.slug,
       }),
     ]);
   }
@@ -53,15 +49,7 @@
 
     computed: {
       article () {
-        return this.$store.state['news'].find(element => {
-          return element.slug === this.$route.params.news;
-        });
-      },
-
-      seo () {
-        return this.$store.state['news'].find(element => {
-          return element.slug === this.$route.params.news;
-        }).seo;
+        return this.$store.state.page.content;
       },
     },
   };

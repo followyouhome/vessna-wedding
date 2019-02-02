@@ -126,6 +126,10 @@
     }
   }
 
+  .from__input-selection {
+    
+  }
+
   .form__input-label {
     display: block;
   }

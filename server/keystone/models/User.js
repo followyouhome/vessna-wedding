@@ -55,6 +55,17 @@ User.add({
       type: Boolean,
       initial: false,
     },
+    currency: {
+      label: 'Валюта',
+    	type: Types.Select,
+    	default: 'rub',
+    	index: true,
+    	options: [{
+    		label: 'RUB', value: 'rub',
+    	}, {
+    		label: 'USD', value: 'usd',
+    	}],
+    },
   },
 });
 

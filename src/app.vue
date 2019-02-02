@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <global-announcement :announcement="setting.announcement" v-if="setting.announcement"/>
+    <global-announcement :announcement="settings.announcement" v-if="settings.announcement"/>
     <global-main-promo :promo="main_promo" v-if="main_promo"/>
     <global-navigation :navigation="navigation" v-if="navigation"/>
     <transition name="fade">
@@ -44,8 +44,13 @@
     asyncData ({ store, route }) {
       return Promise.all([
         store.dispatch('fetch', {
-          namespace: 'setting',
-          endpoint: 'setting',
+          namespace: 'user',
+          endpoint: 'user',
+        }),
+
+        store.dispatch('fetch', {
+          namespace: 'settings',
+          endpoint: 'settings',
         }),
 
         store.dispatch('fetch', {
@@ -60,8 +65,8 @@
         return this.$store.state && this.$store.state.popup && this.$store.state.popup.item;
       },
 
-      setting () {
-        return this.$store.state && this.$store.state.setting;
+      settings () {
+        return this.$store.state && this.$store.state.settings;
       },
 
       navigation () {

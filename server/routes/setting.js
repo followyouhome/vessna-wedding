@@ -21,7 +21,7 @@ module.exports = app => {
   /**
    * @name Get website settings
    */
-  app.get(base + '/setting', (req, res) => {
+  app.get(base + '/settings', (req, res) => {
     Setting.model.find().exec((err, result) => {
       return res.json(formatSettings(result));
     });

@@ -4,6 +4,8 @@ const responseHandler = require('../lib/response-handler');
 const {
   PAGE_HOMEPAGE,
   PAGE_NEWS_HUB,
+  PAGE_DRESS_COLLECTION_PROM,
+  PAGE_DRESS_COLLECTION_WEDDING,
 } = require('../../config/constants.js');
 
 const FILTER_WEDDING = 'wedding';
@@ -21,34 +23,48 @@ module.exports = (app) => {
 
       data = [{
         label: 'Новости',
-        route: PAGE_NEWS_HUB,
+        route: {
+          name: PAGE_NEWS_HUB,
+        },
       }];
 
       query.exec((err, result) => {
         data.push({
           label: 'Свадебные платья',
-          // route: PAGE_DRESS_COLLECTION_HUB,
-          path: '/wedding-dresses',
-          items: result.reduce(function (result, element) {
-            if (element.type === FILTER_WEDDING && element.state == 'published') {
-              result.push(element);
-            }
+          route: {
+            path: '/wedding-dresses',
+          },
+          items: result.filter(item => item.type === FILTER_WEDDING && item.state == 'published')
+            .sort((a, b) => a.sortOrder - b.sortOrder)
+            .map(item => {
+                item._doc.route = {
+                  name: PAGE_DRESS_COLLECTION_WEDDING,
+                  params: {
+                    slug: item._doc.slug,
+                  },
+                };
 
-            return result;
-          }, []),
+                return item._doc;
+            }),
         });
 
         data.push({
           label: 'Вечерние платья',
-          // route: PAGE_DRESS_COLLECTION_HUB,
-          path: '/prom-and-party-dresses',
-          items: result.reduce(function (result, element) {
-            if (element.type === FILTER_PROM && element.state == 'published') {
-              result.push(element);
-            }
+          route: {
+            path: '/prom-and-party-dresses',
+          },
+          items: result.filter(item => item.type === FILTER_PROM && item.state == 'published')
+            .sort((a, b) => a.sortOrder - b.sortOrder)
+            .map(item => {
+                item._doc.route = {
+                  name: PAGE_DRESS_COLLECTION_PROM,
+                  params: {
+                    slug: item._doc.slug,
+                  },
+                };
 
-            return result;
-          }, []),
+                return item._doc;
+            }),
         });
 
         next();
