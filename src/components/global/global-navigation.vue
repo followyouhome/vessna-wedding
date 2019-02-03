@@ -58,7 +58,7 @@
               <span class="global-navigation__text">Настройки</span>
             </router-link>
           </li>
-          <li class="global-navigation__secondary-list__item">
+          <li class="global-navigation__secondary-list__item"  v-if="user">
             <div class="global-navigation__secondary-list__item__link">
               <a class="global-navigation__text" target="_blank" rel="nofollow" href="https://yadi.sk/d/0vDMd0fh3T3bPW">Прайсы</a>
             </div>
