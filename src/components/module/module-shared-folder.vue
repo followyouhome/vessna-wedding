@@ -1,5 +1,5 @@
 <template>
-  <div class="module module-shared-folder" v-if="recourses">
+  <div class="module module-shared-folder" v-if="resources">
     <div class="module__wrapper module-shared-folder__wrapper">
       <tabs class="module-shared-folder__tabs" v-if="authorized && available">
         <tab :name="logo.yandex">
@@ -7,7 +7,7 @@
             <div class="module-shared-folder__yandex-macbook"></div>
             <h3 class="module-shared-folder__yandex-headline">Скачать через Яндекс</h3>
             <p class="module-shared-folder__yandex-subline">Папка Яндекс.Диска выглядит так же, как обычная папка на компьютере. Вы можете скачать напрямую с этого сервиса, либо добавить эту папку в свой профиль.</p>
-            <a class="module-shared-folder__yandex-button is-download" :href="recourses" target="_blank">Скачать</a>
+            <a class="module-shared-folder__yandex-button is-download" :href="resources" target="_blank">Скачать</a>
           </div>
         </tab>
         <!-- <tab :name="logo.google">
@@ -36,7 +36,7 @@
   export default {
     name: 'module-shared-folder',
 
-    props: ['collection'],
+    props: ['resources'],
 
     components: {
       'tab': Tab,
@@ -53,16 +53,16 @@
     },
 
     computed: {
-      recourses () {
-        return this.collection.collection.resources;
+      user () {
+        return this.$store.getters.isUserAvailable && this.$store.state.user;
       },
 
       authorized () {
-        return this.$store.state.global.user && this.$store.state.global.user._id;
+        return this.user;
       },
 
       available () {
-        return this.$store.state.global.user && this.$store.state.global.user.canAccessContent;
+        return this.user && this.user.access && this.user.access.content;
       },
     },
 

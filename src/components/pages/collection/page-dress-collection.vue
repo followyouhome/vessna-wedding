@@ -1,9 +1,8 @@
 <template>
   <main>
-    <module-grid-dress :items="dresses"/>
-    <!-- <module-article :article="collection.collection.description"/> -->
-    <!-- <module-feedback-grid :feedbacks="feedbacks"/> -->
-    <!-- <module-shared-folder :collection="collection"/> -->
+    <module-article :article="description" v-if="description"/>
+    <module-grid-dress :items="dresses" v-if="dresses"/>
+    <module-shared-folder :resources="resources" v-if="resources"/>
   </main>
 </template>
 
@@ -55,6 +54,14 @@
     computed: {
       dresses () {
         return this.$store.state.page.dresses;
+      },
+
+      resources () {
+        return this.$store.state.page.resources;
+      },
+
+      description () {
+        return this.$store.state.page.description;
       },
     },
   };
