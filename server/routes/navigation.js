@@ -22,7 +22,7 @@ module.exports = (app) => {
                       .model.find();
 
       data = [{
-        label: 'Новости',
+        name: 'Новости',
         route: {
           name: PAGE_NEWS_HUB,
         },
@@ -30,7 +30,7 @@ module.exports = (app) => {
 
       query.exec((err, result) => {
         data.push({
-          label: 'Свадебные платья',
+          name: 'Свадебные платья',
           route: {
             path: '/wedding-dresses',
           },
@@ -49,7 +49,7 @@ module.exports = (app) => {
         });
 
         data.push({
-          label: 'Вечерние платья',
+          name: 'Вечерние платья',
           route: {
             path: '/prom-and-party-dresses',
           },
