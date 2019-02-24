@@ -24,6 +24,7 @@ const productionLoaders = [
         path.resolve(__dirname, '../src/styles/media.scss'),
         path.resolve(__dirname, '../src/styles/colors.scss'),
         path.resolve(__dirname, '../src/styles/variables.scss'),
+        path.resolve(__dirname, '../src/styles/animations.scss'),
       ],
     },
   },

@@ -1,0 +1,23 @@
+@mixin animation-scroll() {
+  @keyframes animation-scroll {
+    0% {
+      transform: translateY(10px);
+      opacity: 1;
+    }
+
+    49% {
+      transform: translateY(-10px);
+      opacity: 0;
+    }
+
+    50% {
+      transform: translateY(10px);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
