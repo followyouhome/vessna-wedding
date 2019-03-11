@@ -1,4 +1,10 @@
 {
-  "presets": ["env"],
-  "plugins": ["syntax-dynamic-import", "transform-object-rest-spread"]
+  "presets": [
+    "@babel/env"
+  ],
+  "plugins": [
+    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-proposal-object-rest-spread",
+    "dynamic-import-node-babel-7"
+  ]
 }

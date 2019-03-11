@@ -3,9 +3,10 @@
  */
 const path = require('path');
 const CleanPlugin = require('clean-webpack-plugin');
-const BabiliPlugin = require('babili-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+
 
 const isProd = process.env.NODE_ENV === 'production';
 const resolve = file => path.resolve(__dirname, file);
@@ -50,12 +51,13 @@ const config = {
   },
   plugins: isProd
     ? [
-      new BabiliPlugin(),
+      new VueLoaderPlugin(),
       new ExtractTextPlugin({
         filename: 'common.[chunkhash].css',
       }),
     ]
     : [
+      new VueLoaderPlugin(),
       new CleanPlugin(['dist/*.*', '!dist/.gitignore'], {
         root: process.cwd(),
       }),
