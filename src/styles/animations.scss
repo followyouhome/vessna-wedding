@@ -21,3 +21,16 @@
     }
   }
 }
+
+@mixin animation-show-image() {
+  @keyframes animation-show-image {
+    from {
+      transform: translateY(-3rem);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}

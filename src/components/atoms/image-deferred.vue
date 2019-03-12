@@ -15,7 +15,7 @@
 <script>
 
   export default {
-    name: 'image-deferred',
+    name: 'ImageDeferred',
 
     props: ['image', 'aspect'],
 
@@ -63,16 +63,7 @@
 </script>
 
 <style lang="scss">
-  @keyframes show-image {
-    from {
-      transform: translateY(-3rem);                     //Animation from top to bottom looks cool
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
+  @include animation-show-image();
 
   .image-deferred {
     position: relative;
@@ -111,7 +102,7 @@
   }
 
   .image-deferred__image,
-  .image-deferred img {                             //For non-javascript users
+  .image-deferred img {
     position: absolute;
     margin: auto;
     width: 100%;
@@ -120,11 +111,19 @@
     top:0;
   }
 
-  .image-deferred__image--preloader {
-
-  }
-
-  .image-deferred__image--loaded {
-    animation: show-image 0.3s normal;
+  .image--effect-fadein {
+    animation: animation-show-image 0.3s normal;
   }
 </style>
+
+<story group="Atoms" name="Image Deferred">
+  <image-deferred
+    :size="'image-deffered--size-2-3'"
+    :image="{
+      width:1920,
+      height:1200,
+      url:'http://res.cloudinary.com/vessna/image/upload/v1548800751/vessna-2019-preview.jpg',
+      secure_url:'https://res.cloudinary.com/vessna/image/upload/v1548800751/vessna-2019-preview.jpg'
+    }"
+  />
+</story>
