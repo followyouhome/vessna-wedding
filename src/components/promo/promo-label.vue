@@ -47,8 +47,6 @@
   	height: 80px;
   	text-align: center;
 
-  	.vertical_align;
-
   	@media #{phablet} {
   		height: 70px;
   	}

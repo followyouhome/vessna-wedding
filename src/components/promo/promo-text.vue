@@ -45,7 +45,7 @@
 
   .promo--text__wrapper {
     padding: 40px;
-    background: @white;
+    background: $white;
 
     @media #{$tablet} {
       padding: 30px;
@@ -56,31 +56,31 @@
     }
 
     h1 {
-      .promo--text__title;
+      // .promo--text__title;
     }
 
     h2 {
-      .promo--text__headline;
+      // .promo--text__headline;
     }
 
     h3, h4, h5 {
-      .promo--text__subheadline;
+      // .promo--text__subheadline;
     }
 
     hr {
-      .promo--text__line;
+      // .promo--text__line;
     }
 
     p {
       margin: 10px 0;
-      .promo--text__content;
+      // .promo--text__content;
     }
 
     ul {
       margin: 0 0 10px 20px;
 
-      .promo--text__content;
-      .clearfix;
+      // .promo--text__content;
+      // .clearfix;
 
       li {
         float: left;
@@ -91,7 +91,7 @@
       margin: 20px 0px;
       padding: 0;
 
-      .promo--text__content;
+      // .promo--text__content;
 
       li {
           margin-left: 40px;
