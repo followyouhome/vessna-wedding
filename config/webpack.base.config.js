@@ -46,26 +46,27 @@ const config = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       '@': resolve('../src'),
-      'vue$': 'vue/dist/vue.esm.js',
+      'masonry': 'masonry-layout',
+      'isotope': 'isotope-layout',
     },
   },
   plugins: isProd
     ? [
       new VueLoaderPlugin(),
-      new ExtractTextPlugin({
-        filename: 'common.[chunkhash].css',
-      }),
+      // new ExtractTextPlugin({
+      //   filename: 'common.[chunkhash].css',
+      // }),
     ]
     : [
       new VueLoaderPlugin(),
-      new CleanPlugin(['dist/*.*', '!dist/.gitignore'], {
-        root: process.cwd(),
-      }),
-      new FriendlyErrorsPlugin({
-        compilationSuccessInfo: {
-          messages: ['You application is running at http://localhost:3000'],
-        },
-      }),
+      // new CleanPlugin(['dist/*.*', '!dist/.gitignore'], {
+      //   root: process.cwd(),
+      // }),
+      // new FriendlyErrorsPlugin({
+      //   compilationSuccessInfo: {
+      //     messages: ['You application is running at http://localhost:3000'],
+      //   },
+      // }),
     ],
 };
 

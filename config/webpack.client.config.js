@@ -14,30 +14,24 @@ module.exports = merge(baseConfig, {
   node: {
     fs: 'empty',
   },
-  resolve: {
-      alias: {
-          'masonry': 'masonry-layout',
-          'isotope': 'isotope-layout',
-      },
-  },
   plugins: [
     new EnvironmentPlugin(['NODE_ENV']),
     new VueSSRClientPlugin(),
     new DefinePlugin({
       __VUE_ENV__: '"client"',
     }),
-    new optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: function (module) {
-        return (
-          /node_modules/.test(module.context) &&
-          !/\.css$/.test(module.request)
-        );
-      },
-    }),
-    new optimize.CommonsChunkPlugin({
-      name: 'manifest',
-      minChunks: Infinity,
-    }),
+    // new optimize.CommonsChunkPlugin({
+    //   name: 'vendor',
+    //   minChunks: function (module) {
+    //     return (
+    //       /node_modules/.test(module.context) &&
+    //       !/\.css$/.test(module.request)
+    //     );
+    //   },
+    // }),
+    // new optimize.CommonsChunkPlugin({
+    //   name: 'manifest',
+    //   minChunks: Infinity,
+    // }),
   ],
 });

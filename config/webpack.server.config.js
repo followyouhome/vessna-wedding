@@ -15,12 +15,6 @@ module.exports = merge(baseConfig, {
     filename: 'server.bundle.js',
     libraryTarget: 'commonjs2', // Needed by the server bundle renderer
   },
-  resolve: {
-      alias: {
-          'masonry': 'masonry-layout',
-          'isotope': 'isotope-layout',
-      },
-  },
   externals: nodeExternals({
     whitelist: /\.css$/, // Do not externalize CSS files in case we need to import it from a dep
   }),
