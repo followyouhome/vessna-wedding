@@ -11,7 +11,7 @@
     "build:server": "cross-env NODE_ENV=production webpack --config config/webpack.server.config.js --progress --hide-modules",
     "watch:client": "cross-env NODE_ENV=develop webpack --config config/webpack.client.config.js --progress --hide-modules --watch",
     "watch:server": "cross-env NODE_ENV=develop webpack --config config/webpack.server.config.js --progress --hide-modules --watch",
-    "storybook": "start-storybook --config-dir ./src/storybook",
+    "storybook": "start-storybook --port 9001 --static-dir ./ --config-dir ./src/storybook",
     "lint": "eslint src/** --fix --ext .js --ext .vue",
     "postinstall": "npm run build",
     "prestart": "npm run build",
@@ -103,7 +103,8 @@
     "jsdoc-to-markdown": "^4.0.1",
     "loader-utils": "^1.2.3",
     "nodemon": "^1.18.9",
-    "vue-storybook": "git+https://github.com/followyouhome/vue-storybook.git"
+    "vue-storybook": "git+https://github.com/followyouhome/vue-storybook.git",
+    "webpack-cli": "^3.2.3"
   },
   "optionalDependencies": {
     "ttab": "^0.6.1"
