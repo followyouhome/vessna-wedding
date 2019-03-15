@@ -12,12 +12,6 @@ module.exports = async ({ config, mode }) => {
   });
 
   config.module.rules = custom.module.rules;
-  // config.resolve = custom.resolve;
-
-
-
-
-  console.log('Original', config.resolve);
 
   const result = merge({
     'resolve.alias': 'append',
@@ -30,8 +24,6 @@ module.exports = async ({ config, mode }) => {
     plugins: custom.plugins,
     resolve: custom.resolve,
   });
-
-  console.log('Result', result.resolve);
 
   return result;
 };
