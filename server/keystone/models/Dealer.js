@@ -28,13 +28,13 @@ Dealer.add(...Inherit, 'Диллер', {
       label: 'Страна',
       type: Types.Text,
     },
-    full: {
-      label: 'Полный адрес',
-      type: Types.Text,
-    },
     latlng: {
       label: 'Координаты',
       type: Types.GeoPoint,
+    },
+    full: {
+      label: 'Полный адрес',
+      type: Types.Text,
     },
   },
 }, 'Контактная информация', {
@@ -56,12 +56,12 @@ Dealer.add(...Inherit, 'Диллер', {
         label: 'Pinterest',
         type: Types.Text,
       },
-      facebook: {
-        label: 'Facebook',
-        type: Types.Text,
-      },
       instagram: {
         label: 'Instagram',
+        type: Types.Text,
+      },
+      facebook: {
+        label: 'Facebook',
         type: Types.Text,
       },
     },
