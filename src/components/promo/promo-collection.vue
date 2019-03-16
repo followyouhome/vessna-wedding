@@ -1,17 +1,17 @@
 <template>
-	<div class="promo promo--collection">
-	    <div class="promo__wrapper promo--collection__wrapper">
-					<router-link class="promo__image-wrapper promo--collection__image-wrapper" v-bind:to="item.route">
+	<div class="promo promo-collection">
+	    <div class="promo__wrapper promo-collection__wrapper">
+					<router-link class="promo__image-wrapper promo-collection__image-wrapper" v-bind:to="item.route">
 	            <image-deferred v-bind:image="item.promo.image"></image-deferred>
 	        </router-link>
-	        <div class="promo__content-wrapper promo--collection__content-wrapper">
-							<router-link class="promo--collection__title" v-bind:to="item.route">
+	        <div class="promo__content-wrapper promo-collection__content-wrapper">
+							<router-link class="promo-collection__title" v-bind:to="item.route">
 	            	<h4 class="promo__text-title promo__text-title--normal-case" v-html="item.promo.title"></h4>
 							</router-link>
-							<router-link class="promo--collection__headline" v-bind:to="item.route">
+							<router-link class="promo-collection__headline" v-bind:to="item.route">
 	            	<h4 class="promo__text-headline promo__text-headline--normal-case" v-html="item.promo.headline"></h4>
 							</router-link>
-							<router-link class="promo--collection__link" v-bind:to="item.route">
+							<router-link class="promo-collection__link" v-bind:to="item.route">
 	            	<h4 class="promo__text-headline">Подробнее</h4>
 							</router-link>
 	        </div>
@@ -28,31 +28,31 @@
 </script>
 
 <style lang="scss">
-	.promo--collection {
+	.promo-collection {
 		width: 500px;
 	}
 
-	.promo--collection__wrapper {
+	.promo-collection__wrapper {
 		padding: 0;
 	}
 
-	.promo--collection__content-wrapper {
+	.promo-collection__content-wrapper {
 		padding: 15px;
 
 		text-align: center;
 	}
 
-	.promo--collection__title {
+	.promo-collection__title {
 		display: block;
 		margin: 0 20px;
 	}
 
-	.promo--collection__headline {
+	.promo-collection__headline {
 		display: block;
 		margin: 5px 20px;
 	}
 
-	.promo--collection__link {
+	.promo-collection__link {
 		display: inline-block;
 		padding: 7px 29px;
 		margin: 31px 0 0;
@@ -65,3 +65,28 @@
 		}
 	}
 </style>
+
+<story group="Promos" name="Collection">
+  <promo-collection
+    :item="{
+      promo: {
+        media: 'image',
+        image: {
+          width: 1920,
+          height: 1200,
+          resource_type: 'image',
+          url: 'http://vessna.wedding/images/vessna-2019-preview.jpg',
+        },
+        text: '',
+        subline: '',
+        headline: '<span class=\'font-peignot\'>Preview 2019</span>',
+        alt: ''
+      },
+      route: {
+        params: {
+          to: '#'
+        },
+      }
+    }"
+  />
+</story>
