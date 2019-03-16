@@ -68,6 +68,7 @@
   .image-deferred {
     position: relative;
     overflow: hidden;
+    margin: 0;
 
     &:before {
       content: '';
