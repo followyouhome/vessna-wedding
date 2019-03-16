@@ -80,13 +80,13 @@
               path: '/user/settings',
             },
           },
-          settings: {
+          prices: {
             name: 'Прайсы',
             route: {
               path: 'https://yadi.sk/d/0vDMd0fh3T3bPW',
             },
           },
-          settings: {
+          content: {
             name: 'Контент',
             route: {
               path: 'https://yadi.sk/d/F8LsI7d13T3bcu',
