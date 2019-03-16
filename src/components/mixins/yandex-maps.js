@@ -12,6 +12,7 @@ export default {
     initMap (id, settings, items) {
       window.ymaps.ready(() => {
         this.map.api = new ymaps.Map(this.yandexMapsId, {
+            controls: settings.controls,
             center: settings.center,
             zoom: settings.zoom,
         });
@@ -37,8 +38,11 @@ export default {
       return placemark;
     },
 
-    moveMapToPlacemark (placemark) {
-
+    moveMapToLatLng (latlng) {
+      this.map.api.setZoom(7);
+      this.map.api.panTo(latlng, {
+        flying: 1,
+      });
     },
 
     onPlacemarkClick (event) {
