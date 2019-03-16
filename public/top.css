@@ -1,69 +1,4 @@
-.flexbox .flexible_promo .promo_wrapper {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    position: absolute;
-    height: 100%;
-    left: 0;
-    top: 0
-}
 
-.flexbox .flexible_promo .image_wrapper {
-    -webkit-box-flex: 1;
-    -ms-flex: 1;
-    flex: 1
-}
-
-.flexbox .flexible_promo .image_wrapper img {
-    position: absolute;
-    width: 100%;
-    height: auto
-}
-
-.object-fit .flexible_promo .image_wrapper img {
-    height: 100%;
-    width: 100%;
-    -o-object-fit: cover;
-    object-fit: cover
-}
-
-.socials_wrapper {
-    margin-top: 20px;
-    text-align: center
-}
-
-.socials_wrapper .social-likes__widget_facebook,
-.socials_wrapper .social-likes__widget_odnoklassniki,
-.socials_wrapper .social-likes__widget_plusone,
-.socials_wrapper .social-likes__widget_vkontakte {
-    background: #4f5458;
-    -webkit-transition: all .2s linear;
-    transition: all .2s linear
-}
-
-.socials_wrapper .social-likes__widget_plusone:hover {
-    background: #d23e30
-}
-
-.socials_wrapper .social-likes__widget_facebook:hover {
-    background: #3d5b95
-}
-
-.socials_wrapper .social-likes__widget_vkontakte:hover {
-    background: #587e9f
-}
-
-.socials_wrapper .social-likes__widget_odnoklassniki:hover {
-    background: #f59310
-}
-
-.socials_wrapper .social-likes_vertical .social-likes__widget {
-    min-width: 40px
-}
 
 @font-face {
     font-family: icomoon;
@@ -198,52 +133,6 @@
 
 
 
-
-
-@font-face {
-    font-family: Segoe UI;
-    font-weight: 200;
-    src: local("Segoe UI Light")
-}
-
-@font-face {
-    font-family: Segoe UI;
-    font-weight: 300;
-    src: local("Segoe UI Semilight")
-}
-
-@font-face {
-    font-family: Segoe UI;
-    font-weight: 400;
-    src: local("Segoe UI")
-}
-
-@font-face {
-    font-family: Segoe UI;
-    font-weight: 600;
-    src: local("Segoe UI Semibold")
-}
-
-@font-face {
-    font-family: Segoe UI;
-    font-weight: 700;
-    src: local("Segoe UI Bold")
-}
-
-@font-face {
-    font-family: Segoe UI;
-    font-style: italic;
-    font-weight: 400;
-    src: local("Segoe UI Italic")
-}
-
-@font-face {
-    font-family: Segoe UI;
-    font-style: italic;
-    font-weight: 700;
-    src: local("Segoe UI Bold Italic")
-}
-
 @font-face {
     font-family: Helvetica Neue;
     src: url("/public/fonts/Helvetica_Neue/Helvetica_Neue.eot");
@@ -252,13 +141,6 @@
     font-style: normal
 }
 
-@font-face {
-    font-family: Segoe UI Black;
-    src: url("/public/fonts/Segoe_UI/Segoe_UI_Black.eot");
-    src: local("\263A"), local("Segoe UI Black"), url("/public/fonts/Segoe_UI/Segoe_UI_Black.eot?#iefix") format("embedded-opentype"), url("/public/fonts/Segoe_UI/Segoe_UI_Black.woff2") format("woff2"), url("/public/fonts/Segoe_UI/Segoe_UI_Black.woff") format("woff"), url("/public/fonts/Segoe_UI/Segoe_UI_Black.ttf") format("truetype"), url("/public/fonts/Segoe_UI/Segoe_UI_Black.svg#helveticaneuecyrlight") format("svg");
-    font-weight: 400;
-    font-style: normal
-}
 
 @font-face {
     font-family: Lato Web;
@@ -335,23 +217,6 @@
     unicode-range: u+00??, u+0131, u+0152-0153, u+02c6, u+02da, u+02dc, u+2000-206f, u+2074, u+20ac, u+2212, u+2215, u+e0ff, u+effd, u+f000
 }
 
-#prom-dresses .fr-caption,
-.fonts_brand {
-    font-family: Peignot Light, Helvetica, Arial, sans-serif;
-    font-weight: 400;
-    letter-spacing: normal;
-    text-transform: uppercase
-}
-
-#wedding-collection-bliss .fr-caption,
-#wedding-dresses-nicole .fr-caption,
-.fonts_brand_italic {
-    font-family: Lucida Handwriting, Peignot Light, Helvetica, Arial, sans-serif;
-    font-weight: 400;
-    letter-spacing: normal;
-    text-transform: uppercase
-}
-
 .fonts_headline {
     font-family: Futura PT Light, Segoe UI Light, Helvetica, Arial, sans-serif
 }
@@ -380,16 +245,9 @@
     font-family: Lato Web, Helvetica, Arial, sans-serif
 }
 
-.fonts_accent {
-    font-family: Segoe UI Black, Helvetica, Arial, sans-serif;
-    font-weight: 700;
-    letter-spacing: normal
-}
 
-.font-default {
-    font-family: Segoe UI, system, Helvetica, Arial, sans-serif!important;
-    font-weight: 100
-}
+
+
 
 .font-lato {
     font-family: Lato, Helvetica, Arial, sans-serif
@@ -400,9 +258,7 @@
     font-family: Futura PT Light, Segoe UI Light, Helvetica, Arial, sans-serif!important
 }
 
-.font-segoeUIBlack {
-    font-family: Segoe UI Black, Helvetica, Arial, sans-serif!important
-}
+
 
 .font-helveticaNeue {
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif!important
@@ -411,319 +267,6 @@
 .font-vk {
     font-family: Tahoma, Arial, Helvetica, sans-serif!important
 }
-
-
-
-@-webkit-keyframes placeHolderShimmer {
-    0% {
-        background-position: -1920px 0
-    }
-    to {
-        background-position: 1920px 0
-    }
-}
-
-@keyframes placeHolderShimmer {
-    0% {
-        background-position: -1920px 0
-    }
-    to {
-        background-position: 1920px 0
-    }
-}
-
-.placeholder {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    position: relative;
-    height: 88px;
-    margin: 20px 0;
-    font-size: 0;
-    letter-spacing: 0;
-    vertical-align: top;
-    -webkit-animation-duration: 3s;
-    animation-duration: 3s;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    -webkit-animation-iteration-count: infinite;
-    animation-iteration-count: infinite;
-    -webkit-animation-name: placeHolderShimmer;
-    animation-name: placeHolderShimmer;
-    -webkit-animation-timing-function: linear;
-    animation-timing-function: linear;
-    background: #f6f7f8;
-    background: #eee;
-    background: -webkit-linear-gradient(left, #eee 8%, #ddd 18%, #eee 33%);
-    background: linear-gradient(90deg, #eee 8%, #ddd 18%, #eee 33%);
-    background-size: 1920px 104px
-}
-
-.placeholder:nth-child(2n) {
-    -ms-flex-wrap: wrap-reverse;
-    flex-wrap: wrap-reverse
-}
-
-.placeholder>div {
-    display: inline-block;
-    background: #fff;
-    height: 8px;
-    width: 8px;
-    margin-right: 10px
-}
-
-.placeholder>div:nth-child(2n) {
-    margin-left: 20%
-}
-
-.placeholder>div:nth-child(odd) {
-    margin-left: 30%
-}
-
-.placeholder>div:nth-child(4n) {
-    margin-left: 70px
-}
-
-.placeholder>div:nth-child(4n+1) {
-    margin-left: 10%
-}
-
-.placeholder>div:nth-child(5n) {
-    display: block;
-    margin-left: 0;
-    margin-right: 0;
-    width: 100%
-}
-
-.placeholder>div:nth-child(5n+1) {
-    margin-right: 90px;
-    margin-left: 0;
-    width: 0
-}
-
-.placeholder>div:nth-child(10n+1) {
-    margin-right: 30px
-}
-
-.placeholder>div:nth-child(15n+1) {
-    margin-right: 80px
-}
-
-.news-listing {
-    margin: 10px
-}
-
-@media screen and (max-width:1023px) {
-    .news-listing {
-        margin: 0
-    }
-}
-
-.news-listing:after {
-    content: "";
-    display: block;
-    clear: both
-}
-
-.news-listing .isotope-grid__sizer {
-    width: 20%
-}
-
-@media screen and (max-width:1650px) {
-    .news-listing .isotope-grid__sizer {
-        width: 25%
-    }
-}
-
-@media screen and (max-width:1500px) {
-    .news-listing .isotope-grid__sizer {
-        width: 25%
-    }
-}
-
-@media screen and (max-width:1280px) {
-    .news-listing .isotope-grid__sizer {
-        width: 33.33333333%
-    }
-}
-
-@media screen and (max-width:1024px) {
-    .news-listing .isotope-grid__sizer {
-        width: 33.33333333%
-    }
-}
-
-@media screen and (max-width:1023px) {
-    .news-listing .isotope-grid__sizer {
-        width: 50%
-    }
-}
-
-@media screen and (max-width:767px) {
-    .news-listing .isotope-grid__sizer {
-        width: 50%
-    }
-}
-
-@media screen and (max-width:480px) {
-    .news-listing .isotope-grid__sizer {
-        width: 100%
-    }
-}
-
-.news-listing .promo {
-    float: left
-}
-
-.news-listing .promo.promo--width-2,
-.news-listing .promo.promo--width-3 {
-    width: 20%
-}
-
-@media screen and (max-width:1650px) {
-    .news-listing .promo.promo--width-2,
-    .news-listing .promo.promo--width-3 {
-        width: 25%
-    }
-}
-
-@media screen and (max-width:1500px) {
-    .news-listing .promo.promo--width-2,
-    .news-listing .promo.promo--width-3 {
-        width: 25%
-    }
-}
-
-@media screen and (max-width:1280px) {
-    .news-listing .promo.promo--width-2,
-    .news-listing .promo.promo--width-3 {
-        width: 33.33333333%
-    }
-}
-
-@media screen and (max-width:1024px) {
-    .news-listing .promo.promo--width-2,
-    .news-listing .promo.promo--width-3 {
-        width: 33.33333333%
-    }
-}
-
-@media screen and (max-width:1023px) {
-    .news-listing .promo.promo--width-2,
-    .news-listing .promo.promo--width-3 {
-        width: 50%
-    }
-}
-
-@media screen and (max-width:767px) {
-    .news-listing .promo.promo--width-2,
-    .news-listing .promo.promo--width-3 {
-        width: 50%
-    }
-}
-
-@media screen and (max-width:480px) {
-    .news-listing .promo.promo--width-2,
-    .news-listing .promo.promo--width-3 {
-        width: 100%
-    }
-}
-
-
-
-.dress-page .module--dress-description {
-    width: 33%;
-    float: right;
-    overflow: hidden
-}
-
-.dress-page .module--dress-description:after {
-    content: "";
-    display: block;
-    clear: both
-}
-
-@media screen and (max-width:1023px) {
-    .dress-page .module--dress-description {
-        width: 100%;
-        float: none
-    }
-}
-
-.dress-page .module--dress-photos {
-    overflow: hidden
-}
-
-.dress-carousel {
-    width: 100%;
-    overflow: hidden;
-    outline: none;
-    font-size: 0;
-    letter-spacing: 0;
-    cursor: move;
-    cursor: -webkit-grab;
-    cursor: grab
-}
-
-
-
-
-
-.promo--feedback {
-    width: 300px
-}
-
-.promo--feedback__content-wrapper {
-    position: relative;
-    padding: 0 40px 20px;
-    width: 100%
-}
-
-@media screen and (max-width:1023px) {
-    .promo--feedback__content-wrapper {
-        padding: 0 25px 25px
-    }
-}
-
-@media screen and (max-width:767px) {
-    .promo--feedback__content-wrapper {
-        padding: 0 20px 20px
-    }
-}
-
-.promo--feedback__avatar {
-    position: relative;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 60px;
-    height: 60px;
-    margin-top: -30px;
-    margin-bottom: 20px;
-    overflow: hidden
-}
-
-@media screen and (max-width:767px) {
-    .promo--feedback__avatar {
-        margin-bottom: 15px
-    }
-}
-
-.promo--feedback__avatar img {
-    border-radius: 60px
-}
-
-.promo--feedback__subheadline {
-    display: block;
-    text-align: center
-}
-
-.promo--feedback__footnote {
-    display: inline-block
-}
-
 
 
 .promo--label {
@@ -938,26 +481,6 @@
     color: #fff!important
 }
 
-.ellipse {
-    position: absolute;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    overflow: visible!important;
-    fill: #fff
-}
-
-.ellipse.ellipse--blur {
-    opacity: .7;
-    -webkit-filter: blur(20px);
-    filter: blur(20px)
-}
-
 .form__input-row {
     margin-bottom: 10px
 }
@@ -1026,73 +549,6 @@
     background: #fff
 }
 
-.social-likes {
-    margin: 20px 0
-}
-
-.social-likes li {
-    list-style: none
-}
-
-.social-likes__widget {
-    height: 22px;
-    width: 28px;
-    -webkit-transition: background-color .1s ease-in-out;
-    transition: background-color .1s ease-in-out;
-    background: #6b6b6b;
-    cursor: pointer;
-    text-align: center;
-    color: #fff
-}
-
-.social-likes__widget:before {
-    height: 100%;
-    cursor: pointer;
-    font-size: 13px;
-    line-height: 22px!important
-}
-
-.social-likes--vertical .social-likes__widget {
-    display: block;
-    margin: 7px
-}
-
-.social-likes--horizontal .social-likes__widget {
-    display: inline-block;
-    margin: 1px
-}
-
-.social-likes__icon {
-    display: none
-}
-
-.social-likes__button {
-    font-size: 0
-}
-
-.social-likes__widget_plusone:before {
-    content: "\E901"
-}
-
-.social-likes__widget_plusone:hover {
-    background: #c40005
-}
-
-.social-likes__widget_facebook:before {
-    content: "\E904"
-}
-
-.social-likes__widget_facebook:hover {
-    background: #3b5999
-}
-
-.social-likes__widget_vkontakte:before {
-    content: "\E906"
-}
-
-.social-likes__widget_vkontakte:hover {
-    background: #4c709d
-}
 
 .form__text-button,
 .form__text-label {
