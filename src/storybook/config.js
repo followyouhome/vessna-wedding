@@ -1,6 +1,6 @@
 import { configure } from '@storybook/vue';
 
-import { storiesOf } from "@storybook/vue";
+import { storiesOf, addDecorator } from "@storybook/vue";
 import { action } from "@storybook/addon-actions";
 import { withNotes } from "@storybook/addon-notes";
 import { withKnobs, text } from "@storybook/addon-knobs/vue";
@@ -8,10 +8,11 @@ import { withKnobs, text } from "@storybook/addon-knobs/vue";
 // Import our helper
 import { registerStories } from "vue-storybook";
 
-// Import custom plugins
+// Import custom plugins and decorators
 import Vue from 'vue';
 import VueLazyload from 'vue-lazyload';
 import BootstrapVue from 'bootstrap-vue';
+import StoryRouter from 'storybook-vue-router';
 
 // Import custom stylesheets
 import 'bootstrap/dist/css/bootstrap.css';
@@ -26,6 +27,7 @@ const promo = require.context("../components/promo", true, /\.vue$/);
 const forms = require.context("../components/forms", true, /\.vue$/);
 const module = require.context("../components/module", true, /\.vue$/);
 
+addDecorator(StoryRouter());
 
 // Programatically register these stories
 function loadStories () {
