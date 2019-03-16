@@ -25,6 +25,8 @@
   import VectorLogo from './components/atoms/vector-logo.vue';
   import IconToggle from '@/components/atoms/icon-toggle.vue';
 
+  import 'normalize.css';
+
   Vue.component('no-ssr', NoSSR);
   Vue.component('captcha-google', CaptchaGoogle);
   Vue.component('image-deferred', ImageDeferred);
@@ -126,5 +128,20 @@
   }
   .fade-enter, .fade-leave-active {
     opacity: 0
+  }
+
+  ::selection {
+    background: #c9b486;
+    color: #fff
+  }
+
+  ::-moz-selection {
+    background: #c9b486;
+    color: #fff
+  }
+
+  ::-webkit-selection {
+    background: #c9b486;
+    color: #fff
   }
 </style>
