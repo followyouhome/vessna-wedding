@@ -23,30 +23,8 @@
     box-sizing: border-box;
     opacity: 1;
     transform: translateY(0);
-    transition: all linear 0.5s;
     border: 10px solid transparent;
     text-transform: uppercase;
-
-    .promo__wrapper > * {
-      transition: all linear 0.5s;
-      transition-delay: 0.5s;
-
-      &:nth-child(1) {
-        transition-delay: 0.1s;
-      }
-
-      &:nth-child(2) {
-        transition-delay: 0.2s;
-      }
-
-      &:nth-child(3) {
-        transition-delay: 0.3s;
-      }
-
-      &:nth-child(4) {
-        transition-delay: 0.4s;
-      }
-    }
   }
 
   .promo--fade-in {
@@ -94,7 +72,6 @@
     background-color: #fff;
     opacity: 1;
     transform: translateY(0);
-    transition: opacity .5s, transform .5s, box-shadow .3s ease-out;
   }
 
   .promo__text-headline {
@@ -103,8 +80,6 @@
     text-decoration: none;
     text-transform: uppercase;
     color: #515151;
-    -webkit-transition: color .1s linear;
-    transition: color .1s linear
   }
 
   @media screen and (max-width:767px) {
@@ -123,8 +98,6 @@
       font: 15px/20px Futura PT Light, Segoe UI Light, Helvetica, Arial, sans-serif;
       text-transform: uppercase;
       color: #515151;
-      -webkit-transition: color .1s linear;
-      transition: color .1s linear
   }
 
   .promo__text-title {
@@ -188,8 +161,6 @@
       text-decoration: none;
       text-transform: none;
       color: #000;
-      -webkit-transition: color .1s ease-in-out;
-      transition: color .1s ease-in-out
   }
 
   .promo__text-footnote:hover {
