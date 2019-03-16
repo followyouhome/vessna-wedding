@@ -1,5 +1,5 @@
 <template>
-  <div class="module module-dealers-map">
+  <b-container class="module module-dealers-map">
     <div class="module-dealers-map__list">
       <b-form-select v-model="filterByCountry" :options="countries"/>
     </div>
@@ -10,10 +10,39 @@
       <div class="module-dealers-map__sidebar d-none" ref="sidebar">
         <button @click="hideSidebar">close</button>
         <h3>{{activeDealler.name}}</h3>
+
+        <template v-if="activeDealler.contact">
+          <h5>Контакты</h5>
+
+          <p>{{activeDealler.contact.phone}}</p>
+        </template>
+
+        <template v-if="activeDealler.address">
+          <h5>Адрес</h5>
+
+          <p>{{activeDealler.address.full}}</p>
+        </template>
+
+        <template v-if="activeDealler.contact.social">
+          <h5>Социальные сети</h5>
+          <ul>
+            <li>
+              <a :href="activeDealler.contact.social.pinterest" rel="nofollow">Pinterest</a>
+            </li>
+            <li>
+              <a :href="activeDealler.contact.social.facebook" rel="nofollow">Facebook</a>
+            </li>
+            <li>
+              <a :href="activeDealler.contact.social.instagram" rel="nofollow">Instagram</a>
+            </li>
+          </ul>
+        </template>
+
+
+
       </div>
     </div>
-
-  </div>
+  </b-container>
 </template>
 
 <script>
@@ -35,6 +64,7 @@
         yandexMapsId: `yandex-maps-${shortid.generate()}`,
         yandexMapsSDK: `https://api-maps.yandex.ru/2.1/?apikey=${key}&lang=ru_RU`,
         yandexMapsSettings: {
+          controls: ['geolocationControl', 'zoomControl'],
           center: [55.76, 37.64],
           zoom: 7,
         },
@@ -54,6 +84,12 @@
 
       filteredDealers () {
         return this.dealers.filter(dealer => typeof this.filterByCountry === 'string' ? dealer.address.country === this.filterByCountry : true);
+      },
+    },
+
+    watch: {
+      filterByCountry () {
+        this.moveMapToLatLng(this.filteredDealers[0].address.latlng);
       },
     },
 
@@ -93,7 +129,7 @@
 
   .module-dealers-map__list {
     margin: 20px 0;
-    padding: 10px;
+    padding: 15px 60px;
     background: $gray1;
   }
 
@@ -109,6 +145,9 @@
     position: absolute;
     right: 0;
     top: 0;
+    width: 400px;
+    height: 100%;
+    padding: 15px;
     background: $white;
   }
 </style>
@@ -121,33 +160,33 @@
       address: {
         country: 'Канада',
         latlng: [55.76, 37.64],
-        full: '',
+        full: '1326 Beaubien E, Montreal, Qc H2G 1K8',
       },
       contact: {
-        phone: '',
+        phone: '1-514-678-6868',
         email: '',
-        website: '',
+        website: 'https://www.nataliaexclusif.com',
         social: {
-          pinterest: '',
-          instagram: '',
-          facebook: '',
+          pinterest: 'https://www.pinterest.com/nataliaexclusif/',
+          instagram: 'https://www.instagram.com/boutiquenataliaexclusif/',
+          facebook: 'https://www.facebook.com/boutiquenataliaexclusif',
         },
       },
     }, {
       name: 'Vessna Minsk',
-      description: '',
+      description: 'Наш салон в Минске',
       address: {
         country: 'Беларусь',
         latlng: [57.76, 38.64],
-        full: '',
+        full: 'Минск, Веры Хоружей 6Б, павильон 125',
       },
       contact: {
-        phone: '',
-        email: '',
-        website: '',
+        phone: '+375 29 156 06 00',
+        email: 'minsk@vessna.by',
+        website: 'https://vessna-minsk.by',
         social: {
           pinterest: '',
-          instagram: '',
+          instagram: 'https://instagram.com/vessna_dress',
           facebook: '',
         },
       },
