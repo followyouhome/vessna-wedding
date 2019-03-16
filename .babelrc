@@ -4,7 +4,6 @@
   ],
   "plugins": [
     "@babel/plugin-syntax-dynamic-import",
-    "@babel/plugin-proposal-object-rest-spread",
-    "dynamic-import-node-babel-7"
+    "@babel/plugin-proposal-object-rest-spread"
   ]
 }

@@ -1,45 +1,46 @@
-const _ = require('lodash');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
 const isProd = process.env.NODE_ENV === 'production';
+const resolve = file => path.resolve(__dirname, file);
 
-const productionLoaders = [
-  {
-    loader: 'css-loader',
-    options: {
-      importLoaders: 2,
-      modules: true,
-    },
-  },
-  {
-    loader: 'sass-loader',
-    options: {
-    },
-  },
-  { loader: 'sass-resources-loader',
-    options: {
-      resources: [
-        path.resolve(__dirname, '../src/styles/animations.scss'),
-        path.resolve(__dirname, '../src/styles/variables.scss'),
-        path.resolve(__dirname, '../src/styles/colors.scss'),
-        path.resolve(__dirname, '../src/stylez/import.scss'),
-        path.resolve(__dirname, '../src/styles/media.scss'),
-        path.resolve(__dirname, '../src/styles/fonts.scss'),
-      ],
-    },
-  },
-];
-
-let devLoaders = [{ loader: 'vue-style-loader' }].concat(_.clone(productionLoaders, true));
-devLoaders.forEach(loader => _.set(loader, 'options.sourceMap', true));
-
-module.exports = {
+const config = {
   test: /\.(css|scss)$/,
-  use: isProd
-    ? ExtractTextPlugin.extract({
-      use: productionLoaders,
-      fallback: 'vue-style-loader',
-    })
-    : devLoaders,
+  use: [
+    {
+      loader: 'css-loader',
+      options: {
+        modules: true,
+        sourceMap: !isProd,
+        importLoaders: 2,
+      },
+    }, {
+      loader: 'sass-loader',
+      options: {
+        sourceMap: !isProd,
+      },
+    }, {
+      loader: 'sass-resources-loader',
+      options: {
+        resources: [
+          resolve('../src/styles/animations.scss'),
+          resolve('../src/styles/variables.scss'),
+          resolve('../src/styles/colors.scss'),
+          resolve('../src/stylez/import.scss'),
+          resolve('../src/styles/media.scss'),
+          resolve('../src/styles/fonts.scss'),
+        ],
+      },
+    },
+  ],
+};
+
+module.exports.client = {
+  test: config.test,
+  use: [isProd ? MiniCssExtractPlugin.loader : 'vue-style-loader', ...config.use],
+};
+
+module.exports.server = {
+  test: config.test,
+  use: ['vue-style-loader', ...config.use],
 };

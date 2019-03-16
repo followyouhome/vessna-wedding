@@ -1,6 +1,6 @@
 const _ = require('lodash');
 const isProd = process.env.NODE_ENV === 'production';
-let scss = require('./css-loader.config').use;
+let scss = require('./css-loader.config').client.use;
 
 const cssLoader = _.find(scss, { loader : 'css-loader' });
 cssLoader.options.modules = false;

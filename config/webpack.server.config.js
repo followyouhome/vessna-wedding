@@ -9,15 +9,25 @@ const VueSSRServerPlugin = require('vue-server-renderer/server-plugin');
 const { DefinePlugin, EnvironmentPlugin } = require('webpack');
 
 module.exports = merge(baseConfig, {
-  target: 'node', // Needed by the vue-loader
+  target: 'node',
+
   entry: './main.server.js',
+
   output: {
     filename: 'server.bundle.js',
-    libraryTarget: 'commonjs2', // Needed by the server bundle renderer
+    libraryTarget: 'commonjs2',
   },
+
+  module: {
+    rules: [
+      require('./css-loader.config').server,
+    ],
+  },
+
   externals: nodeExternals({
-    whitelist: /\.css$/, // Do not externalize CSS files in case we need to import it from a dep
+    whitelist: /\.css$/,
   }),
+
   plugins: [
     new EnvironmentPlugin(['NODE_ENV']),
     new VueSSRServerPlugin(),
