@@ -2,14 +2,6 @@
   <div class="vector-logo">
     <div class="vector-logo__svg" @mouseenter="updateIndex">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" width="100%" height="100%" style="display:block; shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" viewBox="0 0 10000 3000">
-        <defs>
-          <style type="text/css">
-            .fil0 {
-              fill: #FFF;
-              fill-rule: nonzero;
-            }
-          </style>
-        </defs>
         <mask id="svg-mask">
             <use xlink:href="#svg-mask__inner" />
         </mask>
@@ -74,4 +66,13 @@
     display: block;
     width: 100px;
   }
+
+  .fil0 {
+    fill: #FFF;
+    fill-rule: nonzero;
+  }
 </style>
+
+<story group="Atoms" name="Vector Logo">
+  <vector-logo/>
+</story>
