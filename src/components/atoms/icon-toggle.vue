@@ -45,8 +45,6 @@
   .icon-toggle {
     position: relative;
     margin: auto;
-    height: 100%;
-    width: 100%;
 
     .inner {
       position: absolute;
@@ -80,13 +78,13 @@
         }
 
         &:before {
-          top: -5px;
+          top: -7px;
           transition: top 75ms ease .12s,opacity 75ms ease;
 
         }
 
         &:after {
-          bottom: -5px;
+          bottom: -7px;
           transition: bottom 75ms ease .12s,transform 75ms cubic-bezier(.55,.055,.675,.19);
         }
       }
