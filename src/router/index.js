@@ -20,18 +20,8 @@ export function createRouter (store) {
       {
         name: ROUTES.PAGE_HOMEPAGE,
         path: '/',
-        component: () => import('../components/pages/page-homepage.vue'),
+        component: () => import(/* webpackChunkName: "page-homepage" */ '../components/pages/page-homepage.vue'),
       },
-      // {
-      //   name: ROUTES.PAGE_CONTACT,
-      //   path: '/contact',
-      //   component: () => import('../components/pages/page-homepage.vue')
-      // },
-      // {
-      //   name: ROUTES.PAGE_LANDING,
-      //   path: '/:slug',
-      //   component: () => import('../components/pages/page-homepage.vue')
-      // },
       ...collection,
       ...user,
       ...news,
