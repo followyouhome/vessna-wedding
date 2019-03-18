@@ -4,9 +4,12 @@
 
 <script>
   import isMobile from 'ismobilejs';
+  import Module from './module';
 
   export default {
     name: 'module-grid--isotope',
+
+    extends: Module,
 
     data () {
       return {
