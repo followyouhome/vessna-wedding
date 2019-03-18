@@ -29,7 +29,7 @@
 
 <script>
 	export default {
-		name: 'promo-feedback',
+		name: 'PromoFeedback',
 
 		props: ['feedback'],
 
