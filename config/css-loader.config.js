@@ -42,5 +42,5 @@ module.exports.client = {
 
 module.exports.server = {
   test: config.test,
-  use: ['vue-style-loader', ...config.use],
+  use: ['null-loader', ...config.use],
 };
