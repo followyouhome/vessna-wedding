@@ -45,6 +45,16 @@ const config = {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
+        options: {
+          babelrc: false,
+          presets: [
+            '@babel/env',
+          ],
+          plugins: [
+            '@babel/plugin-syntax-dynamic-import',
+            '@babel/plugin-proposal-object-rest-spread',
+          ],
+        },
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
