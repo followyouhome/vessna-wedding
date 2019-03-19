@@ -35,6 +35,7 @@ const config = {
       splitChunks: {
         cacheGroups: {
           styles: {
+            name: 'styles',
             test: module => module.constructor.name === 'CssModule',
             enforce: true,
             chunks: 'all',
