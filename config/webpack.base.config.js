@@ -33,7 +33,13 @@ const config = {
         new UglifyJsPlugin(),
       ],
       splitChunks: {
-        chunks: 'all',
+        cacheGroups: {
+          styles: {
+            test: module => module.constructor.name === 'CssModule',
+            enforce: true,
+            chunks: 'all',
+          },
+        },
       },
     } : {
 
