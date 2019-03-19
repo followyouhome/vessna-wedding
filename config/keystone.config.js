@@ -3,7 +3,7 @@ const config = require('../config');
 
 module.exports = {
   'name': config.title,
-  'favicon': '../public/logo-48.png',
+  'favicon': '../public/logo/icon-48-48.png',
   'mongo': process.env.MONGODB_URI,
   'updates': path.resolve(__dirname, '../server/keystone/updates'),
   'auto update': true,

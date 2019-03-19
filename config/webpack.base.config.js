@@ -2,6 +2,7 @@
  * Webpack base configuration for both server and client.
  */
 const path = require('path');
+const CopyPlugin = require('copy-webpack-plugin');
 const CleanPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
@@ -83,6 +84,9 @@ const config = {
 
   plugins: [
     new VueLoaderPlugin(),
+    new CopyPlugin([
+      { from: resolve('../src/manifest.webmanifest'), to: resolve('../dist') },
+    ]),
   ],
 };
 
