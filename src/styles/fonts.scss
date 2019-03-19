@@ -4,6 +4,7 @@
 
  @font-face {
      font-family: 'icomoon';
+     font-display: swap;
      src: url("/public/fonts/Icon_Font/icomoon.eot?duiu20");
      src: url("/public/fonts/Icon_Font/icomoon.eot?duiu20#iefix") format("embedded-opentype"), url("/public/fonts/Icon_Font/icomoon.ttf?duiu20") format("truetype"), url("/public/fonts/Icon_Font/icomoon.woff?duiu20") format("woff"), url("/public/fonts/Icon_Font/icomoon.svg?duiu20#icomoon") format("svg");
      font-weight: 400;
@@ -18,6 +19,7 @@
 
 @font-face {
     font-family: 'Akzidenz Grotesk';
+    font-display: swap;
     src: url('/public/fonts/AkzidenzGroteskPro/AkzidenzGroteskPro.eot');
     src: url('/public/fonts/AkzidenzGroteskPro/AkzidenzGroteskPro.eot?#iefix') format('embedded-opentype'),
          url('/public/fonts/AkzidenzGroteskPro/AkzidenzGroteskPro.woff2') format('woff2'),
@@ -36,6 +38,7 @@ $AkzidensGrotesk: 'Akzidenz Grotesk';
 
 @font-face {
   font-family: 'Peignot Light';
+  font-display: swap;
   src: url("/public/fonts/Peignot_Light.eot");
   src: url("/public/fonts/Peignot_Light/Peignot_Light.eot?#iefix") format("embedded-opentype"),
        url("/public/fonts/Peignot_Light/Peignot_Light.woff2") format("woff2"),
@@ -64,6 +67,7 @@ $PeginotLight: 'Peignot Light';
 
 @font-face {
   font-family: 'RistrettoPro-Black';
+  font-display: swap;
   src: url('/public/fonts/RistrettoPro/RistrettoPro-Black.woff') format('woff'),
 }
 
@@ -71,6 +75,7 @@ $RistrettoProBlack: 'RistrettoPro-Black';
 
 @font-face {
   font-family: 'RistrettoPro-Bold';
+  font-display: swap;
   src: url('/public/fonts/RistrettoPro/RistrettoPro-Bold.woff') format('woff'),
 }
 
@@ -78,6 +83,7 @@ $RistrettoProBold: 'RistrettoPro-Bold';
 
 @font-face {
   font-family: 'RistrettoPro-Light';
+  font-display: swap;
   src: url('/public/fonts/RistrettoPro/RistrettoPro-Light.woff') format('woff'),
 }
 
@@ -85,6 +91,7 @@ $RistrettoProLight: 'RistrettoPro-Light';
 
 @font-face {
   font-family: 'RistrettoPro-ExtraLight';
+  font-display: swap;
   src: url('/public/fonts/RistrettoPro/RistrettoPro-ExtraLight.woff') format('woff'),
 }
 
@@ -92,6 +99,7 @@ $RistrettoProExtraLight: 'RistrettoPro-ExtraLight';
 
 @font-face {
   font-family: 'RistrettoPro-Thin';
+  font-display: swap;
   src: url('/public/fonts/RistrettoPro/RistrettoPro-Thin.woff') format('woff'),
 }
 
@@ -99,6 +107,7 @@ $RistrettoProThin: 'RistrettoPro-Thin';
 
 @font-face {
   font-family: 'RistrettoPro-Medium';
+  font-display: swap;
   src: url('/public/fonts/RistrettoPro/RistrettoPro-Medium.woff') format('woff'),
 }
 
@@ -106,6 +115,7 @@ $RistrettoProMedium: 'RistrettoPro-Medium';
 
 @font-face {
   font-family: 'RistrettoPro-SemiBold';
+  font-display: swap;
   src: url('/public/fonts/RistrettoPro/RistrettoPro-SemiBold.woff') format('woff'),
 }
 
@@ -113,6 +123,7 @@ $RistrettoProSemiBold: 'RistrettoPro-SemiBold';
 
 @font-face {
   font-family: 'RistrettoPro-Regular';
+  font-display: swap;
   src: url('/public/fonts/RistrettoPro/RistrettoPro-Regular.woff') format('woff'),
 }
 
@@ -123,6 +134,7 @@ $RistrettoProRegular: 'RistrettoPro-Regular';
  */
  @font-face {
      font-family: 'Futura PT Light';
+     font-display: swap;
      src: url("/public/fonts/Futura_PT_Light/FTN35__W.eot");
      src: url("/public/fonts/Futura_PT_Light/FTN35__W.eot?#iefix") format("embedded-opentype"),
           url("/public/fonts/Futura_PT_Light/FTN35__W.woff") format("woff"),
