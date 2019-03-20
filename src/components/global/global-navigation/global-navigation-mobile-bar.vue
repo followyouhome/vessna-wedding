@@ -22,6 +22,7 @@
 
   .global-navigation-mobile-bar {
     display: none;
+    position: relative;
     height: $navigation-bar-height;
     width: 100%;
     top: 0;
@@ -29,20 +30,28 @@
     border-bottom: 1px solid $black;
 
     @media #{$tablet} {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: block;
     }
 
     .icon-toggle {
-      margin: 0;
+      position: absolute;
+      top: 0;
+      left: 25px;
+      bottom: 0;
+      margin: auto;
       width: 20px;
       height: 20px;
     }
 
     .vector-logo {
       display: inline-flex;
-      width: 100px;
+      position: absolute;
+      margin: auto;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 130px;
     }
   }
 </style>

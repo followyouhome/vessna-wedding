@@ -65,6 +65,7 @@
 
     @media #{$tablet} {
       display: flex;
+      position: static;
       justify-content: left;
       padding: 15px 20px;
       height: $height-mobile;
@@ -72,6 +73,14 @@
 
       &:first-child {
         border-top: 1px solid $gray1;
+      }
+
+      .global-navigation-sub-list {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
       }
     }
   }
@@ -90,10 +99,11 @@
   .global-navigation-text {
     display: inline-block;
     margin-top: 7px;
-    font: 1.3rem/1 $RistrettoProMedium;
+    font: 23px/1 $RistrettoProMedium;
     text-transform: uppercase;
     letter-spacing: 2px;
     color: $dark5;
+    white-space: nowrap;
     transition: color linear 0.3s;
 
     @media #{$tablet} {
@@ -103,11 +113,13 @@
   }
 
   .global-navigation-icon {
+    display: inline-block;
     position: relative;
-    margin-left: 7px;
+    margin-left: 10px !important;
     margin-top: 5px;
     height: 20px;
-    width: 20px;
+    width: 20px !important;
+    top: 2px;
 
     .inner {
       &, &:before, &:after {

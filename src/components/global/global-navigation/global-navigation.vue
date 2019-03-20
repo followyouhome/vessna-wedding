@@ -147,6 +147,10 @@
       height: $navigation-bar-height;
       left: 0;
 
+      &:hover + * {
+        opacity: 1;
+      }
+
       &.open {
         height: 100%;
       }
@@ -184,6 +188,7 @@
     border-bottom: 1px solid $gray1;
 
     @media #{$tablet} {
+      position: relative;
       right: 0;
     }
   }
