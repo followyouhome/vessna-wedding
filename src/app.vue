@@ -82,6 +82,18 @@
       },
     },
 
+    mounted () {
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/dist/service-worker.js', {
+          scope: '/',
+        }).then(reg => {
+          console.log("Service worker registered", reg);
+        }).catch(err => {
+          console.log(err);
+        });
+      }
+    },
+
     methods: {
       fullscreen () {
         this.$refs.app.classList.toggle('fullscreen');

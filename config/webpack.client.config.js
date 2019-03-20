@@ -6,6 +6,7 @@ const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base.config.js');
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 
 const { DefinePlugin, EnvironmentPlugin, optimize } = require('webpack');
 
@@ -34,6 +35,13 @@ module.exports = merge(baseConfig, {
     }),
     new MiniCssExtractPlugin({
       filename: 'style.css',
+    }),
+    new SWPrecacheWebpackPlugin({
+      cacheId: 'my-vue-app',
+      filename: 'service-worker.js',
+      staticFileGlobs: ['dist/**/*.{js,html,css}'],
+      minify: true,
+      stripPrefix: 'dist/',
     }),
   ],
 });
