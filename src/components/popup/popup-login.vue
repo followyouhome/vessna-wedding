@@ -1,6 +1,5 @@
 <template>
   <fieldset :class="['popup', 'popup-login', this.status.available ? 'popup--show' : 'popup--hide']">
-    <!--<script src='https://www.google.com/recaptcha/api.js?hl=ru'></script>-->
     <legend class="popup-login__title">Вход</legend>
     <form v-on:submit.prevent="login">
       <input class="form__input-text" v-model.trim="form.email" type="email" placeholder="Email">
@@ -77,3 +76,7 @@
     padding: 10px;
   }
 </style>
+
+<story group="Popups" name="Login">
+  <popup-login/>
+</story>

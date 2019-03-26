@@ -25,13 +25,14 @@ Vue.use(BootstrapVue);
 const atoms = require.context("../components/atoms", true, /\.vue$/);
 const promo = require.context("../components/promo", true, /\.vue$/);
 const forms = require.context("../components/forms", true, /\.vue$/);
+const popup = require.context("../components/popup", true, /\.vue$/);
 const module = require.context("../components/module", true, /\.vue$/);
 
 addDecorator(StoryRouter());
 
 // Programatically register these stories
 function loadStories () {
-  [atoms, promo, forms, module].forEach(group => {
+  [atoms, promo, forms, popup, module].forEach(group => {
     group.keys().forEach(filename => {
       registerStories(group, filename, storiesOf, {
         withKnobs,
