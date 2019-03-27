@@ -2,7 +2,7 @@
   <div class="global-navigation-item">
     <router-link class="global-navigation-link" v-bind:to="item.route">
       <span class="global-navigation-text" itemprop="name">{{ item.name }}</span>
-      <icon-toggle class="global-navigation-icon" icon="hamburger" handle="click" @click="toggleMenu" v-if="item.items"/>
+      <icon-toggle class="global-navigation-icon" icon="hamburger" handle="click" v-if="item.items"/>
     </router-link>
     <slot>
       <div class="global-navigation-sub-list" v-if="item.items && item.items.length">

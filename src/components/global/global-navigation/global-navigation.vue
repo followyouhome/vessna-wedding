@@ -113,7 +113,6 @@
     methods: {
       toggleMenu () {
         this.$refs.navigation.classList.toggle('open');
-        // this.$emit('shift');
       },
     },
 
