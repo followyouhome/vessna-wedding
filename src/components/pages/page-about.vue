@@ -1,5 +1,5 @@
 <template>
-  <main class="page-b2b-info">
+  <main class="page-about">
     <module-b2b-info :info="info"/>
   </main>
 </template>
