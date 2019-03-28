@@ -1,12 +1,16 @@
 <template>
   <div class="simple-button">
-    <button class="simple-button__button">
+    <button class="simple-button__button" @click="click">
       {{text}}
     </button>
   </div>
 </template>
 
 <script>
+  import {
+    POPUP_SET,
+  } from '@/store/mutation-types';
+
   export default {
     name: 'SimpleButton',
 
@@ -16,6 +20,12 @@
       return {
 
       };
+    },
+
+    methods: {
+      click () {
+        this.$store.commit(POPUP_SET, { popup: 'popup-cooperation-form' });
+      },
     },
   };
 </script>

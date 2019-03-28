@@ -3,13 +3,6 @@
 </template>
 
 <script>
-  const sitekey = '6Lf__kAUAAAAAAfyKZ7h_54WlKBUOrQTkvmAbhEC';
-  let component;
-
-  if (  __VUE_ENV__ === 'client') {
-    window.loginRecaptcha = () => component.status.recaptcha = true;
-    window.initRecaptcha = () => grecaptcha.render('popup__recaptcha', { 'sitekey' : sitekey });
-  }
 
   export default {
     name: 'popup',
@@ -25,32 +18,12 @@
         },
         config: {
           animation: 300,
-          selector: 'popup__recaptcha',
-          sitekey: sitekey,
-          url: 'https://www.google.com/recaptcha/api.js?hl=ru&render=explicit&onload=initRecaptcha',
-          id: 'recaptcha',
         },
       };
     },
 
     mounted () {
-      if (__VUE_ENV__ === 'client') {
-        component = this;
 
-        window.addEventListener('keydown', this.keyboardListener);
-
-        if (!document.getElementById('recaptcha')) {
-          const script = document.createElement("script");
-
-          script.src = this.config.url;
-          script.id = this.config.id;
-
-          document.head.appendChild(script);
-        } else {
-          window.initRecaptcha();
-        }
-
-      }
     },
 
     destroyed () {
@@ -75,36 +48,12 @@
 </script>
 
 <style lang="scss">
-  @keyframes fade-in {
-    from {
-      transform: translateY(-3rem);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
+  @include animation-fade-in();
 
-  @keyframes fade-out {
-    from {
-      transform: translateY(0);
-      opacity: 1;
-    }
-    to {
-      transform: translateY(-3rem);
-      opacity: 0;
-    }
-  }
-
-  .popup--show {
-    animation: fade-in 0.3s normal;
-    opacity: 1;
-  }
-
-  .popup--hide {
-    animation: fade-out 0.3s normal;
-    opacity: 0;
+  .popup {
+    margin: auto;
+    animation: animation-fade-in 0.3s normal;
+    box-shadow: 0 0 28px 0 rgba(0, 0, 0, 0.75);
   }
 
   .popup__close {

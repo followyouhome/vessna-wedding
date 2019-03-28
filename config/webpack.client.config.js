@@ -28,7 +28,7 @@ module.exports = merge(baseConfig, {
   },
 
   plugins: [
-    new EnvironmentPlugin(['NODE_ENV']),
+    new EnvironmentPlugin(['NODE_ENV', 'YANDEX_MAPS_KEY']),
     new VueSSRClientPlugin(),
     new DefinePlugin({
       __VUE_ENV__: '"client"',

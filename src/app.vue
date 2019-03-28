@@ -7,7 +7,7 @@
       <router-view></router-view>
     </transition>
     <global-footer/>
-    <global-popup-container :popup="popup" v-if="popup"/>
+    <global-popup-container :popup="popup" v-show="popup"/>
   </div>
 </template>
 
@@ -21,16 +21,22 @@
   import GlobalPopupContainer from './components/global/global-popup-container';
   import CaptchaGoogle from './components/atoms/captcha-google.vue';
   import ImageDeferred from './components/atoms/image-deferred.vue';
+  import SimpleButton from '@/components/atoms/simple-button';
   import VideoRegular from './components/atoms/video-regular.vue';
+  import VectorIcon from './components/atoms/vector-icon.vue';
   import VectorLogo from './components/atoms/vector-logo.vue';
   import IconToggle from '@/components/atoms/icon-toggle.vue';
 
   import 'normalize.css';
+  import 'bootstrap/dist/css/bootstrap.css';
+  import 'bootstrap-vue/dist/bootstrap-vue.css';
 
   Vue.component('no-ssr', NoSSR);
   Vue.component('captcha-google', CaptchaGoogle);
   Vue.component('image-deferred', ImageDeferred);
   Vue.component('video-regular', VideoRegular);
+  Vue.component('simple-button', SimpleButton);
+  Vue.component('vector-icon', VectorIcon);
   Vue.component('vector-logo', VectorLogo);
   Vue.component('icon-toggle', IconToggle);
 
