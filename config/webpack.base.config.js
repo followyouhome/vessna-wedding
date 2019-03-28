@@ -59,6 +59,7 @@ const config = {
             '@babel/env',
           ],
           plugins: [
+            '@babel/transform-runtime',
             '@babel/plugin-syntax-dynamic-import',
             '@babel/plugin-proposal-object-rest-spread',
           ],
@@ -87,6 +88,10 @@ const config = {
       'masonry': 'masonry-layout',
       'isotope': 'isotope-layout',
     },
+  },
+
+  externals: {
+    jquery: 'jQuery',
   },
 
   plugins: [
