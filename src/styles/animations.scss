@@ -34,3 +34,29 @@
     }
   }
 }
+
+@mixin animation-fade-in() {
+  @keyframes animation-fade-in {
+    from {
+      transform: translateY(-3rem);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+@mixin animation-fade-out() {
+  @keyframes animation-fade-out {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(-3rem);
+      opacity: 0;
+    }
+  }
+}

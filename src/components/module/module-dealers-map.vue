@@ -1,12 +1,13 @@
 <template>
   <b-container class="module module-dealers-map">
+    <h2 class="module-dealers-map__headline">Диллеры</h2>
     <div class="module-dealers-map__list">
       <b-form-select v-model="filterByCountry" :options="countries"/>
     </div>
     <div class="module-dealers-map__wrapper">
-      <div class="module-dealers-map__map" :id="yandexMapsId">
-        <!-- Yandex map is here -->
-      </div>
+      <no-ssr>
+        <div class="module-dealers-map__map" :id="yandexMapsId"></div>
+      </no-ssr>
       <div class="module-dealers-map__sidebar d-none" ref="sidebar">
         <button @click="hideSidebar">close</button>
         <h3>{{activeDealler.name}}</h3>
@@ -37,9 +38,6 @@
             </li>
           </ul>
         </template>
-
-
-
       </div>
     </div>
   </b-container>
@@ -127,18 +125,35 @@
 
   }
 
+  .module-dealers-map__headline {
+    margin: 30px 0;
+    font: 3rem/3rem $RistrettoProLight;
+    text-align: center;
+  }
+
   .module-dealers-map__list {
     margin: 20px 0;
-    padding: 15px 60px;
+    padding: 13px 80px;
     background: $gray1;
+
+    .custom-select {
+      height: 50px;
+      border: none;
+    }
   }
 
   .module-dealers-map__wrapper {
     position: relative;
+    margin: 35px 0;
+    padding-top: 50%;
   }
 
   .module-dealers-map__map {
-    height: 500px;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
   }
 
   .module-dealers-map__sidebar {

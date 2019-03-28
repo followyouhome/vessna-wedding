@@ -17,11 +17,11 @@ export default {
             zoom: settings.zoom,
         });
 
-        items.forEach(item => {
-          const placemark = this.generateMapPlacemark(item, this.onPlacemarkClick);
-
-          this.map.api.geoObjects.add(placemark);
-        });
+        // items.forEach(item => {
+        //   // const placemark = this.generateMapPlacemark(item, this.onPlacemarkClick);
+        //
+        //   // this.map.api.geoObjects.add(placemark);
+        // });
       });
     },
 

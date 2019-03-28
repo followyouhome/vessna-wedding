@@ -1,18 +1,18 @@
 <template>
   <b-container class="module module-call-to-action">
-    <b-row>
-      <b-col class="module-call-to-action__content" cols="8" v-if="content">
+    <div class="module__wrapper module-call-to-action__wrapper">
+      <div class="module-call-to-action__content">
         <h3 v-if="content.headline">{{content.headline}}</h3>
         <h4 v-if="content.subline">{{content.subline}}</h4>
         <p v-if="content.copy">{{content.copy}}</p>
-      </b-col>
-      <b-col class="module-call-to-action__action" cols="4" v-if="button">
+      </div>
+      <div class="module-call-to-action__action">
         <simple-button
           :text="button.text"
           @click="action"
         />
-      </b-col>
-    </b-row>
+      </div>
+    </div>
   </b-container>
 </template>
 
@@ -38,6 +38,13 @@
 
 <style lang="scss">
   .module-call-to-action {
+    margin: 30px auto;
+  }
+
+  .module-call-to-action__wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     padding: 30px;
     background: $gray1;
   }

@@ -10,6 +10,7 @@ import { registerStories } from "vue-storybook";
 
 // Import custom plugins and decorators
 import Vue from 'vue';
+import NoSSR from 'vue-no-ssr';
 import VueLazyload from 'vue-lazyload';
 import BootstrapVue from 'bootstrap-vue';
 import StoryRouter from 'storybook-vue-router';
@@ -20,6 +21,8 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 Vue.use(VueLazyload);
 Vue.use(BootstrapVue);
+
+Vue.component('no-ssr', NoSSR);
 
 // Require the Vue SFC with <story> blocks inside
 const atoms = require.context("../components/atoms", true, /\.vue$/);

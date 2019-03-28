@@ -132,16 +132,16 @@ $RistrettoProRegular: 'RistrettoPro-Regular';
 /**
  * Futura PT Light
  */
- @font-face {
-     font-family: 'Futura PT Light';
-     font-display: swap;
-     src: url("/public/fonts/Futura_PT_Light/FTN35__W.eot");
-     src: url("/public/fonts/Futura_PT_Light/FTN35__W.eot?#iefix") format("embedded-opentype"),
-          url("/public/fonts/Futura_PT_Light/FTN35__W.woff") format("woff"),
-          url("/public/fonts/Futura_PT_Light/FTN35__W.ttf") format("truetype"),
-          url("/public/fonts/Futura_PT_Light/FTN35__W.svg") format("svg");
-     font-weight: 400;
-     font-style: normal
- }
+@font-face {
+  font-family: 'Futura PT Light';
+  font-display: swap;
+  src: url("/public/fonts/Futura_PT_Light/FTN35__W.eot");
+  src: url("/public/fonts/Futura_PT_Light/FTN35__W.eot?#iefix") format("embedded-opentype"),
+       url("/public/fonts/Futura_PT_Light/FTN35__W.woff") format("woff"),
+       url("/public/fonts/Futura_PT_Light/FTN35__W.ttf") format("truetype"),
+       url("/public/fonts/Futura_PT_Light/FTN35__W.svg") format("svg");
+  font-weight: 400;
+  font-style: normal
+}
 
- $FuturaPTLight: 'Futura PT Light';
+$FuturaPTLight: 'Futura PT Light';
