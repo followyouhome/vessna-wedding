@@ -1,7 +1,8 @@
 <template>
-  <div class="global-popup-container" @click="check($event)">
-    <popup-login v-if="popup === 'login'"/>
-    <popup-signup v-if="popup === 'signup'"/>
+  <div class="global-popup-container" @click="clickOutside($event)">
+    <popup-login v-if="popup === 'popup-login'"/>
+    <popup-signup v-if="popup === 'popup-signup'"/>
+    <popup-cooperation-form v-if="popup === 'popup-feedback-form'"/>
     <popup-cooperation-form v-if="popup === 'popup-cooperation-form'"/>
   </div>
 </template>
@@ -9,7 +10,7 @@
 <script>
   import PopupLogin from '@/components/popup/popup-login.vue';
   import PopupSignup from '@/components/popup/popup-signup.vue';
-  import PopupContactForm from '@/components/popup/popup-contact-form';
+  import PopupFeedbackForm from '@/components/popup/popup-feedback-form';
   import PopupCooperationForm from '@/components/popup/popup-cooperation-form';
 
   export default {
@@ -18,7 +19,7 @@
     components: {
       'popup-login': PopupLogin,
       'popup-signup': PopupSignup,
-      'popup-contact-form': PopupContactForm,
+      'popup-feedback-form': PopupFeedbackForm,
       'popup-cooperation-form': PopupCooperationForm,
     },
 
@@ -29,7 +30,7 @@
     },
 
     methods: {
-      check (e) {
+      clickOutside (e) {
         if (e.path[0] === this.$el) {
           this.$store.commit('POPUP_UNSET');
         }
