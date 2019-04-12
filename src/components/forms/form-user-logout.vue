@@ -1,31 +1,36 @@
 <template>
-  <form class="form form-user-logout form--column" v-on:submit.prevent="submit">
-    <div class="form__row">
-      <legend class="popup-login__title">Выход из аккаунта</legend>
-    </div>
-    <div class="form__row">
-      <input class="form__input-text" :value="form.email || user.email" type="email" placeholder="Email" disabled>
-    </div>
-    <div class="form__row">
-      <input type="submit" value="Выйти"
-        :class="[
-          'form__button-submit',
-          request ? 'request' : '',
-          success ? 'success' : '',
-          fail ? 'fail' : '',
-        ]"
-      />
-    </div>
-  </form>
+  <v-form class="form-user-login" @success="success" @failure="failure">
+    <template slot='header'>
+      <h3 class="form__headline">Выход из личного кабинета</h3>
+    </template>
+    <template slot='body'>
+      <div class="form-login__group">
+        <b-row class="mt-4 mb-4">
+          <b-col>
+            <b-form-input v-model="form.email || user" type="text" placeholder="Email" disabled/>
+          </b-col>
+        </b-row>
+      </div>
+    </template>
+    <template slot='footer'>
+      <div class="form-feedback__control">
+        <b-button class="form__submit" type="submit" block>Выйти</b-button>
+      </div>
+    </template>
+  </v-form>
 </template>
 
 <script>
-  import Form from './form.vue';
+  import Form from './index.vue';
 
   export default {
     name: 'FormUserLogout',
 
     extends: Form,
+
+    components: {
+      'v-form': Form,
+    },
 
     data () {
       return {
@@ -38,7 +43,7 @@
 
     computed: {
       user () {
-        return this.$store.state.user;
+        return this.$store && this.$store.state && this.$store.state.user && this.$store.state.user.email;
       },
     },
   };
@@ -52,3 +57,7 @@
     border: 1px solid $gray3;
   }
 </style>
+
+<story group="Forms" name="User Logout">
+  <form-user-logout/>
+</story>

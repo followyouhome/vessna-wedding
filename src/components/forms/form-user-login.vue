@@ -1,55 +1,55 @@
 <template>
-  <form class="form form-user-login form--column" v-on:submit.prevent="submit">
-    <div class="form__row">
-      <legend class="popup-login__title">Вход</legend>
-    </div>
-    <div class="form__row">
-      <input class="form__input-text" v-model.trim="form.email" type="email" placeholder="Email">
-    </div>
-    <div class="form__row">
-      <input class="form__input-text" v-model="form.password" type="password" placeholder="Пароль">
-    </div>
-    <div class="form__row">
-      <captcha-google v-on:success="captcha"/>
-    </div>
-    <div class="form__row">
-      <input type="submit" value="Войти"
-        :disabled="!recaptcha"
-        :title="!recaptcha ? 'Заполните все поля' : 'Нажмите, чтобы войти'"
-        :class="[
-          'form__button-submit',
-          request ? 'request' : '',
-          success ? 'success' : '',
-          fail ? 'fail' : '',
-        ]"
-      />
-    </div>
-  </form>
+  <v-form class="form-user-login" @success="success" @failure="failure">
+    <template slot='header'>
+      <h3 class="form__headline">Вход в личный кабинет</h3>
+    </template>
+    <template slot='body'>
+      <div class="form-login__group">
+        <b-row class="mt-4 mb-4">
+          <b-col>
+            <b-form-input v-model="form.email" type="text" placeholder="Email" />
+          </b-col>
+        </b-row>
+        <b-row class="mt-4 mb-4">
+          <b-col>
+            <b-form-input v-model="form.password" type="password" placeholder="Пароль" />
+          </b-col>
+        </b-row>
+        <b-row class="mt-4 mb-4">
+          <b-col>
+            <captcha-google v-on:success="captcha"/>
+          </b-col>
+        </b-row>
+      </div>
+    </template>
+    <template slot='footer'>
+      <div class="form-feedback__control">
+        <b-button class="form__submit" type="submit" :disabled="disabled" block>Войти</b-button>
+      </div>
+    </template>
+  </v-form>
 </template>
 
 <script>
-  import Form from './form.vue';
+  import Form from './index.vue';
 
   export default {
-    name: 'FormUserLogout',
+    name: 'FormUserLogin',
 
     extends: Form,
 
+    components: {
+      'v-form': Form,
+    },
+
     data () {
       return {
-        recaptcha: true,
         action: 'login',
         form: {
           email: '',
           password: '',
         },
       };
-    },
-
-    methods: {
-      captcha () {
-        this.recaptcha = true;
-      },
     },
   };
 </script>
@@ -58,7 +58,7 @@
   .form-user-login {
     margin: 1rem;
     padding: 16px;
-    width: 337px;
+    width: 337px !important;
     border: 1px solid $gray3;
 
     @media #{$tablet} {
@@ -69,3 +69,7 @@
     }
   }
 </style>
+
+<story group="Forms" name="User Login">
+  <form-user-login/>
+</story>

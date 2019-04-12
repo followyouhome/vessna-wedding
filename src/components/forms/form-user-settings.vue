@@ -28,7 +28,7 @@
 </template>
 
 <script>
-  import Form from './form.vue';
+  import Form from './index.vue';
 
   export default {
     name: 'FormUserSettings',
@@ -63,3 +63,7 @@
     border: 1px solid $gray3;
   }
 </style>
+
+<story group="Forms" name="User Settings">
+  <form-user-settings/>
+</story>
