@@ -1,4 +1,4 @@
-const request = require('request');
+const http = require('http');
 
 module.exports = app => {
   app.use('/images/:filename', function (req, res) {
@@ -9,9 +9,16 @@ module.exports = app => {
       query += `w_${req.query.w}`;
     }
 
-    const image = request(`${cloudinary}/${query}/${req.params.filename}`);
+    const image = http.request(`${cloudinary}/${query}/${req.params.filename}`, newRes => {
+        newRes.headers['Cache-Control'] = 'public, max-age=31557600';
+
+        res.writeHead(newRes.statusCode, newRes.headers);
+        newRes.pipe(res);
+    }).on('error', err => {
+        res.statusCode = 500;
+        res.end(err);
+    });
 
     req.pipe(image);
-    image.pipe(res);
   });
 };
