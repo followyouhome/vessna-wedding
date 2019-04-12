@@ -3,7 +3,7 @@ const mailchimp = new Mailchimp(process.env.MAILCHIMP_KEY);
 
 const { subscriberFormat } = require('../../lib/format');
 const { COOKIES } = require('../../../config/constants.js');
-const LIST = process.env.MAILCHIMP_LIST;
+const LIST = process.env.MAILCHIMP_LIST_SUBSCRIBERS;
 
 module.exports = (app, base) => {
   /**
