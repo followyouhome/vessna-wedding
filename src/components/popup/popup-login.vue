@@ -1,61 +1,48 @@
 <template>
-  <fieldset :class="['popup', 'popup-login', this.status.available ? 'popup--show' : 'popup--hide']">
-    <legend class="popup-login__title">Вход</legend>
-    <form v-on:submit.prevent="login">
-      <input class="form__input-text" v-model.trim="form.email" type="email" placeholder="Email">
-      <input class="form__input-text" v-model="form.password" type="password" placeholder="Пароль">
-      <div class="popup__recaptcha g-recaptcha" :id="config.selector" data-callback="loginRecaptcha" :data-sitekey="config.sitekey"></div>
-      <input type="submit" :class="['form__button-submit', this.status.request ? 'request' : '', this.status.success ? 'success' : '', this.status.fail ? 'fail' : '' ]" value="Войти" :disabled="disabled" :title="disabled ? 'Заполните все поля' : 'Нажмите, чтобы войти'">
-    </form>
-    <div class="popup__close" @click="close" title="Закрыть окно">✖</div>
-  </fieldset>
+  <popup class="popup-login">
+    <template slot='body'>
+      <form-user-login/>
+    </template>
+  </popup>
 </template>
 
 <script>
-  import config from '../../../config';
-  import Popup from './popup.vue';
+  import Popup from './index.vue';
+  import FormUserLogin from '@/components/forms/form-user-login';
 
   export default {
     name: 'popup-login',
 
     extends: Popup,
 
-    data () {
-      return {
-        form: {
-          email: '',
-          password: '',
-        },
-      };
+    components: {
+      'popup': Popup,
+      'form-user-login': FormUserLogin,
     },
 
-    computed: {
-      disabled () {
-        return !this.form.email.length
-          || !this.form.password.length
-          || !this.status.recaptcha;
-      },
+    data () {
+
     },
 
     methods: {
       login () {
-        this.status.request = true;
-
-        this.$store.dispatch('login', this.form)
-          .then((data) => {
-            this.status.request = false;
-
-            if (data._id) {
-              this.status.success = true;
-
-              setTimeout(() => { this.status.available = false; }, this.config.animation);
-              setTimeout(() => { this.$store.commit('POPUP_UNSET'); }, this.config.animation * 2);
-            } else {
-              this.status.fail = true;
-
-              setTimeout(() => { this.status.fail = false; this.$store.commit('POPUP_RESET'); }, this.config.animation * 3);
-            }
-          });
+        // this.status.request = true;
+        //
+        // this.$store.dispatch('login', this.form)
+        //   .then((data) => {
+        //     this.status.request = false;
+        //
+        //     if (data._id) {
+        //       this.status.success = true;
+        //
+        //       setTimeout(() => { this.status.available = false; }, this.config.animation);
+        //       setTimeout(() => { this.$store.commit('POPUP_UNSET'); }, this.config.animation * 2);
+        //     } else {
+        //       this.status.fail = true;
+        //
+        //       setTimeout(() => { this.status.fail = false; this.$store.commit('POPUP_RESET'); }, this.config.animation * 3);
+        //     }
+        //   });
       },
     },
   };
@@ -64,7 +51,7 @@
 <style lang="scss">
   .popup-login {
     position: relative;
-    width: 300px;
+    width: 400px;
     padding: 0px 16px 16px;
 
     border: 1px solid $gray1;

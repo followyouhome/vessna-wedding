@@ -1,11 +1,21 @@
 <template>
+  <b-container class="popup">
+    <slot name='header'>
 
+    </slot>
+    <slot name='body'>
+
+    </slot>
+    <slot name='footer'>
+      <button class="popup__close" @click="close">×</button>
+    </slot>
+  </b-container>
 </template>
 
 <script>
 
   export default {
-    name: 'popup',
+    name: 'v-popup',
 
     data () {
       return {
@@ -27,18 +37,17 @@
     },
 
     destroyed () {
-      window.removeEventListener('keydown', this.keyboardListener);
+      window.removeEventListener('keydown', this.keydown);
     },
 
     methods: {
-      close () {
+      close (event) {
         this.status.available = false;
 
         setTimeout(() => { this.$store.commit('POPUP_UNSET'); }, this.config.animation);
       },
 
-      keyboardListener (event) {
-        console.log("ASD");
+      keydown (event) {
         if (event.keyCode === 27) {
           setTimeout(() => { this.$store.commit('POPUP_UNSET'); }, this.config.animation);
         }
@@ -51,6 +60,7 @@
   @include animation-fade-in();
 
   .popup {
+    position: relative;
     margin: auto;
     animation: animation-fade-in 0.3s normal;
     box-shadow: 0 0 28px 0 rgba(0, 0, 0, 0.75);
@@ -70,6 +80,16 @@
     margin: 10px 0;
     width: 302px;
     overflow: hidden;
+  }
+
+  .popup__close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    border: none;
+    background: none;
+    font-size: 30px;
+    line-height: 30px;
   }
 
   .form__input-text {
