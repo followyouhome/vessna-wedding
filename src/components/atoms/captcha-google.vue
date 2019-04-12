@@ -4,7 +4,7 @@
 
 <script>
   export default {
-    name: 'captch-google',
+    name: 'CaptchaGoogle',
 
     data () {
       return {
