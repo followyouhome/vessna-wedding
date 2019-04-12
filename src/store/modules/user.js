@@ -92,6 +92,36 @@ const actions = {
         return Promise.reject(error);
       });
   },
+
+  feedback (store, payload) {
+    return axios
+      .post(base + '/forms/feedback', payload, settings)
+      .then(response => {
+        // this.commit(USER_SUBSCRIBE);
+        debugger;
+        return Promise.resolve(response);
+      })
+      .catch(error => {
+        // this.commit(USER_UNSUBSCRIBE);
+        debugger;
+        return Promise.reject(error);
+      });
+  },
+
+  cooperate (store, payload) {
+    return axios
+      .post(base + '/forms/cooperation', payload, settings)
+      .then(response => {
+        // this.commit(USER_SUBSCRIBE);
+        debugger;
+        return Promise.resolve(response);
+      })
+      .catch(error => {
+        // this.commit(USER_UNSUBSCRIBE);
+        debugger;
+        return Promise.reject(error);
+      });
+  },
 };
 
 const mutations = {
