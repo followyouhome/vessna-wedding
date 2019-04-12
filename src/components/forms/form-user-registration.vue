@@ -7,7 +7,7 @@
       <div class="form-user-registration__group">
         <b-row class="mt-4 mb-4">
           <b-col>
-            <b-form-input v-model="form.name" type="name" placeholder="Имя"/>
+            <b-form-input v-model="form.name" type="text" placeholder="Имя"/>
           </b-col>
         </b-row>
         <b-row class="mt-4 mb-4">
@@ -21,10 +21,10 @@
           </b-col>
         </b-row>
       </div>
-      <div class="form-user-registration__group">
+      <div class="form__group">
         <b-row class="mt-4 mb-4">
           <b-col>
-            <b-form-input v-model="form.infoюcity" type="text" placeholder="Город"/>
+            <b-form-input v-model="form.info.city" type="text" placeholder="Город"/>
           </b-col>
         </b-row>
         <b-row class="mt-4 mb-4">
@@ -38,6 +38,23 @@
           </b-col>
         </b-row>
       </div>
+      <div class="form__group">
+        <b-row class="mt-4 mb-4">
+          <b-col>
+            <b-form-input v-model="form.invite" type="text" placeholder="Инвайт"/>
+          </b-col>
+        </b-row>
+        <b-row class="mt-4 mb-4">
+          <b-col>
+            <b-form-checkbox v-model="form.access.subscription" class="ml-4" inline>Подписаться на рассылку</b-form-checkbox>
+          </b-col>
+        </b-row>
+        <b-row class="mt-4 mb-4">
+          <b-col>
+            <b-form-checkbox v-model="form.agreement" class="ml-4" inline>Согласие с пользовательским соглашением</b-form-checkbox>
+          </b-col>
+        </b-row>
+      </div>
     </template>
     <template slot='footer'>
       <div class="form-feedback__control">
@@ -45,38 +62,6 @@
       </div>
     </template>
   </v-form>
-  <!--<form class="form form-user-login form--column" v-on:submit.prevent="submit">
-
-
-    <hr class="form__divider"/>
-    <div class="form__row">
-      <input class="form__input-text" v-model="form.promocode" type="phone" placeholder="Промокод">
-    </div>
-    <div class="form__row">
-      <input class="form__input-checkbox" v-model="form.access.subscription" type="checkbox">
-      <label class="form__input-label">Подписаться на рассылку</label>
-    </div>
-    <div class="form__row">
-      <input class="form__input-checkbox" v-model="form.agreement" type="checkbox" required>
-      <label class="form__input-label">Согласие с пользовательским соглашением</label>
-    </div>
-    <hr class="form__divider"/>
-    <div class="form__row">
-      <captcha-google v-on:success="captcha"/>
-    </div>
-    <div class="form__row">
-      <input type="submit" value="Зарегистрироваться"
-        :disabled="!recaptcha"
-        :title="!recaptcha ? 'Заполните все поля' : 'Нажмите, чтобы зарегистрироваться'"
-        :class="[
-          'form__button-submit',
-          request ? 'request' : '',
-          success ? 'success' : '',
-          fail ? 'fail' : '',
-        ]"
-      />
-    </div>
-  </form>-->
 </template>
 
 <script>

@@ -7,17 +7,17 @@
       <div class="form-login__group">
         <b-row class="mt-4 mb-4">
           <b-col>
-            <b-form-input v-model="form.email" type="text" placeholder="Email" />
+            <b-form-input v-model="form.email" type="text" placeholder="Email" required/>
           </b-col>
         </b-row>
         <b-row class="mt-4 mb-4">
           <b-col>
-            <b-form-input v-model="form.password" type="password" placeholder="Пароль" />
+            <b-form-input v-model="form.password" type="password" placeholder="Пароль" required/>
           </b-col>
         </b-row>
         <b-row class="mt-4 mb-4">
           <b-col>
-            <captcha-google v-on:success="captcha"/>
+            <captcha-google @init="captchaInit" @success="captchaSuccess" @failure="captchaFailure"/>
           </b-col>
         </b-row>
       </div>

@@ -1,30 +1,32 @@
 <template>
-  <form class="form form-user-settings form--column" v-on:submit.prevent="submit">
-    <div class="form__row">
-      <legend class="popup-login__title">Настройки</legend>
-    </div>
-    <div class="form__row">
-      <select class="form__input-selection" v-model.trim="form.access.currency" type="text" placeholder="Валюта" required>
-        <option value="rub">RUB</option>
-        <option value="usd" disabled>USD</option>
-      </select>
-    </div>
-    <div class="form__row">
-      <captcha-google v-on:success="captcha"/>
-    </div>
-    <div class="form__row">
-      <input type="submit" value="Сохранить"
-        :disabled="!recaptcha"
-        :title="'Нажмите, чтобы зарегистрироваться'"
-        :class="[
-          'form__button-submit',
-          request ? 'request' : '',
-          success ? 'success' : '',
-          fail ? 'fail' : '',
-        ]"
-      />
-    </div>
-  </form>
+  <v-form class="form-user-settings" @success="success" @failure="failure">
+    <template slot='header'>
+      <h3 class="form__headline">Настройки</h3>
+    </template>
+    <template slot='body'>
+      <div class="form-cooperation__group">
+        <b-row class="mt-4 mb-4">
+          <b-col>
+            <b-form-select v-model="form.access.currency" :options="currencies">
+              <template slot="first">
+                <option :value="null" disabled>Выберите валюту</option>
+              </template>
+            </b-form-select>
+          </b-col>
+        </b-row>
+        <b-row class="mt-4 mb-4">
+          <b-col>
+            <captcha-google @init="captchaInit" @success="captchaSuccess" @failure="captchaFailure"/>
+          </b-col>
+        </b-row>
+      </div>
+    </template>
+    <template slot='footer'>
+      <div class="form-feedback__control">
+        <b-button class="form__submit" type="submit" :disabled="disabled" block>Сохранить</b-button>
+      </div>
+    </template>
+  </v-form>
 </template>
 
 <script>
@@ -35,15 +37,23 @@
 
     extends: Form,
 
+    components: {
+      'v-form': Form,
+    },
+
     data () {
       return {
         recaptcha: true,
         action: 'settings',
         form: {
           access: {
-            currency: this.$store.state.user.access.currency,
+            currency: this.$store && this.$store.state && this.$store.state.user && this.$store.state.user.access && this.$store.state.user.access.currency,
           },
         },
+        currencies: [
+          'USD',
+          'RUB',
+        ],
       };
     },
 

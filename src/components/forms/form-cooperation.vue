@@ -5,7 +5,7 @@
     </template>
     <template slot='body'>
       <div class="form-cooperation__group">
-        <h4 class="popup_cooperation-form__subline">Ваши контактные данные</h4>
+        <h4 class="form__subline">Ваши контактные данные</h4>
         <b-row class="mt-4 mb-4">
           <b-col>
             <b-form-input v-model="form.name" type="text" placeholder="Имя" />
@@ -122,12 +122,6 @@
     padding: 30px;
     background: $gray1;
     border-radius: 2px;
-
-    .form-control,
-    .custom-select {
-      height: auto;
-      padding: 10px 15px;
-    }
   }
 
   .form-cooperation__control {

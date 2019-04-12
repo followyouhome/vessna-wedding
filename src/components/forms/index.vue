@@ -34,14 +34,15 @@
           success: false,
           failure: false,
           checked: false,
-          recaptcha: false,
+          recaptcha: null,
         },
       };
     },
 
     computed: {
       disabled () {
-        return !this.state.checked;
+        return !this.state.checked
+          || typeof this.state.recaptcha === 'boolean' ? !this.state.recaptcha : false;
       },
     },
 
@@ -54,8 +55,16 @@
         this.$emit('failure');
       },
 
-      captcha () {
-        this.recaptcha = true;
+      captchaInit () {
+        this.state.recaptcha = false;
+      },
+
+      captchaSuccess () {
+        this.state.recaptcha = true;
+      },
+
+      captchaFailure () {
+        this.state.recaptcha = false;
       },
 
       submit () {
@@ -83,6 +92,24 @@
 <style lang="scss">
   .form {
     position: relative;
+
+    .form-control,
+    .custom-select {
+      height: auto;
+      padding: 10px 15px;
+    }
+
+    .custom-control-input:checked ~ .custom-control-label::before {
+      border-color: $yellow;
+      background-color: $yellow;
+    }
+
+    .form-control {
+      &:focus {
+        border-color: $yellow;
+        box-shadow: 0 0 0 0.2rem opacify($yellow, 0.3);
+      }
+    }
   }
 
   .form__modal {
