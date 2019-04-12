@@ -23,6 +23,7 @@ module.exports = async ({ config, mode }) => {
   })(config, {
     plugins: custom.plugins,
     resolve: custom.resolve,
+    externals: custom.externals,
   });
 
   return result;
