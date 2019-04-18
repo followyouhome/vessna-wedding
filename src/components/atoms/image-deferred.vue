@@ -1,6 +1,6 @@
 <template>
-  <figure v-bind:class="['image-deferred', 'image-deferred--preloader', aspect]" :style="size">
-    <img class="image-deferred__image image-deferred__image--preloader"
+  <figure v-bind:class="['image-deferred', 'image-deferred--preloader', aspect, parsedEffects]" :style="size">
+    <img :class="['image-deferred__image', 'image-deferred__image--preloader']"
       v-if="show"
       v-lazy="url"
       alt=""
@@ -17,7 +17,7 @@
   export default {
     name: 'ImageDeferred',
 
-    props: ['image', 'aspect'],
+    props: ['image', 'aspect', 'effect'],
 
     data () {
       return {
@@ -28,12 +28,16 @@
     },
 
     computed: {
-      size: function () {
+      size () {
         if (this.aspect) {
           return '';
         } else {
           return "padding-top: " + this.image.height / this.image.width * 100 + "%";
         }
+      },
+
+      parsedEffects () {
+          return typeof this.effect === 'string' ? this.effect.split(' ').map(effect => `image--effect-${effect}`).join(' ') : '';
       },
 
       width () {
@@ -54,6 +58,7 @@
         this.show = true;
 
         this.$Lazyload.$on('loaded', function ({ el }) {
+          el.parentNode.style.animationDuration = `${Math.random()}s`;
           el.parentNode.classList.add('image--effect-fadein');
           el.parentNode.classList.remove('image-deferred--preloader');
         });
@@ -113,7 +118,19 @@
   }
 
   .image--effect-fadein {
-    animation: animation-show-image 0.3s normal;
+    animation-name: animation-show-image;
+    animation-direction: normal;
+  }
+
+  .image--effect-zoom-out {
+    img {
+      transition: transform linear 0.2s;
+      transform: scale(1.05);
+    }
+
+    &:hover img {
+      transform: scale(1);
+    }
   }
 </style>
 
