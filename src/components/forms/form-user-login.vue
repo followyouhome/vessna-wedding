@@ -62,7 +62,7 @@
     border: 1px solid $gray3;
 
     @media #{$tablet} {
-      margin: 1rem auto;
+      margin: 1rem auto !important;
       max-width: 600px;
       width: auto;
       text-align: center;
