@@ -17,11 +17,11 @@ export default {
             zoom: settings.zoom,
         });
 
-        // items.forEach(item => {
-        //   // const placemark = this.generateMapPlacemark(item, this.onPlacemarkClick);
-        //
-        //   // this.map.api.geoObjects.add(placemark);
-        // });
+        items.forEach(item => {
+          const placemark = this.generateMapPlacemark(item, this.onPlacemarkClick);
+
+          this.map.api.geoObjects.add(placemark);
+        });
       });
     },
 
@@ -39,7 +39,7 @@ export default {
     },
 
     moveMapToLatLng (latlng) {
-      this.map.api.setZoom(7);
+      this.map.api.setZoom(12);
       this.map.api.panTo(latlng, {
         flying: 1,
       });
