@@ -3,6 +3,9 @@
     <module-contact-info
       :items="contact"
     />
+    <module-article
+      :article="article"
+    />
     <module-dealers-map
       :dealers="dealers"
     />
@@ -15,6 +18,7 @@
 
 <script>
   import Page from '@/components/pages/page.vue';
+  import ModuleArticle from '@/components/module/module-article';
   import ModuleDealersMap from '@/components/module/module-dealers-map';
   import ModuleContactInfo from '@/components/module/module-contact-info';
   import ModuleCallToAction from '@/components/module/module-call-to-action';
@@ -36,6 +40,7 @@
     extends: Page,
 
     components: {
+      'module-article': ModuleArticle,
       'module-dealers-map': ModuleDealersMap,
       'module-contact-info': ModuleContactInfo,
       'module-call-to-action': ModuleCallToAction,
@@ -89,7 +94,7 @@
         callToAction: {
           content: {
             headline: 'Готовы стать нашим партнёром?',
-            subline: 'Заполните нашу анкету и наш менеджер свяжется с вами',
+            subline: 'Заполните анкету и наш менеджер свяжется с вами',
           },
           button: {
             action: '',
@@ -100,6 +105,10 @@
     },
 
     computed: {
+      article () {
+          return this.$store.state.page.content;
+      },
+
       dealers () {
         return this.$store.state.page.dealers;
       },
@@ -108,7 +117,7 @@
 </script>
 
 <style lang="scss">
-  .page-b2b-contact {
-
+  .page-contact {
+    background: $white;
   }
 </style>

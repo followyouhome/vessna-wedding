@@ -28,7 +28,7 @@ module.exports = merge(baseConfig, {
   },
 
   plugins: [
-    new EnvironmentPlugin(['NODE_ENV', 'YANDEX_MAPS_KEY']),
+    new EnvironmentPlugin(['NODE_ENV', 'YANDEX_MAPS_KEY', 'YANDEX_METRIKA_ID']),
     new VueSSRClientPlugin(),
     new DefinePlugin({
       __VUE_ENV__: '"client"',
@@ -37,7 +37,7 @@ module.exports = merge(baseConfig, {
       filename: 'style.css',
     }),
     new SWPrecacheWebpackPlugin({
-      cacheId: 'my-vue-app',
+      cacheId: 'Vessna-Wedding',
       filename: 'service-worker.js',
       staticFileGlobs: ['dist/**/*.{js,html,css}'],
       minify: true,
