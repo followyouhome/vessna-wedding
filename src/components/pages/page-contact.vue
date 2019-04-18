@@ -64,31 +64,34 @@
     data () {
       return {
         contact: [{
-          name: 'Главный офис',
+          name: 'Франшиза',
+          description: 'По вопросам покупки франшизы в России и странах EU 💃🏽',
           contacts: [{
             type: 'phone',
             value: '+375 29 721 33 10',
           }, {
             type: 'email',
-            value: 'contact@vessna.by',
+            value: 'svetlana@vessna.by',
           }],
         }, {
-          name: 'Франшиза',
+          name: 'Отдел продаж',
+          description: 'По вопросам новых оптовых закупок и сопровождения текущих заказов 📰',
           contacts: [{
             type: 'phone',
-            value: '+375 29 721 33 10',
+            value: '+375 29 610 30 00',
           }, {
             type: 'email',
             value: 'contact@vessna.by',
           }],
         }, {
           name: 'Маркетинг',
+          description: 'По вопросам различных ивентов, рекламы и продвижения 🏷',
           contacts: [{
             type: 'phone',
-            value: '+375 29 721 33 10',
+            value: '+375 33 609 50 15',
           }, {
             type: 'email',
-            value: 'contact@vessna.by',
+            value: 'vladislav@vessna.by',
           }],
         }],
         callToAction: {

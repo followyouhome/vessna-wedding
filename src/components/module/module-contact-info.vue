@@ -35,13 +35,18 @@
   }
 
   .module-contact-info__wrapper {
+    padding: 30px;
+    background: $gray2;
+
     .nav-tabs {
+      margin-bottom: 30px;
       justify-content: space-around;
       border: none;
       font: 2rem/1 $RistrettoProLight;
     }
 
     .nav-link {
+      color: $black;
       border: none;
 
       &.active {
@@ -50,9 +55,13 @@
       }
     }
 
+    .tab-pane {
+      outline: none;
+    }
+
     .promo {
       margin: 20px auto;
-      width: 300px;
+      width: 330px;
     }
   }
 
