@@ -31,6 +31,12 @@
   import 'bootstrap/dist/css/bootstrap.css';
   import 'bootstrap-vue/dist/bootstrap-vue.css';
 
+  const yandex = process.env.YANDEX_METRIKA_ID;
+
+  import {
+    TRACK_SET_YANDEX
+  } from '@/store/mutation-types';
+
   Vue.component('no-ssr', NoSSR);
   Vue.component('captcha-google', CaptchaGoogle);
   Vue.component('image-deferred', ImageDeferred);
@@ -89,20 +95,36 @@
     },
 
     mounted () {
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/dist/service-worker.js', {
-          scope: '/',
-        }).then(reg => {
-          console.log("Service worker registered", reg);
-        }).catch(err => {
-          console.log(err);
-        });
+      if (__VUE_ENV__ === 'client') {
+        this.setYandexMetrikaChecker();
+        this.setServiceWorker();
       }
     },
 
     methods: {
       fullscreen () {
         this.$refs.app.classList.toggle('fullscreen');
+      },
+
+      setYandexMetrikaChecker () {
+        const interval = window.setInterval(() => {
+          if (window[yandex]) {
+            this.$store.commit(TRACK_SET_YANDEX, window[yandex])
+            window.clearInterval(interval);
+          }
+        }, 1000);
+      },
+
+      setServiceWorker () {
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('/dist/service-worker.js', {
+            scope: '/',
+          }).then(reg => {
+            console.log("Service worker registered", reg);
+          }).catch(err => {
+            console.log(err);
+          });
+        }
       },
     },
   };
@@ -115,6 +137,7 @@
 
   body {
     height: 100%;
+    background: $gray2;
   }
 
   h1, h2, h3, h4, h5, h6, ul {
