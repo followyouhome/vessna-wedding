@@ -57,12 +57,12 @@
 </script>
 
 <style lang="scss">
-  @include animation-fade-in();
+  @include animation-fade-in('popup');
 
   .popup {
     position: relative;
     margin: auto;
-    animation: animation-fade-in 0.3s normal;
+    animation: animation-fade-in-popup 0.3s normal;
     box-shadow: 0 0 28px 0 rgba(0, 0, 0, 0.75);
   }
 

@@ -35,27 +35,27 @@
   }
 }
 
-@mixin animation-fade-in() {
-  @keyframes animation-fade-in {
+@mixin animation-fade-in($name: 'default', $x: 0, $y: -3rem) {
+  @keyframes animation-fade-in-#{$name} {
     from {
-      transform: translateY(-3rem);
+      transform: translate($x, $y);
       opacity: 0;
     }
     to {
-      transform: translateY(0);
+      transform: translate(0, 0);
       opacity: 1;
     }
   }
 }
 
-@mixin animation-fade-out() {
+@mixin animation-fade-out($x: 0, $y: -3rem) {
   @keyframes animation-fade-out {
     from {
-      transform: translateY(0);
+      transform: translate(0, 0);
       opacity: 1;
     }
     to {
-      transform: translateY(-3rem);
+      transform: translate($x, $y);
       opacity: 0;
     }
   }
