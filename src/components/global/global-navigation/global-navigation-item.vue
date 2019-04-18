@@ -1,6 +1,10 @@
 <template>
   <div class="global-navigation-item">
-    <router-link class="global-navigation-link" v-bind:to="item.route">
+    <a class="global-navigation-link" :href="item.route.path" target="_blank" v-if="item.route.path && item.route.path.match('//')">
+      <span class="global-navigation-text" itemprop="name">{{ item.name }}</span>
+      <icon-toggle class="global-navigation-icon" icon="hamburger" handle="click" v-if="item.items"/>
+    </a>
+    <router-link class="global-navigation-link" v-bind:to="item.route" v-else>
       <span class="global-navigation-text" itemprop="name">{{ item.name }}</span>
       <icon-toggle class="global-navigation-icon" icon="hamburger" handle="click" v-if="item.items"/>
     </router-link>
