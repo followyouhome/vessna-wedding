@@ -8,6 +8,7 @@
       </div>
       <div class="module-call-to-action__action">
         <simple-button
+          popup="popup-cooperation-form"
           :text="button.text"
           @click="action"
         />

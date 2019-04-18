@@ -2,7 +2,7 @@
   <div class="global-popup-container" @click="clickOutside($event)">
     <popup-login v-if="popup === 'popup-login'"/>
     <popup-signup v-if="popup === 'popup-signup'"/>
-    <popup-cooperation-form v-if="popup === 'popup-feedback-form'"/>
+    <popup-feedback-form v-if="popup === 'popup-feedback-form'"/>
     <popup-cooperation-form v-if="popup === 'popup-cooperation-form'"/>
   </div>
 </template>

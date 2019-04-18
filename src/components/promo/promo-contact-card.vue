@@ -11,6 +11,7 @@
       </p>
       <div class="promo-contact-card__button">
         <simple-button
+          popup="popup-feedback-form"
           type="block"
           text="Напишите нам"
         />

@@ -14,7 +14,7 @@
   export default {
     name: 'SimpleButton',
 
-    props: ['type', 'icon', 'text'],
+    props: ['popup', 'href', 'type', 'icon', 'text'],
 
     data () {
       return {
@@ -24,7 +24,11 @@
 
     methods: {
       click () {
-        this.$store.commit(POPUP_SET, { popup: 'popup-cooperation-form' });
+        if (this.popup) {
+          this.$store.commit(POPUP_SET, { popup: this.popup });
+        } else if (this.href) {
+          window.open(this.href, '_self');
+        }
       },
     },
   };
