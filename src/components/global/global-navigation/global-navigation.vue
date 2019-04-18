@@ -10,6 +10,9 @@
         :item="menu.user"
       >
         <div class="global-navigation-sub-list">
+          <global-navigation-item
+            :item="menu.contact"
+          />
           <global-navigation-item v-if="settings.login && user"
             :item="menu.logout"
           />
@@ -90,6 +93,12 @@
             name: 'Контент',
             route: {
               path: 'https://yadi.sk/d/F8LsI7d13T3bcu',
+            },
+          },
+          contact: {
+            name: 'Контакты',
+            route: {
+              path: '/contact',
             },
           },
         },
