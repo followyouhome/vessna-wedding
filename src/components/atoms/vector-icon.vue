@@ -1,5 +1,7 @@
 <template>
-  <div :class="['vector-icon', `vector-icon-${icon}`]"></div>
+  <no-ssr>
+    <div :class="['vector-icon', `vector-icon-${icon}`]"></div>
+  </no-ssr>
 </template>
 
 <script>
