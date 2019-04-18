@@ -34,7 +34,7 @@
                 <vector-icon icon="facebook"/>
               </a>
             </li>
-            <li class="module-dealers-map__sidebar-list-item" v-if="activeDealler.contact.social.facebook">
+            <li class="module-dealers-map__sidebar-list-item" v-if="activeDealler.contact.social.instagram">
               <a class="module-dealers-map__sidebar-icon" :href="activeDealler.contact.social.instagram" rel="nofollow">
                 <vector-icon icon="instagram"/>
               </a>
