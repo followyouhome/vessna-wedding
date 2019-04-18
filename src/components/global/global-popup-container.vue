@@ -25,7 +25,15 @@
 
     computed: {
       popup () {
-        return this.$store.state.popup && this.$store.state.popup.item;
+        const popup = this.$store.state.popup && this.$store.state.popup.item;
+
+        if (popup) {
+          this.$store.commit('TRACK_FORM_OPEN');
+
+          return popup;
+        }
+
+        return null;
       },
     },
 
