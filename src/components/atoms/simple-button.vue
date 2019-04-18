@@ -1,6 +1,6 @@
 <template>
-  <div class="simple-button">
-    <button class="simple-button__button" @click="click">
+  <div :class="['simple-button', `simple-button--${type}`]">
+    <button :class="['simple-button__button', `simple-button__button--${type}`]" @click="click">
       {{text}}
     </button>
   </div>
@@ -14,7 +14,7 @@
   export default {
     name: 'SimpleButton',
 
-    props: ['icon', 'text'],
+    props: ['type', 'icon', 'text'],
 
     data () {
       return {
@@ -33,6 +33,16 @@
 <style lang="scss">
   .simple-button {
     display: inline-block;
+
+    &--block {
+      display: block;
+      width: 100%;
+    }
+
+    &--inline {
+      display: inline-block;
+      width: auto;
+    }
   }
 
   .simple-button__button {
@@ -40,12 +50,22 @@
     color: $white;
     border: none;
     background: $yellow;
-    font: 1.5rem/1 $RistrettoProMedium;
+    font: 1.5rem/1 $RistrettoProLight;
     letter-spacing: 2px;
     transition: opacity linear 0.1s;
 
     &:hover {
       opacity: 0.8;
+    }
+
+    &--block {
+      display: block;
+      width: 100%;
+    }
+
+    &--inline {
+      display: inline-block;
+      width: auto;
     }
   }
 </style>
