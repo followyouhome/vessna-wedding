@@ -1,0 +1,119 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?5b7cig');
+  src:  url('fonts/icomoon.eot?5b7cig#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?5b7cig') format('truetype'),
+    url('fonts/icomoon.woff?5b7cig') format('woff'),
+    url('fonts/icomoon.svg?5b7cig#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-palette:before {
+  content: "\e912";
+}
+.icon-high-quality:before {
+  content: "\e913";
+}
+.icon-scissors:before {
+  content: "\e914";
+}
+.icon-credit-card:before {
+  content: "\e915";
+}
+.icon-camera:before {
+  content: "\e916";
+}
+.icon-images:before {
+  content: "\e917";
+}
+.icon-truck:before {
+  content: "\e918";
+}
+.icon-map-marker:before {
+  content: "\e900";
+}
+.icon-phone:before {
+  content: "\e942";
+}
+.icon-email:before {
+  content: "\e945";
+}
+.icon-search:before {
+  content: "\e986";
+}
+.icon-telegram:before {
+  content: "\e91a";
+}
+.icon-whatsapp:before {
+  content: "\e91b";
+}
+.icon-odnoklassniki:before {
+  content: "\e911";
+}
+.icon-angle-down:before {
+  content: "\e90a";
+}
+.icon-angle-up:before {
+  content: "\e90b";
+}
+.icon-angle-right:before {
+  content: "\e90c";
+}
+.icon-angle-left:before {
+  content: "\e90d";
+}
+.icon-angle-double-down:before {
+  content: "\e90e";
+}
+.icon-angle-double-up:before {
+  content: "\e90f";
+}
+.icon-angle-double-right:before {
+  content: "\e910";
+}
+.icon-bars:before {
+  content: "\e909";
+}
+.icon-viber:before {
+  content: "\e919";
+}
+.icon-google-plus:before {
+  content: "\e901";
+}
+.icon-envelope-o:before {
+  content: "\e902";
+}
+.icon-vimeo:before {
+  content: "\e903";
+}
+.icon-facebook:before {
+  content: "\e904";
+}
+.icon-instagram:before {
+  content: "\e905";
+}
+.icon-vk:before {
+  content: "\e906";
+}
+.icon-mts:before {
+  content: "\e907";
+}
+.icon-velcom:before {
+  content: "\e908";
+}

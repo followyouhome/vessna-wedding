@@ -21,9 +21,22 @@
     font-weight: 400;
     font-variant: normal;
     text-transform: none;
+    text-align: center;
     line-height: 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale
+  }
+
+  .vector-icon-email:before {
+    content: "\E945";
+  }
+
+  .vector-icon-phone:before {
+    content: "\E942";
+  }
+
+  .vector-icon-search:before {
+    content: "\E986";
   }
 
   .vector-icon-palette:before {
