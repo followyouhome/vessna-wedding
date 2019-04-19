@@ -120,7 +120,7 @@
           navigator.serviceWorker.register('/dist/service-worker.js', {
             scope: '/',
           }).then(reg => {
-            console.log("Service worker registered", reg);
+            console.log("%c Vessna-Wedding %c Service worker registered",  'background: #b19b65; color: #ffffff', 'color: #000000');
           }).catch(err => {
             console.log(err);
           });
