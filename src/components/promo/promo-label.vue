@@ -1,14 +1,17 @@
 <template>
-  <div class="promo promo--label [[+promo_size]]">
-    <div class="promo__wrapper promo--label__wrapper">
-      <div class="promo__content-wrapper promo--label__content-wrapper">
-        <div class="promo--label__headline">
-          <h4 class="promo__text-subheadline">[[+content]]</h4>
-        </div>
-        <div class="promo--label__copy">
-          <p class="promo__text-copy"></p>
-        </div>
-      </div>
+  <div class="promo promo-label">
+    <div class="promo__wrapper promo-label__wrapper">
+      <h4 class="promo-label_headline" v-if="item.headline">
+        {{item.headline}}
+      </h4>
+      <p class="promo-label_copy" v-if="item.copy">
+        {{item.copy}}
+      </p>
+      <simple-button v-if="item.button"
+        class="promo-label_button"
+        :text="item.button.text"
+        :href="item.button.href"
+      />
     </div>
 </div>
 
@@ -16,58 +19,65 @@
 
 <script>
   export default {
-    name: 'promo-label',
+    name: 'PromoLabel',
 
-    props: ['promo'],
+    props: ['item'],
   };
 </script>
 
 <style lang="scss">
-  .promo--label {
-
-  	width: percentage(1 / 2);
-
-  	@media #{large} {
-  		width: percentage(1 / 2);
-  	}
-
-  	@media #{medium} {
-  		width: percentage(1 / 2);
-  	}
-
-  	@media #{phablet} {
-  		width: 100%;
-  	}
-
-  	@media #{mobile} {
-  	}
+  .promo-label {
+    padding: 20px;
+    height: 400px;
+    width: 500px;
+    background: $gray1;
+    border: 10px solid $gray2;
   }
 
-  .promo--label__wrapper {
-  	height: 80px;
-  	text-align: center;
-
-  	@media #{phablet} {
-  		height: 70px;
-  	}
-
-  	@media #{mobile} {
-  		height: 60px;
-  	}
+  .promo-label__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    height: 100%;
+    border: 1px solid $gray1;
+    background: $white;
   }
 
-  .promo--label__content-wrapper {
-  	display: inline-block;
-  	vertical-align: middle;
-
-  	text-align: center;
+  .promo-label_headline {
+    width: 80%;
+    margin: 10px 0;
+    text-align: center;
+    font: 4rem/1 $RistrettoProMedium;
+    letter-spacing: 0px;
+    color: $black;
   }
 
-  .promo--label__headline {
-  	margin: 0 20px;
+  .promo-label_copy {
+    width: 80%;
+    margin: 10px 0;
+    text-align: center;
+    font: 2rem/1 $RistrettoProLight;
+    letter-spacing: 1px;
+    color: $dark;
   }
 
-  .promo--label__copy {
-  	margin: 0 20px;
+  .promo-label_button {
+    margin: 10px 0;
+    background: $black;
   }
 </style>
+
+<story group="Promos" name="Label">
+  <promo-label
+    :item="{
+      headline: 'For The \'Gram',
+      copy: 'Подборка лучших фото за сезон 2018 года',
+      button: {
+        text: 'Открыть Instagram',
+        href: '#',
+      },
+    }"
+  />
+</story>
