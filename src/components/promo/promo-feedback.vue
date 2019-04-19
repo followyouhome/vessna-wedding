@@ -1,28 +1,10 @@
 <template>
-	<div class="promo promo--feedback">
-		<div class="promo__wrapper promo--feedback__wrapper">
-			<div class="promo__image-wrapper promo--feedback__image-wrapper" v-if="image">
-		    <image-deferred :image="image" :aspect="'image-deffered--size-1-1'"></image-deferred>
+	<div class="promo promo-feedback">
+		<div class="promo__wrapper promo-feedback__wrapper">
+			<div class="promo__image-wrapper promo-feedback__image-wrapper" v-if="image">
+		    <image-deferred :image="image" aspect="image-deffered--size-1-1"></image-deferred>
       </div>
-			<!--
-      <div class="promo__content-wrapper promo--feedback__content-wrapper">
-    		<div class="promo__avatar promo--feedback__avatar">
-  		    <image-deferred v-bind:image="promo.user_pic"></image-deferred>
-            <figure class="image-regular image-deffered--size-2-3">
-              <img src="[[+user_pic]]" class="image-regular__image" alt="[[+first_name]] [[+last_name]]">
-            </figure>
-          </div>
-          <a class="promo--feedback__subheadline" href="//vk.com/id[[+uid]]" target="_blank" rel="nofollow">
-            <p class="promo__text-subheadline">[[+first_name]] [[+last_name]]</p>
-          </a>
-	    		<hr class="promo__text-line">
-          <div class="promo--feedback__copy">
-            <p class="promo__text-copy">[[+text_content]]</p>
-          </div>
-          <a class="promo--feedback__footnote" href="[[+wall_link]]" target="_blank" rel="nofollow">
-            <span class="promo__text-footnote">Читать далее</span>
-          </a>
-      </div> -->
+      <!-- <div class="promo__content-wrapper promo-feedback__content-wrapper"></div> -->
 		</div>
 	</div>
 </template>
@@ -31,13 +13,11 @@
 	export default {
 		name: 'PromoFeedback',
 
-		props: ['feedback'],
+		props: ['item'],
 
 		computed: {
 			image () {
-				return {
-					url: this.feedback.link || this.feedback.image,
-				};
+				return this.item.image;
 			},
 		},
 	};
@@ -46,54 +26,50 @@
 <style lang="scss">
 	$userpicSize: 60px;
 
-	.promo--feedback {
+	.promo-feedback {
 		width: 300px;
-	}
-
-	.promo--feedback__content-wrapper {
-		position: relative;
-		padding: 0 40px 20px;
-		width: 100%;
-
-		@media #{$tablet} {
-			padding: 0 25px 25px;
-		}
-
-		@media #{$phablet} {
-			padding: 0 20px 20px;
-		}
-	}
-
-	.promo--feedback__avatar {
-		position: relative;
-		left: 0;
-		right: 0;
-		margin: auto;
-		width: $userpicSize;
-		height: $userpicSize;
-		margin-top: -$userpicSize / 2;
-		margin-bottom: 20px;
 		overflow: hidden;
+	}
 
-		@media #{$phablet} {
-			margin-bottom: 15px;
+	.promo-feedback__wrapper {
+		position: relative;
+		transition: transform linear 0.4s;
+		transform: scale(1.05);
+
+		&:hover {
+			transform: scale(1);
+
+			.promo-feedback__content-wrapper {
+				opacity: 1;
+			}
 		}
-
-		img {
-			border-radius: $userpicSize;
-		}
 	}
 
-	.promo--feedback__subheadline {
-		display: block;
-		text-align: center;
-	}
-
-	.promo--feedback__copy {
+	.promo-feedback__image-wrapper {
 
 	}
 
-	.promo--feedback__footnote {
-		display: inline-block;
+	.promo-feedback__content-wrapper {
+		position: absolute;
+		margin: 5%;
+		height: 90%;
+		width: 90%;
+		left: 0;
+		top: 0;
+		opacity: 0;
+		background: $glass3;
+		transition: opacity linear 0.4s;
 	}
 </style>
+
+<story group="Promos" name="Feedback">
+	<promo-feedback
+		:item="{
+			image: {
+				height: 336,
+				width: 269,
+				url: 'https://marymaximca.cdn.speedyrails.net/media/catalog/product/cache/83cda418bea4fb032eada316ef024fcb/f/p/fp9458_rev_1.jpg'
+			}
+		}"
+	/>
+</story>
