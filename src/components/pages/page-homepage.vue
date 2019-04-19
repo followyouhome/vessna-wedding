@@ -1,29 +1,31 @@
 <template>
   <div>
-    <module-related-posts v-bind:news="news"></module-related-posts>
+    <module-related-posts v-bind:news="news"/>
     <div class="module module--article">
       <div class="module__wrapper module--article__wrapper">
           <h2>Свадебные и вечерние платья оптом</h2>
       </div>
     </div>
-    <module-selected-collections v-bind:items="wedding"></module-selected-collections>
+    <module-selected-collections :items="wedding"/>
     <div class="module module--article">
       <div class="module__wrapper module--article__wrapper">
           <h2>Вечерние платья оптом</h2>
       </div>
     </div>
-    <module-promo-cards v-bind:items="prom"></module-promo-cards>
+    <module-promo-cards :items="prom"/>
+    <module-feedback-grid :feedbacks="feedbacks"/>
     <promo-subscribe/>
   </div>
 </template>
 
 <script>
   import Page from './page.vue';
-  import ModuleRelatedPosts from '../module/module-related-posts.vue';
-  import ModuleSelectedCollections from '../module/module-selected-collections.vue';
-  import ModulePromoCards from '../module/module-promo-cards.vue';
-  import PromoFullScreenQuote from '../promo/promo-full-screen-quote.vue';
-  import PromoSubscribe from '../promo/promo-subscribe.vue';
+  import ModulePromoCards from '@/components/module/module-promo-cards.vue';
+  import ModuleRelatedPosts from '@/components/module/module-related-posts.vue';
+  import ModuleFeedbackGrid from '@/components/module/module-feedback-grid.vue';
+  import ModuleSelectedCollections from '@/components/module/module-selected-collections.vue';
+  import PromoFullScreenQuote from '@/components/promo/promo-full-screen-quote.vue';
+  import PromoSubscribe from '@/components/promo/promo-subscribe.vue';
 
   import store from '../../store/';
 
@@ -42,8 +44,9 @@
     extends: Page,
 
     components: {
-      'module-related-posts': ModuleRelatedPosts,
       'module-promo-cards': ModulePromoCards,
+      'module-feedback-grid': ModuleFeedbackGrid,
+      'module-related-posts': ModuleRelatedPosts,
       'module-selected-collections': ModuleSelectedCollections,
       'promo-full-screen-quote': PromoFullScreenQuote,
       'promo-subscribe': PromoSubscribe,
@@ -69,13 +72,18 @@
         return this.$store.state.page.news;
       },
 
+      prom () {
+        return this.$store.state.page.prom;
+      },
+
       wedding () {
         return this.$store.state.page.wedding;
       },
 
-      prom () {
-        return this.$store.state.page.prom;
-      },
+      feedbacks () {
+        console.log(this.$store.state.page.feedbacks)
+        return this.$store.state.page.feedbacks;
+      }
     },
   };
 </script>
