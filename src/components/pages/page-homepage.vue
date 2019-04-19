@@ -81,7 +81,6 @@
       },
 
       feedbacks () {
-        console.log(this.$store.state.page.feedbacks)
         return this.$store.state.page.feedbacks;
       }
     },

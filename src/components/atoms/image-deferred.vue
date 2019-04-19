@@ -13,6 +13,7 @@
 </template>
 
 <script>
+  const domain = process.env.YANDEX_MAPS_KEY === 'development' ? 'localhost:3000' : 'https://vessna.wedding';
 
   export default {
     name: 'ImageDeferred',
@@ -49,12 +50,12 @@
       },
 
       url: function () {
-        const url = new URL(this.src);
+        const url = new URL(this.src, domain);
 
         if (this.width) {
           url.searchParams.append('w', this.width)
         }
-        
+
         return url.href;
       },
     },
