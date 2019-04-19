@@ -17,6 +17,12 @@
 
 		computed: {
 			image () {
+				if (typeof this.item.image === 'string') {
+					return {
+						url: this.item.image
+					};
+				}
+
 				return this.item.image;
 			},
 		},
@@ -24,8 +30,6 @@
 </script>
 
 <style lang="scss">
-	$userpicSize: 60px;
-
 	.promo-feedback {
 		width: 300px;
 		overflow: hidden;
