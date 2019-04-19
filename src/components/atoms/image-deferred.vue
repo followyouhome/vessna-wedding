@@ -49,7 +49,13 @@
       },
 
       url: function () {
-        return this.src + (this.width ? `?w=${this.width}` : '');
+        const url = new URL(this.src);
+
+        if (this.width) {
+          url.searchParams.append('w', this.width)
+        }
+        
+        return url.href;
       },
     },
 
