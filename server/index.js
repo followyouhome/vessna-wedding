@@ -1,7 +1,11 @@
 const fs = require('fs');
+const path = require('path');
 const keystone = require('keystone');
 
-require('./keystone/models');
+fs.readdirSync(path.resolve(__dirname, './keystone/models')).forEach(file => {
+  require(path.resolve(__dirname, './keystone/models', file));
+});
+
 require('dotenv').config();
 require('newrelic');
 

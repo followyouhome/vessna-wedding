@@ -98,6 +98,20 @@ module.exports = (app, base) => {
       });
     },
 
+    (req, res, next) => {
+      const query = keystone.list('Feedback')
+                      .model
+                      .find()
+                      .populate('group')
+                      .where('group', '5cb9fd5b977f763c18218db4')
+                      .sort({ sortOrder: 1 });
+
+      query.exec((err, result) => {
+        output.feedbacks = result;
+        next();
+      });
+    },
+
     (req, res) => {
        responseHandler(res, null, output);
     },
