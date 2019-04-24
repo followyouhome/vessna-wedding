@@ -1,5 +1,13 @@
 <template>
-  <figure v-bind:class="['image-deferred', 'image-deferred--preloader', aspect, parsedEffects]" :style="size">
+  <figure class="image-deferred" v-if="amp">
+    <amp-img alt="A view of the sea"
+      :src="url"
+      width="1"
+      height="1"
+      layout="responsive">
+    </amp-img>
+  </figure>
+  <figure v-bind:class="['image-deferred', 'image-deferred--preloader', aspect, parsedEffects]" :style="size" v-else>
     <img :class="['image-deferred__image', 'image-deferred__image--preloader']"
       v-if="show"
       v-lazy="url"
@@ -13,7 +21,7 @@
 </template>
 
 <script>
-  const domain = process.env.YANDEX_MAPS_KEY === 'development' ? 'localhost:3000' : 'https://vessna.wedding';
+  const domain = process.env.NODE_ENV === 'development' ? 'localhost:3000' : 'https://vessna.wedding';
 
   export default {
     name: 'ImageDeferred',
@@ -29,6 +37,10 @@
     },
 
     computed: {
+      amp () {
+        return this.$store && this.$store.state && this.$store.state.settings && this.$store.state.settings.amp;
+      },
+
       size () {
         if (this.aspect) {
           return '';

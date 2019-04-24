@@ -1,11 +1,10 @@
 <template>
   <div class="promo promo-dress promo--width-2">
     <div class="promo__wrapper promo-dress__wrapper">
-      <a v-bind:href="dress.promo.image.url"
+      <a 
         ref="fresco"
         class="promo__image-wrapper promo-dress__image-wrapper promo-dress__image-wrapper--no-link"
         v-if="dress.promo.image"
-        v-bind:to="{ name: 'page-dress', params: { collection: 'vessna-2017', dress: dress.slug }}"
         v-bind:data-dress-info="images"
         v-bind:data-fresco-group="dress.headline"
         v-bind:data-fresco-group-options="options"

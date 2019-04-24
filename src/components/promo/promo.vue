@@ -6,6 +6,12 @@
   import InView from 'in-view';
 
   export default {
+    computed: {
+      amp () {
+        return this.$store && this.$store.state && this.$store.state.settings && this.$store.state.settings.amp;
+      }
+    },
+
     mounted () {
       if (__VUE_ENV__ === 'client') {
         if (this.$el.classList.contains('promo--fade-in')) {
