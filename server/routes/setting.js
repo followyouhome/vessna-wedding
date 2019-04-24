@@ -23,7 +23,10 @@ module.exports = app => {
    */
   app.get(base + '/settings', (req, res) => {
     Setting.model.find().exec((err, result) => {
-      return res.json(formatSettings(result));
+      return res.json({
+        amp: req.query.amp === 'true',
+        ...formatSettings(result),
+      });
     });
   });
 };

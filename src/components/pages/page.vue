@@ -9,6 +9,8 @@
   export default {
     name: 'page',
 
+    props: ['amp'],
+
     metaInfo () {
       return {
         title: this.seo.name,
@@ -33,15 +35,20 @@
         ],
         htmlAttrs: {
           lang: 'ru-ru',
+          amp: this.amp,
         },
       };
     },
 
     asyncData ({ store, route }) {
-  
+
     },
 
     computed: {
+      amp () {
+        return this.$store && this.$store.state && this.$store.state.settings && this.$store.state.settings.amp;
+      },
+
       seo () {
         return this.$store.state.page && this.$store.state.page.seo;
       },

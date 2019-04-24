@@ -1,17 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
 <html {{{ meta.inject().htmlAttrs.text() }}}>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1">
     {{{ meta.inject().title.text() }}}
     {{{ meta.inject().meta.text() }}}
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="/dist/manifest.webmanifest">
-
     <!--  Prefetch  -->
+    {{{ renderResourceHints() }}}
     <link href="http://code.jivosite.com" rel="preconnect">
     <link href="http://cdn-cis.jivosite.com" rel="preconnect">
     <link href="https://vessna.blob.core.windows.net" rel="preconnect">
     <!--            -->
+
+    <link rel="canonical" href="{{{canonical}}}">
+    <link rel="manifest" href="/dist/manifest.webmanifest">
 
     <!--   Themes   -->
     <meta name="theme-color" content="#C9B486">
@@ -43,11 +45,11 @@
     <!--            -->
 
     <!-- Yandex.Metrika counter -->
-    <script defer> (function (d, w, c) { (w[c] = w[c] || []).push(function () { try { w.yaCounter40895619 = new Ya.Metrika({ id:40895619, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, ut:"noindex" }); } catch (e) { } }); let n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40895619?ut=noindex" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    {{{ amp ? '' : `<script defer> (function (d, w, c) { (w[c] = w[c] || []).push(function () { try { w.yaCounter40895619 = new Ya.Metrika({ id:40895619, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, ut:"noindex" }); } catch (e) { } }); let n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40895619?ut=noindex" style="position:absolute; left:-9999px;" alt="" /></div></noscript>`}}}
     <!--                         -->
 
     <!--     Google analitycs    -->
-    <script>
+    {{{ amp ? '' : `<script>
       (function (i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function (){
       (i[r].q=i[r].q||[]).push(arguments);},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m);
@@ -56,16 +58,25 @@
       ga('create', 'UA-43983607-3', 'auto');
       ga('send', 'pageview');
 
-    </script>
+    </script>`}}}
     <!--                         -->
 
     <!--      Jivosite code      -->
-    <script type='text/javascript'>(function (){ let widget_id = 'D1BjlY19Ux';let d=document;let w=window;function l (){let s = document.createElement('script'); s.type = 'text/javascript'; s.async = true;s.src = '//code.jivosite.com/script/widget/'+widget_id; let ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);} if (d.readyState=='complete'){l();} else {if (w.attachEvent){w.attachEvent('onload',l);} else {w.addEventListener('load',l,false);}}})();</script>
-    <!--                         -->
 
-    <script src="/dist/service-worker.js"/></script>
+    <!--                         -->
+    {{{ amp ? '' : `
+      <script src="/dist/service-worker.js"/></script>
+    `}}}
+    {{{ renderStyles() }}}
+    {{{ amp && '<script async src="https://cdn.ampproject.org/v0.js"></script>'}}}
+    {{{ amp && `
+      <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>
+      <noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    `}}}
   </head>
   <body>
     <!--vue-ssr-outlet-->
+    {{{ !amp && renderState() }}}
+    {{{ !amp && renderScripts() }}}
   </body>
 </html>

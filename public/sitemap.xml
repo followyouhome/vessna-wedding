@@ -4,10 +4,13 @@
     <loc>http://vessna.wedding/</loc>
   </url>
   <url>
-    <loc>http://vessna.wedding/news</loc>
+    <loc>http://vessna.wedding/wedding-dresses</loc>
   </url>
   <url>
-    <loc>http://vessna.wedding/wedding-dresses</loc>
+    <loc>http://vessna.wedding/wedding-dresses/preview-2019</loc>
+  </url>
+  <url>
+    <loc>http://vessna.wedding/prom-and-party-dresses</loc>
   </url>
   <url>
     <loc>http://vessna.wedding/wedding-dresses/sensoria</loc>
@@ -16,31 +19,31 @@
     <loc>http://vessna.wedding/wedding-dresses/divina</loc>
   </url>
   <url>
-    <loc>http://vessna.wedding/prom-and-party-dresses</loc>
-  </url>
-  <url>
-    <loc>http://vessna.wedding/prom-and-party-dresses/vessna-2017</loc>
+    <loc>http://vessna.wedding/prom-and-party-dresses/vessna-2019</loc>
   </url>
   <url>
     <loc>http://vessna.wedding/prom-and-party-dresses/vessna-2018</loc>
   </url>
   <url>
-    <loc>http://vessna.wedding/news/vessna-2018-uzhe-v-nalichii</loc>
+    <loc>http://vessna.wedding/prom-and-party-dresses/vessna-2017</loc>
+  </url>
+  <url>
+    <loc>http://vessna.wedding/user/login</loc>
   </url>
   <url>
     <loc>http://vessna.wedding/news/semka-svadebnoi-kollekcii-2018</loc>
   </url>
   <url>
-    <loc>http://vessna.wedding/news/wedding-fashion-moscow</loc>
-  </url>
-  <url>
-    <loc>http://vessna.wedding/news/obnovlenie-saita</loc>
+    <loc>http://vessna.wedding/news/vessna-2018-uzhe-v-nalichii</loc>
   </url>
   <url>
     <loc>http://vessna.wedding/news/semka-kollekcii-sensoria</loc>
   </url>
   <url>
-    <loc>http://vessna.wedding/prom-and-party-dresses/vessna-vol-3</loc>
+    <loc>http://vessna.wedding/news/obnovlenie-saita</loc>
+  </url>
+  <url>
+    <loc>http://vessna.wedding/news/wedding-fashion-moscow</loc>
   </url>
   <url>
     <loc>http://vessna.wedding/prom-and-party-dresses/vessna-vol-1</loc>
@@ -49,6 +52,9 @@
     <loc>http://vessna.wedding/prom-and-party-dresses/vessna-vol-2</loc>
   </url>
   <url>
-    <loc>http://vessna.wedding/assets/images/news/2016.10-wedding-photoshots/vessna-new.jpg?w=432</loc>
+    <loc>http://vessna.wedding/user/registartion</loc>
+  </url>
+  <url>
+    <loc>http://vessna.wedding/prom-and-party-dresses/vessna-vol-3</loc>
   </url>
 </urlset>

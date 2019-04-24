@@ -67,6 +67,9 @@
         store.dispatch('fetch', {
           namespace: 'settings',
           endpoint: 'settings',
+          params: {
+            amp: !!route.path.match('amp'),
+          }
         }),
 
         store.dispatch('fetch', {
@@ -77,6 +80,10 @@
     },
 
     computed: {
+      amp () {
+          return this.$store.state && this.$store.state.settings && this.$store.state && this.$store.state.amp;
+      },
+
       popup () {
         return this.$store.state && this.$store.state.popup && this.$store.state.popup.item;
       },
