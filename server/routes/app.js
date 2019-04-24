@@ -16,6 +16,7 @@
 const fs = require('fs');
 const LRU = require('lru-cache');
 const path = require('path');
+const pretty = require('pretty');
 const {createBundleRenderer} = require('vue-server-renderer');
 const config = require('../../config');
 const uidCookie = require('../lib/uid-cookie');
@@ -30,6 +31,7 @@ module.exports = app => {
   function createRenderer (bundle, options) {
     return createBundleRenderer(bundle, Object.assign(options, {
       template,
+      inject: false,
 
       // for component caching
       cache: LRU({
@@ -71,6 +73,8 @@ module.exports = app => {
     const context = {
       title: config.title,
       url: req.url,
+      amp: req.url.match('amp'),
+      canonical: req.url.match('amp') ? req.url.replace(/amp\//, '') : req.url,
       cookie: req.headers.cookie,
     };
 
@@ -85,7 +89,7 @@ module.exports = app => {
         console.log(req.method, req.url);
         console.error(err.stack || err);
       } else {
-        res.end(html);
+        res.end(pretty(html));
       }
     });
   }
