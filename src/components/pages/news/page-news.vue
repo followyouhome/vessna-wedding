@@ -1,8 +1,13 @@
 <template>
-  <main id="article">
-    <module-related-posts></module-related-posts>
-    <module-article v-bind:article="article"></module-article>
-  </main>
+  <v-page>
+    <template slot='content'>
+      <main id="article">
+        <module-related-posts :news="news"/>
+        <module-article :article="article"/>
+      </main>
+    </template>
+  </v-page>
+
 </template>
 
 <script>
@@ -27,6 +32,7 @@
     extends: Page,
 
     components: {
+      'v-page': Page,
       'module-article': ModuleArticle,
       'module-related-posts': ModuleRelatedPosts,
     },
@@ -46,10 +52,13 @@
       __VUE_ENV__ === 'server' ? next() : fetch(store, to).then(() => next());
     },
 
-
     computed: {
+      news () {
+        return this.$store.state.page && this.$store.state.page.news;
+      },
+
       article () {
-        return this.$store.state.page.content;
+        return this.$store.state.page && this.$store.state.page.content;
       },
     },
   };

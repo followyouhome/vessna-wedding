@@ -1,5 +1,12 @@
 <template>
-  <main class="page"></main>
+  <main class="page">
+    <slot name='error' v-if="error">
+      Страница не найдена
+    </slot>
+    <slot name='content' v-else>
+
+    </slot>
+  </main>
 </template>
 
 <script>
@@ -20,7 +27,7 @@
 
           // Open graph
           { property: 'og:description', content: this.seo.description },
-          // { property: 'og:image', content: this.seo.image.secure_url },
+          { property: 'og:image', content: this.seo.image && this.seo.image.url },
           { property: 'og:title', content: this.seo.name },
           { property: 'og:url', content: 'https://vessna.wedding' + this.$route.fullPath },
           { property: 'og:type', content: 'website' },
@@ -28,7 +35,7 @@
 
           // Twitter card
           { property: 'twitter:description', content: this.seo.description },
-          // { property: 'twitter:image', content: this.seo.image.secure_url },
+          { property: 'twitter:image', content: this.seo.image && this.seo.image.url },
           { property: 'twitter:title', content: this.seo.name },
           { property: 'twitter:site', content: '@vessna_dress' },
           { property: 'twitter:card', content: 'summary_large_image' },
@@ -44,9 +51,22 @@
 
     },
 
+    data () {
+      return {
+        default: {
+          name: 'Страница не найдена',
+          description: 'Данная страница отсутствует на нашем сайте',
+        }
+      }
+    },
+
     computed: {
+      error () {
+        return !this.$store.state.page;
+      },
+
       seo () {
-        return this.$store.state.page && this.$store.state.page.seo;
+        return this.$store.state.page && this.$store.state.page.seo || this.default;
       },
     },
   };
@@ -126,15 +146,5 @@
         }
       }
     }
-  }
-
-  .promo {
-    z-index: $z-default;
-    position: relative;
-  }
-  .module {
-    z-index: $z-default;
-    position: relative;
-    background: white;
   }
 </style>
