@@ -45,10 +45,6 @@
     },
 
     computed: {
-      amp () {
-        return this.$store && this.$store.state && this.$store.state.settings && this.$store.state.settings.amp;
-      },
-
       seo () {
         return this.$store.state.page && this.$store.state.page.seo;
       },
