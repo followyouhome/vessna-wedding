@@ -1,13 +1,13 @@
 <template>
   <popup class="popup-login">
     <template slot='body'>
-      <form-user-login/>
+      <form-user-login @success="close" @failure="close"/>
     </template>
   </popup>
 </template>
 
 <script>
-  import Popup from './index.vue';
+  import Popup from './popup.vue';
   import FormUserLogin from '@/components/forms/form-user-login';
 
   export default {
@@ -21,29 +21,9 @@
     },
 
     data () {
+      return {
 
-    },
-
-    methods: {
-      login () {
-        // this.status.request = true;
-        //
-        // this.$store.dispatch('login', this.form)
-        //   .then((data) => {
-        //     this.status.request = false;
-        //
-        //     if (data._id) {
-        //       this.status.success = true;
-        //
-        //       setTimeout(() => { this.status.available = false; }, this.config.animation);
-        //       setTimeout(() => { this.$store.commit('POPUP_UNSET'); }, this.config.animation * 2);
-        //     } else {
-        //       this.status.fail = true;
-        //
-        //       setTimeout(() => { this.status.fail = false; this.$store.commit('POPUP_RESET'); }, this.config.animation * 3);
-        //     }
-        //   });
-      },
+      }
     },
   };
 </script>
@@ -52,7 +32,7 @@
   .popup-login {
     position: relative;
     width: 400px;
-    padding: 0px 16px 16px;
+    padding: 0;
 
     border: 1px solid $gray1;
     background: $white;

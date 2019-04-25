@@ -7,7 +7,7 @@
 </template>
 
 <script>
-  import Popup from './index.vue';
+  import Popup from './popup.vue';
   import FormFeedback from '@/components/forms/form-feedback';
 
   export default {

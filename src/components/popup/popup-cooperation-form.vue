@@ -7,7 +7,7 @@
 </template>
 
 <script>
-  import Popup from './index.vue';
+  import Popup from './popup.vue';
   import FormCooperation from '@/components/forms/form-cooperation';
 
   export default {

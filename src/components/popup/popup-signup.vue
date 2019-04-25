@@ -1,13 +1,13 @@
 <template>
-  <popup class="popup-feedback-form">
+  <popup class="popup-signup">
     <template slot='body'>
-      <form-user-registration/>
+      <form-user-registration @success="close" @failure="close"/>
     </template>
   </popup>
 </template>
 
 <script>
-  import Popup from './index.vue';
+  import Popup from './popup.vue';
   import FormUserRegistration from '@/components/forms/form-user-registration';
 
   export default {
@@ -21,29 +21,9 @@
     },
 
     data () {
+      return {
 
-    },
-
-    methods: {
-      signup () {
-        // this.status.request = true;
-        //
-        // this.$store.dispatch('signup', this.form)
-        //   .then((data) => {
-        //     this.status.request = false;
-        //
-        //     if (data._id) {
-        //       this.status.success = true;
-        //
-        //       setTimeout(() => { this.status.available = false; }, this.config.animation);
-        //       setTimeout(() => { this.$store.commit('POPUP_UNSET'); }, this.config.animation * 2);
-        //     } else {
-        //       this.status.fail = true;
-        //
-        //       setTimeout(() => { this.status.fail = false; this.$store.commit('POPUP_RESET'); }, this.config.animation * 3);
-        //     }
-        //   });
-      },
+      }
     },
   };
 </script>
@@ -51,8 +31,7 @@
 <style lang="scss">
   .popup-signup {
     position: relative;
-    width: 300px;
-    padding: 0px 16px 16px;
+    padding: 0;
 
     border: 1px solid $gray1;
     background: $white;
