@@ -1,6 +1,6 @@
 <template>
-	<div class="module module--related-posts flickity-carousels">
-    <div class="module__wrapper module--related-posts__wrapper">
+	<div class="module module-related-posts" :class="flickity && 'module-related-posts--is-flickity'" ref="carousel">
+    <div class="module__wrapper module-related-posts__wrapper">
 			<promo-topical v-for="post in posts" v-bind:item="post" v-bind:key="post.slug"></promo-topical>
     </div>
 	</div>
@@ -14,12 +14,18 @@
 	const POST_LIMIT = 7;
 
 	export default {
-		name: 'module-related-posts',
+		name: 'ModuleRelatedPosts',
 
 		props: ['news'],
 
 		components: {
 			'promo-topical': PromoTopical,
+		},
+
+		data () {
+			return {
+				flickity: null,
+			};
 		},
 
 		computed: {
@@ -30,67 +36,127 @@
 
 		mounted () {
 			if (!isMobile.phone && !isMobile.tablet) {
-
-				let Flickity = require('flickity');
-
-				Array.from(document.querySelectorAll('.flickity-carousels')).forEach(function (element) {
-					let flickity = new Flickity(element, {
-						accessibility: true,
-						adaptiveHeight: false,                                      //If false - initial height is the max required height
-						autoPlay: false,
-						cellAlign: 'left',
-						cellSelector: 'li, .promo',
-						contain: false,
-						draggable: true,
-						lazyLoad: false,
-						percentPosition: true,
-						prevNextButtons: element.classList.contains('module--flickity-carousel--show-buttons') ? true : false,
-						pageDots: element.classList.contains('module--flickity-carousel--show-dots') ? true : false,
-						resize: true,
-						setGallerySize: true,
-						wrapAround: false,
-					});
-
-					setTimeout(function () {
-					    flickity.resize();
-					}, 3000);
-				});
+				this.initFlickity();
 
 			} else {
-				Array.from(document.querySelectorAll('.flickity-carousels')).forEach(function (carousel) {
-					let wrapper = carousel.querySelector('.module__wrapper'),
-						items = Array.prototype.slice.call(carousel.querySelectorAll('.promo'));
-
-					if (!wrapper) {
-						return;
-					}
-
-					carousel.style.overflow = 'scroll';
-
-					wrapper.style.width = items.reduce(function (width, item) {
-						width = width.offsetWidth || width;
-
-						return width += item.offsetWidth;
-					}) + 'px';
-				});
+				this.initDefault();
 			}
+		},
+
+		methods: {
+			initFlickity () {
+				const Flickity = require('flickity');
+				this.flickity = new Flickity(this.$refs.carousel, {
+					accessibility: true,
+					adaptiveHeight: false,
+					autoPlay: false,
+					cellAlign: 'left',
+					cellSelector: 'li, .promo',
+					contain: false,
+					draggable: true,
+					lazyLoad: false,
+					percentPosition: true,
+					prevNextButtons: this.$refs.carousel.classList.contains('module--flickity-carousel--show-buttons') ? true : false,
+					pageDots: this.$refs.carousel.classList.contains('module--flickity-carousel--show-dots') ? true : false,
+					resize: true,
+					setGallerySize: true,
+					wrapAround: false,
+				});
+
+				setTimeout(function () {
+				    this.flickity.resize();
+				}, 3000);
+			},
+
+			initDefault () {
+				let wrapper = this.$refs.carousel.querySelector('.module__wrapper'),
+					items = Array.prototype.slice.call(this.$refs.carousel.querySelectorAll('.promo'));
+
+				if (!wrapper) {
+					return;
+				}
+
+				this.$refs.carousel.style.overflow = 'scroll';
+
+				wrapper.style.width = items.reduce(function (width, item) {
+					width = width.offsetWidth || width;
+
+					return width += item.offsetWidth;
+				}) + 'px';
+			},
 		},
 	};
 </script>
 
 <style lang="scss" scoped>
-	.module--related-posts {
+	.module-related-posts {
 		padding: 10px 0 0;
     margin-top: 0;
 		background: $gray2;
-		overflow: scroll;
+		overflow-x: scroll;
+
+		&:focus {
+			outline: none;
+		}
+
+		&--is-flickity {
+			overflow-x: hidden;
+		}
+
+		.promo {
+			flex-shrink: 0;
+		}
 	}
 
-	.module__wrapper {
+	.module-related-posts__wrapper {
 		display: flex;
 	}
-
-	.promo {
-		flex-shrink: 0;
-	}
 </style>
+
+<story group="Modules" name="Related Posts">
+	<module-related-posts
+		:news="[{
+			name: 'Съемка свадебной коллекции 2018',
+			promo: {
+				media: 'image',
+				image: {
+					url: 'https://vessna.wedding/images/vessna-wedding-2018.jpg',
+					height: 1280,
+					width: 1920,
+				},
+				text: '',
+				subline: '',
+				headline: 'Съемка новой свадебной коллекции 2018 года',
+				alt: ''
+			},
+			publishedDate: '2017-11-12T00:00:00.000Z',
+			route: {
+				params: {
+					to: '#'
+				},
+			},
+		}, {
+			name: 'Съемка свадебной коллекции 2018',
+			promo: {
+				media: 'image',
+				image: {
+					url: 'https://vessna.wedding/images/vessna-wedding-2018.jpg',
+					height: 1280,
+					width: 1920,
+				},
+				text: '',
+				subline: '',
+				headline: 'Съемка новой свадебной коллекции 2018 года',
+				alt: ''
+			},
+			publishedDate: '2017-11-12T00:00:00.000Z',
+			route: {
+				params: {
+					to: '#'
+				},
+			},
+		}].reduce((res, item, index, arr) => {
+			return arr.concat(arr)
+		})"
+	/>
+</story>
