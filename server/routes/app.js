@@ -89,7 +89,7 @@ module.exports = app => {
         console.log(req.method, req.url);
         console.error(err.stack || err);
       } else {
-        res.end(pretty(html));
+        res.end(req.url.match('amp') ? retty(html) : html);
       }
     });
   }
