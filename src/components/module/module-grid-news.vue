@@ -1,18 +1,18 @@
 <template>
   <main class="module-grid-news isotope-grid">
     <div class="isotope-grid__sizer"></div>
-    <promo-news v-for="post in news" v-bind:item="post" v-bind:key="post.slug"></promo-news>
+    <promo-news v-for="post in news" v-bind:item="post" v-bind:key="post.slug"/>
   </main>
 </template>
 
 <script>
-  import ModuleGridIsotope from './module-grid-isotope';
+  import ModuleGrid from './module-grid';
   import PromoNews from '../promo/promo-news.vue';
 
   export default {
-    name: 'module-grid-news',
+    name: 'ModuleGridNews',
 
-    extends: ModuleGridIsotope,
+    extends: ModuleGrid,
 
     props: ['news'],
 
@@ -100,3 +100,51 @@
     }
   }
 </style>
+
+<story group="Modules" name="Grid News">
+  <module-grid-news
+    :news="[{
+      name: 'Съемка свадебной коллекции 2018',
+      promo: {
+        media: 'image',
+        image: {
+          url: 'https://vessna.wedding/images/vessna-wedding-2018.jpg',
+          height: 1280,
+          width: 1920,
+        },
+        text: '',
+        subline: '',
+        headline: 'Съемка новой свадебной коллекции 2018 года',
+        alt: ''
+      },
+      publishedDate: '2017-11-12T00:00:00.000Z',
+      route: {
+        params: {
+          to: '#'
+        },
+      },
+    }, {
+      name: 'Съемка свадебной коллекции 2018',
+      promo: {
+        media: 'image',
+        image: {
+          url: 'https://vessna.wedding/images/vessna-wedding-2018.jpg',
+          height: 1280,
+          width: 1920,
+        },
+        text: '',
+        subline: '',
+        headline: 'Съемка новой свадебной коллекции 2018 года',
+        alt: ''
+      },
+      publishedDate: '2017-11-12T00:00:00.000Z',
+      route: {
+        params: {
+          to: '#'
+        },
+      },
+    }].reduce((res, item, index, arr) => {
+    	return arr.concat(arr)
+    })"
+  />
+</story>

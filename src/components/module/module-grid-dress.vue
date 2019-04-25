@@ -6,13 +6,13 @@
 </template>
 
 <script>
-  import ModuleGridIsotope from '@/components/module/module-grid-isotope';
+  import ModuleGrid from '@/components/module/module-grid';
   import PromoDress from '@/components/promo/promo-dress.vue';
 
   export default {
     name: 'ModuleGridDress',
 
-    extends: ModuleGridIsotope,
+    extends: ModuleGrid,
 
     props: ['items'],
 
