@@ -14,7 +14,7 @@
     </div>
     <module-promo-cards :items="prom"/>
     <module-feedback-grid :feedbacks="feedbacks"/>
-    <promo-subscribe/>
+    <module-subscribe/>
   </div>
 </template>
 
@@ -25,7 +25,7 @@
   import ModuleFeedbackGrid from '@/components/module/module-feedback-grid.vue';
   import ModuleSelectedCollections from '@/components/module/module-selected-collections.vue';
   import PromoFullScreenQuote from '@/components/promo/promo-full-screen-quote.vue';
-  import PromoSubscribe from '@/components/promo/promo-subscribe.vue';
+  import ModuleSubscribe from '@/components/module/module-subscribe.vue';
 
   import store from '../../store/';
 
@@ -49,7 +49,7 @@
       'module-related-posts': ModuleRelatedPosts,
       'module-selected-collections': ModuleSelectedCollections,
       'promo-full-screen-quote': PromoFullScreenQuote,
-      'promo-subscribe': PromoSubscribe,
+      'module-subscribe': ModuleSubscribe,
     },
 
     asyncData ({ store, route }) {

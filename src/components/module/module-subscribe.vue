@@ -1,20 +1,20 @@
 <template>
-  <div :class="['promo', 'promo-subscribe', this.state.request ? 'promo-subscribe--request' : '', this.fadein ? 'promo--fade-in' : '', this.fadeout ? 'promo--fade-out' : '']" v-if="show">
-    <div class="promo__wrapper promo-subscribe__wrapper" v-if="!state.success && !state.error">
-      <h2 class="promo__headline promo-subscribe__headline">{{label.headline}}</h2>
-      <p class="promo__subline promo-subscribe__subline">{{label.subline}}</p>
-      <form class="promo-subscribe__form" v-on:submit.prevent="subscribe">
-        <input class="promo-subscribe__form-input" type="email" placeholder="EMAIL" v-model="email" :disabled="state.request">
-        <input class="promo-subscribe__form-submit" type="submit" value="Подписаться" :disabled="state.request">
+  <div :class="['promo', 'module-subscribe', this.state.request ? 'module-subscribe--request' : '', this.fadein ? 'promo--fade-in' : '', this.fadeout ? 'promo--fade-out' : '']" v-if="show">
+    <div class="module__wrapper module-subscribe__wrapper" v-if="!state.success && !state.error">
+      <h2 class="module__headline module-subscribe__headline">{{label.headline}}</h2>
+      <p class="module__subline module-subscribe__subline">{{label.subline}}</p>
+      <form class="module-subscribe__form" v-on:submit.prevent="subscribe">
+        <input class="module-subscribe__form-input" type="email" placeholder="EMAIL" v-model="email" :disabled="state.request">
+        <input class="module-subscribe__form-submit" type="submit" value="Подписаться" :disabled="state.request">
       </form>
     </div>
-    <div class="promo__wrapper promo-subscribe__wrapper" v-if="state.success">
-      <h2 class="promo__headline promo-subscribe__headline">{{success.headline}}</h2>
-      <p class="promo__subline promo-subscribe__subline">{{success.subline}}</p>
+    <div class="module__wrapper module-subscribe__wrapper" v-if="state.success">
+      <h2 class="module__headline module-subscribe__headline">{{success.headline}}</h2>
+      <p class="module__subline module-subscribe__subline">{{success.subline}}</p>
     </div>
-    <div class="promo__wrapper promo-subscribe__wrapper" v-if="state.error">
-      <h2 class="promo__headline promo-subscribe__headline">{{error.headline}}</h2>
-      <p class="promo__subline promo-subscribe__subline">{{error.subline}}</p>
+    <div class="module__wrapper module-subscribe__wrapper" v-if="state.error">
+      <h2 class="module__headline module-subscribe__headline">{{error.headline}}</h2>
+      <p class="module__subline module-subscribe__subline">{{error.subline}}</p>
     </div>
   </div>
 </template>
@@ -22,14 +22,14 @@
 <script>
   import Vue from 'vue';
 
-  import Promo from './promo.vue';
+  import Module from './module.vue';
 
   import { COOKIES } from '@/../config/constants.js';
 
   export default {
-    name: 'promo-subscribe',
+    name: 'ModuleSubscribe',
 
-    extends: Promo,
+    extends: Module,
 
     data () {
       return {
@@ -108,7 +108,7 @@
     }
   }
 
-  .promo-subscribe {
+  .module-subscribe {
     min-height: 410px;
     border: none;
     border-top: 1px solid $gray2;
@@ -119,7 +119,7 @@
     }
   }
 
-  .promo-subscribe__wrapper {
+  .module-subscribe__wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -127,27 +127,27 @@
     background: none;
   }
 
-  .promo-subscribe__headline {
+  .module-subscribe__headline {
     margin-bottom: 30px;
     font: 4rem/1em 'Akzidenz Grotesk';
     letter-spacing: 5px;
     color: $black;
   }
 
-  .promo-subscribe__subline {
+  .module-subscribe__subline {
     margin: 10px 20px 25px;
     font: 1rem/1em 'Akzidenz Grotesk';
     letter-spacing: 2px;
     color: $black;
   }
 
-  .promo-subscribe__form {
+  .module-subscribe__form {
     display: inline-block;
     position: relative;
     width: 70%;
   }
 
-  .promo-subscribe__form-input {
+  .module-subscribe__form-input {
     display: block;
     position: relative;
     width: 100%;
@@ -158,7 +158,7 @@
     letter-spacing: 2px;
     color: $black;
 
-    .promo-subscribe--request & {
+    .module-subscribe--request & {
       background-image: repeating-linear-gradient(-45deg, $white, $white 11px, $gray1 10px, $gray1 20px);
       background-size: 28px 28px;
       animation: move .5s linear infinite;
@@ -173,7 +173,7 @@
     }
   }
 
-  .promo-subscribe__form-submit {
+  .module-subscribe__form-submit {
     position: absolute;
     height: 100%;
     right: 0;
