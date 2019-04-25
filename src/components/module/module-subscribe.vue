@@ -197,5 +197,8 @@
       opacity: 0.5;
     }
   }
-
 </style>
+
+<story group="Modules" name="Subscribe">
+  <module-subscribe/>
+</story>

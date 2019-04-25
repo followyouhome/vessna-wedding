@@ -9,6 +9,10 @@
 </script>
 
 <style lang="scss">
+  .module {
+    position: relative;
+    z-index: $z-default;
+  }
   .module__text-title {
     margin: 0;
     font: 31px/50px Futura PT Light, Segoe UI Light, Helvetica, Arial, sans-serif;

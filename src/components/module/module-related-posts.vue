@@ -63,7 +63,7 @@
 					wrapAround: false,
 				});
 
-				setTimeout(function () {
+				setTimeout(() => {
 				    this.flickity.resize();
 				}, 3000);
 			},

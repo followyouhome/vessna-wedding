@@ -348,3 +348,7 @@
     height: 20px;
   }
 </style>
+
+<story group="Modules" name="Shared Folder">
+  <module-shared-folder/>
+</story>

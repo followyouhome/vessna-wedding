@@ -62,7 +62,6 @@
       },
 
       url: function () {
-        console.log(this.src);
         const url = new URL(this.src, domain);
 
         if (this.width) {
