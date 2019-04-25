@@ -26,3 +26,22 @@ module.exports.mailFormat = body => {
     `,
   };
 };
+
+module.exports.newsFormat = news => {
+  return {
+    seo: news.seo,
+    slug: news.slug,
+    name: news.name,
+    promo: news.promo,
+    state: news.state,
+    content: news.content,
+    main_promo: news.main_promo,
+    publishedDate: news.publishedDate,
+    route: {
+      name: ROUTES.PAGE_NEWS,
+      params: {
+        slug: news.slug,
+      },
+    },
+  };
+};

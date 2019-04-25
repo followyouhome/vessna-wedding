@@ -1,25 +1,6 @@
 const keystone = require('keystone');
 const responseHandler = require('../../lib/response-handler');
-
-const ROUTES = require('../../../config/constants.js');
-
-function newsFormat (news) {
-  return {
-    seo: news.seo,
-    name: news.name,
-    promo: news.promo,
-    state: news.state,
-    content: news.content,
-    main_promo: news.main_promo,
-    publishedDate: news.publishedDate,
-    route: {
-      name: ROUTES.PAGE_NEWS,
-      params: {
-        slug: news.slug,
-      },
-    },
-  };
-}
+const { newsFormat } = require('../../lib/format');
 
 module.exports = (app, base) => {
   let output = {};
@@ -28,24 +9,32 @@ module.exports = (app, base) => {
     (req, res, next) => {
       const query = keystone.list('Page')
                       .model
-                      .find({ state: 'published' })
                       .findOne({ slug: 'news' });
 
       query.exec((err, result) => {
-        output.main_promo = result.main_promo;
-        output.seo = result.seo;
-        next();
+        if (err || !result) {
+          responseHandler(res, err, result);
+        } else {
+          output.main_promo = result.main_promo;
+          output.seo = result.seo;
+          next();
+        }
       });
     },
 
     (req, res, next) => {
       const query = keystone.list('News')
                       .model
-                      .find({ state: 'published' });
+                      .find({ state: 'published' })
+                      .sort({ publishedDate: -1 });
 
       query.exec((err, result) => {
-        output.news = result.map(item => newsFormat(item));
-        next();
+        if (err || !result) {
+          responseHandler(res, err, result);
+        } else {
+          output.news = result.map(item => newsFormat(item));
+          next();
+        }
       });
     },
 
@@ -58,11 +47,31 @@ module.exports = (app, base) => {
     (req, res, next) => {
       const query = keystone.list('News')
                       .model
-                      .findOne({ state: 'published', slug: req.params.slug });
+                      .findOne({ slug: req.params.slug });
 
       query.exec((err, result) => {
-        output = newsFormat(result);
-        next();
+        if (err || !result) {
+          responseHandler(res, err, result);
+        } else {
+          output = newsFormat(result);
+          next();
+        }
+      });
+    },
+
+    (req, res, next) => {
+      const query = keystone.list('News')
+                      .model
+                      .find({ state: 'published', slug: { $ne: output.slug }})
+                      .sort({ publishedDate: -1 });
+
+      query.exec((err, result) => {
+        if (err || !result) {
+          responseHandler(res, err, result);
+        } else {
+          output.news = result.map(item => newsFormat(item));
+          next();
+        }
       });
     },
 
