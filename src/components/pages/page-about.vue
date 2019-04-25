@@ -1,12 +1,10 @@
 <template>
   <main class="page-about">
-    <module-b2b-info :info="info"/>
   </main>
 </template>
 
 <script>
   import Page from '@/components/pages/page.vue';
-  import ModuleB2BInfo from '@/components/module/module-b2b-info';
 
   import store from '@/store/';
 
@@ -25,7 +23,6 @@
     extends: Page,
 
     components: {
-      'module-b2b-info': ModuleB2BInfo,
     },
 
     asyncData ({ store, route }) {
