@@ -21,7 +21,7 @@
 </template>
 
 <script>
-  const domain = process.env.NODE_ENV === 'development' ? 'localhost:3000' : 'https://vessna.wedding';
+  const domain = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://vessna.wedding';
 
   export default {
     name: 'ImageDeferred',
@@ -62,6 +62,7 @@
       },
 
       url: function () {
+        console.log(this.src);
         const url = new URL(this.src, domain);
 
         if (this.width) {
