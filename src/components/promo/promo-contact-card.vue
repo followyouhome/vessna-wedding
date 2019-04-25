@@ -38,6 +38,7 @@
   .promo-contact-card {
     padding: 20px;
     background: $white;
+    max-width: 400px;
   }
 
   .promo-contact-card__description {
