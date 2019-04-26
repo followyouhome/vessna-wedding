@@ -1,16 +1,9 @@
 <template>
-  <div class="promo promo-dress promo--width-2">
+  <div class="promo promo-dress promo--width-2" @click="click">
     <div class="promo__wrapper promo-dress__wrapper">
-      <a 
-        ref="fresco"
-        class="promo__image-wrapper promo-dress__image-wrapper promo-dress__image-wrapper--no-link"
-        v-if="dress.promo.image"
-        v-bind:data-dress-info="images"
-        v-bind:data-fresco-group="dress.headline"
-        v-bind:data-fresco-group-options="options"
-      >
+      <div class="promo__image-wrapper promo-dress__image-wrapper">
         <image-deferred v-bind:image="dress.promo.image"></image-deferred>
-      </a>
+      </div>
       <div class="promo__content-wrapper promo-dress__content-wrapper">
         <div class="promo-dress__headline promo-dress__headline--no-link">
            <h4 class="promo__text-headline"><span class="font-peignot">{{dress.promo.headline}}</span></h4>
@@ -27,9 +20,6 @@
 <script>
   import Promo from './promo';
 
-  import '@/lib/fresco.css';
-
-
   export default {
     name: 'PromoDress',
 
@@ -43,7 +33,7 @@
       },
 
       images () {
-        return "[" + this.dress.images.map(element => "\"" + element.url + "\"") + "]";
+        return this.dress.images;
       },
 
       price () {
@@ -54,29 +44,16 @@
       },
     },
 
-    mounted () {
-      if (__VUE_ENV__ === 'client') {
-        const Fresco = require('@/lib/fresco.js');
-        const element = this.$refs.fresco;
-
-        if (element) {
-          element.addEventListener('click', event => {
-    				event.preventDefault();
-    				event.stopImmediatePropagation();
-
-    				let photos = JSON.parse(element.dataset.dressInfo);
-
-    				Fresco.show(photos, {
-    					overflow: true,
-    					thumbnails: 'vertical',
-    					onClick: 'close',
-    				});
-    			});
-        }
-      }
-    },
-
     methods: {
+      click () {
+        this.$store.commit('POPUP_SET', {
+          popup: 'popup-image-carousel',
+          payload: {
+            images: this.images,
+          },
+        });
+      },
+
       formatPrice (price, currency) {
         switch (currency) {
           case 'rub': {
@@ -97,18 +74,6 @@
 
     .image-deferred {
       width: auto;
-    }
-  }
-
-  .promo-dress--no-link {
-    .promo-dress__image-wrapper {
-      cursor: zoom-in;
-    }
-  }
-
-  .promo-dress--show-lightbox {
-    .promo-dress__image-wrapper {
-      cursor: zoom-in;
     }
   }
 
@@ -144,6 +109,8 @@
   }
 
   .promo-dress__image-wrapper {
+    cursor: zoom-in;
+  
     img {
       height: 100% !important;
     }

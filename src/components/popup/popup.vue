@@ -73,6 +73,7 @@
     top: 10px;
     cursor: pointer;
     background: $white;
+    z-index: $z-popup + 1;
   }
 
   .popup__recaptcha {

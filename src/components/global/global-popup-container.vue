@@ -1,9 +1,10 @@
 <template>
   <div class="global-popup-container" @click="clickOutside($event)">
-    <popup-login v-if="popup === 'popup-login'"/>
-    <popup-signup v-if="popup === 'popup-signup'"/>
-    <popup-feedback-form v-if="popup === 'popup-feedback-form'"/>
-    <popup-cooperation-form v-if="popup === 'popup-cooperation-form'"/>
+    <popup-login v-if="popup === 'popup-login'" :payload="payload"/>
+    <popup-signup v-if="popup === 'popup-signup'" :payload="payload"/>
+    <popup-feedback-form v-if="popup === 'popup-feedback-form'" :payload="payload"/>
+    <popup-image-carousel v-if="popup === 'popup-image-carousel'" :payload="payload"/>
+    <popup-cooperation-form v-if="popup === 'popup-cooperation-form'" :payload="payload"/>
   </div>
 </template>
 
@@ -11,15 +12,17 @@
   import PopupLogin from '@/components/popup/popup-login.vue';
   import PopupSignup from '@/components/popup/popup-signup.vue';
   import PopupFeedbackForm from '@/components/popup/popup-feedback-form';
+  import PopupImageCarousel from '@/components/popup/popup-image-carousel';
   import PopupCooperationForm from '@/components/popup/popup-cooperation-form';
 
   export default {
-    name: 'global-popup-container',
+    name: 'GlobalPopupContainer',
 
     components: {
       'popup-login': PopupLogin,
       'popup-signup': PopupSignup,
       'popup-feedback-form': PopupFeedbackForm,
+      'popup-image-carousel': PopupImageCarousel,
       'popup-cooperation-form': PopupCooperationForm,
     },
 
@@ -34,6 +37,11 @@
         }
 
         return null;
+      },
+
+      payload () {
+        console.log(this.$store.state.popup && this.$store.state.popup.payload)
+        return this.$store.state.popup && this.$store.state.popup.payload;
       },
     },
 
