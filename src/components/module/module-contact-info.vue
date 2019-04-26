@@ -31,7 +31,7 @@
 
 <style lang="scss">
   .module-contact-info {
-
+    margin-bottom: 50px;
   }
 
   .module-contact-info__wrapper {

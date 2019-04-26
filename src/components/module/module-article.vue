@@ -16,23 +16,34 @@
 	@include animation-fade-in('article');
 
 	.module-article {
+		margin: 10px 0;
+		padding: 15px;
 		animation: animation-fade-in-article 0.2s linear;
 	}
 
 	.module-article__wrapper {
 		padding: 30px;
 		background: $white;
+		box-shadow: 0px 0px 10px 5px $gray1;
 
 		h1 {
-
+			font: 4rem/1 $RistrettoProLight;
 		}
 
 		h2 {
-
+			margin: 2rem 0;
+			letter-spacing: 0;
+			text-align: center;
+			font: 3rem/1 $RistrettoProLight;
+			color: $black;
 		}
 
 		h3 {
-
+			margin: 2rem 0;
+			letter-spacing: 0;
+			text-align: center;
+			font: 2rem/1 $RistrettoProLight;
+			color: $black;
 		}
 
 		h4 {
@@ -55,7 +66,16 @@
 
 		}
 
+		img {
+			width: 100%;
+		}
+
+		video {
+			width: 100%;
+		}
+
 		p {
+			margin: 2rem 0;
 			color: $dark;
 		}
 
