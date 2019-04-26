@@ -90,20 +90,15 @@ const actions = {
 
 const mutations = {
   setItem (state, { namespace, id, data }) {
-    // const idx = state[namespace].findIndex(item => item._id === id);
-
-    // if (idx > 0) {
-      state[namespace][id] = data;
-    // } else {
-    //   state[namespace].push(data);
-    // }
+    Vue.set(state, `${namespace}.${id}`,  data);
+    // state[namespace][id] = data;
   },
 
   replaceItems (state, { namespace, data, global }) {
     if (global) {
-      state.global[namespace] = Object.assign({}, data);
+      Vue.set(state.global, namespace, data);
     } else {
-      state[namespace] = data;
+      Vue.set(state, namespace, data);
     }
   },
 };
