@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="global-main-promo__wrapper">
-      <image-deferred v-bind:image="promo.image" v-if="promo.media == 'image'"></image-deferred>
+      <image-deferred v-bind:image="image" v-if="promo.media == 'image'"></image-deferred>
       <video-regular v-bind:promo="promo" v-if="promo.media == 'video'"></video-regular>
     </div>
   </header>

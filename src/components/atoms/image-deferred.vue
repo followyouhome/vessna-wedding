@@ -14,6 +14,7 @@
       alt=""
       title=""
       itemprop="contentUrl"
+      ref="img"
     />
     <noscript v-if="server"><img :src="image.secure_url || image.url" alt="" title="" itemprop="contentUrl"></noscript>
     <noscript v-else></noscript>
@@ -70,6 +71,12 @@
 
         return url.href;
       },
+    },
+
+    watch: {
+      image () {
+        this.$refs.img.src = this.url;
+      }
     },
 
     mounted () {
