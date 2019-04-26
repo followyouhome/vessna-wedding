@@ -27,7 +27,7 @@
   }
 
   export default {
-    name: 'page-article',
+    name: 'PageNews',
 
     extends: Page,
 
