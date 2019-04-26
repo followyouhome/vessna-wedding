@@ -26,6 +26,8 @@
 
 <style lang="scss">
   .promo {
+    position: relative;
+    z-index: $z-default;
     box-sizing: border-box;
     opacity: 1;
     transform: translateY(0);
