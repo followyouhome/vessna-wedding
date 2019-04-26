@@ -1,5 +1,5 @@
 <template>
-	<div class="module module-related-posts" :class="flickity && 'module-related-posts--is-flickity'" ref="carousel">
+	<div class="module module-related-posts" :class="flickity && 'module-related-posts--is-flickity'" ref="carousel" v-if="show">
     <div class="module__wrapper module-related-posts__wrapper">
 			<promo-topical v-for="post in posts" v-bind:item="post" v-bind:key="post.slug"></promo-topical>
     </div>
@@ -24,6 +24,7 @@
 
 		data () {
 			return {
+				show: true,
 				flickity: null,
 			};
 		},
@@ -32,6 +33,12 @@
 			posts () {
 				return this.news && this.news.slice(0, POST_LIMIT);
 			},
+		},
+
+		watch: {
+			posts () {
+				this.restartComponent();
+			}
 		},
 
 		mounted () {
@@ -84,6 +91,17 @@
 					return width += item.offsetWidth;
 				}) + 'px';
 			},
+
+			restartComponent () {
+				this.flickity.destroy();
+				this.show = false;
+				this.$nextTick(() => {
+          this.show = true;
+					this.$nextTick(() => {
+						this.initFlickity();
+					});
+	      });
+			}
 		},
 	};
 </script>
