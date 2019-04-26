@@ -1,3 +1,5 @@
+const ROUTES = require('../../config/constants.js');
+
 module.exports.subscriberFormat = email => {
   return {
     email_address: email,
