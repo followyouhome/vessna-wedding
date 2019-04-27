@@ -1,7 +1,7 @@
 <template>
   <popup class="popup-image-carousel">
     <template slot='body'>
-      <module-image-carousel :images="payload.images"/>
+      <module-image-carousel :images="images"/>
     </template>
   </popup>
 </template>
@@ -27,6 +27,12 @@
 
       };
     },
+
+    computed: {
+      images () {
+        return this.payload && this.payload.images
+      }
+    }
   };
 </script>
 
@@ -41,21 +47,23 @@
 
 <story group="Popups" name="Image Carousel">
   <popup-image-carousel
-    :images="[{
-      width: 1120,
-      height: 1680,
-      secure_url: 'https://vessna.wedding/images/ABSFPUXIIIQ50TPXCGRU.JPG',
-      url: 'https://vessna.wedding/images/ABSFPUXIIIQ50TPXCGRU.JPG',
-    }, {
-      width: 1120,
-      height: 1680,
-      secure_url: 'https://vessna.wedding/images/AO3JKEL5CGJ7K22XBY1V.JPG',
-      url: 'https://vessna.wedding/images/AO3JKEL5CGJ7K22XBY1V.JPG',
-    }, {
-      width: 1120,
-      height: 1680,
-      secure_url: 'https://vessna.wedding/images/EF08HSAQTU0V0DCZPVES.JPG',
-      url: 'https://vessna.wedding/images/EF08HSAQTU0V0DCZPVES.JPG',
-    }]"
+    :payload="{
+      images: [{
+        width: 1120,
+        height: 1680,
+        secure_url: 'https://vessna.wedding/images/ABSFPUXIIIQ50TPXCGRU.JPG',
+        url: 'https://vessna.wedding/images/ABSFPUXIIIQ50TPXCGRU.JPG',
+      }, {
+        width: 1120,
+        height: 1680,
+        secure_url: 'https://vessna.wedding/images/AO3JKEL5CGJ7K22XBY1V.JPG',
+        url: 'https://vessna.wedding/images/AO3JKEL5CGJ7K22XBY1V.JPG',
+      }, {
+        width: 1120,
+        height: 1680,
+        secure_url: 'https://vessna.wedding/images/EF08HSAQTU0V0DCZPVES.JPG',
+        url: 'https://vessna.wedding/images/EF08HSAQTU0V0DCZPVES.JPG',
+      }]
+    }"
   />
 </story>
