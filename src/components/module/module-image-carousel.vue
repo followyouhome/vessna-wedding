@@ -8,6 +8,7 @@
     >
       <b-carousel-slide
         v-for="image in images"
+        :key="image.url"
         img-blank
       >
         <image-deferred :image="image"/>
@@ -33,7 +34,6 @@
     computed: {
       height () {
         if (__VUE_ENV__ === 'client') {
-          console.log(this.$el);
           return this.$parent.$el - 100;
         }
 

@@ -65,7 +65,7 @@
 </template>
 
 <script>
-  import Form from './index.vue';
+  import Form from './form.vue';
 
   export default {
     name: 'FormUserRegistration',

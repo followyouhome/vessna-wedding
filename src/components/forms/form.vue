@@ -143,6 +143,10 @@
     }
   }
 
+  .form__label {
+    margin-bottom: 0;
+  }
+
   .form__headline {
     margin: 0px 0 20px;
     font: 2rem/2rem $RistrettoProLight;
