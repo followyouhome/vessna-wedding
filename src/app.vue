@@ -34,7 +34,7 @@
   const yandex = process.env.YANDEX_METRIKA_ID;
 
   import {
-    TRACK_SET_YANDEX
+    TRACK_SET_YANDEX,
   } from '@/store/mutation-types';
 
   Vue.component('no-ssr', NoSSR);
@@ -69,7 +69,7 @@
           endpoint: 'settings',
           params: {
             amp: !!route.path.match('amp'),
-          }
+          },
         }),
 
         store.dispatch('fetch', {
@@ -116,7 +116,7 @@
       setYandexMetrikaChecker () {
         const interval = window.setInterval(() => {
           if (window[yandex]) {
-            this.$store.commit(TRACK_SET_YANDEX, window[yandex])
+            this.$store.commit(TRACK_SET_YANDEX, window[yandex]);
             window.clearInterval(interval);
           }
         }, 1000);
@@ -127,7 +127,7 @@
           navigator.serviceWorker.register('/dist/service-worker.js', {
             scope: '/',
           }).then(reg => {
-            console.log("%c Vessna-Wedding %c Service worker registered",  'background: #b19b65; color: #ffffff', 'color: #000000');
+            console.log("%c Vessna-Wedding %c Service worker registered",  'background: #b19b65; color: #ffffff', 'color: #000000', reg);
           }).catch(err => {
             console.log(err);
           });

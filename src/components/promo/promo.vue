@@ -9,7 +9,7 @@
     computed: {
       amp () {
         return this.$store && this.$store.state && this.$store.state.settings && this.$store.state.settings.amp;
-      }
+      },
     },
 
     mounted () {

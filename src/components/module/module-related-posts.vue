@@ -38,7 +38,7 @@
 		watch: {
 			posts () {
 				this.restartComponent();
-			}
+			},
 		},
 
 		mounted () {
@@ -101,7 +101,7 @@
 						this.initFlickity();
 					});
 	      });
-			}
+			},
 		},
 	};
 </script>

@@ -110,7 +110,7 @@
 
   .promo-dress__image-wrapper {
     cursor: zoom-in;
-  
+
     img {
       height: 100% !important;
     }

@@ -1,23 +1,32 @@
 <template>
-  <figure class="image-deferred" v-if="amp">
-    <amp-img alt="A view of the sea"
+  <figure
+    v-if="amp"
+    class="image-deferred"
+  >
+    <amp-img
+      alt="A view of the sea"
       :src="url"
       width="1"
       height="1"
-      layout="responsive">
-    </amp-img>
+      layout="responsive"
+    />
   </figure>
-  <figure v-bind:class="['image-deferred', 'image-deferred--preloader', aspect, parsedEffects]" :style="size" v-else>
-    <img :class="['image-deferred__image', 'image-deferred__image--preloader']"
+  <figure
+    v-else
+    :class="['image-deferred', 'image-deferred--preloader', aspect, parsedEffects]"
+    :style="size"
+  >
+    <img
       v-if="show"
+      ref="img"
       v-lazy="url"
+      :class="['image-deferred__image', 'image-deferred__image--preloader']"
       alt=""
       title=""
       itemprop="contentUrl"
-      ref="img"
-    />
+    >
     <noscript v-if="server"><img :src="image.secure_url || image.url" alt="" title="" itemprop="contentUrl"></noscript>
-    <noscript v-else></noscript>
+    <noscript v-else />
   </figure>
 </template>
 
@@ -66,7 +75,7 @@
         const url = new URL(this.src, domain);
 
         if (this.width) {
-          url.searchParams.append('w', this.width)
+          url.searchParams.append('w', this.width);
         }
 
         return url.href;
@@ -76,7 +85,7 @@
     watch: {
       image () {
         this.$refs.img.src = this.url;
-      }
+      },
     },
 
     mounted () {

@@ -19,7 +19,7 @@
 			image () {
 				if (typeof this.item.image === 'string') {
 					return {
-						url: this.item.image
+						url: this.item.image,
 					};
 				}
 

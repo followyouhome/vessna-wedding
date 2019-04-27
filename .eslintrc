@@ -2,8 +2,9 @@
   "plugins": [
     "vue", "html"
   ],
-  "parser": "babel-eslint",
+  "extends": ["plugin:vue/base"],
   "parserOptions": {
+    "parser": "babel-eslint",
     "ecmaVersion": 6,
     "sourceType": "module",
     "ecmaFeatures": {
@@ -14,7 +15,7 @@
     "semi": 2,
     "comma-dangle": ["error", "always-multiline"],
     "keyword-spacing": ["error", {"before": true , "after": true}],
-    "no-unused-vars": ["error", {"vars": "all", "args": "after-used", "ignoreRestSiblings": false}],
+    "no-unused-vars": ["error", {"vars": "all", "args": "none", "ignoreRestSiblings": false}],
     "space-before-function-paren": ["error", "always"],
     "no-trailing-spaces": "error",
     "no-var": "error"

@@ -1,5 +1,9 @@
 <template>
-  <div class="g-recaptcha" :data-sitekey="sitekey" data-callback="gcallback"></div>
+  <div
+    class="g-recaptcha"
+    :data-sitekey="sitekey"
+    data-callback="gcallback"
+  />
 </template>
 
 <script>

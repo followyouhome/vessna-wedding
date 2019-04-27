@@ -23,7 +23,7 @@
     data () {
       return {
 
-      }
+      };
     },
   };
 </script>

@@ -5,8 +5,6 @@ import {
 
 import Vue from 'vue';
 
-import config from '../../../config';
-
 const base = '/api';
 
 const settings = {

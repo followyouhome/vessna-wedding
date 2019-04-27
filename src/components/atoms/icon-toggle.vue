@@ -1,6 +1,11 @@
 <template>
-  <div :class="['icon-toggle', icon, state ? 'is-active' : '']" @mouseenter="mouseenter" @mouseleave="mouseleave" @click="click">
-    <div class="inner"></div>
+  <div
+    :class="['icon-toggle', icon, state ? 'is-active' : '']"
+    @mouseenter="mouseenter"
+    @mouseleave="mouseleave"
+    @click="click"
+  >
+    <div class="inner" />
   </div>
 </template>
 

@@ -1,7 +1,10 @@
 <template>
   <div :class="['simple-button', `simple-button--${type}`]">
-    <button :class="['simple-button__button', `simple-button__button--${type}`]" @click="click">
-      {{text}}
+    <button
+      :class="['simple-button__button', `simple-button__button--${type}`]"
+      @click="click"
+    >
+      {{ text }}
     </button>
   </div>
 </template>

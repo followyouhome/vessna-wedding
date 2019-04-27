@@ -82,7 +82,7 @@
 
       feedbacks () {
         return this.$store.state.page.feedbacks;
-      }
+      },
     },
   };
 </script>

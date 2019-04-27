@@ -30,9 +30,9 @@
 
     computed: {
       images () {
-        return this.payload && this.payload.images
-      }
-    }
+        return this.payload && this.payload.images;
+      },
+    },
   };
 </script>
 

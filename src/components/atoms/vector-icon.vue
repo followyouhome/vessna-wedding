@@ -1,6 +1,6 @@
 <template>
   <no-ssr>
-    <div :class="['vector-icon', `vector-icon-${icon}`]"></div>
+    <div :class="['vector-icon', `vector-icon-${icon}`]" />
   </no-ssr>
 </template>
 

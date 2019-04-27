@@ -10,9 +10,6 @@
 </template>
 
 <script>
-  import Vue from 'vue';
-  import store from '../../store/';
-
   export default {
     name: 'page',
 
@@ -56,8 +53,8 @@
         default: {
           name: 'Страница не найдена',
           description: 'Данная страница отсутствует на нашем сайте',
-        }
-      }
+        },
+      };
     },
 
     computed: {

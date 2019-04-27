@@ -23,12 +23,14 @@
   export default {
     name: 'ModuleImageCarousel',
 
+    extends: Module,
+
     props: ['images'],
 
     data () {
       return {
 
-      }
+      };
     },
 
     computed: {
@@ -38,9 +40,9 @@
         }
 
         return '100%';
-      }
-    }
-  }
+      },
+    },
+  };
 </script>
 
 <style lang="scss">

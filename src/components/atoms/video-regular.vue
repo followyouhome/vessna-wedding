@@ -1,10 +1,35 @@
 <template>
-  <figure class="video-regular" :style="style" ref="wrapper">
-  	<video class="video-regular__video" autoplay loop muted preload="none" ref="video" v-show="show" v-bind:src="webm.url">
-  		<source v-if="webm.url" v-bind:src="webm.url" type='video/webm; codecs="vp8, vorbis"'>
-  		<source v-if="mp4.url" v-bind:src="mp4.url" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-  		<source v-if="ogv.url" v-bind:src="ogv.url" type='video/ogg; codecs="theora, vorbis"'>
-  	</video>
+  <figure
+    ref="wrapper"
+    class="video-regular"
+    :style="style"
+  >
+    <video
+      v-show="show"
+      ref="video"
+      class="video-regular__video"
+      autoplay
+      loop
+      muted
+      preload="none"
+      :src="webm.url"
+    >
+      <source
+        v-if="webm.url"
+        :src="webm.url"
+        type="video/webm; codecs=&quot;vp8, vorbis&quot;"
+      >
+      <source
+        v-if="mp4.url"
+        :src="mp4.url"
+        type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;"
+      >
+      <source
+        v-if="ogv.url"
+        :src="ogv.url"
+        type="video/ogg; codecs=&quot;theora, vorbis&quot;"
+      >
+    </video>
   </figure>
 </template>
 

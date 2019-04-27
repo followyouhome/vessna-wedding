@@ -40,7 +40,7 @@
       },
 
       payload () {
-        console.log(this.$store.state.popup && this.$store.state.popup.payload)
+        console.log(this.$store.state.popup && this.$store.state.popup.payload);
         return this.$store.state.popup && this.$store.state.popup.payload;
       },
     },
