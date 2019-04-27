@@ -4,7 +4,7 @@
     <global-main-promo :promo="main_promo" v-if="main_promo"/>
     <global-navigation :navigation="navigation" v-if="navigation"/>
     <transition name="fade">
-      <router-view></router-view>
+      <router-view class="global-router-view"></router-view>
     </transition>
     <global-footer/>
     <global-popup-container :popup="popup" v-show="popup"/>
@@ -27,15 +27,13 @@
   import VectorLogo from './components/atoms/vector-logo.vue';
   import IconToggle from '@/components/atoms/icon-toggle.vue';
 
-  import 'normalize.css';
-  import 'bootstrap/dist/css/bootstrap.css';
-  import 'bootstrap-vue/dist/bootstrap-vue.css';
-
   const yandex = process.env.YANDEX_METRIKA_ID;
 
   import {
     TRACK_SET_YANDEX,
   } from '@/store/mutation-types';
+
+  import { COOKIES } from '@/../config/constants.js';
 
   Vue.component('no-ssr', NoSSR);
   Vue.component('captcha-google', CaptchaGoogle);
@@ -105,14 +103,11 @@
       if (__VUE_ENV__ === 'client') {
         this.setYandexMetrikaChecker();
         this.setServiceWorker();
+        this.setCouponPopup();
       }
     },
 
     methods: {
-      fullscreen () {
-        this.$refs.app.classList.toggle('fullscreen');
-      },
-
       setYandexMetrikaChecker () {
         const interval = window.setInterval(() => {
           if (window[yandex]) {
@@ -133,11 +128,26 @@
           });
         }
       },
+
+      setCouponPopup () {
+        if (!this.$cookie.get(COOKIES.STATE_COUPON_PRESENTED)) {
+          setTimeout(() => {
+            this.$store.commit('POPUP_SET', { popup: 'popup-coupon' });
+            this.$cookie.set(COOKIES.STATE_COUPON_PRESENTED, COOKIES.STATE_COUPON_PRESENTED, {
+              expires: '1Y',
+            });
+          }, 10000);
+        }
+      },
     },
   };
 </script>
 
 <style lang="scss">
+  @import '~normalize.css/normalize.css';
+  @import '~bootstrap/dist/css/bootstrap';
+  @import '~bootstrap-vue/dist/bootstrap-vue.css';
+
   html {
     height: 100%;
   }

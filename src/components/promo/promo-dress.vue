@@ -115,13 +115,9 @@
       height: 100% !important;
     }
   }
-
-  .fresco {
-    cursor: zoom-in;
-  }
 </style>
 
-<story group="Promos" name="Dress" notes="This is cool" knobs="{buttonText: text('Button text', 'initial value')}">
+<story group="Promos" name="Dress">
   <promo-dress
     :dress="{
       slug: '1701',

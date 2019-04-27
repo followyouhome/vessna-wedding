@@ -2,6 +2,7 @@
   <div class="global-popup-container" @click="clickOutside($event)">
     <popup-login v-if="popup === 'popup-login'" :payload="payload"/>
     <popup-signup v-if="popup === 'popup-signup'" :payload="payload"/>
+    <popup-coupon v-if="popup === 'popup-coupon'" :payload="payload"/>
     <popup-feedback-form v-if="popup === 'popup-feedback-form'" :payload="payload"/>
     <popup-image-carousel v-if="popup === 'popup-image-carousel'" :payload="payload"/>
     <popup-cooperation-form v-if="popup === 'popup-cooperation-form'" :payload="payload"/>
@@ -11,6 +12,7 @@
 <script>
   import PopupLogin from '@/components/popup/popup-login.vue';
   import PopupSignup from '@/components/popup/popup-signup.vue';
+  import PopupCoupon from '@/components/popup/popup-coupon.vue';
   import PopupFeedbackForm from '@/components/popup/popup-feedback-form';
   import PopupImageCarousel from '@/components/popup/popup-image-carousel';
   import PopupCooperationForm from '@/components/popup/popup-cooperation-form';
@@ -21,6 +23,7 @@
     components: {
       'popup-login': PopupLogin,
       'popup-signup': PopupSignup,
+      'popup-coupon': PopupCoupon,
       'popup-feedback-form': PopupFeedbackForm,
       'popup-image-carousel': PopupImageCarousel,
       'popup-cooperation-form': PopupCooperationForm,
