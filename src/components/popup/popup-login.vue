@@ -29,7 +29,7 @@
 </script>
 
 <style lang="scss">
-  .popup-login {
+  .popup-login.popup {
     position: relative;
     width: 400px;
     padding: 0;

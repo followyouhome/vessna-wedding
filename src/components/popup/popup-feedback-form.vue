@@ -29,7 +29,7 @@
 </script>
 
 <style lang="scss">
-  .popup-feedback-form {
+  .popup-feedback-form.popup {
     padding: 30px 40px;
     background: $white;
   }

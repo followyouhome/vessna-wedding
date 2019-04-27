@@ -37,7 +37,7 @@
 </script>
 
 <style lang="scss">
-  .popup-image-carousel {
+  .popup-image-carousel.popup {
     height: 80%;
     padding: 30px 40px;
     background: $gray1;

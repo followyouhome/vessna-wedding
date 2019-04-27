@@ -29,7 +29,7 @@
 </script>
 
 <style lang="scss">
-  .popup-cooperation-form {
+  .popup-cooperation-form.popup {
     padding: 30px 40px;
     background: $white;
   }
