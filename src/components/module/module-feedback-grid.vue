@@ -36,7 +36,7 @@
 
 		computed: {
 			limitedFeedbacks () {
-				return this.feedbacks.slice(0, 5);
+				return this.feedbacks && this.feedbacks.slice(0, 5);
 			},
 		},
 	};
