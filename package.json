@@ -12,7 +12,7 @@
     "watch:client": "cross-env NODE_ENV=development webpack --config config/webpack.client.config.js --progress --hide-modules --watch",
     "watch:server": "cross-env NODE_ENV=development webpack --config config/webpack.server.config.js --progress --hide-modules --watch",
     "storybook": "start-storybook --port 9001 --static-dir ./ --config-dir ./src/storybook",
-    "lint": "eslint src/** --fix --ext .js --ext .vue --ignore-pattern *.webmanifest --ignore-pattern /styles/",
+    "lint": "eslint src/** --fix --ext .js --ext .vue --ignore-pattern *.webmanifest --ignore-pattern src/styles/*",
     "postinstall": "npm run build",
     "prestart": "npm run build",
     "start": "cross-env NODE_ENV=production node server",
