@@ -6,16 +6,18 @@
           <mask id="maskedtext">
              <rect width="100%" height="240px" x="0" y="0" fill="#fff"></rect>
              <text>
-                <tspan text-anchor="middle" dx="50%" x="0" y="1em">{{text1}}</tspan>
+                <tspan text-anchor="middle" dx="50%" x="0" y="1em">
+                  {{item.text1}}
+                </tspan>
              </text>
              <text>
                 <tspan text-anchor="middle" dx="50%" x="0" y="3em">
-                   {{text2}}
+                   {{item.text2}}
                 </tspan>
              </text>
              <text>
                 <tspan text-anchor="middle" dx="50%" x="0" y="5em">
-                   {{text3}}
+                   {{item.text3}}
                 </tspan>
              </text>
           </mask>
@@ -25,9 +27,9 @@
     </div>
     <div class="video-wrapper" v-show="show">
       <video ref="video" autoplay="true" loop="true" muted="true">
-        <source :src="video_mp4" type="video/mp4;">
-        <source :src="video_webm" type="video/webm;">
-        <source :src="video_ogv" type="video/ogg;">
+        <source :src="item.video_mp4" type="video/mp4;">
+        <source :src="item.video_webm" type="video/webm;">
+        <source :src="item.video_ogv" type="video/ogg;">
       </video>
     </div>
   </div>
@@ -35,40 +37,30 @@
 
 <script>
   import InView from 'in-view';
+  import Promo from './promo';
 
   export default {
-    name: 'promo-full-screen-quote',
+    name: 'PromoFullScreenQuote',
+
+    extends: Promo,
+
+    props: ['item'],
 
     data () {
       return {
         show: false,
-        text1: 'Мы будем на',
-        text2: 'Moscow Wedding Fashion',
-        text3: '1-3 Марта 2017',
         color: '#fafafa',
-        video_webm: 'https://vessna.blob.core.windows.net/vessna/vessna-quote.webm',
-        video_mp4: 'https://vessna.blob.core.windows.net/vessna/vessna-quote.mp4',
-        video_ogv: 'https://vessna.blob.core.windows.net/vessna/vessna-quote.ogv',
       };
-    },
-
-    computed: {
-      // show () {
-      //   return false;
-      // },
     },
 
     mounted () {
       if (__VUE_ENV__ === 'client') {
-        console.log(this.show);
         InView('.promo-full-screen-quote .quote-wrapper')
           .on('enter', el => {
             this.show = true;
-            console.log("ENTER");
           })
           .on('exit', el => {
             this.show = false;
-            console.log("OUT");
           });
       }
     },
@@ -130,3 +122,16 @@
     }
   }
 </style>
+
+<story group="Promos" name="Full Screen Quote">
+  <promo-full-screen-quote
+    :item="{
+      text1: 'Мы будем на',
+      text2: 'Moscow Wedding Fashion',
+      text3: '1-3 Марта 2017',
+      video_webm: 'https://vessna.blob.core.windows.net/vessna/vessna-quote.webm',
+      video_mp4: 'https://vessna.blob.core.windows.net/vessna/vessna-quote.mp4',
+      video_ogv: 'https://vessna.blob.core.windows.net/vessna/vessna-quote.ogv',
+    }"
+  />
+</story>
