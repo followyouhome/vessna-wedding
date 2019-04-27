@@ -1,7 +1,7 @@
 <template>
   <popup class="popup-signup">
     <template slot='body'>
-      <form-user-registration @success="close" @failure="close"/>
+      <form-user-registration class="popup-signup__form" @success="close" @failure="close"/>
     </template>
   </popup>
 </template>
@@ -31,6 +31,7 @@
 <style lang="scss">
   .popup-signup {
     position: relative;
+    width: 400px;
     padding: 0;
 
     border: 1px solid $gray1;
@@ -38,8 +39,9 @@
     box-shadow: 10px -10px 15px 10px $white;
   }
 
-  .popup-signup__title {
-    padding: 10px;
+  .popup-signup__form {
+    margin: 20px auto;
+    border: none;
   }
 </style>
 

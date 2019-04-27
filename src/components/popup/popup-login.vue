@@ -1,7 +1,7 @@
 <template>
   <popup class="popup-login">
     <template slot='body'>
-      <form-user-login @success="close" @failure="close"/>
+      <form-user-login class="popup-login__form" @success="close" @failure="close"/>
     </template>
   </popup>
 </template>
@@ -39,8 +39,9 @@
     box-shadow: 10px -10px 15px 10px $white;
   }
 
-  .popup-login__title {
-    padding: 10px;
+  .popup-login__form {
+    margin: 20px auto;
+    border: none;
   }
 </style>
 
