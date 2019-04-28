@@ -6,8 +6,8 @@
     <amp-img
       alt="A view of the sea"
       :src="url"
-      width="1"
-      height="1"
+      :width="image.width"
+      :height="image.height"
       layout="responsive"
     />
   </figure>
