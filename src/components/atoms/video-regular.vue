@@ -4,7 +4,30 @@
     class="video-regular"
     :style="style"
   >
-    <video
+    <amp-video v-if="amp"
+      loop
+      autoplay
+      width="1280"
+      height="720"
+      layout="responsive"
+    >
+      <source
+        v-if="webm.url"
+        :src="webm.url"
+        type="video/webm"
+      >
+      <source
+        v-if="mp4.url"
+        :src="mp4.url"
+        type="video/mp4"
+      >
+      <source
+        v-if="ogv.url"
+        :src="ogv.url"
+        type="video/ogg"
+      >
+    </amp-video>
+    <video v-else
       v-show="show"
       ref="video"
       class="video-regular__video"
@@ -47,6 +70,10 @@
     },
 
     computed: {
+      amp () {
+        return this.$store && this.$store.state && this.$store.state.settings && this.$store.state.settings.amp;
+      },
+
       poster () {
         return this.promo.image && this.promo.image.url;
       },
