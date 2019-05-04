@@ -4,6 +4,7 @@
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 const CleanPlugin = require('clean-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -30,7 +31,7 @@ const config = {
     ? {
       minimizer: [
         new OptimizeCSSAssetsPlugin(),
-        new UglifyJsPlugin(),
+        new TerserPlugin(),
       ],
       splitChunks: {
         cacheGroups: {

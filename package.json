@@ -83,6 +83,7 @@
     "sitemap-generator": "^8.3.3",
     "stickyfill": "^1.1.1-strict",
     "sw-precache-webpack-plugin": "^0.11.5",
+    "terser-webpack-plugin": "^1.2.3",
     "uglifyjs-webpack-plugin": "^2.1.2",
     "universal-cookie": "^3.1.0",
     "vue": "^2.6.10",
