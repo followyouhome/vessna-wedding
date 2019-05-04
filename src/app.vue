@@ -144,9 +144,7 @@
 </script>
 
 <style lang="scss">
-  @import '~normalize.css/normalize.css';
   @import '~bootstrap/dist/css/bootstrap';
-  @import '~bootstrap-vue/dist/bootstrap-vue.css';
 
   html {
     height: 100%;

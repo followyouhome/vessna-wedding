@@ -10,12 +10,12 @@
 </template>
 
 <script>
-  import PopupLogin from '@/components/popup/popup-login.vue';
-  import PopupSignup from '@/components/popup/popup-signup.vue';
-  import PopupCoupon from '@/components/popup/popup-coupon.vue';
-  import PopupFeedbackForm from '@/components/popup/popup-feedback-form';
-  import PopupImageCarousel from '@/components/popup/popup-image-carousel';
-  import PopupCooperationForm from '@/components/popup/popup-cooperation-form';
+  const PopupLogin = () => import(/* webpackChunkName: "popup-login" */ '@/components/popup/popup-login.vue');
+  const PopupSignup = () => import(/* webpackChunkName: "popup-signup" */ '@/components/popup/popup-signup.vue');
+  const PopupCoupon = () => import(/* webpackChunkName: "popup-coupon" */ '@/components/popup/popup-coupon.vue');
+  const PopupFeedbackForm = () => import(/* webpackChunkName: "popup-feedback-form" */ '@/components/popup/popup-feedback-form');
+  const PopupImageCarousel = () => import(/* webpackChunkName: "popup-image-carousel" */ '@/components/popup/popup-image-carousel');
+  const PopupCooperationForm  = () => import(/* webpackChunkName: "popup-cooperation-form" */ '@/components/popup/popup-cooperation-form');
 
   export default {
     name: 'GlobalPopupContainer',
