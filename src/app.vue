@@ -176,7 +176,7 @@
     }
   }
 
-  .main {
+  .global-router-view {
     flex: 1;
   }
 
