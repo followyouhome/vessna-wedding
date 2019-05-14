@@ -1,7 +1,8 @@
 <template>
   <main>
+    <module-collection-control :items="dresses" v-if="dresses" @update="updateFilter"/>
+    <module-grid-dress :items="filteredDresses" v-if="filteredDresses"/>
     <module-article :article="description" v-if="description"/>
-    <module-grid-dress :items="dresses" v-if="dresses"/>
     <module-shared-folder :resources="resources" v-if="resources"/>
   </main>
 </template>
@@ -10,6 +11,7 @@
   import Page from '@/components/pages/page.vue';
   import ModuleArticle from '@/components/module/module-article.vue';
   import ModuleDressCollection from '@/components/module/module-grid-dress.vue';
+  import ModuleCollectionControl from '@/components/module/module-collection-control';
   import ModuleSharedFolder from '@/components/module/module-shared-folder.vue';
   import ModuleFeedbackGrid from '@/components/module/module-feedback-grid.vue';
 
@@ -32,6 +34,7 @@
     components: {
       'module-article': ModuleArticle,
       'module-grid-dress': ModuleDressCollection,
+      'module-collection-control': ModuleCollectionControl,
       'module-shared-folder': ModuleSharedFolder,
       'module-feedback-grid': ModuleFeedbackGrid,
     },
@@ -51,6 +54,12 @@
       __VUE_ENV__ === 'server' ? next() : fetch(store, to).then(() => next());
     },
 
+    data () {
+      return {
+        filteredDresses: null,
+      };
+    },
+
     computed: {
       dresses () {
         return this.$store.state.page.dresses;
@@ -63,6 +72,30 @@
       description () {
         return this.$store.state.page.description;
       },
+    },
+
+    methods: {
+      updateFilter (filter) {
+        this.filteredDresses = null;
+        this.$nextTick();
+        this.filteredDresses = this.dresses;
+
+        if (filter.min) {
+          this.filteredDresses = this.filteredDresses.filter(item => item.price.usd >= filter.min);
+        }
+
+        if (filter.max) {
+          this.filteredDresses = this.filteredDresses.filter(item => item.price.usd <= filter.max);
+        }
+
+        if (filter.columns) {
+
+        }
+      },
+    },
+
+    mounted () {
+      this.filteredDresses = this.dresses;
     },
   };
 </script>

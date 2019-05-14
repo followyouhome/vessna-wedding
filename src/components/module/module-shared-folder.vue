@@ -34,7 +34,7 @@
   import {Tabs, Tab} from 'vue-tabs-component';
 
   export default {
-    name: 'module-shared-folder',
+    name: 'ModuleSharedFolder',
 
     props: ['resources'],
 
@@ -54,7 +54,7 @@
 
     computed: {
       user () {
-        return this.$store.getters.isUserAvailable && this.$store.state.user;
+        return this.$store && this.$store.getters && this.$store.getters.isUserAvailable && this.$store.state.user;
       },
 
       authorized () {
@@ -350,5 +350,7 @@
 </style>
 
 <story group="Modules" name="Shared Folder">
-  <module-shared-folder/>
+  <module-shared-folder
+    :resources="'https://disk.yandex.by'"
+  />
 </story>

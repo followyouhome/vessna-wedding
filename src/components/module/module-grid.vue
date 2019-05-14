@@ -38,6 +38,14 @@
         }
       }
     },
+
+    methods: {
+      layoutIsotope () {
+        if (this.isotope) {
+          this.isotope.layout();
+        }
+      },
+    },
   };
 </script>
 
