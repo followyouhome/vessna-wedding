@@ -1,6 +1,6 @@
 <template>
     <div>
-      <!-- <module-article v-if="article.content" v-bind:article="article"></module-article> -->
+      <module-article v-if="article" v-bind:article="article"></module-article>
       <module-promo-cards v-if="collections" v-bind:items="collections"></module-promo-cards>
     </div>
 </template>
@@ -47,6 +47,10 @@
     },
 
     computed: {
+      article () {
+        return this.$store.state.page.content;
+      },
+
       collections () {
         return this.$store.state.page.collections;
       },
