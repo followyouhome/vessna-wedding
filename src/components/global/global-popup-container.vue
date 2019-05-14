@@ -4,6 +4,7 @@
     <popup-signup v-if="popup === 'popup-signup'" :payload="payload"/>
     <popup-coupon v-if="popup === 'popup-coupon'" :payload="payload"/>
     <popup-feedback-form v-if="popup === 'popup-feedback-form'" :payload="payload"/>
+    <popup-subscribe-form v-if="popup === 'popup-subscribe-form'" :payload="payload"/>
     <popup-image-carousel v-if="popup === 'popup-image-carousel'" :payload="payload"/>
     <popup-cooperation-form v-if="popup === 'popup-cooperation-form'" :payload="payload"/>
   </div>
@@ -14,6 +15,7 @@
   const PopupSignup = () => import(/* webpackChunkName: "popup-signup" */ '@/components/popup/popup-signup.vue');
   const PopupCoupon = () => import(/* webpackChunkName: "popup-coupon" */ '@/components/popup/popup-coupon.vue');
   const PopupFeedbackForm = () => import(/* webpackChunkName: "popup-feedback-form" */ '@/components/popup/popup-feedback-form');
+  const PopupSubscribeForm = () => import(/* webpackChunkName: "popup-subscribe-form" */ '@/components/popup/popup-subscribe-form');
   const PopupImageCarousel = () => import(/* webpackChunkName: "popup-image-carousel" */ '@/components/popup/popup-image-carousel');
   const PopupCooperationForm  = () => import(/* webpackChunkName: "popup-cooperation-form" */ '@/components/popup/popup-cooperation-form');
 
@@ -25,6 +27,7 @@
       'popup-signup': PopupSignup,
       'popup-coupon': PopupCoupon,
       'popup-feedback-form': PopupFeedbackForm,
+      'popup-subscribe-form': PopupSubscribeForm,
       'popup-image-carousel': PopupImageCarousel,
       'popup-cooperation-form': PopupCooperationForm,
     },
@@ -43,7 +46,6 @@
       },
 
       payload () {
-        console.log(this.$store.state.popup && this.$store.state.popup.payload);
         return this.$store.state.popup && this.$store.state.popup.payload;
       },
     },

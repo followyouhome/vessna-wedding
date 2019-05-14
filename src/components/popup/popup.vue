@@ -74,6 +74,14 @@
     cursor: pointer;
     background: $white;
     z-index: $z-popup + 1;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:active {
+      transform: translateY(2px);
+    }
   }
 
   .popup__recaptcha {
