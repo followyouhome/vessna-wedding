@@ -59,7 +59,7 @@
 
     computed: {
       isSubscribed () {
-        return this.$store.state.user.access && this.$store.state.user.access.subscription || Vue.cookies.get(COOKIES.STATE_USER_SUBSCRIBED);
+        return this.$store && this.$store.state && this.$store.state.user && this.$store.state.user.access && this.$store.state.user.access.subscription || Vue.cookies && Vue.cookies.get(COOKIES.STATE_USER_SUBSCRIBED);
       },
     },
 
@@ -92,7 +92,7 @@
       if (this.isSubscribed) {
         this.show = false;
       } else {
-        this.email = this.$store.state.user.email || 'vladislav1@vessna.by';
+        this.email = this.$store && this.$store.state && this.$store.state.user && this.$store.state.user.email;
       }
     },
   };

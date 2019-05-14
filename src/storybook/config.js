@@ -11,6 +11,7 @@ import { registerStories } from "vue-storybook";
 // Import custom plugins and decorators
 import Vue from 'vue';
 import NoSSR from 'vue-no-ssr';
+import VueCookie from 'vue-cookie';
 import VueLazyload from 'vue-lazyload';
 import BootstrapVue from 'bootstrap-vue';
 import StoryRouter from 'storybook-vue-router';
@@ -19,6 +20,7 @@ import StoryRouter from 'storybook-vue-router';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 
+Vue.use(VueCookie);
 Vue.use(VueLazyload);
 Vue.use(BootstrapVue);
 
