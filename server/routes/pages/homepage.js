@@ -90,7 +90,7 @@ module.exports = (app, base) => {
       const query = keystone.list('News')
                       .model
                       .find({ state: 'published' })
-                      .sort({ sortOrder: 1 });
+                      .sort({ publishedDate: -1 });
 
       query.exec((err, result) => {
         output.news = result.map(element => newsFormat(element));

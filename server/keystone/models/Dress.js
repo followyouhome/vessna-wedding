@@ -24,6 +24,19 @@ const Dress = new keystone.List('Dress', {
 
 Dress.add(...Inherit, 'Параметры', {
   name: { label: 'Название', type: String, required: true },
+  state: {
+  	label: 'Статус',
+  	type: Types.Select,
+  	default: 'draft',
+  	index: true,
+  	options: [{
+  		label: 'Черновик', value: 'draft',
+  	}, {
+  		label: 'Опубликовано', value: 'published',
+  	}, {
+  		label: 'Архив', value: 'archived',
+  	}],
+  },
   collections: { label: 'Коллекция', type: Types.Relationship, ref: 'DressCollection', many: true },
   images: {
     label: 'Фотографии платья',
@@ -72,7 +85,7 @@ Dress.schema.pre('save', function (next) {
   next(this);
 });
 
-Dress.defaultColumns = 'name|30%, collections|30%, promo.image|40%';
+Dress.defaultColumns = 'name|20%, state|20%, collections|20%, promo.image|40%';
 Dress.register();
 
 module.exports = Dress;

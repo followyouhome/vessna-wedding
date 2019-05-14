@@ -97,7 +97,7 @@ module.exports = (app, base) => {
     (req, res, next) => {
       const query = keystone.list('Dress')
                       .model
-                      .find({ collections: id });
+                      .find({ state: 'published', collections: id });
 
       query.exec((err, result) => {
         output.dresses = result.map(dress => {
