@@ -9,6 +9,32 @@
 		name: 'ModuleArticle',
 
 		props: ['article'],
+
+		mounted () {
+			if (__VUE_ENV__ === 'client') {
+				this.initIsotope();
+			}
+		},
+
+		methods: {
+			initIsotope () {
+				const el = this.$el.querySelector('.module-article__isotope');
+
+				if (el) {
+					require.ensure(['isotope-layout'], require => {
+            const Isotope = require('isotope-layout');
+
+            this.isotope = new Isotope(el, {
+              itemSelector: 'img',
+              layoutMode: 'masonry',
+							masonry: {
+							  columnWidth: 'img',
+							},
+            });
+          });
+				}
+			},
+		},
 	};
 </script>
 
@@ -86,6 +112,23 @@
 
 		strong {
 
+		}
+	}
+
+	.module-article__isotope {
+		img {
+			margin: 0.5%;
+			width: 24%;
+
+			@media #{$tablet} {
+				margin: 0.5%;
+				width: 32%;
+			}
+
+			@media #{$phablet} {
+				margin: 1%;
+				width: 48%;
+			}
 		}
 	}
 </style>
