@@ -28,6 +28,11 @@ export function createRouter () {
         path: '/about',
         component: () => import(/* webpackChunkName: "page-about" */ '@/components/pages/page-about.vue'),
       },
+      {
+        name: 'page-partnership',
+        path: '/partnership',
+        component: () => import(/* webpackChunkName: "page-partnership" */ '@/components/pages/page-partnership.vue'),
+      },
       ...collection,
       ...user,
       ...news,

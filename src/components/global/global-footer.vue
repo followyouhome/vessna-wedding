@@ -43,6 +43,11 @@
             path: '/news',
           },
         }, {
+          name: 'Условия сотрудничества',
+          route: {
+            path: '/partnership',
+          },
+        }, {
           name: 'Контакты',
           route: {
             path: '/contact',

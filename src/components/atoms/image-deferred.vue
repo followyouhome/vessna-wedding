@@ -126,19 +126,19 @@
     background-position: 50%;
   }
 
-  .image-deffered--size-1-1:before {
+  .image-deffered--size-1-1 {
     padding-top: 100%;
   }
 
-  .image-deffered--size-1-2:before {
+  .image-deffered--size-1-2 {
     padding-top: 40%;
   }
 
-  .image-deffered--size-2-3:before {
+  .image-deffered--size-2-3 {
     padding-top: 150%;
   }
 
-  .image-deffered--size-3-2:before {
+  .image-deffered--size-3-2 {
     padding-top: percentage(2 / 3);
   }
 
