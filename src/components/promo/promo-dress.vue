@@ -49,7 +49,7 @@
         this.$store.commit('POPUP_SET', {
           popup: 'popup-image-carousel',
           payload: {
-            images: this.images,
+            dress: this.dress,
           },
         });
       },
@@ -62,6 +62,10 @@
           case 'usd': {
             return `$${price}`;
           } break;
+          default: {
+            return `${price}`;
+            break;
+          }
         };
       },
     },

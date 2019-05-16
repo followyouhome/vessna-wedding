@@ -1,7 +1,7 @@
 <template>
   <popup class="popup-image-carousel">
     <template slot='body'>
-      <module-image-carousel :images="images"/>
+      <module-image-carousel :dress="dress"/>
     </template>
   </popup>
 </template>
@@ -29,8 +29,8 @@
     },
 
     computed: {
-      images () {
-        return this.payload && this.payload.images;
+      dress () {
+        return this.payload && this.payload.dress;
       },
     },
   };
