@@ -4,13 +4,13 @@
       <b-row>
         <b-col cols="6" sm="6" md="3">
           <h5 class="footer__headline">О нас</h5>
-          <router-link class="footer__link" v-bind:to="item.route" v-for="item in about">
+          <router-link class="footer__link" v-bind:to="item.route" v-for="item in about" :key="item.name">
             {{item.name}}
           </router-link>
         </b-col>
         <b-col cols="6" sm="6" md="3">
           <h5 class="footer__headline">Бренды</h5>
-          <router-link class="footer__link" v-bind:to="item.route" v-for="item in brands">
+          <router-link class="footer__link" v-bind:to="item.route" v-for="item in brands" :key="item.name">
             {{item.name}}
           </router-link>
         </b-col>
