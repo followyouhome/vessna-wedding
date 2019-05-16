@@ -56,13 +56,22 @@
 
     data () {
       return {
-        filteredDresses: null,
+
       };
     },
 
     computed: {
       dresses () {
         return this.$store.state.page.dresses;
+      },
+
+      filteredDresses: {
+        get () {
+          return this.dresses;
+        },
+        set () {
+
+        },
       },
 
       resources () {
@@ -92,10 +101,6 @@
 
         }
       },
-    },
-
-    mounted () {
-      this.filteredDresses = this.dresses;
     },
   };
 </script>
