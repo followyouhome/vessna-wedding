@@ -1,10 +1,11 @@
 <template>
   <div id="app" class="app" ref="app">
+    <global-loading v-if="loading"/>
     <global-announcement :announcement="settings.announcement" v-if="settings.announcement"/>
     <global-main-promo :promo="main_promo" v-if="main_promo"/>
     <global-navigation :navigation="navigation" v-if="navigation"/>
     <transition name="fade">
-      <router-view class="global-router-view"></router-view>
+      <router-view class="global-router-view" @loading="onLoading" @loaded="onLoaded"></router-view>
     </transition>
     <global-footer/>
     <global-popup-container :popup="popup" v-show="popup"/>
@@ -14,17 +15,18 @@
 <script>
   import Vue from 'vue';
   import NoSSR from 'vue-no-ssr';
-  import GlobalFooter from './components/global/global-footer.vue';
-  import GlobalMainPromo from './components/global/global-main-promo.vue';
-  import GlobalNavigation from './components/global/global-navigation/global-navigation.vue';
-  import GlobalAnnouncement from './components/global/global-announcement.vue';
-  import GlobalPopupContainer from './components/global/global-popup-container';
-  import CaptchaGoogle from './components/atoms/captcha-google.vue';
-  import ImageDeferred from './components/atoms/image-deferred.vue';
+  import GlobalFooter from '@/components/global/global-footer.vue';
+  import GlobalLoading from '@/components/global/global-loading.vue';
+  import GlobalMainPromo from '@/components/global/global-main-promo.vue';
+  import GlobalNavigation from '@/components/global/global-navigation/global-navigation.vue';
+  import GlobalAnnouncement from '@/components/global/global-announcement.vue';
+  import GlobalPopupContainer from '@/components/global/global-popup-container';
+  import CaptchaGoogle from '@/components/atoms/captcha-google.vue';
+  import ImageDeferred from '@/components/atoms/image-deferred.vue';
   import SimpleButton from '@/components/atoms/simple-button';
-  import VideoRegular from './components/atoms/video-regular.vue';
-  import VectorIcon from './components/atoms/vector-icon.vue';
-  import VectorLogo from './components/atoms/vector-logo.vue';
+  import VideoRegular from '@/components/atoms/video-regular.vue';
+  import VectorIcon from '@/components/atoms/vector-icon.vue';
+  import VectorLogo from '@/components/atoms/vector-logo.vue';
   import IconToggle from '@/components/atoms/icon-toggle.vue';
 
   const yandex = process.env.YANDEX_METRIKA_ID;
@@ -49,6 +51,7 @@
 
     components: {
       'global-footer': GlobalFooter,
+      'global-loading': GlobalLoading,
       'global-main-promo': GlobalMainPromo,
       'global-navigation': GlobalNavigation,
       'global-announcement': GlobalAnnouncement,
@@ -75,6 +78,12 @@
           endpoint: 'navigation',
         }),
       ]);
+    },
+
+    data () {
+      return {
+        loading: true,
+      };
     },
 
     computed: {
@@ -108,6 +117,14 @@
     },
 
     methods: {
+      onLoading () {
+        this.loading = true;
+      },
+
+      onLoaded () {
+        this.loading = false;
+      },
+
       setYandexMetrikaChecker () {
         const interval = window.setInterval(() => {
           if (window[yandex]) {
@@ -178,6 +195,7 @@
 
   .global-router-view {
     flex: 1;
+    flex-basis: auto;
   }
 
   .fade-enter-active, .fade-leave-active {

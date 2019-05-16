@@ -31,9 +31,7 @@
               },
             });
 
-            window.addEventListener('isotopeLayout', function () {
-              this.isotope.layout();
-            });
+            setInterval(this.layoutIsotope, 2000);
           });
         }
       }

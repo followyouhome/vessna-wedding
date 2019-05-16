@@ -48,6 +48,24 @@
 
     },
 
+    beforeRouteUpdate (to, from, next) {
+      this.loading();
+      next();
+    },
+
+    beforeRouteLeave (to, from, next) {
+      this.loading();
+      next();
+    },
+
+    mounted () {
+      this.loaded();
+    },
+
+    updated () {
+      this.loaded();
+    },
+
     data () {
       return {
         default: {
@@ -64,6 +82,20 @@
 
       seo () {
         return this.$store.state.page && this.$store.state.page.seo || this.default;
+      },
+    },
+
+    methods: {
+      loading () {
+        if (__VUE_ENV__ === 'client') {
+          this.$emit('loading');
+        }
+      },
+
+      loaded () {
+        if (__VUE_ENV__ === 'client') {
+          this.$emit('loaded');
+        }
       },
     },
   };
