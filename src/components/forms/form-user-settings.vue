@@ -117,6 +117,10 @@
             subscription: user && user.access && user.access.subscription,
           },
         },
+        label: {
+          success: 'Настройки обновлены',
+          failure: 'Ошибка сервера',
+        },
         currencies: [
           {
             value: 'usd',

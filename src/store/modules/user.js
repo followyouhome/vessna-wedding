@@ -49,9 +49,10 @@ const actions = {
       .post(base + '/user/logout', {})
       .then(() => {
         store.commit(USER_LOGOUT);
+        return Promise.resolve(data);
       })
       .catch(err => {
-        return err;
+        return Promise.reject(err);
       });
   },
 
@@ -60,10 +61,10 @@ const actions = {
       .post(base + '/user/signup', payload)
       .then(({ data }) => {
         store.commit(USER_LOGIN, data);
-        return data;
+        return Promise.resolve(data);
       })
       .catch(err => {
-        return err;
+        return Promise.reject(err);
       });
   },
 
@@ -72,10 +73,10 @@ const actions = {
       .post(base + '/user/settings', payload)
       .then(({ data }) => {
         store.commit(USER_UPDATE, data);
-        return data;
+        return Promise.resolve(data);
       })
       .catch(err => {
-        return err;
+        return Promise.reject(err);
       });
   },
 

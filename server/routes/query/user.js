@@ -112,7 +112,11 @@ module.exports = (app, base) => {
     const body = req.body;
 
     if (user) {
+      user.info.phone = body.info.phone;
+      user.info.city = body.info.city;
+      user.info.shop = body.info.shop;
       user.access.currency = body.access.currency;
+      user.access.subscription = body.access.subscription;
 
       User.model.updateOne({ _id: user._id }, user).then(() => {
         res.status(200).json(userFormat(user));
