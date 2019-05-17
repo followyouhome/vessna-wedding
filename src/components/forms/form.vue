@@ -1,5 +1,5 @@
 <template>
-  <b-form class="form" @submit.prevent="submit">
+  <b-form class="form" :class="formModifier" @submit.prevent="submit">
     <slot name='header'>
 
     </slot>
@@ -13,22 +13,25 @@
       <div class="form__modal" v-show="state.request">
         <b-spinner type="grow" label="Spinning"></b-spinner>
       </div>
-      <div class="form__modal" v-show="state.success">
-        <h4 class="form__subline">Форма отправлена</h4>
+      <div class="form__modal form__modal--success" v-show="state.success">
+        <h4 class="form__subline">{{label.success}}</h4>
       </div>
-      <div class="form__modal" v-show="state.fail">
-        <h4 class="form__subline">Ошибка отправки</h4>
+      <div class="form__modal form__modal--failure" v-show="state.failure">
+        <h4 class="form__subline">{{label.failure}}</h4>
       </div>
     </slot>
   </b-form>
 </template>
 
 <script>
+  const MODAL_TIMEOUT = 3000;
+
   export default {
     name: 'v-form',
 
     data () {
       return {
+        form: null,
         state: {
           request: false,
           success: false,
@@ -36,23 +39,47 @@
           checked: false,
           recaptcha: null,
         },
+        label: {
+          success: this.$parent.label && this.$parent.label.success || 'Форма отправлена',
+          failure: this.$parent.label && this.$parent.label.failure || 'Ошибка отправки',
+        },
       };
     },
 
     computed: {
       disabled () {
-        return !this.state.checked
+        return typeof this.state.checked === 'boolean' ? !this.state.checked : false
           || typeof this.state.recaptcha === 'boolean' ? !this.state.recaptcha : false;
+      },
+
+      title () {
+        if (typeof this.state.recaptcha === 'boolean' && !this.state.recaptcha) {
+          return 'Подтвердите, что вы не робот.';
+        } else if (typeof this.state.checked === 'boolean' && !this.state.checked) {
+          return 'Подтвердите согласие на отправку персональных данных.';
+        }
+
+        return 'Отправить запрос.';
+      },
+
+      formModifier () {
+        if (this.state.success) {
+          return 'form--success';
+        } else if (this.state.failure) {
+          return 'form--failure';
+        }
+
+        return '';
       },
     },
 
     methods: {
-      success () {
-        this.$emit('success');
+      success (data) {
+        this.$emit('success', data);
       },
 
-      failure () {
-        this.$emit('failure');
+      failure (err) {
+        this.$emit('failure', err);
       },
 
       captchaInit () {
@@ -74,15 +101,19 @@
         return this.$store.dispatch(this.$parent.action, this.$parent.form).then((data) => {
           this.state.success = true;
           this.state.request = false;
-          this.$emit('success');
+          this.success(data);
 
-          return Promise.resolve(data);
+          setTimeout(() => {
+            this.state.success = false;
+          }, MODAL_TIMEOUT);
         }).catch((err) => {
-          this.state.fail = true;
+          this.state.failure = true;
           this.state.request = false;
-          this.$emit('failure');
+          this.failure(err);
 
-          return Promise.reject(err);
+          setTimeout(() => {
+            this.state.failure = false;
+          }, MODAL_TIMEOUT);
         });
       },
     },
@@ -90,8 +121,19 @@
 </script>
 
 <style lang="scss">
+  @include animation-slit-in-vertical();
+
   .form {
     position: relative;
+    transition: border-color linear 0.2s;
+
+    &.form--success {
+      border-color: green;
+    }
+
+    &.form--failure {
+      border-color: red;
+    }
 
     .form-control,
     .custom-select {
@@ -122,6 +164,14 @@
     left: 0;
     top: 0;
     background: $glass3;
+
+    &--success {
+      animation: animation-slit-in-vertical 0.45s ease-out both;
+    }
+
+    &--failure {
+      animation: animation-slit-in-vertical 0.45s ease-out both;
+    }
   }
 
   .form__submit {

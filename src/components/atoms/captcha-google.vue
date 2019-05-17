@@ -3,6 +3,7 @@
     class="g-recaptcha"
     :data-sitekey="sitekey"
     data-callback="gcallback"
+    ref="placeholder"
   />
 </template>
 
@@ -21,9 +22,12 @@
 
     mounted () {
       if (__VUE_ENV__ === 'client') {
+        let timeout = null;
+
         if (!document.getElementById('g-recaptcha')) {
           const script = document.createElement('script');
-          const timeout = setTimeout(() => {
+
+          timeout = setTimeout(() => {
             this.$emit('failure');
           }, CAPTCHA_TIMEOUT);
 
@@ -33,12 +37,14 @@
           script.setAttribute('src', this.script);
 
           document.head.appendChild(script);
-
-          window.gcallback = () => {
-            clearTimeout(timeout);
-            this.$emit('success');
-          };
+        } else if (window.grecaptcha) {
+          window.grecaptcha.render(this.$refs.placeholder);
         }
+
+        window.gcallback = () => {
+          clearTimeout(timeout);
+          this.$emit('success');
+        };
       }
     },
   };
@@ -49,6 +55,7 @@
     position: relative;
     margin: auto;
     width: 304px;
+    height: 78px;
 
     & > div > div {
       position: relative;

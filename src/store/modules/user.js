@@ -34,10 +34,13 @@ const actions = {
     return axios
       .post(base + `/user/login`, { email, password })
       .then(({ data }) => {
-        store.commit(USER_LOGIN, data);
+        setTimeout(() => {
+          store.commit(USER_LOGIN, data);
+        }, 3000);
+        return Promise.resolve(data);
       })
       .catch(err => {
-        return err;
+        return Promise.reject(err);
       });
   },
 

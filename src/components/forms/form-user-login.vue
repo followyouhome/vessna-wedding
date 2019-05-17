@@ -24,7 +24,7 @@
     </template>
     <template slot='footer'>
       <div class="form-feedback__control">
-        <b-button class="form__submit" type="submit" :disabled="disabled" block>Войти</b-button>
+        <b-button class="form__submit" type="submit" :disabled="disabled" :title="title" block>Войти</b-button>
       </div>
     </template>
   </v-form>
@@ -32,6 +32,8 @@
 
 <script>
   import Form from './form.vue';
+
+  const REDIRECTION_TIMEOUT = 3000;
 
   export default {
     name: 'FormUserLogin',
@@ -49,7 +51,29 @@
           email: '',
           password: '',
         },
+        state: {
+          checked: null,
+          recaptcha: false,
+        },
+        label: {
+          success: 'Вы вошли на сайт',
+          failure: 'Неправильный email или пароль',
+        },
       };
+    },
+
+    methods: {
+      success (data) {
+        setTimeout(() => {
+          if (data.access && data.access.keystone) {
+            window.open('/keystone', '_self');
+          } else {
+            this.$router.push({
+              path: '/user/settings',
+            });
+          }
+        }, REDIRECTION_TIMEOUT);
+      },
     },
   };
 </script>
