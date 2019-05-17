@@ -10,10 +10,17 @@
     </router-link>
     <slot>
       <div class="global-navigation-sub-list" v-if="item.items && item.items.length">
-        <global-navigation-item v-for="item in item.items"
-          :key="item.name"
-          :item="item"
-        />
+        <b-container class="global-navigation-sub-list-wrapper">
+          <div class="global-navigation-sub-list__list">
+            <global-navigation-item v-for="item in item.items"
+              :key="item.name"
+              :item="item"
+            />
+            <div class="global-navigation-sub-list__promo">
+              123
+            </div>
+          </div>
+        </b-container>
       </div>
     </slot>
   </div>
@@ -35,7 +42,7 @@
 
   .global-navigation-item {
     display: inline-flex;
-    position: relative;
+    position: static;
     height: $height-desktop;
     padding: 0 20px;
     align-items: center;
@@ -68,11 +75,11 @@
     }
 
     @media #{$tablet} {
-      display: flex;
+      display: block;
       position: static;
       justify-content: left;
       padding: 15px 20px;
-      height: $height-mobile;
+      height: auto;
       border-bottom: 1px solid $gray1;
 
       &:first-child {
@@ -80,13 +87,19 @@
       }
 
       .global-navigation-sub-list {
-        position: absolute;
+        position: static;
         height: 100%;
         width: 100%;
         left: 0;
         top: 0;
       }
     }
+  }
+
+  .global-navigation-sub-list-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
   }
 
   .global-navigation-link {

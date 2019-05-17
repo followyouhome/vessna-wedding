@@ -10,27 +10,38 @@
         :item="menu.user"
       >
         <div class="global-navigation-sub-list">
-          <global-navigation-item
-            :item="menu.contact"
-          />
-          <global-navigation-item v-if="settings.login && user"
-            :item="menu.logout"
-          />
-          <global-navigation-item v-if="settings.login && !user"
-            :item="menu.login"
-          />
-          <global-navigation-item v-if="settings.registration && !user"
-            :item="menu.registration"
-          />
-          <global-navigation-item v-if="user"
-            :item="menu.settings"
-          />
-          <global-navigation-item v-if="user"
-            :item="menu.prices"
-          />
-          <global-navigation-item v-if="user && user.access && user.access.content"
-            :item="menu.content"
-          />
+          <b-container class="global-navigation-sub-list-wrapper">
+            <div class="global-navigation-sub-list__list">
+              <global-navigation-item
+                :item="menu.partnership"
+              />
+              <global-navigation-item
+                :item="menu.contact"
+              />
+              <hr class="global-navigation-line"/>
+              <global-navigation-item v-if="settings.login && user"
+                :item="menu.logout"
+              />
+              <global-navigation-item v-if="settings.login && !user"
+                :item="menu.login"
+              />
+              <global-navigation-item v-if="settings.registration && !user"
+                :item="menu.registration"
+              />
+              <global-navigation-item v-if="user"
+                :item="menu.settings"
+              />
+              <global-navigation-item v-if="user"
+                :item="menu.prices"
+              />
+              <global-navigation-item v-if="user && user.access && user.access.content"
+                :item="menu.content"
+              />
+            </div>
+            <div class="global-navigation-sub-list__promo">
+              <!-- 123 -->
+            </div>
+          </b-container>
         </div>
       </global-navigation-item>
     </ul>
@@ -96,9 +107,15 @@
             },
           },
           contact: {
-            name: 'Контакты',
+            name: 'Контактная информация',
             route: {
               path: '/contact',
+            },
+          },
+          partnership: {
+            name: 'Условия сотрудничества',
+            route: {
+              path: '/partnership',
             },
           },
         },
@@ -121,6 +138,7 @@
 
     methods: {
       toggleMenu () {
+        window.document.body.classList.toggle('open');
         this.$refs.navigation.classList.toggle('open');
       },
     },
@@ -137,6 +155,10 @@
 </script>
 
 <style lang="scss">
+  body.open {
+    overflow: hidden;
+  }
+
   $navigation-bar-height: 60px;
 
   .global-navigation {
@@ -154,12 +176,14 @@
       position: fixed;
       height: $navigation-bar-height;
       left: 0;
+      background: $white;
 
       &:hover + * {
         opacity: 1;
       }
 
       &.open {
+        overflow-y: scroll;
         height: 100%;
       }
     }
@@ -186,18 +210,57 @@
 
   .global-navigation-sub-list {
     display: none;
-    flex-direction: column;
+    flex-direction: row;
     position: absolute;
+    padding: 20px 0;
     width: 100%;
+    min-height: 320px;
+    left: 0;
     top: 100%;
     background: $white;
     border-left: 1px solid $gray1;
     border-right: 1px solid $gray1;
     border-bottom: 1px solid $gray1;
+    box-shadow: 0px 0px 10px 0px #e6e6e6;
 
     @media #{$tablet} {
+      display: block;
       position: relative;
       right: 0;
+    }
+
+    .global-navigation-item {
+      height: 40px;
+    }
+  }
+
+  .global-navigation-line {
+    width: 100%;
+    height: 1px;
+    border: none;
+    background: $black;
+  }
+
+  .global-navigation-sub-list-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+  }
+
+  .global-navigation-sub-list__list {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .global-navigation-sub-list__promo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media #{$tablet} {
+      display: none;
     }
   }
 
