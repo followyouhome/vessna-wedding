@@ -62,7 +62,7 @@
     </template>
     <template slot='footer'>
       <div class="form-feedback__control">
-        <b-button class="form__submit" type="submit" :disabled="disabled">Отправить</b-button>
+        <b-button class="form__submit" type="submit" :disabled="disabled" :title="title">Отправить</b-button>
         <b-form-checkbox v-model="state.checked" class="ml-4" inline>Даю согласие на обработку персональных данных</b-form-checkbox>
       </div>
     </template>
@@ -96,6 +96,14 @@
           callback: false,
           subscribe: false,
         },
+        state: {
+          checked: false,
+          recaptcha: null,
+        },
+        label: {
+          success: 'Заявка отправлена',
+          failure: 'Ошибка сервера',
+        },
         topics: [
           'Пробная поставка',
           'Оптовые поставки',
@@ -106,11 +114,15 @@
 
     methods: {
       success () {
-        this.$emit('success');
+        setTimeout(() => {
+          this.$emit('success');
+        }, 3000);
       },
 
       failure () {
-        this.$emit('failure');
+        setTimeout(() => {
+          this.$emit('failure');
+        }, 3000);
       },
     },
   };

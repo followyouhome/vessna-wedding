@@ -1,7 +1,7 @@
 <template>
   <v-popup class="popup-cooperation-form">
     <template slot='body'>
-      <form-cooperation @success="close" @failure="close"/>
+      <form-cooperation @success="close"/>
     </template>
   </v-popup>
 </template>

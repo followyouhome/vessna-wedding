@@ -112,13 +112,9 @@ const actions = {
     return axios
       .post(base + '/forms/cooperation', payload, settings)
       .then(response => {
-        // this.commit(USER_SUBSCRIBE);
-        debugger;
         return Promise.resolve(response);
       })
       .catch(error => {
-        // this.commit(USER_UNSUBSCRIBE);
-        debugger;
         return Promise.reject(error);
       });
   },
