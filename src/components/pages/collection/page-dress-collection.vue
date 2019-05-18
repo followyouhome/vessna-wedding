@@ -56,22 +56,17 @@
 
     data () {
       return {
-
+        filteredDresses: null,
       };
     },
 
     computed: {
-      dresses () {
-        return this.$store.state.page.dresses;
+      currency () {
+        return this.$store && this.$store.state && this.$store.state.user && this.$store.state.user.access && this.$store.state.user.access.currency;
       },
 
-      filteredDresses: {
-        get () {
-          return this.dresses;
-        },
-        set () {
-
-        },
+      dresses () {
+        return this.$store.state.page.dresses;
       },
 
       resources () {
@@ -90,17 +85,21 @@
         this.filteredDresses = this.dresses;
 
         if (filter.min) {
-          this.filteredDresses = this.filteredDresses.filter(item => item.price.usd >= filter.min);
+          this.filteredDresses = this.filteredDresses.filter(item => item.price[this.currency] >= filter.min);
         }
 
         if (filter.max) {
-          this.filteredDresses = this.filteredDresses.filter(item => item.price.usd <= filter.max);
+          this.filteredDresses = this.filteredDresses.filter(item => item.price[this.currency] <= filter.max);
         }
 
         if (filter.columns) {
 
         }
       },
+    },
+
+    mounted () {
+      this.filteredDresses = this.dresses;
     },
   };
 </script>
