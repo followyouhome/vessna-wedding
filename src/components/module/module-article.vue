@@ -31,6 +31,10 @@
 							  columnWidth: 'img',
 							},
             });
+
+						setInterval(() => {
+							this.isotope.layout();
+						}, 2000);
           });
 				}
 			},
