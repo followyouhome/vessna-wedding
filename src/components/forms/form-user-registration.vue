@@ -51,14 +51,19 @@
         </b-row>
         <b-row class="mt-4 mb-4">
           <b-col>
-            <b-form-checkbox v-model="form.agreement" class="ml-4" inline>Согласие с пользовательским соглашением</b-form-checkbox>
+            <b-form-checkbox v-model="state.checked" class="ml-4" inline>Согласие с пользовательским соглашением</b-form-checkbox>
+          </b-col>
+        </b-row>
+        <b-row class="mt-4 mb-4">
+          <b-col>
+            <captcha-google @init="captchaInit" @success="captchaSuccess" @failure="captchaFailure"/>
           </b-col>
         </b-row>
       </div>
     </template>
     <template slot='footer'>
       <div class="form-feedback__control">
-        <b-button class="form__submit" type="submit" :disabled="disabled" block>Зарегистрироваться</b-button>
+        <b-button class="form__submit" type="submit" :disabled="disabled" :title="title" block>Зарегистрироваться</b-button>
       </div>
     </template>
   </v-form>
@@ -66,6 +71,8 @@
 
 <script>
   import Form from './form.vue';
+
+  const REDIRECTION_TIMEOUT = 3000;
 
   export default {
     name: 'FormUserRegistration',
@@ -94,15 +101,25 @@
             subscription: '',
           },
         },
+        state: {
+          checked: false,
+          recaptcha: true,
+        },
+        label: {
+          success: 'Вы зарегистрированы',
+          failure: 'Ошибка сервера',
+        },
       };
     },
 
-    computed: {
-
-    },
-
     methods: {
-
+      success (data) {
+        setTimeout(() => {
+          this.$router.push({
+            path: '/user/settings',
+          });
+        }, REDIRECTION_TIMEOUT);
+      },
     },
   };
 </script>

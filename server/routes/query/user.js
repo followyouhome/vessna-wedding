@@ -1,6 +1,8 @@
 const keystone = require('keystone');
 
 const User = keystone.list('user');
+const INVITE_CODE = process.env.INVITE_CODE;
+
 
 function userFormat (user) {
   return {
@@ -74,6 +76,10 @@ module.exports = (app, base) => {
         return res.status(400).json({ error: 'cannot create user' });
       }
 
+      if (req.body.invite !== INVITE_CODE) {
+        return res.status(400).json({ error: 'invalid invite code' });
+      }
+
       user = req.body;
 
       return new User.model({
@@ -88,12 +94,13 @@ module.exports = (app, base) => {
         access: {
           content: false,
           keystone: false,
+          currency: 'usd',
           subscription: user.access.subscription,
         },
       }).save(() => {
         keystone.session.signin({ email: user.email, password: user.password }, req, res, function () {
           res.cookie('uid', req.user._id, { httpOnly: false });
-          return res.status(200).json(userFormat(user));
+          return res.status(200).json(userFormat(req.user));
         }, () => {
           return res.status(401).json({ error: 'wrong login or password' });
         });
