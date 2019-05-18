@@ -1,7 +1,7 @@
 <template>
   <popup class="popup-feedback-form">
     <template slot='body'>
-      <form-feedback @success="close" @failure="close"/>
+      <form-feedback @success="close"/>
     </template>
   </popup>
 </template>

@@ -49,7 +49,7 @@
     </template>
     <template slot='footer'>
       <div class="form-feedback__control">
-        <b-button class="form__submit" type="submit" :disabled="disabled">Отправить</b-button>
+        <b-button class="form__submit" type="submit" :disabled="disabled" :title="title">Отправить</b-button>
         <b-form-checkbox v-model="state.checked" class="ml-4" value="true" inline>Даю согласие на обработку персональных данных</b-form-checkbox>
       </div>
     </template>
@@ -70,7 +70,7 @@
 
     data () {
       return {
-        action: '',
+        action: 'feedback',
         form: {
           name: '',
           city: '',
@@ -82,6 +82,11 @@
         },
         state: {
           checked: false,
+          recaptcha: null,
+        },
+        label: {
+          success: 'Сообщение отправлено',
+          failure: 'Ошибка сервера',
         },
         topics: [
           'Отзыв',
@@ -92,11 +97,18 @@
       };
     },
 
-    provide () {
-      return {
-        action: this.action,
-        form: this.form,
-      };
+    methods: {
+      success () {
+        setTimeout(() => {
+          this.$emit('success');
+        }, 3000);
+      },
+
+      failure () {
+        setTimeout(() => {
+          this.$emit('failure');
+        }, 3000);
+      },
     },
   };
 </script>
