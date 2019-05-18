@@ -84,13 +84,9 @@ const actions = {
     return axios
       .post(base + '/forms/subscribe', payload, settings)
       .then(response => {
-        this.commit(USER_SUBSCRIBE);
-
         return Promise.resolve(response);
       })
       .catch(error => {
-        this.commit(USER_UNSUBSCRIBE);
-
         return Promise.reject(error);
       });
   },

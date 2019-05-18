@@ -1,7 +1,7 @@
 <template>
   <v-popup class="popup-subscribe">
     <template slot='body'>
-      <form-subscribe class="popup-subscribe__form"/>
+      <form-subscribe class="popup-subscribe__form" @success="close" @failure="close"/>
     </template>
   </v-popup>
 </template>
@@ -40,7 +40,7 @@
   }
 
   .popup-subscribe__form {
-    margin: 20px;
+    padding: 20px;
     border: none;
   }
 </style>

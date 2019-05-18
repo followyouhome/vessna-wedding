@@ -1,9 +1,9 @@
-const Mailchimp = require('mailchimp-api-v3');
-const mailchimp = new Mailchimp(process.env.MAILCHIMP_KEY);
+const mailgun = require('mailgun-js')({apiKey: process.env.MAILGUN_KEY, domain: process.env.MAILGUN_DOMAIN});
 
-const { subscriberFormat } = require('../../lib/format');
+const { mailFormat } = require('../../lib/format');
 const { COOKIES } = require('../../../config/constants.js');
-const LIST = process.env.MAILCHIMP_LIST_SUBSCRIBERS;
+const LIST = process.env.MAILGUN_LIST_MANAGERS;
+// const LIST = process.env.MAILCHIMP_LIST_SUBSCRIBERS;
 
 module.exports = (app, base) => {
   /**
@@ -13,20 +13,24 @@ module.exports = (app, base) => {
    * @inner
    */
   app.post(base + '/forms/subscribe', (req, res) => {
-    const email = req.body.email;
+    const mail = mailFormat(req.body);
 
-    if (!email) {
-      return res.status(401).json({ error: 'email is required' });
-    }
-
-    mailchimp.post({ path : `/lists/${LIST}/members` }, subscriberFormat(email))
-      .then(function (result) {
-        res.cookie(COOKIES.STATE_USER_SUBSCRIBED, true, { httpOnly: false });
-
-        return res.status(200).json(result);
-      })
-      .catch(err => {
+    mailgun.lists(LIST).members().list((err, data) => {
+      if (err) {
         return res.status(500).json({ error: err });
+      }
+
+      data.items.forEach(item => {
+        mail.to = item.address;
+
+        mailgun.messages().send(mail, (err, body) => {
+          if (err) {
+            return res.status(500).json({ error: err });
+          }
+
+          return res.status(200).json({ error: body });
+        });
       });
+    });
   });
 };

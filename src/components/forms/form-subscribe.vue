@@ -19,7 +19,7 @@
     </template>
     <template slot='footer'>
       <div class="form-subscribe__control">
-        <b-button class="form__submit" type="submit" :disabled="disabled" block>Отправить</b-button>
+        <b-button class="form__submit" type="submit" :disabled="disabled" :title="title" block>Отправить</b-button>
       </div>
     </template>
   </v-form>
@@ -43,7 +43,29 @@
         form: {
           email: '',
         },
+        state: {
+          checked: false,
+          recaptcha: null,
+        },
+        label: {
+          success: 'Подписка оформлена',
+          failure: 'Ошибка сервера',
+        },
       };
+    },
+
+    methods: {
+      success () {
+        setTimeout(() => {
+          this.$emit('success');
+        }, 3000);
+      },
+
+      failure () {
+        setTimeout(() => {
+          this.$emit('failure');
+        }, 3000);
+      },
     },
   };
 </script>
