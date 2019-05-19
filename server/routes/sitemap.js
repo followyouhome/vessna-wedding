@@ -1,7 +1,7 @@
 const path = require('path');
 const sitemap = require('sitemap-generator');
 
-const generator = sitemap('http://vessna.wedding', {
+const generator = sitemap('https://vessna.wedding', {
   stripQuerystring: false,
   filepath: path.join(process.cwd(), 'public/sitemap.xml'),
 });
