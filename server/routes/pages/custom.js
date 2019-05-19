@@ -20,6 +20,6 @@ module.exports = (app, base) => {
 
     (req, res) => {
        responseHandler(res, null, output);
-    }
+    },
   ]);
 };
