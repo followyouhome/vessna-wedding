@@ -101,5 +101,9 @@
     mounted () {
       this.filteredDresses = this.dresses;
     },
+
+    updated () {
+      this.filteredDresses = this.dresses;
+    },
   };
 </script>
