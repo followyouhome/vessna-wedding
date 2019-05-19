@@ -6,7 +6,17 @@
       </div>
     </div>
     <div class="module-dress-info__info">
-      <h2 class="module-dress-info__title">{{name}}</h2>
+      <div class="module-dress-info__info-wrapper">
+        <h2 class="module-dress-info__title">{{name}}</h2>
+        <h4 class="module-dress-info__subline" v-if="features">Особенности</h4>
+        <p class="module-dress-info__copy" v-if="features">{{features}}</p>
+        <h4 class="module-dress-info__subline" v-if="description">Описание</h4>
+        <p class="module-dress-info__copy" v-if="description">{{description}}</p>
+        <h4 class="module-dress-info__subline" v-if="colors">Цвета</h4>
+        <p class="module-dress-info__copy" v-if="colors">{{colors}}</p>
+        <h4 class="module-dress-info__subline" v-if="price">Стоимость</h4>
+        <p class="module-dress-info__copy" v-if="price">{{price}}</p>
+      </div>
     </div>
   </b-container>
 </template>
@@ -30,13 +40,17 @@
     },
 
     computed: {
+      images () {
+        return this.dress.images;
+      },
+
       currency () {
         return this.$store && this.$store.state && this.$store.state.user && this.$store.state.user.access && this.$store.state.user.access.currency;
       },
 
       price () {
         if (this.currency) {
-          return this.dress[this.currency];
+          return this.dress.price[this.currency];
         }
 
         return null;
@@ -46,8 +60,20 @@
         return this.dress.name;
       },
 
-      images () {
-        return this.dress && this.dress.images;
+      description () {
+        return this.dress.description;
+      },
+
+      name () {
+        return this.dress.name;
+      },
+
+      features () {
+        return this.dress.features;
+      },
+
+      colors () {
+        return this.dress && this.dress.colors;
       },
     },
 
@@ -83,18 +109,72 @@
     display: flex;
     height: 100%;
     overflow: hidden;
+
+    @media #{$phablet} {
+      padding: 0;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
   }
 
   .module-dress-info__carousel {
+    position: relative;
     width: 50%;
     overflow: hidden;
 
+    @media #{$phablet} {
+      min-height: 600px;
+      width: 100%;
+    }
+
     .flickity-viewport {
       height: 100% !important;
+
+
     }
 
     .flickity-slider {
       height: 100% !important;
+    }
+
+    .flickity-prev-next-button {
+      position: absolute;
+      margin: auto;
+      bottom: 10%;
+      width: 40px;
+      height: 40px;
+
+      &:disabled {
+        opacity: 0.6;
+      }
+
+      &.previous {
+        left: 10%;
+      }
+
+      &.next {
+        right: 10%;
+      }
+
+      .flickity-button-icon {
+        height: 60%;
+        width: 60%;
+        top: 0;
+        bottom: 0;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+    }
+
+    .image-deferred {
+      padding-top: 0 !important;
+
+      @media #{$phablet} {
+        padding-top: 150% !important;
+      }
     }
   }
 
@@ -106,14 +186,34 @@
     }
   }
 
+  .module-dress-info__image {
+    height: 100%;
+  }
+
   .module-dress-info__info {
     width: 50%;
+    background: $white;
+
+    @media #{$phablet} {
+      width: 100%;
+    }
+  }
+
+  .module-dress-info__info-wrapper {
+    padding: 2rem;
   }
 
   .module-dress-info__title {
     text-align: center;
     font: 3rem/1 $RistrettoProLight;
     color: $black;
+  }
+
+  .module-dress-info__subline {
+    margin: 0.5rem 0;
+    letter-spacing: 1px;
+    font: 1.5rem/1 $RistrettoProLight;
+    color: $dark5;
   }
 </style>
 

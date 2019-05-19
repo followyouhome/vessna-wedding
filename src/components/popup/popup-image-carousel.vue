@@ -42,6 +42,11 @@
     padding: 30px 40px;
     background: $gray1;
     overflow: hidden;
+
+    @media #{$phablet} {
+      height: auto;
+      padding: 10px;
+    }
   }
 </style>
 
