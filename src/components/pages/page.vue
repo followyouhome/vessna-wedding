@@ -16,7 +16,7 @@
     props: ['amp'],
 
     metaInfo () {
-      return {
+      const metaInfo = {
         title: this.seo.name,
         meta: [
           // Meta info
@@ -39,9 +39,14 @@
         ],
         htmlAttrs: {
           lang: 'ru-ru',
-          amp: this.amp,
         },
       };
+
+      if (this.amp) {
+        metaInfo.htmlAttrs.amp = true;
+      }
+
+      return metaInfo;
     },
 
     asyncData ({ store, route }) {

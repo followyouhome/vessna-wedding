@@ -16,4 +16,7 @@ module.exports = app => {
   }));
   app.use('/dist', serve('../../dist', true));
   app.use('/public', serve('../../public', true));
+  app.use('/sitemap.xml', serve('../../public/sitemap.xml', false));
+  app.use('/robots.txt', serve('../../public/robots.txt', false));
+
 };
