@@ -17,7 +17,7 @@
               :item="item"
             />
             <div class="global-navigation-sub-list__promo">
-              123
+              <!-- TODO add promo -->
             </div>
           </div>
         </b-container>
