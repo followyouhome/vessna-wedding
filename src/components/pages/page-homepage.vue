@@ -14,6 +14,7 @@
     </div>
     <module-promo-cards :items="prom"/>
     <module-feedback-grid :feedbacks="feedbacks"/>
+    
   </div>
 </template>
 
