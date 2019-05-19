@@ -23,32 +23,64 @@ const Dress = new keystone.List('Dress', {
 });
 
 Dress.add(...Inherit, 'Параметры', {
-  name: { label: 'Название', type: String, required: true },
+  name: {
+    label: 'Название',
+    type: String, required: true,
+  },
   state: {
   	label: 'Статус',
   	type: Types.Select,
   	default: 'draft',
   	index: true,
   	options: [{
-  		label: 'Черновик', value: 'draft',
+  		label: 'Черновик',
+      value: 'draft',
   	}, {
-  		label: 'Опубликовано', value: 'published',
+  		label: 'Опубликовано',
+      value: 'published',
   	}, {
-  		label: 'Архив', value: 'archived',
+  		label: 'Архив',
+      value: 'archived',
   	}],
   },
-  collections: { label: 'Коллекция', type: Types.Relationship, ref: 'DressCollection', many: true },
+  collections: {
+    label: 'Коллекция',
+    type: Types.Relationship,
+    ref: 'DressCollection',
+    many: true,
+  },
   images: {
     label: 'Фотографии платья',
     type: Types.CloudinaryImages,
-    uploadOptions: { use_filename: true, unique_filename: false },
+    uploadOptions: {
+      use_filename: true,
+      unique_filename: false,
+    },
     generateFilename: function (file, attemptNumber, callback) {
       callback(null, file.originalname);
     },
   },
+  description: {
+    label: 'Описание',
+    type: String,
+  },
+  features: {
+    label: 'Особенности',
+    type: String,
+  },
+  colors: {
+    label: 'Цвета',
+    type: String,
+  },
   price: {
-    usd: { label: 'Цена в $', type: Types.Money },
-    rub: { label: 'Цена в ₽', type: Types.Money },
+    usd: {
+      label: 'Цена в $',
+      type: Types.Money,
+    },
+    rub: {
+      label: 'Цена в ₽',
+      type: Types.Money,
+    },
   },
 });
 
