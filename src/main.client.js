@@ -1,3 +1,6 @@
+import 'core-js/es/promise';
+import 'core-js/web/url';
+
 /**
  * The main entry point for the client.
  *
@@ -20,6 +23,7 @@
  * @see src/main.server.js
  * @see src/core/store.js
  */
+
 import Vue from 'vue';
 import Cookies from './lib/cookies';
 
