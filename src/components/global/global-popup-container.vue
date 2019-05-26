@@ -65,7 +65,8 @@
   .global-popup-container {
     display: flex;
     align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     overflow-y: scroll;
     position: fixed;
     padding: 20px;
