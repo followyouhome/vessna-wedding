@@ -6,7 +6,9 @@
      font-family: 'icomoon';
      font-display: swap;
      src: url("/public/fonts/Icon_Font/icomoon.eot?duiu20");
-     src: url("/public/fonts/Icon_Font/icomoon.eot?duiu20#iefix") format("embedded-opentype"), url("/public/fonts/Icon_Font/icomoon.ttf?duiu20") format("truetype"), url("/public/fonts/Icon_Font/icomoon.woff?duiu20") format("woff"), url("/public/fonts/Icon_Font/icomoon.svg?duiu20#icomoon") format("svg");
+     src: url("/public/fonts/Icon_Font/icomoon.ttf?duiu20") format("truetype"),
+          url("/public/fonts/Icon_Font/icomoon.woff?duiu20") format("woff"),
+          url("/public/fonts/Icon_Font/icomoon.svg?duiu20#icomoon") format("svg");
      font-weight: 400;
      font-style: normal
  }
@@ -21,8 +23,7 @@
     font-family: 'Akzidenz Grotesk';
     font-display: swap;
     src: url('/public/fonts/AkzidenzGroteskPro/AkzidenzGroteskPro.eot');
-    src: url('/public/fonts/AkzidenzGroteskPro/AkzidenzGroteskPro.eot?#iefix') format('embedded-opentype'),
-         url('/public/fonts/AkzidenzGroteskPro/AkzidenzGroteskPro.woff2') format('woff2'),
+    src: url('/public/fonts/AkzidenzGroteskPro/AkzidenzGroteskPro.woff2') format('woff2'),
          url('/public/fonts/AkzidenzGroteskPro/AkzidenzGroteskPro.woff') format('woff'),
          url('/public/fonts/AkzidenzGroteskPro/AkzidenzGroteskPro.ttf') format('truetype'),
          url('/public/fonts/AkzidenzGroteskPro/AkzidenzGroteskPro.svg') format('svg');
@@ -40,8 +41,7 @@ $AkzidensGrotesk: 'Akzidenz Grotesk';
   font-family: 'Peignot Light';
   font-display: swap;
   src: url("/public/fonts/Peignot_Light.eot");
-  src: url("/public/fonts/Peignot_Light/Peignot_Light.eot?#iefix") format("embedded-opentype"),
-       url("/public/fonts/Peignot_Light/Peignot_Light.woff2") format("woff2"),
+  src: url("/public/fonts/Peignot_Light/Peignot_Light.woff2") format("woff2"),
        url("/public/fonts/Peignot_Light/Peignot_Light.woff") format("woff"),
        url("/public/fonts/Peignot_Light/Peignot_Light.ttf") format("truetype"),
        url("/public/fonts/Peignot_Light/Peignot_Light.svg") format("svg");
@@ -136,8 +136,7 @@ $RistrettoProRegular: 'RistrettoPro-Regular';
   font-family: 'Futura PT Light';
   font-display: swap;
   src: url("/public/fonts/Futura_PT_Light/FTN35__W.eot");
-  src: url("/public/fonts/Futura_PT_Light/FTN35__W.eot?#iefix") format("embedded-opentype"),
-       url("/public/fonts/Futura_PT_Light/FTN35__W.woff") format("woff"),
+  src: url("/public/fonts/Futura_PT_Light/FTN35__W.woff") format("woff"),
        url("/public/fonts/Futura_PT_Light/FTN35__W.ttf") format("truetype"),
        url("/public/fonts/Futura_PT_Light/FTN35__W.svg") format("svg");
   font-weight: 400;
