@@ -61,5 +61,11 @@ export function createRouter () {
     next();
   });
 
+  router.afterEach((to, from) => {
+    if (__VUE_ENV__ === 'client') {
+      window.scrollTo(0, 0);
+    }
+  });
+
   return router;
 }
