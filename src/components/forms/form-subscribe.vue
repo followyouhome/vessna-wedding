@@ -7,12 +7,12 @@
       <div class="form-subscribe__group">
         <b-row class="mt-4 mb-4">
           <b-col>
-            <b-form-input v-model="form.email" type="text" placeholder="E-mail" autofocus/>
+            <b-form-input v-model="form.email" type="email" placeholder="E-mail" required autofocus/>
           </b-col>
         </b-row>
         <b-row class="mt-4 mb-4">
           <b-col>
-            <b-form-checkbox v-model="state.checked" class="ml-4" block>Даю согласие на обработку персональных данных</b-form-checkbox>
+            <b-form-checkbox v-model="state.checked" class="ml-4" required block>Даю согласие на обработку персональных данных</b-form-checkbox>
           </b-col>
         </b-row>
       </div>

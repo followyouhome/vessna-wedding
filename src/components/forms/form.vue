@@ -141,9 +141,13 @@
       padding: 10px 15px;
     }
 
-    .custom-control-input:checked ~ .custom-control-label::before {
+    .custom-control-input:checked ~ .custom-control-label:before {
       border-color: $yellow;
       background-color: $yellow;
+    }
+
+    .custom-control-input:focus ~ .custom-control-label:before {
+      box-shadow: 0 0 0 0.2rem opacify($yellow, 0.5);
     }
 
     .form-control {
