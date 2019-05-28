@@ -37,6 +37,10 @@
     border: 1px solid $gray1;
     background: $white;
     box-shadow: 10px -10px 15px 10px $white;
+
+    @media #{$phablet} {
+      width: 90%;
+    }
   }
 
   .popup-subscribe__form {
