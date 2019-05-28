@@ -56,6 +56,10 @@
 		background: $white;
 		box-shadow: 0px 0px 10px 5px $gray1;
 
+		@media #{$phablet} {
+			padding: 20px;
+		}
+
 		h1 {
 			font: 4rem/1 $RistrettoProLight;
 		}
@@ -66,6 +70,10 @@
 			text-align: center;
 			font: 3rem/1 $RistrettoProLight;
 			color: $black;
+
+			@media #{$phablet} {
+				margin: 1.5rem 0;
+			}
 		}
 
 		h3 {
@@ -74,6 +82,10 @@
 			text-align: center;
 			font: 2rem/1 $RistrettoProLight;
 			color: $black;
+
+			@media #{$phablet} {
+				margin: 1rem 0;
+			}
 		}
 
 		h4 {
@@ -107,6 +119,10 @@
 		p {
 			margin: 2rem 0;
 			color: $dark;
+
+			@media #{$phablet} {
+				margin: 1rem 0;
+			}
 		}
 
 		a {
