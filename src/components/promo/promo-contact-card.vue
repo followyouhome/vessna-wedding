@@ -39,6 +39,10 @@
     padding: 20px;
     background: $white;
     max-width: 400px;
+
+    @media #{$phablet} {
+      max-width: 100%;
+    }
   }
 
   .promo-contact-card__description {
