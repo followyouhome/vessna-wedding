@@ -38,6 +38,11 @@
     data () {
       return {
         about: [{
+          name: 'Главная страница',
+          route: {
+            path: '/',
+          },
+        }, {
           name: 'Новости и события',
           route: {
             path: '/news',

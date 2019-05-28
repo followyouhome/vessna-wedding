@@ -22,6 +22,11 @@ module.exports = (app) => {
                       .model.find();
 
       data = [{
+        name: 'Главная страница',
+        route: {
+          name: PAGE_HOMEPAGE,
+        },
+      }, {
         name: 'Новости',
         route: {
           name: PAGE_NEWS_HUB,
