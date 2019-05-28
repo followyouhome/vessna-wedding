@@ -40,8 +40,6 @@
 <style lang="scss">
   .simple-button {
     display: inline-block;
-    color: $white;
-    background: $yellow;
 
     &--block {
       display: block;
@@ -56,9 +54,9 @@
 
   .simple-button__button {
     padding: 10px 40px;
-    color: inherit;
+    color: $white;
     border: none;
-    background: inherit;
+    background: $yellow;
     font: 1.5rem/1 $RistrettoProLight;
     letter-spacing: 2px;
     transition: opacity linear 0.1s;
