@@ -70,12 +70,14 @@
   }
 
   .promo-coupon__headline {
+    width: 100%;
     margin: 0px 0 20px;
     font: 1.5rem/2rem $RistrettoProLight;
     text-align: center;
   }
 
   .promo-coupon__subline {
+    width: 100%;
     margin: 0px 0 20px;
     font: 1.2rem/1.5rem $RistrettoProLight;
     text-align: center;
@@ -83,6 +85,7 @@
   }
 
   .promo-coupon__copy {
+    width: 100%;
     font-size: 0.8rem;
     text-align: center;
   }
