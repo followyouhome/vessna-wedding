@@ -2,9 +2,9 @@
   <b-container class="module module-call-to-action">
     <div class="module__wrapper module-call-to-action__wrapper">
       <div class="module-call-to-action__content">
-        <h3 v-if="content.headline">{{content.headline}}</h3>
-        <h4 v-if="content.subline">{{content.subline}}</h4>
-        <p v-if="content.copy">{{content.copy}}</p>
+        <h3 class="module-call-to-action__content-headline" v-if="content.headline">{{content.headline}}</h3>
+        <h4 class="module-call-to-action__content-subline"v-if="content.subline">{{content.subline}}</h4>
+        <p class="module-call-to-action__content-copy" v-if="content.copy">{{content.copy}}</p>
       </div>
       <div class="module-call-to-action__action">
         <simple-button
@@ -48,6 +48,10 @@
     justify-content: space-between;
     padding: 30px;
     background: $gray1;
+
+    @media #{$phablet} {
+      flex-direction: column;
+    }
   }
 
   .module-call-to-action__content {
@@ -67,17 +71,29 @@
         margin-bottom: 0;
       }
     }
+  }
 
-    h3 {
-      font: 1.5rem/1rem $RistrettoProLight;
+  .module-call-to-action__content-headline {
+    font: 1.5rem/1rem $RistrettoProLight;
+
+    @media #{$phablet} {
+      text-align: center;
     }
+  }
 
-    h4 {
-      font: 2rem/2rem $RistrettoProLight;
+  .module-call-to-action__content-subline {
+    font: 2rem/2rem $RistrettoProLight;
+
+    @media #{$phablet} {
+      text-align: center;
     }
+  }
 
-    p {
-      font: 1rem/1rem $RistrettoProLight;
+  .module-call-to-action__content-copy {
+    font: 1rem/1rem $RistrettoProLight;
+
+    @media #{$phablet} {
+      text-align: center;
     }
   }
 
@@ -85,6 +101,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 1rem 0;
   }
 </style>
 
