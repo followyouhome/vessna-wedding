@@ -66,24 +66,6 @@
     box-shadow: 0 0 28px 0 rgba(0, 0, 0, 0.75);
   }
 
-  .popup__close {
-    position: absolute;
-    padding: 0 5px;
-    right: 5px;
-    top: 10px;
-    cursor: pointer;
-    background: $white;
-    z-index: $z-popup + 1;
-
-    &:focus {
-      outline: none;
-    }
-
-    &:active {
-      transform: translateY(2px);
-    }
-  }
-
   .popup__recaptcha {
     position: relative;
     margin: 10px 0;
@@ -96,9 +78,24 @@
     right: 1rem;
     top: 1rem;
     border: none;
+    cursor: pointer;
     background: none;
+    z-index: $z-popup + 1;
     font-size: 30px;
     line-height: 30px;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:active {
+      transform: translateY(2px);
+    }
+
+    @media #{$phablet} {
+      top: 0.5rem;
+      right: 0.5rem;
+    }
   }
 
   .form__input-text {

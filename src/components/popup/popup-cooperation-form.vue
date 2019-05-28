@@ -32,6 +32,10 @@
   .popup-cooperation-form.popup {
     padding: 30px 40px;
     background: $white;
+
+    @media #{$phablet} {
+      padding: 15px 10px;
+    }
   }
 </style>
 

@@ -7,21 +7,21 @@
       <div class="form-cooperation__group">
         <h4 class="form__subline">Ваши контактные данные</h4>
         <b-row class="mt-4 mb-4">
-          <b-col>
+          <b-col cols="12" md="4" class="my-1">
             <b-form-input v-model="form.name" type="text" placeholder="Имя" />
           </b-col>
-          <b-col>
+          <b-col cols="12" md="4" class="my-1">
             <b-form-input v-model="form.email" type="text" placeholder="E-mail" />
           </b-col>
-          <b-col>
+          <b-col cols="12" md="4" class="my-1">
             <b-form-input v-model="form.phone" type="text" placeholder="Телефон" />
           </b-col>
         </b-row>
         <b-row class="mt-4 mb-4">
-          <b-col>
+          <b-col cols="12" md="6" class="my-1">
             <b-form-input v-model="form.country" type="text" placeholder="Страна" />
           </b-col>
-          <b-col>
+          <b-col cols="12" md="6" class="my-1">
             <b-form-input v-model="form.city" type="text" placeholder="Город" />
           </b-col>
         </b-row>
@@ -62,8 +62,8 @@
     </template>
     <template slot='footer'>
       <div class="form-feedback__control">
-        <b-button class="form__submit" type="submit" :disabled="disabled" :title="title">Отправить</b-button>
-        <b-form-checkbox v-model="state.checked" class="ml-4" inline>Даю согласие на обработку персональных данных</b-form-checkbox>
+        <b-button class="form__submit my-1" type="submit" :disabled="disabled" :title="title">Отправить</b-button>
+        <b-form-checkbox class="ml-4 my-1" v-model="state.checked" inline>Даю согласие на обработку персональных данных</b-form-checkbox>
       </div>
     </template>
   </v-form>
