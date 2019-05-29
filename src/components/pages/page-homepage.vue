@@ -1,17 +1,9 @@
 <template>
   <div>
     <module-related-posts v-bind:news="news"/>
-    <div class="module module--article">
-      <div class="module__wrapper module--article__wrapper">
-          <h2>Свадебные и вечерние платья оптом</h2>
-      </div>
-    </div>
+    <h2 class="page-homepage__headline">Свадебные и вечерние платья оптом</h2>
     <module-selected-collections :items="wedding"/>
-    <div class="module module--article">
-      <div class="module__wrapper module--article__wrapper">
-          <h2>Вечерние платья оптом</h2>
-      </div>
-    </div>
+    <h2 class="page-homepage__headline">Вечерние платья оптом</h2>
     <module-promo-cards :items="prom"/>
     <module-feedback-grid :feedbacks="feedbacks"/>
   </div>
@@ -85,7 +77,11 @@
 </script>
 
 <style lang="scss">
-  .module--article {
-    background: $gray2;
+  .page-homepage__headline {
+    margin: 2rem;
+    letter-spacing: 0;
+    text-align: center;
+    font: 4rem/1 $RistrettoProLight;
+    color: $black;
   }
 </style>
