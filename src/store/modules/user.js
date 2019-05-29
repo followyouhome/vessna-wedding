@@ -49,7 +49,7 @@ const actions = {
       .post(base + '/user/logout', {})
       .then(() => {
         store.commit(USER_LOGOUT);
-        return Promise.resolve(data);
+        return Promise.resolve();
       })
       .catch(err => {
         return Promise.reject(err);

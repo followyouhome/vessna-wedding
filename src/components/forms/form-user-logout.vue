@@ -23,6 +23,8 @@
 <script>
   import Form from './form.vue';
 
+  const REDIRECTION_TIMEOUT = 3000;
+
   export default {
     name: 'FormUserLogout',
 
@@ -48,6 +50,16 @@
     computed: {
       user () {
         return this.$store && this.$store.state && this.$store.state.user && this.$store.state.user.email;
+      },
+    },
+
+    methods: {
+      success (data) {
+        setTimeout(() => {
+          this.$router.push({
+            path: '/',
+          });
+        }, REDIRECTION_TIMEOUT);
       },
     },
   };

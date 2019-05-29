@@ -17,7 +17,7 @@ module.exports = {
   'session': true,
   'session store': 'mongo',
   'signin url': '/user/login',
-  'signin redirect': '/user/profile',
+  'signin redirect': '/user/settings',
   'signout url': '/user/logout',
   'signout redirect': '/',
   'auth': true,

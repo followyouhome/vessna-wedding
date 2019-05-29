@@ -18,7 +18,7 @@
 
 		methods: {
 			initIsotope () {
-				const el = this.$el.querySelector('.module-article__isotope');
+				const el = this.$el && this.$el.querySelector && this.$el.querySelector('.module-article__isotope');
 
 				if (el) {
 					require.ensure(['isotope-layout'], require => {
