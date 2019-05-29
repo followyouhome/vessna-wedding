@@ -16,7 +16,7 @@ const Page = new keystone.List('Page', {
   label: 'Страницы',
   plural: 'Страницы',
   singular: 'Страница',
-  defaultSort: '-publishedDate',
+  defaultSort: '-name',
   sortable: false,
   hidden: false,
 });
