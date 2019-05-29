@@ -91,7 +91,7 @@ module.exports = app => {
         console.log(req.method, req.url);
         console.error(err.stack || err);
       } else {
-        res.end(req.url.match('amp') ? pretty(html) : html);
+        res.status(context.code).end(req.url.match('amp') ? pretty(html) : html);
       }
     });
   }

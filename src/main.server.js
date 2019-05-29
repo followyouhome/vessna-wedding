@@ -41,18 +41,22 @@ export default context => {
     context.meta = meta;
 
     router.onReady(() => {
+      let code = 200;
       const matchedComponents = router.getMatchedComponents();
+
+      if (matchedComponents.find(component => component.name === 'PageError')) {
+        code = 404;
+      }
 
       if (!matchedComponents.length) {
         reject({ code: 404 });
       }
 
-      // console.log(root)
-
       Promise.all([
         root.asyncData.call(root, { store, route: router.currentRoute }),
         ...matchedComponents.map(component => component.asyncData && component.asyncData.call(component, { store, route: router.currentRoute })),
       ]).then(() => {
+        context.code = code;
         context.state = store.state;
         resolve(app);
       }).catch(reject);
