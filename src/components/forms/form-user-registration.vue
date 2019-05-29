@@ -7,41 +7,41 @@
       <div class="form-user-registration__group">
         <b-row class="mt-4 mb-4">
           <b-col>
-            <b-form-input v-model="form.name" type="text" placeholder="Имя"/>
+            <b-form-input v-model="form.name" type="text" placeholder="Имя" required/>
           </b-col>
         </b-row>
         <b-row class="mt-4 mb-4">
           <b-col>
-            <b-form-input v-model="form.email" type="email" placeholder="Email"/>
+            <b-form-input v-model="form.email" type="email" placeholder="Email" required/>
           </b-col>
         </b-row>
         <b-row class="mt-4 mb-4">
           <b-col>
-            <b-form-input v-model="form.password" type="password" placeholder="Пароль"/>
-          </b-col>
-        </b-row>
-      </div>
-      <div class="form__group">
-        <b-row class="mt-4 mb-4">
-          <b-col>
-            <b-form-input v-model="form.info.city" type="text" placeholder="Город"/>
-          </b-col>
-        </b-row>
-        <b-row class="mt-4 mb-4">
-          <b-col>
-            <b-form-input v-model="form.info.shop" type="text" placeholder="Магазин"/>
-          </b-col>
-        </b-row>
-        <b-row class="mt-4 mb-4">
-          <b-col>
-            <b-form-input v-model="form.info.phone" type="text" placeholder="Телефон"/>
+            <b-form-input v-model="form.password" type="password" placeholder="Пароль" required/>
           </b-col>
         </b-row>
       </div>
       <div class="form__group">
         <b-row class="mt-4 mb-4">
           <b-col>
-            <b-form-input v-model="form.invite" type="text" placeholder="Инвайт"/>
+            <b-form-input v-model="form.info.city" type="text" placeholder="Город" required/>
+          </b-col>
+        </b-row>
+        <b-row class="mt-4 mb-4">
+          <b-col>
+            <b-form-input v-model="form.info.shop" type="text" placeholder="Магазин" required/>
+          </b-col>
+        </b-row>
+        <b-row class="mt-4 mb-4">
+          <b-col>
+            <b-form-input v-model="form.info.phone" type="text" placeholder="Телефон" required/>
+          </b-col>
+        </b-row>
+      </div>
+      <div class="form__group">
+        <b-row class="mt-4 mb-4">
+          <b-col>
+            <b-form-input v-model="form.invite" type="text" placeholder="Инвайт" required/>
           </b-col>
         </b-row>
         <b-row class="mt-4 mb-4">
@@ -51,7 +51,7 @@
         </b-row>
         <b-row class="mt-4 mb-4">
           <b-col>
-            <b-form-checkbox v-model="state.checked" class="ml-4" inline>Согласие с пользовательским соглашением</b-form-checkbox>
+            <b-form-checkbox v-model="state.checked" class="ml-4" required inline>Согласие с пользовательским соглашением</b-form-checkbox>
           </b-col>
         </b-row>
         <b-row class="mt-4 mb-4">
@@ -130,6 +130,11 @@
     padding: 1rem;
     width: 350px;
     border: 1px solid $gray3;
+
+    @media #{$phablet} {
+      margin: 1rem auto;
+      width: 90%;
+    }
   }
 </style>
 

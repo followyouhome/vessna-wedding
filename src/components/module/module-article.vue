@@ -61,7 +61,16 @@
 		}
 
 		h1 {
+			margin: 2rem 0;
+			letter-spacing: 0;
+			text-align: center;
 			font: 4rem/1 $RistrettoProLight;
+			color: $black;
+
+			@media #{$phablet} {
+				margin: 1.5rem 0;
+				text-align: center;
+			}
 		}
 
 		h2 {
@@ -73,6 +82,7 @@
 
 			@media #{$phablet} {
 				margin: 1.5rem 0;
+				text-align: center;
 			}
 		}
 
@@ -85,6 +95,7 @@
 
 			@media #{$phablet} {
 				margin: 1rem 0;
+				text-align: center;
 			}
 		}
 
