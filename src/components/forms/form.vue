@@ -48,8 +48,8 @@
 
     computed: {
       disabled () {
-        return typeof this.state.checked === 'boolean' ? !this.state.checked : false
-          || typeof this.state.recaptcha === 'boolean' ? !this.state.recaptcha : false;
+        return (typeof this.state.checked === 'boolean' ? !this.state.checked : false)
+          || (typeof this.state.recaptcha === 'boolean' ? !this.state.recaptcha : false);
       },
 
       title () {

@@ -103,7 +103,7 @@
         },
         state: {
           checked: false,
-          recaptcha: true,
+          recaptcha: false,
         },
         label: {
           success: 'Вы зарегистрированы',
