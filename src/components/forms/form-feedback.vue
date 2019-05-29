@@ -8,21 +8,21 @@
         <h4 class="form__subline">Ваши контактные данные</h4>
         <b-row class="my-4">
           <b-col cols="12" md="4" class="my-1">
-            <b-form-input v-model="form.name" type="text" placeholder="Имя" />
+            <b-form-input v-model="form.name" type="text" placeholder="Имя" required/>
           </b-col>
           <b-col cols="12" md="4" class="my-1">
-            <b-form-input v-model="form.email" type="text" placeholder="E-mail" />
+            <b-form-input v-model="form.email" type="text" placeholder="E-mail" required/>
           </b-col>
           <b-col cols="12" md="4" class="my-1">
-            <b-form-input v-model="form.phone" type="text" placeholder="Телефон" />
+            <b-form-input v-model="form.phone" type="text" placeholder="Телефон" required/>
           </b-col>
         </b-row>
         <b-row class="mt-4 mb-4">
           <b-col cols="12" md="6" class="my-1">
-            <b-form-input v-model="form.country" type="text" placeholder="Страна" />
+            <b-form-input v-model="form.country" type="text" placeholder="Страна" required/>
           </b-col>
           <b-col cols="12" md="6" class="my-1">
-            <b-form-input v-model="form.city" type="text" placeholder="Город" />
+            <b-form-input v-model="form.city" type="text" placeholder="Город" required/>
           </b-col>
         </b-row>
       </div>
