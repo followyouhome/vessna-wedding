@@ -28,9 +28,36 @@ module.exports = app => {
   let renderer, enableHMR;
   const template = fs.readFileSync(resolve('../../src/index.template.html'), 'utf8');
 
+  const renderers = {
+    turbo: null,
+  };
+
+  const templates = {
+    turbo: fs.readFileSync(resolve('../../src/template.turbo.html'), 'utf8'),
+  };
+
   function createRenderer (bundle, options) {
     return createBundleRenderer(bundle, Object.assign(options, {
       template,
+      inject: false,
+
+      // for component caching
+      cache: LRU({
+        max: 1000,
+        maxAge: 1000 * 60 * 15,
+      }),
+
+      // this is only needed when vue-server-renderer is npm-linked
+      basedir: resolve('../../dist'),
+
+      // recommended for performance
+      runInNewContext: false,
+    }));
+  }
+
+  function createTurboRenderer (bundle, options) {
+    return createBundleRenderer(bundle, Object.assign(options, {
+      template: templates.turbo,
       inject: false,
 
       // for component caching
@@ -57,10 +84,14 @@ module.exports = app => {
 
 
     renderer = createRenderer(bundle, {clientManifest});
+
+    renderers.turbo = createTurboRenderer(bundle, {clientManifest});
   } else {
     // setup the dev server with watch and hot-reload, and create a new renderer on bundle / index template update.
     enableHMR = require('../lib/hmr')(app, (bundle, options) => {
       renderer = createRenderer(bundle, options);
+
+      renderers.turbo = createTurboRenderer(bundle, options);
     });
   }
 
@@ -76,23 +107,41 @@ module.exports = app => {
       title: config.title,
       url: req.url,
       amp: req.url.match('amp'),
+      turbo: req.url.match('turbo'),
       canonical: req.url.match('amp') ? req.url.replace(/amp\//, '') : req.url,
       cookie: req.headers.cookie,
     };
 
-    renderer.renderToString(context, (err, html) => {
-      if (err) {
-        if (err.code === 404) {
-          res.status(404).end('Page not found');
-        } else {
-          res.status(500).end('Internal Server Error');
-        }
+    if (context.turbo) {
+      renderers.turbo.renderToString(context, (err, html) => {
+        if (err) {
+          if (err.code === 404) {
+            res.status(404).end('Page not found');
+          } else {
+            res.status(500).end('Internal Server Error');
+          }
 
-        console.log(req.method, req.url);
-        console.error(err.stack || err);
-      } else {
-        res.status(context.code).end(req.url.match('amp') ? pretty(html) : html);
-      }
-    });
+          console.log(req.method, req.url);
+          console.error(err.stack || err);
+        } else {
+          res.status(context.code).end(req.url.match('amp') ? pretty(html) : html);
+        }
+      });
+    } else {
+      renderer.renderToString(context, (err, html) => {
+        if (err) {
+          if (err.code === 404) {
+            res.status(404).end('Page not found');
+          } else {
+            res.status(500).end('Internal Server Error');
+          }
+
+          console.log(req.method, req.url);
+          console.error(err.stack || err);
+        } else {
+          res.status(context.code).end(req.url.match('amp') ? pretty(html) : html);
+        }
+      });
+    }
   }
 };

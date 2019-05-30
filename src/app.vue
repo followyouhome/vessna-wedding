@@ -69,6 +69,7 @@
           namespace: 'settings',
           endpoint: 'settings',
           params: {
+            turbo: !!route.path.match('turbo'),
             amp: !!route.path.match('amp'),
           },
         }),

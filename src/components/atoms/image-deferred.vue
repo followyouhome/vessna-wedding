@@ -47,6 +47,10 @@
     },
 
     computed: {
+      turbo () {
+        return this.$store && this.$store.state && this.$store.state.settings && this.$store.state.settings.turbo;
+      },
+
       amp () {
         return this.$store && this.$store.state && this.$store.state.settings && this.$store.state.settings.amp;
       },

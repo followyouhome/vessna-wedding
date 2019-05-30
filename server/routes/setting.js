@@ -24,6 +24,7 @@ module.exports = app => {
   app.get(base + '/settings', (req, res) => {
     Setting.model.find().exec((err, result) => {
       return res.json({
+        turbo: req.query.turbo === 'true',
         amp: req.query.amp === 'true',
         ...formatSettings(result),
       });
