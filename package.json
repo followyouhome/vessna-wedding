@@ -58,7 +58,7 @@
     "ismobilejs": "^0.5.1",
     "isotope-layout": "^3.0.6",
     "json-server": "^0.14.2",
-    "keystone": "^4.0.0",
+    "keystone": "^4.1.0",
     "keystone-express-sitemap": "^1.2.0",
     "keystone-storage-adapter-azure": "^1.1.0",
     "lodash": "^4.17.11",
