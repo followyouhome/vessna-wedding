@@ -10,6 +10,14 @@ require('dotenv').config();
 require('newrelic');
 
 keystone.init(require('../config/keystone.config'));
+
 keystone.set('routes', require('./routes'));
+
+keystone.set('nav', {
+  'Сайт': ['News', 'Page', 'Setting'],
+  'Коллекции': ['DressCollection', 'Dress'],
+  'Отзывы': ['Feedback', 'FeedbackGroup'],
+  'Клиенты': ['Dealer', 'user'],
+});
 
 keystone.start();
