@@ -1,10 +1,10 @@
 <template>
   <div class="global-navigation-item">
-    <a class="global-navigation-link" :href="item.route.path" target="_blank" v-if="item.route.path && item.route.path.match('//')">
+    <a class="global-navigation-link" @click.native="click" :href="item.route.path" target="_blank" v-if="item.route.path && item.route.path.match('//')">
       <span class="global-navigation-text" itemprop="name">{{ item.name }}</span>
       <icon-toggle class="global-navigation-icon" icon="hamburger" handle="click" v-if="item.items"/>
     </a>
-    <router-link class="global-navigation-link" v-bind:to="item.route" v-else>
+    <router-link class="global-navigation-link" @click.native="click" v-bind:to="item.route" v-else>
       <span class="global-navigation-text" itemprop="name">{{ item.name }}</span>
       <icon-toggle class="global-navigation-icon" icon="hamburger" handle="click" v-if="item.items"/>
     </router-link>
@@ -15,6 +15,7 @@
             <global-navigation-item v-for="item in item.items"
               :key="item.name"
               :item="item"
+              @click="click"
             />
             <div class="global-navigation-sub-list__promo">
               <!-- TODO add promo -->
@@ -31,6 +32,12 @@
     name: 'GlobalNavigationItem',
 
     props: ['item'],
+
+    methods: {
+      click () {
+        this.$emit('click');
+      },
+    },
   };
 </script>
 
@@ -92,6 +99,10 @@
         width: 100%;
         left: 0;
         top: 0;
+
+        .global-navigation-item {
+
+        }
       }
     }
   }

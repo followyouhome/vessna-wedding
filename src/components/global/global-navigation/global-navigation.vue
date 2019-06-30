@@ -5,37 +5,47 @@
       <global-navigation-item v-for="item in items"
         :key="item.name"
         :item="item"
+        @click="click"
       />
       <global-navigation-item
         :item="menu.user"
+        @click="click"
       >
         <div class="global-navigation-sub-list">
           <b-container class="global-navigation-sub-list-wrapper">
             <div class="global-navigation-sub-list__list">
               <global-navigation-item
                 :item="menu.partnership"
+                @click="click"
               />
               <global-navigation-item
                 :item="menu.contact"
+                @click="click"
               />
               <hr class="global-navigation-line"/>
               <global-navigation-item v-if="settings.login && user"
                 :item="menu.logout"
+                @click="click"
               />
               <global-navigation-item v-if="settings.login && !user"
                 :item="menu.login"
+                @click="click"
               />
               <global-navigation-item v-if="settings.registration && !user"
                 :item="menu.registration"
+                @click="click"
               />
               <global-navigation-item v-if="user"
                 :item="menu.settings"
+                @click="click"
               />
               <global-navigation-item v-if="user"
                 :item="menu.prices"
+                @click="click"
               />
               <global-navigation-item v-if="user && user.access && user.access.content"
                 :item="menu.content"
+                @click="click"
               />
             </div>
             <div class="global-navigation-sub-list__promo">
@@ -137,6 +147,10 @@
     },
 
     methods: {
+      click () {
+        this.toggleMenu();
+      },
+
       toggleMenu () {
         window.document.body.classList.toggle('open');
         this.$refs.navigation.classList.toggle('open');
