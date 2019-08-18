@@ -1,6 +1,6 @@
 {
   "name": "Vessna-Wedding",
-  "version": "0.0.1",
+  "version": "0.0.0-development",
   "engines": {
     "node": "10.x",
     "npm": "6.x"
@@ -21,7 +21,21 @@
     "dev:macos": "ttab 'mongod --dbpath ~/Documents/Mongo/Vessna-Wedding' && ttab 'npm run watch:server' && ttab 'npm run watch:client' && npm run dev",
     "dev:windows": "start \"\" powershell -NoExit -Command \"mongod --dbpath $(Resolve-Path ~/Documents/Mongo/Vessna-Wedding)\" && start powershell -NoExit -Command \"npm run watch:server\" && start powershell -NoExit -Command \"npm run watch:client\" && start powershell -NoExit -Command \"npm run dev\";",
     "debug": "cross-env NODE_ENV=development nodemon --inspect=0.0.0.0:9229 server",
-    "docs": "jsdoc2md server/routes/query/*.js > server/README.md"
+    "docs": "jsdoc2md server/routes/query/*.js > server/README.md",
+    "semantic-release": "semantic-release",
+    "cz": "git-cz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/followyouhome/vessna-wedding.git"
+  },
+  "release": {
+    "repositoryUrl": "https://github.com/followyouhome/vessna-wedding.git",
+    "branch": "master",
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/git"
+    ]
   },
   "dependencies": {
     "@babel/core": "^7.4.3",
@@ -109,22 +123,31 @@
     "webpack-sources": "^1.3.0"
   },
   "devDependencies": {
+    "@semantic-release/commit-analyzer": "github:semantic-release/commit-analyzer",
+    "@semantic-release/git": "github:semantic-release/git",
     "@storybook/addon-actions": "^5.0.10",
     "@storybook/addon-knobs": "^5.0.10",
     "@storybook/addon-notes": "^5.0.10",
     "@storybook/vue": "^5.0.10",
     "babel-eslint": "^10.0.1",
     "babel-preset-vue": "^2.0.2",
+    "cz-conventional-changelog": "^3.0.2",
     "eslint": "^5.16.0",
     "eslint-plugin-html": "^5.0.3",
     "eslint-plugin-vue": "^5.2.2",
     "jsdoc-to-markdown": "^4.0.1",
     "loader-utils": "^1.2.3",
     "nodemon": "^1.18.11",
+    "semantic-release": "^15.13.21",
     "storybook-vue-router": "^1.0.3",
     "vue-storybook": "git+https://github.com/followyouhome/vue-storybook.git"
   },
   "optionalDependencies": {
     "ttab": "^0.6.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
