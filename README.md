@@ -28,3 +28,5 @@ HTTPS encryption provided by Let'n'Crypt. Sometimes it's necessary to renew exis
 Also if website was runned into staging mode also need to remove provider with:
 
 * `cd ~/letsencrypt/etc/accounts/` and remove all child folders
+
+* test
