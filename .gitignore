@@ -1,4 +1,5 @@
 .env
+.mongo
 app.yaml
 npm-debug.log
 newrelic_agent.log
