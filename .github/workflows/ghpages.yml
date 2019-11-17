@@ -18,7 +18,7 @@ jobs:
     - name: Build storybook
       run: |
         npm ci
-        npm storybook:build
+        npm run storybook:build
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v2.5.0
       env:
