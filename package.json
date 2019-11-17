@@ -14,16 +14,14 @@
     "watch:client": "cross-env NODE_ENV=development webpack --config config/webpack.client.config.js --progress --hide-modules --watch",
     "watch:server": "cross-env NODE_ENV=development webpack --config config/webpack.server.config.js --progress --hide-modules --watch",
     "storybook": "start-storybook --port 9001 --static-dir ./ --config-dir ./src/storybook",
-    "lint": "eslint \"src/**\" --fix --ext .js --ext .vue --ignore-pattern *.webmanifest --ignore-pattern \"src/styles/*\"",
+    "lint": "eslint \"src/**\" --ext .js --ext .vue --ignore-pattern *.webmanifest --ignore-pattern \"src/styles/*\"",
     "postinstall": "npm run build",
     "start": "cross-env NODE_ENV=production node server",
     "dev": "cross-env NODE_ENV=development node server",
     "dev:macos": "ttab 'mongod --dbpath ~/Documents/Mongo/Vessna-Wedding' && ttab 'npm run watch:server' && ttab 'npm run watch:client' && npm run dev",
     "dev:windows": "start \"\" powershell -NoExit -Command \"mongod --dbpath $(Resolve-Path ~/Documents/Mongo/Vessna-Wedding)\" && start powershell -NoExit -Command \"npm run watch:server\" && start powershell -NoExit -Command \"npm run watch:client\" && start powershell -NoExit -Command \"npm run dev\";",
     "debug": "cross-env NODE_ENV=development nodemon --inspect=0.0.0.0:9229 server",
-    "docs": "jsdoc2md server/routes/query/*.js > server/README.md",
-    "semantic-release": "semantic-release",
-    "cz": "git-cz"
+    "docs": "jsdoc2md server/routes/query/*.js > server/README.md"
   },
   "repository": {
     "type": "git",
