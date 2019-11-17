@@ -30,3 +30,7 @@ Also if website was runned into staging mode also need to remove provider with:
 * `cd ~/letsencrypt/etc/accounts/` and remove all child folders
 
 * test
+
+# Future plans
+
+* Migration to [KeystoneJS v5](https://www.keystonejs.com/)
