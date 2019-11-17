@@ -9,6 +9,8 @@ jobs:
     strategy:
       matrix:
         node-version: [10.x]
+    env:
+      NODE_ENV: test
     steps:
     - uses: actions/checkout@master
     - name: Use Node.js ${{ matrix.node-version }}

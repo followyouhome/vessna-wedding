@@ -25,6 +25,7 @@ const config = {
       loader: 'sass-loader',
       options: {
         sourceMap: !isProd,
+        data: `$root: "${process.env.NODE_ENV === 'test' ? '/vessna-wedding' : ''}";`,
       },
     }, {
       loader: 'sass-resources-loader',
