@@ -22,6 +22,7 @@ const config = require('../../config');
 const uidCookie = require('../lib/uid-cookie');
 
 const isProd = process.env.NODE_ENV === 'production';
+const domain = process.env.DOMAIN || 'localhost';
 const resolve = file => path.resolve(__dirname, file);
 
 module.exports = app => {
@@ -108,7 +109,7 @@ module.exports = app => {
       url: req.url,
       amp: req.url.match('amp'),
       turbo: req.url.match('turbo'),
-      canonical: req.url.match('amp') ? req.url.replace(/amp\//, '') : req.url,
+      canonical: `${domain}${req.url.match('amp') ? req.url.replace(/amp\//, '') : req.url}`,
       cookie: req.headers.cookie,
     };
 

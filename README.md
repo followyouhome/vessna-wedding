@@ -33,4 +33,4 @@ Also if website was runned into staging mode also need to remove provider with:
 
 # Future plans
 
-* Migration to [KeystoneJS v5](https://www.keystonejs.com/)
+* [ ] Migration to [KeystoneJS v5](https://www.keystonejs.com/)
