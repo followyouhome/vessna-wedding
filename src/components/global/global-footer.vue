@@ -18,7 +18,7 @@
           <h5 class="footer__headline">Наша рассылка</h5>
           <div class="footer__subscribe">
             <p class="footer-copy">Подпишитесь, чтобы быть в курсе актуальных новостей</p>
-            <simple-button text="Подписаться" popup="popup-subscribe-form"/>
+            <simple-button popup="popup-subscribe-form">Подписаться</simple-button>
           </div>
         </b-col>
       </b-row>

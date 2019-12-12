@@ -10,11 +10,7 @@
         <span>{{contact.value}}</span>
       </p>
       <div class="promo-contact-card__button">
-        <simple-button
-          popup="popup-feedback-form"
-          type="block"
-          text="Напишите нам"
-        />
+        <simple-button popup="popup-feedback-form" block>Напишите нам</simple-button>
       </div>
     </div>
   </div>

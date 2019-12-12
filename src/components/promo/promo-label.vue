@@ -9,9 +9,8 @@
       </p>
       <simple-button v-if="item.button"
         class="promo-label_button"
-        :text="item.button.text"
         :href="item.button.href"
-      />
+      >{{item.button.text}}</simple-button>
     </div>
 </div>
 
