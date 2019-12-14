@@ -144,3 +144,28 @@ $RistrettoProRegular: 'RistrettoPro-Regular';
 }
 
 $FuturaPTLight: 'Futura PT Light';
+
+/**
+ * Apercu Bespoke
+ */
+@font-face {
+  font-family: 'Apercu Bespoke';
+  font-display: swap;
+  src: url("#{$root}/public/fonts/ApercuBespoke/ApercuBespoke-Regular.eot");
+  src: url("#{$root}/public/fonts/ApercuBespoke/ApercuBespoke-Regular.woff") format("woff"),
+       url("#{$root}/public/fonts/ApercuBespoke/ApercuBespoke-Regular.woff2") format("woff");
+  font-weight: normal;
+  font-style: normal
+}
+
+@font-face {
+  font-family: 'Apercu Bespoke';
+  font-display: swap;
+  src: url("#{$root}/public/fonts/ApercuBespoke/ApercuBespoke-Bold.eot");
+  src: url("#{$root}/public/fonts/ApercuBespoke/ApercuBespoke-Bold.woff") format("woff"),
+       url("#{$root}/public/fonts/ApercuBespoke/ApercuBespoke-Bold.woff2") format("woff");
+  font-weight: bold;
+  font-style: normal
+}
+
+$ApercuBespoke: 'Apercu Bespoke';
