@@ -31,13 +31,14 @@ const atoms = require.context("../components/atoms", true, /\.vue$/);
 const promo = require.context("../components/promo", true, /\.vue$/);
 const forms = require.context("../components/forms", true, /\.vue$/);
 const popup = require.context("../components/popup", true, /\.vue$/);
-const module = require.context("../components/module", true, /\.vue$/);
+const modules = require.context("../components/module", true, /\.vue$/);
+const globals = require.context("../components/global", true, /\.vue$/);
 
 addDecorator(StoryRouter());
 
 // Programatically register these stories
 function loadStories () {
-  [atoms, promo, forms, popup, module].forEach(group => {
+  [atoms, promo, forms, popup, modules, globals].forEach(group => {
     group.keys().forEach(filename => {
       registerStories(group, filename, storiesOf, {
         withKnobs,
