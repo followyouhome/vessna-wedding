@@ -3,7 +3,9 @@
     <global-loading v-if="loading"/>
     <global-announcement :announcement="settings.announcement" v-if="settings.announcement"/>
     <global-main-promo :promo="main_promo" v-if="main_promo"/>
-    <global-navigation :navigation="navigation" v-if="navigation"/>
+    <global-navigation-bar @toggle="toggle"/>
+    <global-navigation-desktop :navigation="navigation" v-if="navigation"/>
+    <global-navigation-mobile :navigation="navigation" v-if="navigation"/>
     <transition name="fade">
       <router-view class="global-router-view" @loading="onLoading" @loaded="onLoaded"></router-view>
     </transition>
@@ -18,7 +20,9 @@
   import GlobalFooter from '@/components/global/global-footer.vue';
   import GlobalLoading from '@/components/global/global-loading.vue';
   import GlobalMainPromo from '@/components/global/global-main-promo.vue';
-  import GlobalNavigation from '@/components/global/global-navigation/global-navigation.vue';
+  import GlobalNavigationBar from '@/components/global/global-navigation-bar.vue';
+  import GlobalNavigationMobile from '@/components/global/global-navigation-mobile.vue';
+  import GlobalNavigationDesktop from '@/components/global/global-navigation-desktop.vue';
   import GlobalAnnouncement from '@/components/global/global-announcement.vue';
   import GlobalPopupContainer from '@/components/global/global-popup-container';
   import CaptchaGoogle from '@/components/atoms/captcha-google.vue';
@@ -53,9 +57,11 @@
       'global-footer': GlobalFooter,
       'global-loading': GlobalLoading,
       'global-main-promo': GlobalMainPromo,
-      'global-navigation': GlobalNavigation,
       'global-announcement': GlobalAnnouncement,
       'global-popup-container': GlobalPopupContainer,
+      'global-navigation-bar': GlobalNavigationBar,
+      'global-navigation-mobile': GlobalNavigationMobile,
+      'global-navigation-desktop': GlobalNavigationDesktop,
     },
 
     asyncData ({ store, route }) {
@@ -118,6 +124,10 @@
     },
 
     methods: {
+      toggle() {
+        this.$refs.app.classList.toggle('app--toggle');
+      },
+
       onLoading () {
         this.loading = true;
       },
@@ -187,10 +197,14 @@
     flex-direction: column;
     min-height: 100%;
     left: 0;
-    transition: left cubic-bezier(0.4, 0.31, 0.59, 1.41) 0.5s;
+    transition: transform ease-in 0.3s;
 
     @media #{$tablet} {
-      padding-top: 60px;
+      padding-top: 54px;
+    }
+
+    &--toggle {
+      transform: translateX(-90%);
     }
   }
 

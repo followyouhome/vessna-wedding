@@ -1,6 +1,5 @@
 <template>
   <nav class="global-navigation" ref="navigation">
-    <global-navigation-mobile-bar @toggle="toggleMenu"/>
     <ul class="global-navigation-main-list" itemscope="" itemtype="https://www.schema.org/SiteNavigationElement">
       <global-navigation-item v-for="item in items"
         :key="item.name"
@@ -61,7 +60,6 @@
 <script>
   import Stickyfill from 'stickyfill';
   import GlobalNavigationItem from './global-navigation-item.vue';
-  import GlobalNavigationMobileBar from './global-navigation-mobile-bar';
 
   export default {
     name: 'GlobalNavigation',
@@ -70,7 +68,6 @@
 
     components: {
       'global-navigation-item': GlobalNavigationItem,
-      'global-navigation-mobile-bar': GlobalNavigationMobileBar,
     },
 
     data () {
@@ -148,12 +145,12 @@
 
     methods: {
       click () {
-        this.toggleMenu();
+        // this.toggleMenu();
       },
 
       toggleMenu () {
-        window.document.body.classList.toggle('open');
-        this.$refs.navigation.classList.toggle('open');
+        // window.document.body.classList.toggle('open');
+        // this.$refs.navigation.classList.toggle('open');
       },
     },
 
@@ -187,19 +184,7 @@
     }
 
     @media #{$tablet} {
-      position: fixed;
-      height: $navigation-bar-height;
-      left: 0;
-      background: $white;
-
-      &:hover + * {
-        opacity: 1;
-      }
-
-      &.open {
-        overflow-y: scroll;
-        height: 100%;
-      }
+      display: none;
     }
   }
 
