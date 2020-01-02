@@ -17,9 +17,7 @@ const config = {
     }, {
       loader: 'postcss-loader',
       options: {
-          plugins: () => [require('autoprefixer')({
-              'browsers': ['> 1%', 'last 2 versions'],
-          })],
+          plugins: () => [require('autoprefixer')],
       },
     }, {
       loader: 'sass-loader',
@@ -37,7 +35,8 @@ const config = {
           resolve('../src/stylez/import.scss'),
           resolve('../src/styles/media.scss'),
           resolve('../src/styles/fonts.scss'),
-        ],
+          ...(process.env.TARGET !== 'amp' ? [resolve('../node_modules/bootstrap/dist/css/bootstrap.css')] : [])
+        ]
       },
     },
   ],
