@@ -9,6 +9,15 @@
       :width="image.width"
       :height="image.height"
       layout="responsive"
+      :srcset="`
+        ${url}?w=1920 1920w,
+        ${url}?w=1680 1680w,
+        ${url}?w=1280 1280w,
+        ${url}?w=1024 1024w,
+        ${url}?w=768 768w,
+        ${url}?w=640 640w,
+        ${url}?w=480 480w,
+      `"
     />
   </figure>
   <figure
