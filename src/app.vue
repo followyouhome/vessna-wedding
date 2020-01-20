@@ -3,9 +3,7 @@
     <global-loading v-if="loading"/>
     <global-announcement :announcement="settings.announcement" v-if="settings.announcement"/>
     <global-main-promo :promo="main_promo" v-if="main_promo"/>
-    <global-navigation-bar @toggle="toggle"/>
-    <global-navigation-desktop :navigation="navigation" v-if="navigation"/>
-    <global-navigation-mobile :navigation="navigation" v-if="navigation"/>
+    <global-navigation :navigation="navigation"/>
     <transition name="fade">
       <router-view class="global-router-view" @loading="onLoading" @loaded="onLoaded"></router-view>
     </transition>
@@ -20,9 +18,7 @@
   import GlobalFooter from '@/components/global/global-footer.vue';
   import GlobalLoading from '@/components/global/global-loading.vue';
   import GlobalMainPromo from '@/components/global/global-main-promo.vue';
-  import GlobalNavigationBar from '@/components/global/global-navigation-bar.vue';
-  import GlobalNavigationMobile from '@/components/global/global-navigation-mobile.vue';
-  import GlobalNavigationDesktop from '@/components/global/global-navigation-desktop.vue';
+  import GlobalNavigation from '@/components/global/global-navigation.vue';
   import GlobalAnnouncement from '@/components/global/global-announcement.vue';
   import GlobalPopupContainer from '@/components/global/global-popup-container';
   import CaptchaGoogle from '@/components/atoms/captcha-google.vue';
@@ -59,9 +55,7 @@
       'global-main-promo': GlobalMainPromo,
       'global-announcement': GlobalAnnouncement,
       'global-popup-container': GlobalPopupContainer,
-      'global-navigation-bar': GlobalNavigationBar,
-      'global-navigation-mobile': GlobalNavigationMobile,
-      'global-navigation-desktop': GlobalNavigationDesktop,
+      'global-navigation': GlobalNavigation,
     },
 
     asyncData ({ store, route }) {
@@ -75,8 +69,8 @@
           namespace: 'settings',
           endpoint: 'settings',
           params: {
-            turbo: !!route.path.match('turbo'),
-            amp: !!route.path.match('amp'),
+            turbo: !!route.query.turbo,
+            amp: !!route.query.amp,
           },
         }),
 
@@ -89,7 +83,7 @@
 
     data () {
       return {
-        loading: true,
+        loading: !this.$route.query.amp,
       };
     },
 
@@ -172,10 +166,11 @@
 </script>
 
 <style lang="scss">
-  @import '~bootstrap/dist/css/bootstrap';
+  // @import '~bootstrap/dist/css/bootstrap';
 
   html {
     height: 100%;
+    background: $gray1;
   }
 
   body {
@@ -241,4 +236,36 @@
     background: #c9b486;
     color: #fff
   }
+
+  body {
+  	position: relative;
+  	width: 100%;
+  	transition: left .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+body.body--swipe-opened {
+	position: fixed;
+	left: 80%;
+
+	@media #{$large} {
+		left: 25%;
+	}
+
+	@media #{$medium} {
+		left: 30%;
+	}
+
+	@media #{$tablet} {
+		left: 50%;
+	}
+
+	@media #{$phablet} {
+		left: 70%;
+	}
+}
+
+body.body--swipe-closed {
+	position: relative;
+	left: 0;
+}
 </style>
