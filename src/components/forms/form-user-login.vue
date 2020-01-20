@@ -82,11 +82,11 @@
   .form-user-login {
     margin: 1rem;
     padding: 16px;
-    width: 337px !important;
+    width: 337px;
     border: 1px solid $gray3;
 
     @media #{$tablet} {
-      margin: 1rem auto !important;
+      margin: 1rem auto;
       max-width: 600px;
       width: auto;
       text-align: center;
