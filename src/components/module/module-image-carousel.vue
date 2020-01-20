@@ -129,13 +129,11 @@
     }
 
     .flickity-viewport {
-      height: 100% !important;
-
-
+      height: 100%;
     }
 
     .flickity-slider {
-      height: 100% !important;
+      height: 100%;
     }
 
     .flickity-prev-next-button {
@@ -170,10 +168,10 @@
     }
 
     .image-deferred {
-      padding-top: 0 !important;
+      padding-top: 0;
 
       @media #{$phablet} {
-        padding-top: 150% !important;
+        padding-top: 150%;
       }
     }
   }
