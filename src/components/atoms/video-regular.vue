@@ -31,6 +31,7 @@
       v-show="show"
       ref="video"
       class="video-regular__video"
+      playsinline
       autoplay
       loop
       muted
