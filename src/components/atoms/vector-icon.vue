@@ -17,7 +17,7 @@
   [class*="vector-icon-"]:before,
   [class^=vector-icon-]:before {
     display: inline-block;
-    font-family: icomoon!important;
+    font-family: icomoon;
     speak: none;
     font-style: normal;
     font-weight: 400;
