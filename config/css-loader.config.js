@@ -35,8 +35,7 @@ const config = {
           resolve('../src/stylez/import.scss'),
           resolve('../src/styles/media.scss'),
           resolve('../src/styles/fonts.scss'),
-          ...(process.env.TARGET !== 'amp' ? [resolve('../node_modules/bootstrap/dist/css/bootstrap.css')] : [])
-        ]
+        ],
       },
     },
   ],

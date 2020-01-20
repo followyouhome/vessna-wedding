@@ -13,6 +13,10 @@ Vue.use(VueCookie);
 Vue.use(VueLazyload);
 Vue.use(BootstrapVue);
 
+if (process.env.TARGET !== 'amp') {
+  require('bootstrap/dist/css/bootstrap.css');
+}
+
 export function createApp () {
 
   const router = createRouter(store);
