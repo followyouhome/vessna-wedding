@@ -116,7 +116,7 @@
     cursor: zoom-in;
 
     img {
-      height: 100% !important;
+      height: 100%;
     }
   }
 </style>
