@@ -24,8 +24,8 @@
 		data () {
 			return {
 				label: {
-					headline: '#vessna2018',
-		      copy: 'К открытию сезона 2019',
+					headline: '#vessna2019',
+		      copy: 'К открытию сезона 2020',
 		      button: {
 		        text: 'Открыть Instagram',
 		        href: '#',

@@ -103,7 +103,7 @@ module.exports = (app, base) => {
                       .model
                       .find()
                       .populate('group')
-                      .where('group', '5cb9fd5b977f763c18218db4')
+                      .where('group', '5e30d113146a59044fab301f')
                       .sort({ sortOrder: 1 });
 
       query.exec((err, result) => {
