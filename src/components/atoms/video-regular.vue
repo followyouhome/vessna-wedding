@@ -36,7 +36,7 @@
       loop
       muted
       preload="none"
-      :src="webm.url"
+      :src="mp4.url"
     >
       <source
         v-if="webm.url"
