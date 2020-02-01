@@ -1,5 +1,9 @@
 <template>
   <header v-bind:class="['global-main-promo', align]" v-if="promo.media != 'null'">
+    <div class="global-main-promo__wrapper">
+      <image-deferred v-bind:image="image" v-if="promo.media == 'image'"></image-deferred>
+      <video-regular v-bind:promo="promo" v-if="promo.media == 'video'"></video-regular>
+    </div>
     <div class="global-main-promo__hgroup" v-if="promo.headline || promo.subline ">
       <div class="global-main-promo__hgroup__content">
         <div class="global-main-promo__hgroup__wrapper">
@@ -8,10 +12,6 @@
           <h2 v-html="promo.subline"></h2>
         </div>
       </div>
-    </div>
-    <div class="global-main-promo__wrapper">
-      <image-deferred v-bind:image="image" v-if="promo.media == 'image'"></image-deferred>
-      <video-regular v-bind:promo="promo" v-if="promo.media == 'video'"></video-regular>
     </div>
   </header>
 </template>
@@ -109,11 +109,11 @@
       }
 
       @media #{$phablet} {
-        padding-top: 45%;
+        padding-top:0%;
       }
 
       @media #{$mobile} {
-        padding-top: 45%;
+        padding-top: 0%;
       }
     }
 
@@ -134,6 +134,10 @@
     width: 100%;
     top: 0;
     z-index: $z-default;
+
+    @media #{$phablet} {
+      position: static;
+    }
   }
 
   .global-main-promo__hgroup {
@@ -151,7 +155,8 @@
     }
 
     @media #{$phablet} {
-      width: 60vw;
+      position: static;
+      width: 100%;
     }
 
     .global-main-promo--hgroup-left & {
@@ -162,7 +167,7 @@
       }
 
       @media #{$phablet} {
-        left: 5%;
+        left: 0%;
       }
 
       @media #{$mobile} {
@@ -184,7 +189,7 @@
       }
 
       @media #{$phablet} {
-        right: 5%;
+        right: 0%;
       }
 
       @media #{$mobile} {
@@ -227,6 +232,8 @@
     background: rgba(255,255,255,0.9);
 
     @media #{$phablet} {
+      width: 100%;
+      background: $gray2;
       font-size: 30px;
     }
 
