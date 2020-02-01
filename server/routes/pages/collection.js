@@ -63,11 +63,16 @@ module.exports = (app, base) => {
                       .sort('sortOrder');
 
       query.exec((err, result) => {
-        output.collections = {};
+        output.actual = {};
+        output.archive = {};
 
         for (let collection of result) {
           if (collection.type === FILTER[req.query.slug]) {
-            output.collections[collection.slug] = collectionFormat(collection);
+            if (collection.state === 'published') {
+              output.actual[collection.slug] = collectionFormat(collection);
+            } else if (collection.state === 'archived')  {
+              output.archive[collection.slug] = collectionFormat(collection);
+            }
           }
         }
 

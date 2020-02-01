@@ -1,7 +1,8 @@
 <template>
     <div>
-      <module-article v-if="article" v-bind:article="article"></module-article>
-      <module-promo-cards v-if="collections" v-bind:items="collections"></module-promo-cards>
+      <module-promo-cards v-if="actual" :items="actual"/>
+      <module-article v-if="article" :article="article"/>
+      <module-selected-collections v-if="archive" :items="archive"/>
     </div>
 </template>
 
@@ -9,6 +10,7 @@
   import Page from '@/components/pages/page.vue';
   import ModuleArticle from '@/components/module/module-article.vue';
   import ModulePromoCards from '@/components/module/module-promo-cards.vue';
+  import ModuleSelectedCollections from '@/components/module/module-selected-collections.vue';
 
   import store from '@/store/';
 
@@ -27,6 +29,7 @@
     extends: Page,
 
     components: {
+      'module-selected-collections': ModuleSelectedCollections,
       'module-promo-cards': ModulePromoCards,
       'module-article': ModuleArticle,
     },
@@ -51,9 +54,19 @@
         return this.$store.state.page.content;
       },
 
-      collections () {
-        return this.$store.state.page.collections;
+      /**
+       * List of actual collection displayed at the top of the page
+       */
+      actual () {
+        return this.$store.state.page.actual;
       },
+
+      /**
+       * List of archived collections displayed at the bottom of the page
+       */
+      archive () {
+        return this.$store.state.page.archive;
+      }
     },
   };
 </script>
