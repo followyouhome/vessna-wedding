@@ -147,6 +147,9 @@
 	}
 
 	.module-article__isotope {
+		font-size: 0;
+		letter-spacing: 0;
+		
 		img {
 			margin: 0.5%;
 			width: 24%;

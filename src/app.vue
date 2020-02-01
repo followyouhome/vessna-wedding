@@ -175,7 +175,7 @@
 
   body {
     height: 100%;
-    background: $gray2;
+    background: $gray1 !important;
   }
 
   h1, h2, h3, h4, h5, h6, ul {
@@ -193,10 +193,6 @@
     min-height: 100%;
     left: 0;
     transition: transform ease-in 0.3s;
-
-    @media #{$tablet} {
-      padding-top: 54px;
-    }
 
     &--toggle {
       transform: translateX(-90%);
