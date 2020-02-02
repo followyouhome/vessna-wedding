@@ -6,9 +6,9 @@
     <module-article
       :article="article"
     />
-    <module-dealers-map
+    <!-- <module-dealers-map
       :dealers="dealers"
-    />
+    /> -->
     <module-call-to-action
       :content="callToAction.content"
       :button="callToAction.button"
