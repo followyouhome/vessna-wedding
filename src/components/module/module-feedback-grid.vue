@@ -28,7 +28,7 @@
 		      copy: 'К открытию сезона 2020',
 		      button: {
 		        text: 'Открыть Instagram',
-		        href: '#',
+		        href: 'https://instagram.com/vessna_dress',
 		      },
 				},
 			};
