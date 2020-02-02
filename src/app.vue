@@ -3,12 +3,13 @@
     <global-loading v-if="loading"/>
     <global-announcement :announcement="settings.announcement" v-if="settings.announcement"/>
     <global-main-promo :promo="main_promo" v-if="main_promo"/>
-    <global-navigation :navigation="navigation"/>
+    <global-navigation :navigation="navigation" :settings="settings"/>
     <transition name="fade">
       <router-view class="global-router-view" @loading="onLoading" @loaded="onLoaded"></router-view>
     </transition>
     <global-footer/>
     <global-popup-container :popup="popup" v-show="popup"/>
+    {{settings}}
   </div>
 </template>
 

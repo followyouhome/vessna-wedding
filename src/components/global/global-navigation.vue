@@ -39,12 +39,12 @@
               </router-link>
             </li>
             <li class="navigation__secondary-list__item">
-              <router-link class="navigation__secondary-list__item__link" to="/user/login" @click.native="subitemClick" itemprop="url">
+              <router-link class="navigation__secondary-list__item__link" to="/user/login" @click.native="subitemClick" itemprop="url" v-if="settings.login">
                 <span class="navigation__secondary-text">Войти в кабинет</span>
               </router-link>
             </li>
             <li class="navigation__secondary-list__item">
-              <router-link class="navigation__secondary-list__item__link" to="/user/registartion" @click.native="subitemClick" itemprop="url">
+              <router-link class="navigation__secondary-list__item__link" to="/user/registartion" @click.native="subitemClick" itemprop="url" v-if="settings.registration">
                 <span class="navigation__secondary-text">Зарегистрироваться</span>
               </router-link>
             </li>
@@ -62,7 +62,7 @@
   export default {
     name: 'GlobalNavigation',
 
-    props: ['navigation'],
+    props: ['navigation', 'settings'],
 
     computed: {
       mobile() {
