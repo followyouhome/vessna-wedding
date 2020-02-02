@@ -8,6 +8,11 @@
         </router-link>
         <div class="navigation__bar" v-if="item.items">
           <ul class="navigation__secondary-list">
+            <li class="navigation__secondary-list__item">
+              <router-link class="navigation__secondary-list__item__link" :to="item.route" @click.native="subitemClick" itemprop="url">
+                <span class="navigation__secondary-text">Перейти</span>
+              </router-link>
+            </li>
             <li class="navigation__secondary-list__item" v-for="subitem in item.items">
               <router-link class="navigation__secondary-list__item__link" :to="subitem.route" @click.native="subitemClick" itemprop="url">
                 <span class="navigation__secondary-text">{{subitem.name}}</span>
