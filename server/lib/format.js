@@ -19,6 +19,7 @@ module.exports.mailFormat = body => {
       Тема: ${body.topic || 'Нет'}
       Город: ${body.city || 'Нет'}
       Email: ${body.email || 'Нет'}
+      Салон: ${body.showroom || 'Нет'}
       Страна: ${body.country || 'Нет'}
       Телефон: ${body.phone || 'Нет'}
       Сообщение: ${body.message || 'Нет'}

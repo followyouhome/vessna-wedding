@@ -18,11 +18,14 @@
           </b-col>
         </b-row>
         <b-row class="mt-4 mb-4">
-          <b-col cols="12" md="6" class="my-1">
+          <b-col cols="12" md="4" class="my-1">
             <b-form-input v-model="form.country" type="text" placeholder="Страна" required/>
           </b-col>
-          <b-col cols="12" md="6" class="my-1">
+          <b-col cols="12" md="4" class="my-1">
             <b-form-input v-model="form.city" type="text" placeholder="Город" required/>
+          </b-col>
+          <b-col cols="12" md="4" class="my-1">
+            <b-form-input v-model="form.showroom" type="text" placeholder="Салон" required/>
           </b-col>
         </b-row>
       </div>
