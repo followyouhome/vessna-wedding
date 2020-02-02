@@ -1,7 +1,11 @@
 <template>
-    <div>
+    <div style="background: white;">
       <module-promo-cards v-if="actual" :items="actual"/>
       <module-article v-if="article" :article="article"/>
+      <module-call-to-action
+        :content="callToAction.content"
+        :button="callToAction.button"
+      />
       <module-selected-collections v-if="archive" :items="archive"/>
     </div>
 </template>
@@ -10,6 +14,7 @@
   import Page from '@/components/pages/page.vue';
   import ModuleArticle from '@/components/module/module-article.vue';
   import ModulePromoCards from '@/components/module/module-promo-cards.vue';
+  import ModuleCallToAction from '@/components/module/module-call-to-action.vue';
   import ModuleSelectedCollections from '@/components/module/module-selected-collections.vue';
 
   import store from '@/store/';
@@ -29,9 +34,10 @@
     extends: Page,
 
     components: {
-      'module-selected-collections': ModuleSelectedCollections,
-      'module-promo-cards': ModulePromoCards,
       'module-article': ModuleArticle,
+      'module-promo-cards': ModulePromoCards,
+      'module-call-to-action': ModuleCallToAction,
+      'module-selected-collections': ModuleSelectedCollections,
     },
 
     asyncData ({ store, route }) {
@@ -47,6 +53,21 @@
 
     beforeRouteUpdate (to, from, next) {
       __VUE_ENV__ === 'server' ? next() : fetch(store, to).then(() => next());
+    },
+
+    data() {
+      return {
+        callToAction: {
+          content: {
+            headline: 'Готовы стать нашим партнёром?',
+            subline: 'Заполните анкету и наш менеджер свяжется с вами',
+          },
+          button: {
+            action: '',
+            text: 'Заполните анкету',
+          },
+        },
+      }
     },
 
     computed: {
