@@ -62,8 +62,8 @@
           promo: {
     		    media: 'image',
     		    image: {
-    		      secure_url: '/images/pages/vessna-dress.jpg',
-    		      url: '/images/pages/vessna-dress.jpg',
+    		      secure_url: '/images/pages/vessna-wedding.jpg',
+    		      url: '/images/pages/vessna-wedding.jpg',
     		      height: 1280,
     		      width: 1920,
     		    },
@@ -77,8 +77,8 @@
           promo: {
     		    media: 'image',
     		    image: {
-    		      secure_url: '/images/pages/vessna-wedding.jpg',
-    		      url: '/images/pages/vessna-wedding.jpg',
+    		      secure_url: '/images/pages/vessna-dress.jpg',
+    		      url: '/images/pages/vessna-dress.jpg',
     		      height: 1280,
     		      width: 1920,
     		    },
