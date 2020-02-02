@@ -9,7 +9,6 @@
     </transition>
     <global-footer/>
     <global-popup-container :popup="popup" v-show="popup"/>
-    {{settings}}
   </div>
 </template>
 
