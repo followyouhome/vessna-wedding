@@ -89,7 +89,7 @@
         lazyLoad: false,
         percentPosition: true,
         prevNextButtons: true,
-        pageDots: true,
+        pageDots: false,
         resize: true,
         setGallerySize: true,
         wrapAround: false,
@@ -105,12 +105,17 @@
 </script>
 
 <style lang="scss">
+  .popup-image-carousel {
+    overflow: scroll !important;
+  }
+
   .module-dress-info {
     display: flex;
     height: 100%;
     overflow: hidden;
 
     @media #{$phablet} {
+      height: auto;
       padding: 0;
       flex-direction: column;
       align-items: center;
@@ -121,11 +126,12 @@
   .module-dress-info__carousel {
     position: relative;
     width: 50%;
+    height: 100%;
     overflow: hidden;
 
     @media #{$phablet} {
-      min-height: 600px;
       width: 100%;
+      height: 60vh;
     }
 
     .flickity-viewport {
@@ -177,15 +183,21 @@
   }
 
   .module-dress-info__image {
+    height: 100%;
     width: 100%;
 
     .image-deferred {
+      width: 100%;
       height: 100%;
-    }
-  }
+      padding-top: 0 !important;
 
-  .module-dress-info__image {
-    height: 100%;
+      img {
+        height: 100%;
+        width: auto;
+        left: 0;
+        right: 0;
+      }
+    }
   }
 
   .module-dress-info__info {
