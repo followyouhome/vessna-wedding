@@ -113,7 +113,7 @@
       if (__VUE_ENV__ === 'client') {
         this.setYandexMetrikaChecker();
         this.setServiceWorker();
-        this.setCouponPopup();
+        // this.setCouponPopup();
       }
     },
 
