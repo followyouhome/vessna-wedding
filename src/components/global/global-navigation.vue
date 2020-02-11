@@ -39,13 +39,23 @@
               </router-link>
             </li>
             <li class="navigation__secondary-list__item">
-              <router-link class="navigation__secondary-list__item__link" to="/user/login" @click.native="subitemClick" itemprop="url" v-if="settings.login">
+              <router-link class="navigation__secondary-list__item__link" to="/user/login" @click.native="subitemClick" itemprop="url" v-if="settings.login && !user">
                 <span class="navigation__secondary-text">Войти в кабинет</span>
               </router-link>
             </li>
             <li class="navigation__secondary-list__item">
-              <router-link class="navigation__secondary-list__item__link" to="/user/registartion" @click.native="subitemClick" itemprop="url" v-if="settings.registration">
+              <router-link class="navigation__secondary-list__item__link" to="/user/registartion" @click.native="subitemClick" itemprop="url" v-if="settings.registration && !user">
                 <span class="navigation__secondary-text">Зарегистрироваться</span>
+              </router-link>
+            </li>
+            <li class="navigation__secondary-list__item">
+              <router-link class="navigation__secondary-list__item__link" to="/user/settings" @click.native="subitemClick" itemprop="url" v-if="user">
+                <span class="navigation__secondary-text">Настройки</span>
+              </router-link>
+            </li>
+            <li class="navigation__secondary-list__item">
+              <router-link class="navigation__secondary-list__item__link" to="/user/logout" @click.native="subitemClick" itemprop="url" v-if="user">
+                <span class="navigation__secondary-text">Выход</span>
               </router-link>
             </li>
           </ul>
@@ -67,6 +77,10 @@
     computed: {
       mobile() {
         return !!isMobile.any;
+      },
+
+      user() {
+        return this.$store && this.$store.state && this.$store.state.user && this.$store.state.user.uid;
       }
     },
 
