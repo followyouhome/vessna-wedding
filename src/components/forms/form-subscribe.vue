@@ -42,6 +42,7 @@
         action: 'subscribe',
         form: {
           email: '',
+          subscribe: true,
         },
         state: {
           checked: false,
