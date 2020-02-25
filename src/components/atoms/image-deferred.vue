@@ -77,7 +77,7 @@
       },
 
       width () {
-        return __VUE_ENV__ === 'client' ? this.$el && this.$el.offsetWidth * this.pixel : null;
+        return __VUE_ENV__ === 'client' ? this.$el && Math.ceil(this.$el.offsetWidth * this.pixel) : null;
       },
 
       src () {
