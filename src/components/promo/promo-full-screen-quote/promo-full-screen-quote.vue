@@ -37,7 +37,7 @@
 
 <script>
   import InView from 'in-view';
-  import Promo from './promo';
+  import Promo from '../promo';
 
   export default {
     name: 'PromoFullScreenQuote',
@@ -122,16 +122,3 @@
     }
   }
 </style>
-
-<story group="Promos" name="Full Screen Quote">
-  <promo-full-screen-quote
-    :item="{
-      text1: 'Мы будем на',
-      text2: 'Moscow Wedding Fashion',
-      text3: '1-3 Марта 2017',
-      video_webm: 'https://vessna.blob.core.windows.net/vessna/vessna-quote.webm',
-      video_mp4: 'https://vessna.blob.core.windows.net/vessna/vessna-quote.mp4',
-      video_ogv: 'https://vessna.blob.core.windows.net/vessna/vessna-quote.ogv',
-    }"
-  />
-</story>

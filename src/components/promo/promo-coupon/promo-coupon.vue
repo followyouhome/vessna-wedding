@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import Promo from './promo';
+  import Promo from '../promo';
 
   export default {
     name: 'PromoCoupon',
@@ -90,13 +90,3 @@
     text-align: center;
   }
 </style>
-
-<story group="Promos" name="Coupon">
-  <promo-coupon
-    :item="{
-      headline: 'Это наш сайт для оптовых клиентов',
-      subline: 'Если ты в поисках своего платья забрела аж сюда - мы дарим промокод на скидку в 10% в нашем интернет-магазине',
-      copy: 'Потому что любые старания должны быть вознаграждены'
-    }"
-  />
-</story>

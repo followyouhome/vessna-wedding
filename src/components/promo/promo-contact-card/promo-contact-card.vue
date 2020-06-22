@@ -75,18 +75,3 @@
     margin-top: 30px;
   }
 </style>
-
-<story group="Promos" name="Contact Card">
-  <promo-contact-card
-    :item="{
-      name: 'ООО Вектор',
-      contacts: [{
-        type: 'phone',
-        value: '+375 29 228 77 27'
-      }, {
-        type: 'email',
-        value: 'test@mail.com'
-      }]
-    }"
-  />
-</story>

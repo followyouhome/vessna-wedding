@@ -67,16 +67,3 @@
     background: $black;
   }
 </style>
-
-<story group="Promos" name="Label">
-  <promo-label
-    :item="{
-      headline: 'For The \'Gram',
-      copy: 'Подборка лучших фото за сезон 2018 года',
-      button: {
-        text: 'Открыть Instagram',
-        href: '#',
-      },
-    }"
-  />
-</story>

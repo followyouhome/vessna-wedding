@@ -10,7 +10,7 @@
 </template>
 
 <script>
-	import Promo from './promo';
+	import Promo from '../promo';
 
 	export default {
 		name: 'PromoBrand',
@@ -62,26 +62,3 @@
     color: $white;
   }
 </style>
-
-<story group="Promos" name="Brand">
-	<promo-brand
-		:item="{
-		  promo: {
-		    media: 'image',
-		    image: {
-		      secure_url: '/images/vessna-wedding-2018.jpg',
-		      url: '/images/vessna-wedding-2018.jpg',
-		      height: 1280,
-		      width: 1920,
-		    },
-		    headline: 'Vessna Dress',
-		    alt: ''
-		  },
-		  route: {
-		    params: {
-		      to: '#'
-		    }
-		  }
-		}"
-	/>
-</story>

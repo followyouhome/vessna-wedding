@@ -65,28 +65,3 @@
 		}
 	}
 </style>
-
-<story group="Promos" name="Collection">
-  <promo-collection
-    :item="{
-      promo: {
-        media: 'image',
-        image: {
-          width: 1920,
-          height: 1200,
-          resource_type: 'image',
-          url: 'http://vessna.wedding/images/vessna-2019-preview.jpg',
-        },
-        text: '',
-        subline: '',
-        headline: '<span class=\'font-peignot\'>Preview 2019</span>',
-        alt: ''
-      },
-      route: {
-        params: {
-          to: '#'
-        },
-      }
-    }"
-  />
-</story>
