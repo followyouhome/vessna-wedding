@@ -7,7 +7,7 @@
 </template>
 
 <script>
-	import PromoCollection from '@/components/promo/promo-collection.vue';
+	import { PromoCollection } from '@/components/promo';
 
 	export default {
 		name: 'ModuleSelectedCollections',

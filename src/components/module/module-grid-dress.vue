@@ -7,7 +7,7 @@
 
 <script>
   import ModuleGrid from '@/components/module/module-grid';
-  import PromoDress from '@/components/promo/promo-dress.vue';
+  import { PromoDress } from '@/components/promo';
 
   export default {
     name: 'ModuleGridDress',

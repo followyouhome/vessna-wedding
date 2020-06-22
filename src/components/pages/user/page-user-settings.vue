@@ -8,7 +8,7 @@
 <script>
   import Page from '@/components/pages/page.vue';
   import ModuleArticle from '@/components/module/module-article.vue';
-  import FormUserSettings from '@/components/forms/form-user-settings.vue';
+  import { FormUserSettings } from '@/components/forms';
 
   import store from '../../../store/';
 

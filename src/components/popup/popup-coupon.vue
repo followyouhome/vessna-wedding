@@ -8,7 +8,7 @@
 
 <script>
   import Popup from './popup.vue';
-  import PromoCoupon from '@/components/promo/promo-coupon';
+  import { PromoCoupon } from '@/components/promo';
 
   export default {
     name: 'PopupCooperationForm',
@@ -39,7 +39,3 @@
     border: none;
   }
 </style>
-
-<story group="Popups" name="Coupon">
-  <popup-coupon/>
-</story>

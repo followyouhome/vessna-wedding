@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import PromoContactCard from '@/components/promo/promo-contact-card';
+  import { PromoContactCard } from '@/components/promo';
 
   export default {
     name: 'module-contact-info',

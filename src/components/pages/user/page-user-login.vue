@@ -9,8 +9,7 @@
 <script>
   import Page from '@/components/pages/page.vue';
   import ModuleArticle from '@/components/module/module-article.vue';
-  import FormUserLogin from '@/components/forms/form-user-login.vue';
-  import FormUserLogout from '@/components/forms/form-user-logout.vue';
+  import { FormUserLogin, FormUserLogout } from '@/components/forms';
 
   import store from '../../../store/';
 

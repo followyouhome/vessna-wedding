@@ -8,7 +8,7 @@
 
 <script>
   import Popup from './popup.vue';
-  import FormUserLogin from '@/components/forms/form-user-login';
+  import { FormUserLogin } from '@/components/forms';
 
   export default {
     name: 'popup-login',
@@ -44,7 +44,3 @@
     border: none;
   }
 </style>
-
-<story group="Popups" name="Login">
-  <popup-login/>
-</story>

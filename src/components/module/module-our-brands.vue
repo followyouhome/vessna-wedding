@@ -7,7 +7,7 @@
 </template>
 
 <script>
-	import PromoBrand from '@/components/promo/promo-brand.vue';
+	import { PromoBrand } from '@/components/promo';
 
 	export default {
 		name: 'ModuleOurBrands',
@@ -42,11 +42,3 @@
 
   }
 </style>
-
-<story group="Modules" name="Feedback Grid">
-	<module-our-brands
-		:brands="[{
-
-		}]"
-	/>
-</story>

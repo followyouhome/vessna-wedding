@@ -15,7 +15,7 @@
   import ModuleRelatedPosts from '@/components/module/module-related-posts.vue';
   import ModuleFeedbackGrid from '@/components/module/module-feedback-grid.vue';
   import ModuleSelectedCollections from '@/components/module/module-selected-collections.vue';
-  import PromoFullScreenQuote from '@/components/promo/promo-full-screen-quote.vue';
+  import { PromoFullScreenQuote } from '@/components/promo';
 
   import store from '../../store/';
 

@@ -7,7 +7,7 @@
 
 <script>
   import ModuleGrid from './module-grid';
-  import PromoNews from '../promo/promo-news.vue';
+  import { PromoNews } from '@/components/promo';
 
   export default {
     name: 'ModuleGridNews',

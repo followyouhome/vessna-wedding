@@ -9,7 +9,7 @@
 <script>
 	import isMobile from 'ismobilejs';
 
-	import PromoTopical from '../promo/promo-topical.vue';
+	import { PromoTopical } from '@/components/promo';
 
 	const POST_LIMIT = 7;
 

@@ -8,7 +8,7 @@
 
 <script>
   import Popup from './popup.vue';
-  import FormUserRegistration from '@/components/forms/form-user-registration';
+  import { FormUserRegistration } from '@/components/forms';
 
   export default {
     name: 'popup-signup',
@@ -44,7 +44,3 @@
     border: none;
   }
 </style>
-
-<story group="Popups" name="Signup">
-  <popup-signup/>
-</story>
