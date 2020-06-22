@@ -27,18 +27,13 @@ $title:		rgb(64, 64, 64);
 $red: rgb(239,83,80);
 $green: rgb(76,175,80);
 
-
-
 $navigationBackground: 			$white;
 $navigationHoverBackground:		$dark;
-
 
 $vkShare: rgb(76, 112, 157);
 $googleShare: rgb(196, 0, 5);
 $twitterShare: rgb(215, 242, 252);
 $facebookShare: rgb(59, 89, 153);
-
-
 
 $promoHightlight:		$yellow;
 $promoBackground:		$white;
@@ -66,3 +61,11 @@ $vkBackground: rgb(88, 126, 159);
 $facebookBackground: rgb(61, 91, 149);
 $okBackground: rgb(245, 147, 16);
 $googleBackground: rgb(210, 62, 48);
+
+
+:export {
+  brown: $brown;
+  yellow:	$yellow;
+  yellow2: 	$yellow2;
+  yellow3:	$yellow3;
+}
