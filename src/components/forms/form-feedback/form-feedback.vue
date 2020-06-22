@@ -1,12 +1,12 @@
 <template>
   <v-form @success="success" @failure="failure">
     <template slot='header'>
-      <h3 class="form__headline">Заявка на сотрудничество</h3>
+      <h3 class="form__headline">Форма обратной связи</h3>
     </template>
     <template slot='body'>
-      <div class="form-cooperation__group">
+      <div class="form-feedback__group">
         <h4 class="form__subline">Ваши контактные данные</h4>
-        <b-row class="mt-4 mb-4">
+        <b-row class="my-4">
           <b-col cols="12" md="4" class="my-1">
             <b-form-input v-model="form.name" type="text" placeholder="Имя" required/>
           </b-col>
@@ -18,43 +18,27 @@
           </b-col>
         </b-row>
         <b-row class="mt-4 mb-4">
-          <b-col cols="12" md="4" class="my-1">
+          <b-col cols="12" md="6" class="my-1">
             <b-form-input v-model="form.country" type="text" placeholder="Страна" required/>
           </b-col>
-          <b-col cols="12" md="4" class="my-1">
+          <b-col cols="12" md="6" class="my-1">
             <b-form-input v-model="form.city" type="text" placeholder="Город" required/>
           </b-col>
-          <b-col cols="12" md="4" class="my-1">
-            <b-form-input v-model="form.showroom" type="text" placeholder="Салон" required/>
-          </b-col>
         </b-row>
       </div>
-      <div class="form-cooperation__group">
-        <b-row class="mt-4 mb-4">
-          <b-col>
-            <b-form-checkbox v-model="form.subscribe" class="ml-4" value="true" inline>Подписаться на новостную рассылку</b-form-checkbox>
-          </b-col>
-          <b-col>
-            <b-form-checkbox v-model="form.lookbook" class="ml-4" value="true" inline>Запросить актуальный лукбук</b-form-checkbox>
-          </b-col>
-          <b-col>
-            <b-form-checkbox v-model="form.callback" class="ml-4" value="true" inline>Получить обратный звонок</b-form-checkbox>
-          </b-col>
-        </b-row>
-      </div>
-      <div class="form-cooperation__group">
-        <h4 class="form__subline">Вид сотрудничества</h4>
+      <div class="form-feedback__group">
+        <h4 class="form__subline">Тема сообщения</h4>
         <b-row class="mt-4 mb-4">
           <b-col>
             <b-form-select v-model="form.topic" :options="topics">
               <template slot="first">
-                <option :value="null" disabled>Выберите вид</option>
+                <option :value="null" disabled>Выберите тему</option>
               </template>
             </b-form-select>
           </b-col>
         </b-row>
       </div>
-      <div class="form-cooperation__group">
+      <div class="form-feedback__group">
         <h4 class="form__subline">Сообщение</h4>
         <b-row class="mt-4 mb-4">
           <b-col>
@@ -66,17 +50,17 @@
     <template slot='footer'>
       <div class="form-feedback__control">
         <b-button class="form__submit my-1" type="submit" :disabled="disabled" :title="title">Отправить</b-button>
-        <b-form-checkbox class="ml-4 my-1" v-model="state.checked" inline>Даю согласие на обработку персональных данных</b-form-checkbox>
+        <b-form-checkbox class="ml-4 my-1" v-model="state.checked"  value="true" inline>Даю согласие на обработку персональных данных</b-form-checkbox>
       </div>
     </template>
   </v-form>
 </template>
 
 <script>
-  import Form from './form.vue';
+  import Form from '../form.vue';
 
   export default {
-    name: 'FormCooperation',
+    name: 'FormFeedback',
 
     extends: Form,
 
@@ -86,7 +70,7 @@
 
     data () {
       return {
-        action: 'cooperate',
+        action: 'feedback',
         form: {
           name: '',
           city: '',
@@ -95,22 +79,20 @@
           topic: '',
           message: '',
           country: '',
-          lookbook: false,
-          callback: false,
-          subscribe: false,
         },
         state: {
           checked: false,
           recaptcha: null,
         },
         label: {
-          success: 'Заявка отправлена',
+          success: 'Сообщение отправлено',
           failure: 'Ошибка сервера',
         },
         topics: [
-          'Пробная поставка',
-          'Оптовые поставки',
-          'Франшиза',
+          'Отзыв',
+          'Вопросы',
+          'Вакансии',
+          'Сотрудничество',
         ],
       };
     },
@@ -132,21 +114,20 @@
 </script>
 
 <style lang="scss">
-  .form-cooperation__group {
+  .form-feedback__group {
     margin: 10px 0;
     padding: 30px;
     background: $gray1;
     border-radius: 2px;
   }
 
-  .form-cooperation__control {
+  .form-feedback__control {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin-top: 2rem;
+
+    @media #{$phablet} {
+      flex-direction: column-reverse;
+    }
   }
 </style>
-
-<story group="Forms" name="Cooperation">
-  <form-cooperation/>
-</story>

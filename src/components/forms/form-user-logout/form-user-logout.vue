@@ -21,7 +21,7 @@
 </template>
 
 <script>
-  import Form from './form.vue';
+  import Form from '../form.vue';
 
   const REDIRECTION_TIMEOUT = 3000;
 
@@ -73,7 +73,3 @@
     border: 1px solid $gray3;
   }
 </style>
-
-<story group="Forms" name="User Logout">
-  <form-user-logout/>
-</story>

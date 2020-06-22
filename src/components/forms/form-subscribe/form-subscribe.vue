@@ -26,7 +26,7 @@
 </template>
 
 <script>
-  import Form from './form';
+  import Form from '../form';
 
   export default {
     name: 'FormSubscribe',
@@ -80,7 +80,3 @@
 
   }
 </style>
-
-<story group="Forms" name="Subscribe">
-  <form-subscribe/>
-</story>

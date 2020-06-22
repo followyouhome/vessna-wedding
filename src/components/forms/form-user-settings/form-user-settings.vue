@@ -84,7 +84,7 @@
 </template>
 
 <script>
-  import Form from './form.vue';
+  import Form from '../form.vue';
 
   export default {
     name: 'FormUserSettings',
@@ -155,7 +155,3 @@
     border-radius: 2px;
   }
 </style>
-
-<story group="Forms" name="User Settings">
-  <form-user-settings/>
-</story>

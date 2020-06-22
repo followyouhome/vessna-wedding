@@ -31,7 +31,7 @@
 </template>
 
 <script>
-  import Form from './form.vue';
+  import Form from '../form.vue';
 
   const REDIRECTION_TIMEOUT = 3000;
 
@@ -93,7 +93,3 @@
     }
   }
 </style>
-
-<story group="Forms" name="User Login">
-  <form-user-login/>
-</story>
