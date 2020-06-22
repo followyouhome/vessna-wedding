@@ -1,0 +1,24 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks';
+
+import colors from '!style-loader!css-loader!sass-loader!../../styles/colors.scss';
+
+<Meta title="General/Colors" />
+
+# Colors
+
+<ColorPalette>
+  <ColorItem
+    title="Brown"
+    subtitle="Main accent background"
+    colors={[colors.brown]}
+  />
+  <ColorItem
+    title="Yellow"
+    subtitle="Main accent color"
+    colors={[
+      colors.yellow,
+      colors.yellow2,
+      colors.yellow3,
+    ]}
+  />
+</ColorPalette>
