@@ -22,9 +22,7 @@
 </template>
 
 <script>
-  import Module from './module';
-
-  import Flickity from 'flickity';
+  import Module from '../module';
 
   export default {
     name: 'ModuleImageCarousel',
@@ -78,28 +76,31 @@
     },
 
     mounted () {
-      this.flickity = new Flickity(this.$refs.carousel, {
-        accessibility: true,
-        adaptiveHeight: false,
-        autoPlay: false,
-        cellAlign: 'center',
-        cellSelector: '.module-dress-info__image',
-        contain: false,
-        draggable: true,
-        lazyLoad: false,
-        percentPosition: true,
-        prevNextButtons: true,
-        pageDots: false,
-        resize: true,
-        setGallerySize: true,
-        wrapAround: false,
-      });
+      if (__VUE_ENV__ === 'client') {
+        const Flickity = require('flickity');
+        this.flickity = new Flickity(this.$refs.carousel, {
+          accessibility: true,
+          adaptiveHeight: false,
+          autoPlay: false,
+          cellAlign: 'center',
+          cellSelector: '.module-dress-info__image',
+          contain: false,
+          draggable: true,
+          lazyLoad: false,
+          percentPosition: true,
+          prevNextButtons: true,
+          pageDots: false,
+          resize: true,
+          setGallerySize: true,
+          wrapAround: false,
+        });
 
-      this.flickity.resize();
+        this.flickity.resize();
 
-      setTimeout(() => {
-          this.flickity.resize();
-      }, 3000);
+        setTimeout(() => {
+            this.flickity.resize();
+        }, 3000);
+      }
     },
   };
 </script>
@@ -226,24 +227,3 @@
     color: $dark5;
   }
 </style>
-
-<story group="Modules" name="Image Carousel">
-  <module-image-carousel
-    :images="[{
-      width: 1120,
-      height: 1680,
-      secure_url: 'https://vessna.wedding/images/ABSFPUXIIIQ50TPXCGRU.JPG',
-      url: 'https://vessna.wedding/images/ABSFPUXIIIQ50TPXCGRU.JPG',
-    }, {
-      width: 1120,
-      height: 1680,
-      secure_url: 'https://vessna.wedding/images/AO3JKEL5CGJ7K22XBY1V.JPG',
-      url: 'https://vessna.wedding/images/AO3JKEL5CGJ7K22XBY1V.JPG',
-    }, {
-      width: 1120,
-      height: 1680,
-      secure_url: 'https://vessna.wedding/images/EF08HSAQTU0V0DCZPVES.JPG',
-      url: 'https://vessna.wedding/images/EF08HSAQTU0V0DCZPVES.JPG',
-    }]"
-  />
-</story>

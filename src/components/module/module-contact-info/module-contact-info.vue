@@ -71,36 +71,3 @@
     text-align: center;
   }
 </style>
-
-<story group="Modules" name="Contact Info">
-  <module-contact-info
-    :items="[{
-      name: 'Главный офис',
-      contacts: [{
-        type: 'phone',
-        value: '+375 29 856 77 00',
-      }, {
-        type: 'email',
-        value: 'contact@vessna.by',
-      }]
-    }, {
-      name: 'Отдел Снабжения',
-      contacts: [{
-        type: 'phone',
-        value: '+375 29 156 06 00',
-      }, {
-        type: 'email',
-        value: 'manager@vessna.by',
-      }]
-    }, {
-      name: 'Отдел Маркетинга',
-      contacts: [{
-        type: 'phone',
-        value: '+375 33 609 50 15',
-      }, {
-        type: 'email',
-        value: 'marketing@vessna.by',
-      }]
-    }]"
-  />
-</story>

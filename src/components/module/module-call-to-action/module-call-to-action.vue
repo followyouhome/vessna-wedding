@@ -103,17 +103,3 @@
     margin: 1rem 0;
   }
 </style>
-
-<story group="Modules" name="Call To Action">
-  <module-call-to-action
-    :content="{
-      headline: 'Готовы стать нашим диллером?',
-      subline: 'Заполните анкету партнера. Наш менеджер свяжется с Вами в ближайшее время.',
-      copy: 'Среднее время ответа - 4 часа'
-    }"
-    :button="{
-      action: 'POPUP_SHOW',
-      text: 'Заполните анкету'
-    }"
-  />
-</story>

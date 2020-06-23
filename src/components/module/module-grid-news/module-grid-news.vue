@@ -6,7 +6,7 @@
 </template>
 
 <script>
-  import ModuleGrid from './module-grid';
+  import { ModuleGrid } from '..';
   import { PromoNews } from '@/components/promo';
 
   export default {
@@ -100,51 +100,3 @@
     }
   }
 </style>
-
-<story group="Modules" name="Grid News">
-  <module-grid-news
-    :news="[{
-      name: 'Съемка свадебной коллекции 2018',
-      promo: {
-        media: 'image',
-        image: {
-          url: 'https://vessna.wedding/images/vessna-wedding-2018.jpg',
-          height: 1280,
-          width: 1920,
-        },
-        text: '',
-        subline: '',
-        headline: 'Съемка новой свадебной коллекции 2018 года',
-        alt: ''
-      },
-      publishedDate: '2017-11-12T00:00:00.000Z',
-      route: {
-        params: {
-          to: '#'
-        },
-      },
-    }, {
-      name: 'Съемка свадебной коллекции 2018',
-      promo: {
-        media: 'image',
-        image: {
-          url: 'https://vessna.wedding/images/vessna-wedding-2018.jpg',
-          height: 1280,
-          width: 1920,
-        },
-        text: '',
-        subline: '',
-        headline: 'Съемка новой свадебной коллекции 2018 года',
-        alt: ''
-      },
-      publishedDate: '2017-11-12T00:00:00.000Z',
-      route: {
-        params: {
-          to: '#'
-        },
-      },
-    }].reduce((res, item, index, arr) => {
-    	return arr.concat(arr)
-    })"
-  />
-</story>

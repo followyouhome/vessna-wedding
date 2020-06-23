@@ -6,7 +6,7 @@
 </template>
 
 <script>
-  import ModuleGrid from '@/components/module/module-grid';
+  import { ModuleGrid } from '@/components/module';
   import { PromoDress } from '@/components/promo';
 
   export default {

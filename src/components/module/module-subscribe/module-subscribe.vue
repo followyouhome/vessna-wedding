@@ -22,7 +22,7 @@
 <script>
   import Vue from 'vue';
 
-  import Module from './module.vue';
+  import Module from '../module.vue';
 
   import { COOKIES } from '@/../config/constants.js';
 
@@ -198,7 +198,3 @@
     }
   }
 </style>
-
-<story group="Modules" name="Subscribe">
-  <module-subscribe/>
-</story>

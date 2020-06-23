@@ -36,7 +36,7 @@
 </template>
 
 <script>
-  import Module from './module';
+  import Module from '../module.vue';
 
   export default {
     name: 'ModuleCollectionControl',
@@ -132,9 +132,3 @@
     }
   }
 </style>
-
-<story group="Modules" name="Collection Control">
-  <module-collection-control
-
-  />
-</story>

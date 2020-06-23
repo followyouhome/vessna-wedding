@@ -149,7 +149,7 @@
 	.module-article__isotope {
 		font-size: 0;
 		letter-spacing: 0;
-		
+
 		img {
 			margin: 0.5%;
 			width: 24%;
@@ -166,22 +166,3 @@
 		}
 	}
 </style>
-
-<story group="Modules" name="Article">
-	<module-article
-		:article="`
-			<h1>123</h1>
-
-
-			<ul>
-				<li>Дата проведения выставки: <strong>с 8 по 9 июня</strong></li>
-				<li>Место проведения:</li>
-				<li>Наш стенд:</li>
-				<li>Часы работы: суббота 10:00 - 18:00, воскресенье 10:00 - 17:00</li>
-			</ul>
-
-			<p>Для посещения выставки желательно пройти регистрацию на сайте организатора </p>
-
-		`"
-	/>
-</story>
