@@ -30,6 +30,8 @@ module.exports = {
 
     config.module.rules.push(styles)
 
+    config.resolve.alias['@'] = path.resolve(__dirname, '..'),
+
     config.plugins.push(new DefinePlugin({
       __VUE_ENV__: '"client"',
     }));
