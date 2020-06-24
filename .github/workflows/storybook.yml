@@ -3,7 +3,7 @@ on:
   push:
     branches: [master]
   pull_request:
-    types: [opened, reopened]
+    types: [assigned, opened, synchronize, reopened]
 jobs:
   build-deploy:
     name: Build and deploy
