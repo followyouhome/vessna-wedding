@@ -139,6 +139,7 @@
     "cz-conventional-changelog": "^3.0.2",
     "eslint": "^6.8.0",
     "eslint-plugin-html": "^6.0.0",
+    "eslint-plugin-mdx": "^1.7.0",
     "eslint-plugin-vue": "^6.1.2",
     "jsdoc-to-markdown": "^4.0.1",
     "loader-utils": "^1.2.3",

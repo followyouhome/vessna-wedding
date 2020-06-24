@@ -19,14 +19,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Install, lint, and test
+    - name: Install and lint
       run: |
         yarn
         yarn lint
-        yarn test
-    - name: Build storybook
-      run: |
-        yarn storybook:build
     - name: Build website
       run: |
         yarn build

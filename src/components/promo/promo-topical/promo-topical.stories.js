@@ -1,17 +1,4 @@
-import {
-  withKnobs,
-  text,
-  number,
-  boolean,
-  array,
-  select,
-  color,
-  date,
-  button,
-} from '@storybook/addon-knobs';
-
 import PromoTopical from './promo-topical.vue';
-
 
 export default {
   title: 'Promo/Topical',
@@ -20,14 +7,6 @@ export default {
 
 export const Default = () => ({
 	components: { PromoTopical },
-
-  props: {
-    name: {
-      type: String,
-      default: text('Name', 'John Doe'),
-    },
-  },
-
   template: `
     <promo-topical
       :item="{
@@ -52,8 +31,4 @@ export const Default = () => ({
       }"
     />
 	`,
-
-  data() {
-    return { age: 40 };
-  },
 });

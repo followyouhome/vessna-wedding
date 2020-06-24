@@ -1,4 +1,3 @@
-import { object } from '@storybook/addon-knobs';
 import ModuleSubscribe from './module-subscribe.vue';
 
 export default {

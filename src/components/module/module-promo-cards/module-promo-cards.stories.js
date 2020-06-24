@@ -1,4 +1,3 @@
-import { object } from '@storybook/addon-knobs';
 import ModulePromoCards from './module-promo-cards.vue';
 
 export default {

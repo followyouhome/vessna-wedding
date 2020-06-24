@@ -52,7 +52,7 @@
       __VUE_ENV__ === 'server' ? next() : fetch(store, to).then(() => next());
     },
 
-    data() {
+    data () {
       return {
         callToAction: {
           content: {
@@ -64,7 +64,7 @@
             text: 'Заполните анкету',
           },
         },
-      }
+      };
     },
 
     computed: {
@@ -84,7 +84,7 @@
        */
       archive () {
         return this.$store.state.page.archive;
-      }
+      },
     },
   };
 </script>

@@ -74,14 +74,14 @@
     },
 
     computed: {
-      classes() {
+      classes () {
         return {
           [`simple-button--${this.type}`]: !!this.type,
           [`simple-button--text`]: !!this.text,
           [`simple-button--block`]: !!this.block,
           [`simple-button--outlined`]: !!this.outlined,
         };
-      }
+      },
     },
 
     methods: {

@@ -17,9 +17,9 @@ export const Default = () => ({
         image: {
           height: 336,
           width: 269,
-          url: 'https://marymaximca.cdn.speedyrails.net/media/catalog/product/cache/83cda418bea4fb032eada316ef024fcb/f/p/fp9458_rev_1.jpg'
-        }
-      })
-    }
-  }
+          url: 'https://marymaximca.cdn.speedyrails.net/media/catalog/product/cache/83cda418bea4fb032eada316ef024fcb/f/p/fp9458_rev_1.jpg',
+        },
+      }),
+    },
+  },
 });

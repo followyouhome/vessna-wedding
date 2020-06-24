@@ -8,7 +8,7 @@
     "ecmaVersion": 6,
     "sourceType": "module",
     "ecmaFeatures": {
-      "jsx": true
+      "jsx": false
     },
   },
   "rules": {
@@ -19,5 +19,12 @@
     "space-before-function-paren": ["error", "always"],
     "no-trailing-spaces": "error",
     "no-var": "error"
-  }
+  },
+  "overrides": [{
+    "files": ["*.mdx"],
+    "extends": ["plugin:mdx/base"],
+    "rules": {
+      semi: ["error", "never"]
+    }
+  }]
 }

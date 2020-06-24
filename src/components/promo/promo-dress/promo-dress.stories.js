@@ -41,7 +41,7 @@ export const Default = () => ({
             url: 'http://vessna.wedding/images/1701-svadebnye-platya-pyshnye-foto.jpg',
           },
         },
-      })
-    }
-  }
+      }),
+    },
+  },
 });

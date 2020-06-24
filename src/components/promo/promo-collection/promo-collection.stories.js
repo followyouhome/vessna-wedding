@@ -26,14 +26,14 @@ export const Default = () => ({
           text: '',
           subline: '',
           headline: '<span class=\'font-peignot\'>Preview 2019</span>',
-          alt: ''
+          alt: '',
         },
         route: {
           params: {
-            to: '#'
+            to: '#',
           },
-        }
-      })
-    }
-  }
+        },
+      }),
+    },
+  },
 });

@@ -1,4 +1,3 @@
-import { object } from '@storybook/addon-knobs';
 import FormUserRegistration from './form-user-registration.vue';
 
 export default {

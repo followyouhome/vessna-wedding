@@ -1,4 +1,3 @@
-import { object } from '@storybook/addon-knobs';
 import FormUserSettings from './form-user-settings.vue';
 
 export default {

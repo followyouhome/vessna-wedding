@@ -1,4 +1,3 @@
-import { object } from '@storybook/addon-knobs';
 import FormCooperation from './form-cooperation.vue';
 
 export default {

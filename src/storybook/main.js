@@ -1,15 +1,13 @@
 const _ = require('lodash');
 const path = require('path');
-const { DefinePlugin, EnvironmentPlugin, optimize } = require('webpack');
+const { DefinePlugin } = require('webpack');
 
 const styles = require('../../config/css-loader.config').client;
-
-const isProd = false
 
 module.exports = {
   stories: [
     './stories/**/*.stories.@(js|mdx)',
-    '../components/**/*.stories.@(js|mdx)'
+    '../components/**/*.stories.@(js|mdx)',
   ],
   logLevel: 'debug',
   addons: [
@@ -28,7 +26,7 @@ module.exports = {
 
     cssLoader.options.modules = false;
 
-    config.module.rules.push(styles)
+    config.module.rules.push(styles);
 
     config.resolve.alias['@'] = path.resolve(__dirname, '..'),
 
@@ -37,5 +35,5 @@ module.exports = {
     }));
 
     return config;
-  }
+  },
 };

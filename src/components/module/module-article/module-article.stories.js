@@ -8,23 +8,22 @@ export default {
 
 export const Default = () => ({
 	components: { ModuleArticle },
+  props: {
+    article: `
+      <h1>123</h1>
+
+      <ul>
+        <li>Дата проведения выставки: <strong>с 8 по 9 июня</strong></li>
+        <li>Место проведения:</li>
+        <li>Наш стенд:</li>
+        <li>Часы работы: суббота 10:00 - 18:00, воскресенье 10:00 - 17:00</li>
+      </ul>
+
+      <p>Для посещения выставки желательно пройти регистрацию на сайте организатора </p>
+    `,
+  },
   template: `
-    <module-article
-      :article="`
-        <h1>123</h1>
-
-
-        <ul>
-          <li>Дата проведения выставки: <strong>с 8 по 9 июня</strong></li>
-          <li>Место проведения:</li>
-          <li>Наш стенд:</li>
-          <li>Часы работы: суббота 10:00 - 18:00, воскресенье 10:00 - 17:00</li>
-        </ul>
-
-        <p>Для посещения выставки желательно пройти регистрацию на сайте организатора </p>
-
-      `"
-    />
+    <module-article article="article"/>
 	`,
   props: {
     item: {
@@ -38,13 +37,13 @@ export const Default = () => ({
             width: 1920,
           },
           headline: 'Vessna Dress',
-          alt: ''
+          alt: '',
         },
         route: {
           params: {
-            to: '#'
-          }
-        }
+            to: '#',
+          },
+        },
       }),
     },
   },

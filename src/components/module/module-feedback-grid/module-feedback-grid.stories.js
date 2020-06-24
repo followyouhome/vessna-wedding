@@ -61,13 +61,13 @@ export const Default = () => ({
             width: 1920,
           },
           headline: 'Vessna Dress',
-          alt: ''
+          alt: '',
         },
         route: {
           params: {
-            to: '#'
-          }
-        }
+            to: '#',
+          },
+        },
       }),
     },
   },

@@ -1,4 +1,3 @@
-import { object } from '@storybook/addon-knobs';
 import FormUserLogout from './form-user-logout.vue';
 
 export default {

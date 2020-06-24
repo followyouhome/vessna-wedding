@@ -1,4 +1,3 @@
-import { object } from '@storybook/addon-knobs';
 import FormSubscribe from './form-subscribe.vue';
 
 export default {

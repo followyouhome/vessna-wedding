@@ -17,12 +17,12 @@ export const Default = () => ({
         name: 'ООО Вектор',
         contacts: [{
           type: 'phone',
-          value: '+375 29 228 77 27'
+          value: '+375 29 228 77 27',
         }, {
           type: 'email',
-          value: 'test@mail.com'
-        }]
-      })
-    }
-  }
+          value: 'test@mail.com',
+        }],
+      }),
+    },
+  },
 });

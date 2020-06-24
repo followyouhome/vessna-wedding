@@ -20,7 +20,7 @@ export const Default = () => ({
         video_webm: 'https://vessna.blob.core.windows.net/vessna/vessna-quote.webm',
         video_mp4: 'https://vessna.blob.core.windows.net/vessna/vessna-quote.mp4',
         video_ogv: 'https://vessna.blob.core.windows.net/vessna/vessna-quote.ogv',
-      })
-    }
-  }
+      }),
+    },
+  },
 });

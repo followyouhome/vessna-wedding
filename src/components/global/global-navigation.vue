@@ -75,17 +75,17 @@
     props: ['navigation', 'settings'],
 
     computed: {
-      mobile() {
+      mobile () {
         return !!isMobile.any;
       },
 
-      user() {
+      user () {
         return this.$store && this.$store.state && this.$store.state.user && this.$store.state.user.uid;
-      }
+      },
     },
 
     methods: {
-      navigationClick(e) {
+      navigationClick (e) {
         const navigation = this.$refs.navigation;
 
         if (e.target == navigation) {
@@ -109,9 +109,7 @@
         }
       },
 
-      itemClick(e) {
-        const navigation = this.$refs.navigation;
-
+      itemClick (e) {
         if (e.currentTarget.nextElementSibling) {
           e.preventDefault();
           e.stopPropagation();
@@ -124,20 +122,20 @@
         }
       },
 
-      subitemClick() {
+      subitemClick () {
         setTimeout(() => {
           this.hideSubmenu();
           this.closeMenu();
-        }, 500)
+        }, 500);
       },
 
-      hideSubmenu() {
+      hideSubmenu () {
         Array.from(this.$refs.navigation.querySelectorAll('.navigation__main-list__item--show-menu')).forEach(item => {
           item.classList.remove('navigation__main-list__item--show-menu');
-        })
+        });
       },
 
-      closeMenu() {
+      closeMenu () {
         const navigation = this.$refs.navigation;
 
         navigation.classList.remove('navigation--swipe-opened');
@@ -145,23 +143,22 @@
 
         document.body.classList.remove('body--swipe-opened');
         document.body.classList.add('body--swipe-closed');
-      }
+      },
     },
 
-    mounted() {
+    mounted () {
       if (__VUE_ENV__ === 'client') {
         Stickyfill().add(this.$refs.navigation);
 
         this.$router.beforeEach((to, from, next) => {
           this.subitemClick();
           return next();
-        })
+        });
       }
 
 
 
       let navigation = document.querySelector('.navigation'),
-      	items = Array.from(document.querySelectorAll('.navigation__main-list__item__link')),
       	body = document.body;
 
       if (navigation && isMobile.any) {
@@ -169,8 +166,8 @@
       	navigation.classList.add('navigation--mobile');
       	navigation.classList.add('navigation--swipe-closed');
       }
-    }
-  }
+    },
+  };
 </script>
 
 <style lang="scss">

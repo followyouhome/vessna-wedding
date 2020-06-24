@@ -20,7 +20,7 @@ export const Default = () => ({
           text: 'Открыть Instagram',
           href: '#',
         },
-      })
-    }
-  }
+      }),
+    },
+  },
 });

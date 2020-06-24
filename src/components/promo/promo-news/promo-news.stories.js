@@ -1,17 +1,4 @@
-import {
-  withKnobs,
-  text,
-  number,
-  boolean,
-  array,
-  select,
-  color,
-  date,
-  button,
-} from '@storybook/addon-knobs';
-
 import PromoNews from './promo-news.vue';
-
 
 export default {
   title: 'Promo/News',
@@ -20,14 +7,6 @@ export default {
 
 export const Default = () => ({
 	components: { PromoNews },
-
-  props: {
-    name: {
-      type: String,
-      default: text('Name', 'John Doe'),
-    },
-  },
-
   template: `
 		<promo-news
 			:item="{
@@ -55,8 +34,4 @@ export const Default = () => ({
 			}"
 		/>
 	`,
-
-  data() {
-    return { age: 40 };
-  },
 });

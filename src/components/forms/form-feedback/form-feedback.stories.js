@@ -1,4 +1,3 @@
-import { object } from '@storybook/addon-knobs';
 import FormFeedback from './form-feedback.vue';
 
 export default {

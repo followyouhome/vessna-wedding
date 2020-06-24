@@ -1,5 +1,5 @@
-import { configure, addDecorator } from '@storybook/vue';
-import StoryRouter from 'storybook-vue-router'
+import { addDecorator } from '@storybook/vue';
+import StoryRouter from 'storybook-vue-router';
 import Vue from 'vue';
 import Vuex from 'vuex';
 import VueRouter from 'vue-router';
@@ -15,7 +15,7 @@ import VectorIcon from '../components/atoms/vector-icon.vue';
 import VectorLogo from '../components/atoms/vector-logo.vue';
 import IconToggle from '../components/atoms/icon-toggle.vue';
 
-addDecorator(StoryRouter())
+addDecorator(StoryRouter());
 
 Vue.use(Vuex);
 Vue.use(VueRouter);
