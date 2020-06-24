@@ -6,7 +6,7 @@ on:
     types: [assigned, opened, synchronize, reopened]
 jobs:
   deploy:
-    name: Build and deploy Storybook
+    name: Build and deploy
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     strategy:
@@ -26,8 +26,26 @@ jobs:
         yarn storybook:build
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v2.5.0
-      if: github.ref == 'refs/heads/master'
       env:
         ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
         PUBLISH_BRANCH: gh-pages
         PUBLISH_DIR: .out
+  test:
+    name: Test build
+    if: github.ref != 'refs/heads/master'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    env:
+      NODE_ENV: test
+    steps:
+    - uses: actions/checkout@master
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Build storybook
+      run: |
+        yarn
+        yarn storybook:build
