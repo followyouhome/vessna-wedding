@@ -5,7 +5,7 @@ on:
   pull_request:
     types: [assigned, opened, synchronize, reopened]
 jobs:
-  build-deploy:
+  build:
     name: Build and deploy
     runs-on: ubuntu-latest
     strategy:
@@ -19,14 +19,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Build storybook
+    - name: Install and lint
       run: |
         yarn
-        yarn storybook:build
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v2.5.0
-      if: {{ github.ref == 'ref/head/master' }}
-      env:
-        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: .out
+        yarn lint

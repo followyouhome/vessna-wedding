@@ -6,7 +6,7 @@ on:
     types: [assigned, opened, synchronize, reopened]
 jobs:
   build:
-    name: Build and deploy Storybook
+    name: Build and deploy
     runs-on: ubuntu-latest
     strategy:
       matrix:
