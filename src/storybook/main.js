@@ -1,6 +1,7 @@
 const _ = require('lodash');
 const path = require('path');
 const { DefinePlugin } = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const styles = require('../../config/css-loader.config').client;
 
@@ -32,6 +33,11 @@ module.exports = {
 
     config.plugins.push(new DefinePlugin({
       __VUE_ENV__: '"client"',
+    }));
+
+    config.plugins.push(new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: "[id].css",
     }));
 
     return config;
