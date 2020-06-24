@@ -181,15 +181,3 @@
     }
   }
 </style>
-
-<story group="Atoms" name="Image Deferred">
-  <image-deferred
-    :size="'image-deffered--size-2-3'"
-    :image="{
-      width:1920,
-      height:1200,
-      url:'http://res.cloudinary.com/vessna/image/upload/v1548800751/vessna-2019-preview.jpg',
-      secure_url:'https://res.cloudinary.com/vessna/image/upload/v1548800751/vessna-2019-preview.jpg'
-    }"
-  />
-</story>

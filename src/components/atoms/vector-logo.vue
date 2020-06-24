@@ -121,7 +121,3 @@
     fill-rule: nonzero;
   }
 </style>
-
-<story group="Atoms" name="Vector Logo">
-  <vector-logo/>
-</story>

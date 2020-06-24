@@ -72,7 +72,3 @@
     }
   }
 </style>
-
-<story group="Atoms" name="Captcha Google">
-  <captcha-google/>
-</story>
