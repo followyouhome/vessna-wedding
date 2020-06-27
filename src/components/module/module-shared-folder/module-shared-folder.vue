@@ -36,7 +36,14 @@
   export default {
     name: 'ModuleSharedFolder',
 
-    props: ['resources'],
+    props: {
+      /**
+       * Url to resource folder
+       */
+      resources: {
+        type: String,
+      },
+    },
 
     components: {
       'tab': Tab,

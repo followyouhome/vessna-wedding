@@ -96,7 +96,7 @@
       display: block;
       height: 40vh;
       margin-top: -5px;
-      background: $white2;
+      background: $white;
     }
 
     text {

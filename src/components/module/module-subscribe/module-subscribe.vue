@@ -112,7 +112,7 @@
     min-height: 410px;
     border: none;
     border-top: 1px solid $gray2;
-    background: $white2;
+    background: $white;
 
     @media #{$tablet} {
       display: none;
