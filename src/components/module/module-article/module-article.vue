@@ -8,7 +8,15 @@
 	export default {
 		name: 'ModuleArticle',
 
-		props: ['article'],
+		props: {
+			/**
+			 * Article text with HTML markup
+			 */
+			article: {
+				type: String,
+				default: '',
+			},
+		},
 
 		mounted () {
 			if (__VUE_ENV__ === 'client') {
