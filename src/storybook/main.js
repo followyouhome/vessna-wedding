@@ -7,6 +7,7 @@ const styles = require('../../config/css-loader.config').client;
 
 module.exports = {
   stories: [
+    './stories/Intro.stories.mdx',
     './stories/**/*.stories.@(js|mdx)',
     '../components/**/*.stories.@(js|mdx)',
   ],

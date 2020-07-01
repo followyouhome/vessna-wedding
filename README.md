@@ -8,4 +8,5 @@ If you looking in this repo after checking my CV I'd like to propose take a look
 
 # Future plans
 
+* [ ] Migrate Storybook from Knobs to Controls
 * [ ] Migration to JAMStack
