@@ -1,0 +1,44 @@
+import { Meta, Typeset } from '@storybook/addon-docs/blocks'
+import fonts from '!style-loader!css-loader!sass-loader!../../styles/fonts.scss'
+
+<Meta title="General/Typography"/>
+
+# Typography
+
+All fonts has own custom font-face rules to decrease it's sizes.
+
+**Font:** Akzidens Grotesk
+
+<Typeset
+  sampleText="Cъешь ещё этих мягких французских булок, да выпей чаю"
+  fontFamily={fonts.AkzidensGrotesk}
+  fontSizes={[12, 14, 16, 20, 24]}
+  fontWeight={700}
+/>
+
+**Font:** Peginot Light
+
+<Typeset
+  sampleText="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+  fontFamily={fonts.PeginotLight}
+  fontSizes={[12, 14, 16, 20, 24]}
+  fontWeight={700}
+/>
+
+**Font:** Ristretto Pro Black
+
+<Typeset
+  sampleText="Cъешь ещё этих мягких французских булок, да выпей чаю"
+  fontFamily={fonts.RistrettoProBlack}
+  fontSizes={[12, 14, 16, 20, 24]}
+  fontWeight={700}
+/>
+
+**Font:** Futura PT Light
+
+<Typeset
+  sampleText="Cъешь ещё этих мягких французских булок, да выпей чаю"
+  fontFamily={fonts.FuturaPTLight}
+  fontSizes={[12, 14, 16, 20, 24]}
+  fontWeight={700}
+/>
