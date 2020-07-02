@@ -107,7 +107,7 @@
 
 <style lang="scss">
   .popup-image-carousel {
-    overflow: scroll !important;
+    overflow: scroll;
   }
 
   .module-dress-info {
@@ -190,7 +190,7 @@
     .image-deferred {
       width: 100%;
       height: 100%;
-      padding-top: 0 !important;
+      padding-top: 0;
 
       img {
         height: 100%;

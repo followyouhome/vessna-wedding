@@ -202,7 +202,7 @@
       left: 10px;
       display: inline-block;
       font-size: 20px;
-      font-family: 'icomoon' !important;
+      font-family: 'icomoon';
       line-height: 40px;
       content: "\e909";
     }
@@ -395,7 +395,7 @@ height: 100%;
 
   .navigation__main-list__item--show-menu & {
     display: block;
-    background: $white !important;
+    background: $white;
   }
 
   .navigation__secondary-list__item__link {

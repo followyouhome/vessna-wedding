@@ -174,8 +174,9 @@
   }
 
   body {
+    margin: 0;
     height: 100%;
-    background: $gray1 !important;
+    background: $gray1;
   }
 
   h1, h2, h3, h4, h5, h6, ul {
