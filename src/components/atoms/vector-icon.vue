@@ -149,37 +149,3 @@
     content: "\E906"
   }
 </style>
-
-<story group="Atoms" name="Vector Icon">
-  <div>
-    <vector-icon icon="email" title="email"/>
-    <vector-icon icon="phone" title="phone"/>
-    <vector-icon icon="search" title="search"/>
-    <vector-icon icon="palette" title="palette"/>
-    <vector-icon icon="high-quality" title="high-quality"/>
-    <vector-icon icon="scissors" title="scissors"/>
-    <vector-icon icon="credit-card" title="credit-card"/>
-    <vector-icon icon="camera" title="camera"/>
-    <vector-icon icon="images" title="images"/>
-    <vector-icon icon="truck" title="truck"/>
-    <vector-icon icon="odnoklassniki" title="odnoklassniki"/>
-    <vector-icon icon="angle-down" title="angle-down"/>
-    <vector-icon icon="angle-up" title="angle-up"/>
-    <vector-icon icon="angle-right" title="angle-right"/>
-    <vector-icon icon="angle-left" title="angle-left"/>
-    <vector-icon icon="angle-double-down" title="angle-double-down"/>
-    <vector-icon icon="angle-double-up" title="angle-double-up"/>
-    <vector-icon icon="angle-double-right" title="angle-double-right"/>
-    <vector-icon icon="bars" title="bars"/>
-    <vector-icon icon="viber" title="viber"/>
-    <vector-icon icon="mts" title="mts"/>
-    <vector-icon icon="velcom" title="velcom"/>
-    <vector-icon icon="map-marker" title="map-marker"/>
-    <vector-icon icon="google-plus" title="google-plus"/>
-    <vector-icon icon="envelope-o" title="envelope-o"/>
-    <vector-icon icon="vimeo" title="vimeo"/>
-    <vector-icon icon="facebook" title="facebook"/>
-    <vector-icon icon="instagram" title="instagram"/>
-    <vector-icon icon="vk" title="vk"/>
-  </div>
-</story>

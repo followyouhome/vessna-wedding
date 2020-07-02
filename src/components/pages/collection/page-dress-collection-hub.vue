@@ -12,10 +12,7 @@
 
 <script>
   import Page from '@/components/pages/page.vue';
-  import ModuleArticle from '@/components/module/module-article.vue';
-  import ModulePromoCards from '@/components/module/module-promo-cards.vue';
-  import ModuleCallToAction from '@/components/module/module-call-to-action.vue';
-  import ModuleSelectedCollections from '@/components/module/module-selected-collections.vue';
+  import { ModuleArticle, ModulePromoCards, ModuleCallToAction, ModuleSelectedCollections } from '@/components/module';
 
   import store from '@/store/';
 
@@ -55,7 +52,7 @@
       __VUE_ENV__ === 'server' ? next() : fetch(store, to).then(() => next());
     },
 
-    data() {
+    data () {
       return {
         callToAction: {
           content: {
@@ -67,7 +64,7 @@
             text: 'Заполните анкету',
           },
         },
-      }
+      };
     },
 
     computed: {
@@ -87,7 +84,7 @@
        */
       archive () {
         return this.$store.state.page.archive;
-      }
+      },
     },
   };
 </script>

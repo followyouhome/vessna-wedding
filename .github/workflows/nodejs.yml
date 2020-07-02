@@ -1,14 +1,16 @@
 name: Node CI
 on:
   push:
-    branches:
-    - master
+    branches: [master]
+  pull_request:
+    types: [assigned, opened, synchronize, reopened]
 jobs:
   build:
+    name: Build and deploy
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [10.x]
+        node-version: [12.x]
     env:
       NODE_ENV: test
     steps:
@@ -17,16 +19,12 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Install, lint, and test
+    - name: Install and lint
       run: |
-        npm ci
-        npm run lint
-        npm run test
-    - name: Build storybook
-      run: |
-        npm run build
+        yarn
+        yarn lint
     - name: Build website
       run: |
-        npm run build
+        yarn build
       env:
         CI: true

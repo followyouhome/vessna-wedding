@@ -74,14 +74,14 @@
     },
 
     computed: {
-      classes() {
+      classes () {
         return {
           [`simple-button--${this.type}`]: !!this.type,
           [`simple-button--text`]: !!this.text,
           [`simple-button--block`]: !!this.block,
           [`simple-button--outlined`]: !!this.outlined,
         };
-      }
+      },
     },
 
     methods: {
@@ -184,33 +184,3 @@
     }
   }
 </style>
-
-<story
-  group="Atoms"
-  name="Simple Button"
->
-  <b-container fluid>
-    <b-row align-h="center" class="my-4 text-center">
-      <b-col>
-        <simple-button type="primary">Primary</simple-button>
-      </b-col>
-      <b-col>
-        <simple-button type="secondary">Secondary</simple-button>
-      </b-col>
-      <b-col>
-        <simple-button type="default">Default</simple-button>
-      </b-col>
-    </b-row>
-    <b-row align-h="center" class="my-4 text-center">
-      <b-col>
-        <simple-button outlined>Outlined</simple-button>
-      </b-col>
-      <b-col>
-        <simple-button text>Text</simple-button>
-      </b-col>
-      <b-col>
-        <simple-button block>Block</simple-button>
-      </b-col>
-    </b-row>
-  </b-container>
-</story>

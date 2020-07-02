@@ -18,10 +18,7 @@
 
 <script>
   import Page from '@/components/pages/page.vue';
-  import ModuleArticle from '@/components/module/module-article';
-  import ModuleDealersMap from '@/components/module/module-dealers-map';
-  import ModuleContactInfo from '@/components/module/module-contact-info';
-  import ModuleCallToAction from '@/components/module/module-call-to-action';
+  import { ModuleArticle, ModuleDealersMap, ModuleContactInfo, ModuleCallToAction } from '@/components/module';
 
   import store from '@/store/';
 

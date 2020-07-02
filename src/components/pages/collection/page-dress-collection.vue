@@ -9,12 +9,7 @@
 
 <script>
   import Page from '@/components/pages/page.vue';
-  import ModuleArticle from '@/components/module/module-article.vue';
-  import ModuleDressCollection from '@/components/module/module-grid-dress.vue';
-  import ModuleCollectionControl from '@/components/module/module-collection-control';
-  import ModuleSharedFolder from '@/components/module/module-shared-folder.vue';
-  import ModuleFeedbackGrid from '@/components/module/module-feedback-grid.vue';
-
+  import { ModuleArticle, ModuleGridDress, ModuleCollectionControl, ModuleSharedFolder, ModuleFeedbackGrid } from '@/components/module';
   import store from '@/store/';
 
   function fetch (store, route) {
@@ -33,7 +28,7 @@
 
     components: {
       'module-article': ModuleArticle,
-      'module-grid-dress': ModuleDressCollection,
+      'module-grid-dress': ModuleGridDress,
       'module-collection-control': ModuleCollectionControl,
       'module-shared-folder': ModuleSharedFolder,
       'module-feedback-grid': ModuleFeedbackGrid,

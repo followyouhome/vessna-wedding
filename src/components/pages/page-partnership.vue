@@ -15,9 +15,7 @@
 
 <script>
   import Page from '@/components/pages/page.vue';
-  import ModuleArticle from '@/components/module/module-article';
-  import ModuleOurBrands from '@/components/module/module-our-brands';
-  import ModuleCallToAction from '@/components/module/module-call-to-action';
+  import { ModuleArticle, ModuleOurBrands, ModuleCallToAction } from '@/components/module';
 
   import store from '@/store/';
 

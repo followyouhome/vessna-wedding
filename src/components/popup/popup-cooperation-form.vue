@@ -8,7 +8,7 @@
 
 <script>
   import Popup from './popup.vue';
-  import FormCooperation from '@/components/forms/form-cooperation';
+  import { FormCooperation } from '@/components/forms';
 
   export default {
     name: 'PopupCooperationForm',
@@ -38,7 +38,3 @@
     }
   }
 </style>
-
-<story group="Popups" name="Cooperation Form">
-  <popup-cooperation-form/>
-</story>

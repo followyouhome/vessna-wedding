@@ -118,7 +118,7 @@
     },
 
     methods: {
-      toggle() {
+      toggle () {
         this.$refs.app.classList.toggle('app--toggle');
       },
 

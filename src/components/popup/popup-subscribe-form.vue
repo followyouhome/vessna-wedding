@@ -8,7 +8,7 @@
 
 <script>
   import Popup from './popup.vue';
-  import FormSubscribe from '@/components/forms/form-subscribe';
+  import { FormSubscribe } from '@/components/forms';
 
   export default {
     name: 'PopupSubscribeForm',
@@ -48,7 +48,3 @@
     border: none;
   }
 </style>
-
-<story group="Popups" name="Subscribe">
-  <popup-subscribe-form/>
-</story>

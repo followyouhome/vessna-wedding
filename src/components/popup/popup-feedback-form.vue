@@ -8,7 +8,7 @@
 
 <script>
   import Popup from './popup.vue';
-  import FormFeedback from '@/components/forms/form-feedback';
+  import { FormFeedback } from '@/components/forms';
 
   export default {
     name: 'PopupFeedbackForm',
@@ -38,7 +38,3 @@
     }
   }
 </style>
-
-<story group="Popups" name="Feedback Form">
-  <popup-feedback-form/>
-</story>
