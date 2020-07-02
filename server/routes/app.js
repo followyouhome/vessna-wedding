@@ -47,8 +47,22 @@ module.exports = app => {
   glob.sync(`${__dirname}/../../dist/page-*-amp.css`).forEach(file => {
     const id = file.replace(/^.*\//, '').replace(/-amp.css/, '');
 
-    stylesheets[id] = base + '\n' + fs.readFileSync(resolve(file), 'utf8');
+    stylesheets[id] = fs.readFileSync(resolve(file), 'utf8');
   });
+
+  stylesheets.get = (id) => {
+    let result = base;
+
+    Object.entries(stylesheets).forEach(([key, value]) => {
+      console.log(key, id);
+      if (key.includes(id)) {
+        console.log(key + ' added');
+        result += '\n' + value;
+      }
+    });
+
+    return result;
+  };
 
   function createWebRenderer (bundle, options) {
     return createBundleRenderer(bundle, Object.assign(options, {
