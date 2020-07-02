@@ -9,28 +9,92 @@ export default {
 export const Default = () => ({
 	components: { ModuleGridDress },
   template: `
-    <promo-brand :item="item"/>
+    <module-grid-dress :items="items"/>
 	`,
   props: {
-    item: {
-      default: object('Item', {
+    items: {
+      default: object('Items', [{
+        slug: '1701',
+        name: '1701',
+        price: {
+          rub: 11000,
+          usd: 165,
+        },
+        images: [{
+          url: 'http://vessna.wedding/images/qqsqtopifxboaykgaq7a.jpg',
+          width: 1620,
+          height: 1080,
+        }, {
+          url: 'http://vessna.wedding/images/lziu0zfzmpnfe4hp6jr8.jpg',
+          width: 720,
+          height: 1080,
+        }],
         promo: {
+          alt: '',
+          headline: '1701',
+          subline: 'Princess',
           media: 'image',
           image: {
-            secure_url: '/images/vessna-wedding-2018.jpg',
-            url: '/images/vessna-wedding-2018.jpg',
-            height: 1280,
-            width: 1920,
+            width: 720,
+            height: 1080,
+            url: 'http://vessna.wedding/images/1701-svadebnye-platya-pyshnye-foto.jpg',
           },
-          headline: 'Vessna Dress',
+        },
+      }, {
+        slug: '1702',
+        name: '1702',
+        price: {
+          rub: 11000,
+          usd: 165,
+        },
+        images: [{
+          url: 'http://vessna.wedding/images/qqsqtopifxboaykgaq7a.jpg',
+          width: 1620,
+          height: 1080,
+        }, {
+          url: 'http://vessna.wedding/images/lziu0zfzmpnfe4hp6jr8.jpg',
+          width: 720,
+          height: 1080,
+        }],
+        promo: {
           alt: '',
-        },
-        route: {
-          params: {
-            to: '#',
+          headline: '1701',
+          subline: 'Princess',
+          media: 'image',
+          image: {
+            width: 720,
+            height: 1080,
+            url: 'http://vessna.wedding/images/1701-svadebnye-platya-pyshnye-foto.jpg',
           },
         },
-      }),
+      }, {
+        slug: '1703',
+        name: '1703',
+        price: {
+          rub: 11000,
+          usd: 165,
+        },
+        images: [{
+          url: 'http://vessna.wedding/images/qqsqtopifxboaykgaq7a.jpg',
+          width: 1620,
+          height: 1080,
+        }, {
+          url: 'http://vessna.wedding/images/lziu0zfzmpnfe4hp6jr8.jpg',
+          width: 720,
+          height: 1080,
+        }],
+        promo: {
+          alt: '',
+          headline: '1701',
+          subline: 'Princess',
+          media: 'image',
+          image: {
+            width: 720,
+            height: 1080,
+            url: 'http://vessna.wedding/images/1701-svadebnye-platya-pyshnye-foto.jpg',
+          },
+        },
+      }]),
     },
   },
 });
