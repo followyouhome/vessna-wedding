@@ -63,3 +63,11 @@ export const Default = () => ({
     },
   },
 });
+
+Default.story = {
+  parameters: {
+    knobs: {
+      escapeHTML: false,
+    },
+  },
+};

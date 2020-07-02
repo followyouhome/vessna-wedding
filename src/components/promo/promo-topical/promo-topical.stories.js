@@ -1,3 +1,4 @@
+import { object } from '@storybook/addon-knobs';
 import PromoTopical from './promo-topical.vue';
 
 export default {
@@ -8,8 +9,11 @@ export default {
 export const Default = () => ({
 	components: { PromoTopical },
   template: `
-    <promo-topical
-      :item="{
+    <promo-topical :item="item"/>
+	`,
+  props: {
+    item: {
+      default: object('Item', {
         name: 'Съемка свадебной коллекции 2018',
         promo: {
           media: 'image',
@@ -21,14 +25,14 @@ export const Default = () => ({
           text: '',
           subline: '',
           headline: 'Съемка новой свадебной коллекции 2018 года',
-          alt: ''
+          alt: '',
         },
         route: {
           params: {
-            to: '#'
+            to: '#',
           },
         },
-      }"
-    />
-	`,
+      }),
+    },
+  },
 });

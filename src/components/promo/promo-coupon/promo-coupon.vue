@@ -27,7 +27,7 @@
         image: {
           height: 683,
           width: 1024,
-          url: '/images/news/vessna-coupon.jpg',
+          url: 'https://vessna.wedding/images/news/vessna-coupon.jpg',
         },
       };
     },

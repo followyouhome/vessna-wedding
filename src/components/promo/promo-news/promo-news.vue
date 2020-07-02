@@ -18,6 +18,12 @@
 	</div>
 </template>
 
+<style lang="scss">
+	.promo-news__content-wrapper {
+		padding: 10px;
+	}
+</style>
+
 <script>
 	import Promo from '../promo';
 

@@ -17,8 +17,8 @@ export const Default = () => ({
         promo: {
           media: 'image',
           image: {
-            secure_url: '/images/vessna-wedding-2018.jpg',
-            url: '/images/vessna-wedding-2018.jpg',
+            secure_url: 'https://vessna.wedding/images/r74lhtw4aizmvmsr55mw.jpg',
+            url: 'https://vessna.wedding/images/r74lhtw4aizmvmsr55mw.jpg',
             height: 1280,
             width: 1920,
           },
