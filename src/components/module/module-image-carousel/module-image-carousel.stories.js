@@ -1,4 +1,3 @@
-import { object } from '@storybook/addon-knobs';
 import ModuleImageCarousel from './module-image-carousel.vue';
 
 export default {
