@@ -1,3 +1,4 @@
+import Vuex from 'vuex';
 import FormCooperation from './form-cooperation.vue';
 
 export default {
@@ -10,4 +11,11 @@ export const Default = () => ({
   template: `
     <form-cooperation/>
 	`,
+  store: new Vuex.Store({
+    actions: {
+      cooperate () {
+        return Promise.resolve();
+      },
+    },
+  }),
 });

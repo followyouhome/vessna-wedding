@@ -1,3 +1,4 @@
+import Vuex from 'vuex';
 import FormUserLogin from './form-user-login.vue';
 
 export default {
@@ -10,4 +11,11 @@ export const Default = () => ({
   template: `
     <form-user-login/>
 	`,
+  store: new Vuex.Store({
+    actions: {
+      login () {
+        return Promise.resolve();
+      },
+    },
+  }),
 });

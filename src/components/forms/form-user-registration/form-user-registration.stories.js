@@ -1,3 +1,4 @@
+import Vuex from 'vuex';
 import FormUserRegistration from './form-user-registration.vue';
 
 export default {
@@ -10,4 +11,11 @@ export const Default = () => ({
   template: `
     <form-user-registration/>
 	`,
+  store: new Vuex.Store({
+    actions: {
+      registration () {
+        return Promise.resolve();
+      },
+    },
+  }),
 });

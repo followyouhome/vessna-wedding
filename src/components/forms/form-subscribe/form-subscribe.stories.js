@@ -1,3 +1,4 @@
+import Vuex from 'vuex';
 import FormSubscribe from './form-subscribe.vue';
 
 export default {
@@ -10,4 +11,11 @@ export const Default = () => ({
   template: `
     <form-subscribe/>
 	`,
+  store: new Vuex.Store({
+    actions: {
+      subscribe () {
+        return Promise.resolve();
+      },
+    },
+  }),
 });

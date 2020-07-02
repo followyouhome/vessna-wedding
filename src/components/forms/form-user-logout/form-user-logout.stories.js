@@ -1,3 +1,4 @@
+import Vuex from 'vuex';
 import FormUserLogout from './form-user-logout.vue';
 
 export default {
@@ -10,4 +11,11 @@ export const Default = () => ({
   template: `
     <form-user-logout/>
 	`,
+  store: new Vuex.Store({
+    actions: {
+      logout () {
+        return Promise.resolve();
+      },
+    },
+  }),
 });

@@ -1,3 +1,4 @@
+import Vuex from 'vuex';
 import FormFeedback from './form-feedback.vue';
 
 export default {
@@ -10,4 +11,11 @@ export const Default = () => ({
   template: `
     <form-feedback/>
 	`,
+  store: new Vuex.Store({
+    actions: {
+      feedback () {
+        return Promise.resolve();
+      },
+    },
+  }),
 });

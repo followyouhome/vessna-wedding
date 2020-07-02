@@ -1,3 +1,4 @@
+import Vuex from 'vuex';
 import FormUserSettings from './form-user-settings.vue';
 
 export default {
@@ -10,4 +11,11 @@ export const Default = () => ({
   template: `
     <form-user-settings/>
 	`,
+  store: new Vuex.Store({
+    actions: {
+      settings () {
+        return Promise.resolve();
+      },
+    },
+  }),
 });
