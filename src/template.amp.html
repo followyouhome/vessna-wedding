@@ -53,12 +53,10 @@
 
     <!--  AMP Custom styles  -->
     <style amp-custom>
-      {{{ stylesheets[state.route.name] }}}
+      {{{ stylesheets.get(state.route.name) }}}
     </style>
   </head>
   <body>
     <!--vue-ssr-outlet-->
-    {{{ !amp && renderState() }}}
-    {{{ !amp && renderScripts() }}}
   </body>
 </html>
