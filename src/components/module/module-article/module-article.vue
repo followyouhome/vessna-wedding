@@ -1,6 +1,6 @@
 <template>
 	<article class="module module-article" v-if="article">
-		<b-container class="module__wrapper module-article__wrapper" v-html="article" />
+		<div class="module__wrapper module-article__wrapper" v-html="article"/>
 	</article>
 </template>
 
@@ -60,9 +60,19 @@
 	}
 
 	.module-article__wrapper {
+		max-width: 1140px;
+		margin: auto;
 		padding: 30px;
 		background: $white;
 		box-shadow: 0px 0px 10px 5px $gray1;
+
+		@media #{large} {
+			max-width: 960px;
+		}
+
+		@media #{$medium} {
+			max-width: 720px;
+		}
 
 		@media #{$phablet} {
 			padding: 20px;
@@ -136,6 +146,8 @@
 		}
 
 		p {
+			font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+			line-height: 24px;
 			margin: 2rem 0;
 			color: $dark;
 

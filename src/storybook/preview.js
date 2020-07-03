@@ -5,9 +5,6 @@ import Vuex from 'vuex';
 import VueRouter from 'vue-router';
 import NoSSR from 'vue-no-ssr';
 import VueLazyload from 'vue-lazyload';
-import BootstrapVue from 'bootstrap-vue';
-
-import '!style-loader!css-loader!bootstrap/dist/css/bootstrap.css';
 
 import CaptchaGoogle from '../components/atoms/captcha-google.vue';
 import ImageDeferred from '../components/atoms/image-deferred.vue';
@@ -22,7 +19,6 @@ addDecorator(StoryRouter());
 Vue.use(Vuex);
 Vue.use(VueRouter);
 Vue.use(VueLazyload);
-Vue.use(BootstrapVue);
 
 Vue.component('no-ssr', NoSSR);
 Vue.component('captcha-google', CaptchaGoogle);

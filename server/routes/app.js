@@ -54,9 +54,7 @@ module.exports = app => {
     let result = base;
 
     Object.entries(stylesheets).forEach(([key, value]) => {
-      console.log(key, id);
       if (key.includes(id)) {
-        console.log(key + ' added');
         result += '\n' + value;
       }
     });
