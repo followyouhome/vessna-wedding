@@ -5,11 +5,11 @@
     </template>
     <template slot='body'>
       <div class="form-login__group">
-        <b-row class="mt-4 mb-4">
-          <b-col>
-            <b-form-input v-model="form.email || user" type="text" placeholder="Email" disabled/>
-          </b-col>
-        </b-row>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
+            <input class="form__input-text" v-model="form.email || user" type="text" placeholder="Email" disabled/>
+          </div>
+        </div>
       </div>
     </template>
     <template slot='footer'>

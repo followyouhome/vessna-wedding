@@ -5,7 +5,7 @@
     <global-main-promo :promo="main_promo" v-if="main_promo"/>
     <global-navigation :navigation="navigation" :settings="settings"/>
     <transition name="fade">
-      <router-view class="global-router-view" @loading="onLoading" @loaded="onLoaded"></router-view>
+      <router-view class="global-router-view" @loading="onLoading" @loaded="onLoaded" style="background: transparent;"></router-view>
     </transition>
     <global-footer/>
     <global-popup-container :popup="popup" v-show="popup"/>
@@ -166,7 +166,7 @@
 </script>
 
 <style lang="scss">
-  // @import '~bootstrap/dist/css/bootstrap';
+  @import './styles/layout.scss';
 
   html {
     height: 100%;

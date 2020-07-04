@@ -1,5 +1,5 @@
 <template>
-  <b-container class="module module-call-to-action">
+  <div class="module module-call-to-action container">
     <div class="module__wrapper module-call-to-action__wrapper">
       <div class="module-call-to-action__content">
         <h3 class="module-call-to-action__content-headline" v-if="content.headline">{{content.headline}}</h3>
@@ -13,7 +13,7 @@
         >{{button.text}}</simple-button>
       </div>
     </div>
-  </b-container>
+  </div>
 </template>
 
 <script>

@@ -1,12 +1,12 @@
 <template>
-  <b-container class="module module-contact-info">
+  <div class="module module-contact-info container">
     <h2 class="module-contact-info__headline">Контакты</h2>
     <b-tabs class="module__wrapper module-contact-info__wrapper" content-class="mt-3">
       <b-tab v-for="item in items" :title="item.name" :key="item.name">
         <promo-contact-card :item="item"/>
       </b-tab>
     </b-tabs>
-  </b-container>
+  </div>
 </template>
 
 <script>

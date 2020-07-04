@@ -5,21 +5,21 @@
     </template>
     <template slot='body'>
       <div class="form-login__group">
-        <b-row class="mt-4 mb-4">
-          <b-col>
-            <b-form-input v-model="form.email" type="text" placeholder="Email" required/>
-          </b-col>
-        </b-row>
-        <b-row class="mt-4 mb-4">
-          <b-col>
-            <b-form-input v-model="form.password" type="password" placeholder="Пароль" required/>
-          </b-col>
-        </b-row>
-        <b-row class="mt-4 mb-4">
-          <b-col>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
+            <input class="form__input-text" v-model="form.email" type="text" placeholder="Email" required/>
+          </div>
+        </div>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
+            <input class="form__input-text" v-model="form.password" type="password" placeholder="Пароль" required/>
+          </div>
+        </div>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
             <captcha-google @init="captchaInit" @success="captchaSuccess" @failure="captchaFailure"/>
-          </b-col>
-        </b-row>
+          </div>
+        </div>
       </div>
     </template>
     <template slot='footer'>

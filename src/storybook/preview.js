@@ -6,6 +6,8 @@ import VueRouter from 'vue-router';
 import NoSSR from 'vue-no-ssr';
 import VueLazyload from 'vue-lazyload';
 
+import '../styles/layout.scss';
+
 import CaptchaGoogle from '../components/atoms/captcha-google.vue';
 import ImageDeferred from '../components/atoms/image-deferred.vue';
 import SimpleButton from '../components/atoms/simple-button';

@@ -1,10 +1,10 @@
 <template>
-	<b-container class="module module-feedback-greed">
+	<div class="module module-feedback-greed container">
 		<div class="module__wrapper module-feedback-greed__wrapper">
 			<promo-label class="module-feedback-greed__promo" :item="label"/>
 			<promo-feedback class="module-feedback-greed__promo" v-for="feedback in limitedFeedbacks" :item="feedback" :key="feedback.name"/>
 		</div>
-	</b-container>
+	</div>
 </template>
 
 <script>

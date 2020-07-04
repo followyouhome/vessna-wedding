@@ -1,5 +1,5 @@
 <template>
-  <b-container class="module module-dealers-map" v-show="!error">
+  <div class="module module-dealers-map container" v-show="!error">
     <h2 class="module-dealers-map__headline">Диллеры</h2>
     <div class="module-dealers-map__list">
       <b-form-select v-model="filterByCountry" :options="countries">
@@ -43,7 +43,7 @@
         </template>
       </div>
     </div>
-  </b-container>
+  </div>
 </template>
 
 <script>

@@ -6,61 +6,61 @@
     <template slot='body'>
       <div class="form-cooperation__group">
         <h4 class="form__subline">Ваши контактные данные</h4>
-        <b-row class="mt-4 mb-4">
-          <b-col cols="12" md="4" class="my-1">
-            <b-form-input v-model="form.name" type="text" placeholder="Имя" required/>
-          </b-col>
-          <b-col cols="12" md="4" class="my-1">
-            <b-form-input v-model="form.email" type="text" placeholder="E-mail" required/>
-          </b-col>
-          <b-col cols="12" md="4" class="my-1">
-            <b-form-input v-model="form.phone" type="text" placeholder="Телефон" required/>
-          </b-col>
-        </b-row>
-        <b-row class="mt-4 mb-4">
-          <b-col cols="12" md="4" class="my-1">
-            <b-form-input v-model="form.country" type="text" placeholder="Страна" required/>
-          </b-col>
-          <b-col cols="12" md="4" class="my-1">
-            <b-form-input v-model="form.city" type="text" placeholder="Город" required/>
-          </b-col>
-          <b-col cols="12" md="4" class="my-1">
-            <b-form-input v-model="form.showroom" type="text" placeholder="Салон" required/>
-          </b-col>
-        </b-row>
+        <div class="row mt-4 mb-4">
+          <div class="col col-sm-12 col-4 my-1">
+            <input class="form__input-text" v-model="form.name" type="text" placeholder="Имя" required/>
+          </div>
+          <div class="col col-sm-12 col-4 my-1">
+            <input class="form__input-text" v-model="form.email" type="text" placeholder="E-mail" required/>
+          </div>
+          <div class="col col-sm-12 col-4 my-1">
+            <input class="form__input-text" v-model="form.phone" type="text" placeholder="Телефон" required/>
+          </div>
+        </div>
+        <div class="row mt-4 mb-4">
+          <div class="col col-sm-12 col-4 my-1">
+            <input class="form__input-text" v-model="form.country" type="text" placeholder="Страна" required/>
+          </div>
+          <div class="col col-sm-12 col-4 my-1">
+            <input class="form__input-text" v-model="form.city" type="text" placeholder="Город" required/>
+          </div>
+          <div class="col col-sm-12 col-4 my-1">
+            <input class="form__input-text" v-model="form.showroom" type="text" placeholder="Салон" required/>
+          </div>
+        </div>
       </div>
       <div class="form-cooperation__group">
-        <b-row class="mt-4 mb-4">
-          <b-col>
+        <div class="row mt-4 mb-4">
+          <div class="col col-4">
             <b-form-checkbox v-model="form.subscribe" class="ml-4" value="true" inline>Подписаться на новостную рассылку</b-form-checkbox>
-          </b-col>
-          <b-col>
+          </div>
+          <div class="col col-4">
             <b-form-checkbox v-model="form.lookbook" class="ml-4" value="true" inline>Запросить актуальный лукбук</b-form-checkbox>
-          </b-col>
-          <b-col>
+          </div>
+          <div class="col col-4">
             <b-form-checkbox v-model="form.callback" class="ml-4" value="true" inline>Получить обратный звонок</b-form-checkbox>
-          </b-col>
-        </b-row>
+          </div>
+        </div>
       </div>
       <div class="form-cooperation__group">
         <h4 class="form__subline">Вид сотрудничества</h4>
-        <b-row class="mt-4 mb-4">
-          <b-col>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
             <b-form-select v-model="form.topic" :options="topics">
               <template slot="first">
                 <option :value="null" disabled>Выберите вид</option>
               </template>
             </b-form-select>
-          </b-col>
-        </b-row>
+          </div>
+        </div>
       </div>
       <div class="form-cooperation__group">
         <h4 class="form__subline">Сообщение</h4>
-        <b-row class="mt-4 mb-4">
-          <b-col>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
             <b-form-textarea v-model="form.message" placeholder="Сообщение..." rows="3" max-rows="6"/>
-          </b-col>
-        </b-row>
+          </div>
+        </div>
       </div>
     </template>
     <template slot='footer'>

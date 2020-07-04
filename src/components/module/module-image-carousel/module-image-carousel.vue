@@ -1,5 +1,5 @@
 <template>
-  <b-container class="module module-dress-info">
+  <div class="module module-dress-info container">
     <div class="module-dress-info__carousel" ref="carousel">
       <div class="module-dress-info__image" v-for="image in images">
         <image-deferred class="" :image="image" :key="image.url"/>
@@ -18,7 +18,7 @@
         <p class="module-dress-info__copy" v-if="price">{{price}}</p>
       </div>
     </div>
-  </b-container>
+  </div>
 </template>
 
 <script>

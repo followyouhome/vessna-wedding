@@ -1,5 +1,5 @@
 <template>
-  <b-container class="popup">
+  <div class="popup container">
     <slot name='header'>
 
     </slot>
@@ -9,7 +9,7 @@
     <slot name='footer'>
       <button class="popup__close" @click="close">×</button>
     </slot>
-  </b-container>
+  </div>
 </template>
 
 <script>

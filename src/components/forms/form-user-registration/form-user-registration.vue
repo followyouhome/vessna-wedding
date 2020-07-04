@@ -5,60 +5,60 @@
     </template>
     <template slot='body'>
       <div class="form-user-registration__group">
-        <b-row class="mt-4 mb-4">
-          <b-col>
-            <b-form-input v-model="form.name" type="text" placeholder="Имя" required/>
-          </b-col>
-        </b-row>
-        <b-row class="mt-4 mb-4">
-          <b-col>
-            <b-form-input v-model="form.email" type="email" placeholder="Email" required/>
-          </b-col>
-        </b-row>
-        <b-row class="mt-4 mb-4">
-          <b-col>
-            <b-form-input v-model="form.password" type="password" placeholder="Пароль" required/>
-          </b-col>
-        </b-row>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
+            <input class="form__input-text" v-model="form.name" type="text" placeholder="Имя" required/>
+          </div>
+        </div>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
+            <input class="form__input-text" v-model="form.email" type="email" placeholder="Email" required/>
+          </div>
+        </div>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
+            <input class="form__input-text" v-model="form.password" type="password" placeholder="Пароль" required/>
+          </div>
+        </div>
       </div>
       <div class="form__group">
-        <b-row class="mt-4 mb-4">
-          <b-col>
-            <b-form-input v-model="form.info.city" type="text" placeholder="Город" required/>
-          </b-col>
-        </b-row>
-        <b-row class="mt-4 mb-4">
-          <b-col>
-            <b-form-input v-model="form.info.shop" type="text" placeholder="Магазин" required/>
-          </b-col>
-        </b-row>
-        <b-row class="mt-4 mb-4">
-          <b-col>
-            <b-form-input v-model="form.info.phone" type="text" placeholder="Телефон" required/>
-          </b-col>
-        </b-row>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
+            <input class="form__input-text" v-model="form.info.city" type="text" placeholder="Город" required/>
+          </div>
+        </div>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
+            <input class="form__input-text" v-model="form.info.shop" type="text" placeholder="Магазин" required/>
+          </div>
+        </div>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
+            <input class="form__input-text" v-model="form.info.phone" type="text" placeholder="Телефон" required/>
+          </div>
+        </div>
       </div>
       <div class="form__group">
-        <b-row class="mt-4 mb-4">
-          <b-col>
-            <b-form-input v-model="form.invite" type="text" placeholder="Инвайт" required/>
-          </b-col>
-        </b-row>
-        <b-row class="mt-4 mb-4">
-          <b-col>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
+            <input class="form__input-text" v-model="form.invite" type="text" placeholder="Инвайт" required/>
+          </div>
+        </div>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
             <b-form-checkbox v-model="form.access.subscription" class="ml-4" inline>Подписаться на рассылку</b-form-checkbox>
-          </b-col>
-        </b-row>
-        <b-row class="mt-4 mb-4">
-          <b-col>
+          </div>
+        </div>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
             <b-form-checkbox v-model="state.checked" class="ml-4" required inline>Согласие с пользовательским соглашением</b-form-checkbox>
-          </b-col>
-        </b-row>
-        <b-row class="mt-4 mb-4">
-          <b-col>
+          </div>
+        </div>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
             <captcha-google @init="captchaInit" @success="captchaSuccess" @failure="captchaFailure"/>
-          </b-col>
-        </b-row>
+          </div>
+        </div>
       </div>
     </template>
     <template slot='footer'>
