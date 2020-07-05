@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions';
 import Vuex from 'vuex';
 import FormCooperation from './form-cooperation.vue';
 
@@ -9,7 +10,11 @@ export default {
 export const Default = () => ({
 	components: { FormCooperation },
   template: `
-    <form-cooperation/>
+    <form-cooperation
+      @submit="submit"
+      @success="success"
+      @failure="failure""
+    />
 	`,
   store: new Vuex.Store({
     actions: {
@@ -18,4 +23,9 @@ export const Default = () => ({
       },
     },
   }),
+  methods: {
+    submit: action('submit'),
+    success: action('success'),
+    failure: action('failure'),
+  },
 });

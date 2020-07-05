@@ -1,12 +1,18 @@
 <template>
   <div class="global-loading">
-    <b-spinner class="global-loading__spinner"></b-spinner>
+    <atom-spinner class="global-loading__spinner"/>
   </div>
 </template>
 
 <script>
+  import { AtomSpinner } from '@/components/atoms';
+
   export default {
     name: 'GlobalLoading',
+
+    components: {
+      AtomSpinner,
+    },
   };
 </script>
 

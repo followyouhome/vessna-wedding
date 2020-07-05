@@ -8,37 +8,37 @@
         <h4 class="form__subline">Ваши контактные данные</h4>
         <div class="row mt-4 mb-4">
           <div class="col col-sm-12 col-4 my-1">
-            <input class="form__input-text" v-model="form.name" type="text" placeholder="Имя" required/>
+            <atom-input v-model="form.name" type="text" placeholder="Имя" required/>
           </div>
           <div class="col col-sm-12 col-4 my-1">
-            <input class="form__input-text" v-model="form.email" type="text" placeholder="E-mail" required/>
+            <atom-input v-model="form.email" type="text" placeholder="E-mail" required/>
           </div>
           <div class="col col-sm-12 col-4 my-1">
-            <input class="form__input-text" v-model="form.phone" type="text" placeholder="Телефон" required/>
+            <atom-input v-model="form.phone" type="text" placeholder="Телефон" required/>
           </div>
         </div>
         <div class="row mt-4 mb-4">
           <div class="col col-sm-12 col-4 my-1">
-            <input class="form__input-text" v-model="form.country" type="text" placeholder="Страна" required/>
+            <atom-input v-model="form.country" type="text" placeholder="Страна" required/>
           </div>
           <div class="col col-sm-12 col-4 my-1">
-            <input class="form__input-text" v-model="form.city" type="text" placeholder="Город" required/>
+            <atom-input v-model="form.city" type="text" placeholder="Город" required/>
           </div>
           <div class="col col-sm-12 col-4 my-1">
-            <input class="form__input-text" v-model="form.showroom" type="text" placeholder="Салон" required/>
+            <atom-input v-model="form.showroom" type="text" placeholder="Салон" required/>
           </div>
         </div>
       </div>
       <div class="form-cooperation__group">
         <div class="row mt-4 mb-4">
           <div class="col col-4">
-            <b-form-checkbox v-model="form.subscribe" class="ml-4" value="true" inline>Подписаться на новостную рассылку</b-form-checkbox>
+            <atom-checkbox v-model="form.subscribe" label="Подписаться на новостную рассылку" class="ml-4" inline/>
           </div>
           <div class="col col-4">
-            <b-form-checkbox v-model="form.lookbook" class="ml-4" value="true" inline>Запросить актуальный лукбук</b-form-checkbox>
+            <atom-checkbox v-model="form.lookbook" label="Запросить актуальный лукбук" class="ml-4" inline/>
           </div>
           <div class="col col-4">
-            <b-form-checkbox v-model="form.callback" class="ml-4" value="true" inline>Получить обратный звонок</b-form-checkbox>
+            <atom-checkbox v-model="form.callback" label="Получить обратный звонок" class="ml-4" inline/>
           </div>
         </div>
       </div>
@@ -46,11 +46,11 @@
         <h4 class="form__subline">Вид сотрудничества</h4>
         <div class="row mt-4 mb-4">
           <div class="col col-12">
-            <b-form-select v-model="form.topic" :options="topics">
+            <atom-select v-model="form.topic" :options="topics">
               <template slot="first">
                 <option :value="null" disabled>Выберите вид</option>
               </template>
-            </b-form-select>
+            </atom-select>
           </div>
         </div>
       </div>
@@ -58,15 +58,21 @@
         <h4 class="form__subline">Сообщение</h4>
         <div class="row mt-4 mb-4">
           <div class="col col-12">
-            <b-form-textarea v-model="form.message" placeholder="Сообщение..." rows="3" max-rows="6"/>
+            <atom-textarea v-model="form.message" placeholder="Сообщение..." rows="3" max-rows="6"/>
           </div>
         </div>
       </div>
     </template>
     <template slot='footer'>
-      <div class="form-feedback__control">
-        <b-button class="form__submit my-1" type="submit" :disabled="disabled" :title="title">Отправить</b-button>
-        <b-form-checkbox class="ml-4 my-1" v-model="state.checked" inline>Даю согласие на обработку персональных данных</b-form-checkbox>
+      <div class="form-cooperation__control">
+        <div class="row mt-4 mb-4">
+          <div class="col col-4 col-sm-12">
+            <atom-button class="form__submit my-1" type="submit" :disabled="disabled" :title="title" label="Отправить"/>
+          </div>
+          <div class="col col-8 col-sm-12">
+            <atom-checkbox class="ml-4 my-1" v-model="state.checked" label="Даю согласие на обработку персональных данных" inline/>
+          </div>
+        </div>
       </div>
     </template>
   </v-form>
@@ -74,6 +80,7 @@
 
 <script>
   import Form from '../form.vue';
+  import { AtomButton, AtomInput, AtomCheckbox, AtomSelect, AtomTextarea } from '@/components/atoms';
 
   export default {
     name: 'FormCooperation',
@@ -81,6 +88,11 @@
     extends: Form,
 
     components: {
+      AtomButton,
+      AtomInput,
+      AtomCheckbox,
+      AtomSelect,
+      AtomTextarea,
       'v-form': Form,
     },
 
@@ -139,10 +151,13 @@
     border-radius: 2px;
   }
 
-  .form-cooperation__control {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-top: 2rem;
+  .form-cooperation__control .row {
+    @media #{$phablet} {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-direction: column-reverse;
+      margin-top: 2rem;
+    }
   }
 </style>

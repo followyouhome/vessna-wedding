@@ -7,14 +7,14 @@
       <div class="form-login__group">
         <div class="row mt-4 mb-4">
           <div class="col col-12">
-            <input class="form__input-text" v-model="form.email || user" type="text" placeholder="Email" disabled/>
+            <atom-input class="form__input-text" v-model="form.email || user" type="text" placeholder="Email" disabled/>
           </div>
         </div>
       </div>
     </template>
     <template slot='footer'>
       <div class="form-feedback__control">
-        <b-button class="form__submit" type="submit" block>Выйти</b-button>
+        <atom-button class="form__submit" type="submit" block label="Выйти"/>
       </div>
     </template>
   </v-form>
@@ -22,6 +22,7 @@
 
 <script>
   import Form from '../form.vue';
+  import { AtomButton, AtomInput, AtomCheckbox, AtomSelect, AtomTextarea } from '@/components/atoms';
 
   const REDIRECTION_TIMEOUT = 3000;
 
@@ -31,6 +32,11 @@
     extends: Form,
 
     components: {
+      AtomButton,
+      AtomInput,
+      AtomCheckbox,
+      AtomSelect,
+      AtomTextarea,
       'v-form': Form,
     },
 

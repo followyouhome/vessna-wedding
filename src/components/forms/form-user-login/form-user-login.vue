@@ -7,12 +7,12 @@
       <div class="form-login__group">
         <div class="row mt-4 mb-4">
           <div class="col col-12">
-            <input class="form__input-text" v-model="form.email" type="text" placeholder="Email" required/>
+            <atom-input class="form__input-text" v-model="form.email" type="text" placeholder="Email" required/>
           </div>
         </div>
         <div class="row mt-4 mb-4">
           <div class="col col-12">
-            <input class="form__input-text" v-model="form.password" type="password" placeholder="Пароль" required/>
+            <atom-input class="form__input-text" v-model="form.password" type="password" placeholder="Пароль" required/>
           </div>
         </div>
         <div class="row mt-4 mb-4">
@@ -24,7 +24,7 @@
     </template>
     <template slot='footer'>
       <div class="form-feedback__control">
-        <b-button class="form__submit" type="submit" :disabled="disabled" :title="title" block>Войти</b-button>
+        <atom-button class="form__submit" type="submit" :disabled="disabled" :title="title" block label="Войти"/>
       </div>
     </template>
   </v-form>
@@ -32,6 +32,7 @@
 
 <script>
   import Form from '../form.vue';
+  import { AtomButton, AtomInput, AtomCheckbox, AtomSelect, AtomTextarea } from '@/components/atoms';
 
   const REDIRECTION_TIMEOUT = 3000;
 
@@ -41,6 +42,11 @@
     extends: Form,
 
     components: {
+      AtomButton,
+      AtomInput,
+      AtomCheckbox,
+      AtomSelect,
+      AtomTextarea,
       'v-form': Form,
     },
 

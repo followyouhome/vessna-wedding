@@ -7,18 +7,18 @@
       <div class="form-user-settings__group">
         <div class="row mt-4 mb-4" align-v="center">
           <div sm="2" class="col col-2 align-middle">
-            <label class="form__label" for="input-info-phone">Имя:</label>
+            <label class="form__label" for="input-info-name">Имя:</label>
           </div>
           <div class="col col-10">
-            <input class="form__input-text" v-model="form.name" id="input-info-phone" type="text" placeholder="Введите своё имя" disabled />
+            <atom-input class="form__input-text" v-model="form.name" id="input-info-name" type="text" placeholder="Введите своё имя" disabled />
           </div>
         </div>
         <div class="row mt-4 mb-4" align-v="center">
           <div class="col col-2">
-            <label class="form__label" for="input-info-city">Email:</label>
+            <label class="form__label" for="input-info-email">Email:</label>
           </div>
           <div class="col col-10">
-            <input class="form__input-text" v-model="form.email" id="input-info-city" type="text" placeholder="Введите свой email" disabled />
+            <atom-input class="form__input-text" v-model="form.email" id="input-info-email" type="text" placeholder="Введите свой email" disabled />
           </div>
         </div>
       </div>
@@ -29,7 +29,7 @@
             <label class="form__label" for="input-info-phone">Телефон:</label>
           </div>
           <div class="col col-10">
-            <input class="form__input-text" v-model="form.info.phone" id="input-info-phone" type="text" placeholder="Введите контактный телефон" />
+            <atom-input class="form__input-text" v-model="form.info.phone" id="input-info-phone" type="text" placeholder="Введите контактный телефон" />
           </div>
         </div>
         <div class="row mt-4 mb-4" align-v="center">
@@ -37,7 +37,7 @@
             <label class="form__label" for="input-info-city">Город:</label>
           </div>
           <div class="col col-10">
-            <input class="form__input-text" v-model="form.info.city" id="input-info-city" type="text" placeholder="Введите город" />
+            <atom-input class="form__input-text" v-model="form.info.city" id="input-info-city" type="text" placeholder="Введите город" />
           </div>
         </div>
         <div class="row mt-4 mb-4" align-v="center">
@@ -45,7 +45,7 @@
             <label class="form__label" for="input-info-shop">Салон:</label>
           </div>
           <div class="col col-10">
-            <input class="form__input-text" v-model="form.info.shop" id="input-info-shop" type="text" placeholder="Введите название вашего бизнеса" />
+            <atom-input class="form__input-text" v-model="form.info.shop" id="input-info-shop" type="text" placeholder="Введите название вашего бизнеса" />
           </div>
         </div>
       </div>
@@ -56,28 +56,28 @@
             <label class="form__label" for="input-access-currency">Валюта:</label>
           </div>
           <div class="col col-10">
-            <b-form-select v-model="form.access.currency" id="input-access-currency" :options="currencies">
+            <atom-select v-model="form.access.currency" id="input-access-currency" :options="currencies">
               <template slot="first">
                 <option :value="null" disabled>Выберите валюту</option>
               </template>
-            </b-form-select>
+            </atom-select>
           </div>
         </div>
         <div class="row mt-4 mb-4" align-v="center">
           <div class="col col-12">
-            <b-form-checkbox v-model="form.access.subscription" class="ml-4" value="true" inline>Подписаться на новостную рассылку</b-form-checkbox>
+            <atom-checkbox v-model="form.access.subscription" class="ml-4" value="true" inline label="Подписаться на новостную рассылку"/>
           </div>
         </div>
         <div class="row mt-4 mb-4" align-v="center">
           <div class="col col-12">
-            <b-form-checkbox v-model="form.access.content" class="ml-4" value="true" inline disabled title="Для изменения этой настройки обратитесь к администратору">Доступ к промо-материалам</b-form-checkbox>
+            <atom-checkbox v-model="form.access.content" class="ml-4" value="true" inline disabled title="Для изменения этой настройки обратитесь к администратору" label="Доступ к промо-материалам"/>
           </div>
         </div>
       </div>
     </template>
     <template slot='footer'>
       <div class="form-feedback__control">
-        <b-button class="form__submit" type="submit" :disabled="disabled" block>Сохранить</b-button>
+        <atom-button class="form__submit" type="submit" :disabled="disabled" label="Сохранить" block/>
       </div>
     </template>
   </v-form>
@@ -85,6 +85,7 @@
 
 <script>
   import Form from '../form.vue';
+  import { AtomButton, AtomInput, AtomCheckbox, AtomSelect, AtomTextarea } from '@/components/atoms';
 
   export default {
     name: 'FormUserSettings',
@@ -92,6 +93,11 @@
     extends: Form,
 
     components: {
+      AtomButton,
+      AtomInput,
+      AtomCheckbox,
+      AtomSelect,
+      AtomTextarea,
       'v-form': Form,
     },
 
@@ -124,10 +130,10 @@
         currencies: [
           {
             value: 'usd',
-            text: 'USD',
+            label: 'USD',
           }, {
             value: 'rub',
-            text: 'RUB',
+            label: 'RUB',
           },
         ],
       };

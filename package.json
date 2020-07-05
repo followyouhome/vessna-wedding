@@ -94,7 +94,7 @@
     "rimraf": "^2.6.3",
     "sass-loader": "^7.1.0",
     "sass-resources-loader": "^2.0.0",
-    "shortid": "^2.2.14",
+    "shortid": "^2.2.15",
     "sitemap-generator": "^8.3.3",
     "stickyfill": "^1.1.1-strict",
     "sw-precache-webpack-plugin": "^0.11.5",

@@ -2,11 +2,11 @@
   <div class="module module-dealers-map container" v-show="!error">
     <h2 class="module-dealers-map__headline">Диллеры</h2>
     <div class="module-dealers-map__list">
-      <b-form-select v-model="filterByCountry" :options="countries">
+      <atom-select v-model="filterByCountry" :options="countries">
         <template slot="first">
           <option :value="null" disabled>Выберите страну</option>
         </template>
-      </b-form-select>
+      </atom-select>
     </div>
     <div class="module-dealers-map__wrapper">
       <no-ssr>
@@ -50,11 +50,16 @@
   import shortid from 'shortid';
   import loadScriptMixin from '@/components/mixins/load-script.js';
   import yandexMapsMixin from '@/components/mixins/yandex-maps.js';
+  import { AtomSelect } from '@/components/atoms';
 
   const key = process.env.YANDEX_MAPS_KEY;
 
   export default {
     name: 'ModuleDealersMap',
+
+    components: {
+      AtomSelect,
+    },
 
     props: ['dealers'],
 

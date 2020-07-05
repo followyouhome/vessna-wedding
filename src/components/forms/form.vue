@@ -1,5 +1,5 @@
 <template>
-  <b-form class="form" :class="formModifier" @submit.prevent="submit">
+  <form class="form" :class="formModifier" @submit.prevent="submit">
     <slot name='header'>
 
     </slot>
@@ -11,7 +11,7 @@
     </slot>
     <slot name="modal">
       <div class="form__modal" v-show="state.request">
-        <b-spinner type="grow" label="Spinning"></b-spinner>
+        <atom-spinner type="grow" label="Spinning"/>
       </div>
       <div class="form__modal form__modal--success" v-show="state.success">
         <h4 class="form__subline">{{label.success}}</h4>
@@ -20,14 +20,20 @@
         <h4 class="form__subline">{{label.failure}}</h4>
       </div>
     </slot>
-  </b-form>
+  </form>
 </template>
 
 <script>
+  import { AtomSpinner } from '@/components/atoms';
+
   const MODAL_TIMEOUT = 3000;
 
   export default {
     name: 'v-form',
+
+    components: {
+      AtomSpinner,
+    },
 
     data () {
       return {
@@ -96,7 +102,7 @@
 
       submit () {
         this.state.request = true;
-        this.$emit('submit');
+        this.$parent.$emit('submit', this.$parent.form);
 
         return this.$store.dispatch(this.$parent.action, this.$parent.form).then((data) => {
           this.state.success = true;
@@ -198,6 +204,7 @@
   }
 
   .form__label {
+    font-family: $Default;
     margin-bottom: 0;
   }
 
@@ -212,7 +219,6 @@
     font: 1.5rem/1.5rem $RistrettoProLight;
     text-align: center;
   }
-
 
   // @keyframes fail {
   //   0%   { transform: translateX(0);}
