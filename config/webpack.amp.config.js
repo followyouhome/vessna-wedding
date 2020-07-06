@@ -2,6 +2,7 @@
  * Webpack configuration for generating amp styles.
  * The VueSSRClientPlugin generates dist/vue-ssr-client-manifest.json, to allow for preloading and prefetching of priority assets.
  */
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base.config.js');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -30,12 +31,15 @@ module.exports = merge.strategy({
       new OptimizeCSSAssetsPlugin(),
     ],
     splitChunks: {
+      chunks: 'initial',
+      minChunks: 1,
+
       cacheGroups: {
-        amp: {
-          name: 'amp-core',
-          test: module => module.type === 'javascript/auto',
-          enforce: true,
-          chunks: 'all',
+        styles: {
+          name: 'styles',
+          test: module => module.constructor.name === 'CssModule',
+          reuseExistingChunk: false,
+          chunks: 'initial',
         },
       },
     },
@@ -50,6 +54,9 @@ module.exports = merge.strategy({
   plugins: [
     new MiniCssExtractPlugin({
       filename: '[name]-amp.css',
+    }),
+    new webpack.optimize.LimitChunkCountPlugin({
+      maxChunks: 10,
     }),
   ],
 });

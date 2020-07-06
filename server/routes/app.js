@@ -43,7 +43,7 @@ module.exports = app => {
    * Get AMP stylesheets
    */
   const stylesheets = {};
-  const base = fs.readFileSync(resolve('../../dist/amp-entry-amp.css'), 'utf8');
+  const base = fs.readFileSync(resolve('../../dist/styles-amp.css'), 'utf8');
   glob.sync(`${__dirname}/../../dist/page-*-amp.css`).forEach(file => {
     const id = file.replace(/^.*\//, '').replace(/-amp.css/, '');
 
@@ -52,6 +52,13 @@ module.exports = app => {
 
   stylesheets.get = (id) => {
     let result = base;
+
+    /**
+     * @TODO temporal solution with hardcoded route mapping
+     */
+    if (['page-dress-collection-prom'].includes(id)) {
+      id = 'page-dress-collection';
+    }
 
     Object.entries(stylesheets).forEach(([key, value]) => {
       if (key.includes(id)) {
