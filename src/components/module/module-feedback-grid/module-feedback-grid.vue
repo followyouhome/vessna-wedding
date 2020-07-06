@@ -8,7 +8,8 @@
 </template>
 
 <script>
-	import { PromoLabel, PromoFeedback } from '@/components/promo';
+	import PromoLabel from '@/components/promo/promo-label/promo-label.vue';
+	import PromoFeedback from '@/components/promo/promo-feedback/promo-feedback.vue';
 
 	export default {
 		name: 'ModuleFeedbackGrid',

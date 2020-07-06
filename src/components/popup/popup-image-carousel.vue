@@ -8,7 +8,7 @@
 
 <script>
   import Popup from './popup.vue';
-  import { ModuleImageCarousel } from '@/components/module';
+  import ModuleImageCarousel from '@/components/module/module-image-carousel/module-image-carousel.vue';
 
   export default {
     name: 'PopupImageCarousel',

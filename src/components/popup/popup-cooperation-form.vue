@@ -8,7 +8,7 @@
 
 <script>
   import Popup from './popup.vue';
-  import { FormCooperation } from '@/components/forms';
+  import FormCooperation from '@/components/forms/form-cooperation/form-cooperation.vue';
 
   export default {
     name: 'PopupCooperationForm',

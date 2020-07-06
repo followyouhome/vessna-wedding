@@ -11,8 +11,11 @@
 
 <script>
   import Page from './page.vue';
-  import { ModulePromoCards, ModuleRelatedPosts, ModuleFeedbackGrid, ModuleSelectedCollections } from '@/components/module';
-  import { PromoFullScreenQuote } from '@/components/promo';
+  import ModulePromoCards from '@/components/module/module-promo-cards/module-promo-cards.vue';
+  import ModuleRelatedPosts from '@/components/module/module-related-posts/module-related-posts.vue';
+  import ModuleFeedbackGrid from '@/components/module/module-feedback-grid/module-feedback-grid.vue';
+  import ModuleSelectedCollections from '@/components/module/module-selected-collections/module-selected-collections.vue';
+  import PromoFullScreenQuote from '@/components/promo/promo-full-screen-quote/promo-full-screen-quote.vue';
 
   import store from '../../store/';
 

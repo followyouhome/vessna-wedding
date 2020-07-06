@@ -8,7 +8,7 @@
 
 <script>
   import Popup from './popup.vue';
-  import { FormFeedback } from '@/components/forms';
+  import FormFeedback from '@/components/forms/form-feedback/form-feedback.vue';
 
   export default {
     name: 'PopupFeedbackForm',

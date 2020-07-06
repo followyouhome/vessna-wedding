@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import { PromoContactCard } from '@/components/promo';
+  import PromoContactCard from '@/components/promo/promo-contact-card/promo-contact-card.vue';
 
   export default {
     name: 'module-contact-info',

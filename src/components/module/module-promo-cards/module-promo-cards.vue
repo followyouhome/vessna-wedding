@@ -7,7 +7,7 @@
 </template>
 
 <script>
-	import { PromoCard } from '@/components/promo';
+	import PromoCard from '@/components/promo/promo-card/promo-card.vue';
 
 	export default {
 		name: 'module-promo-cards',

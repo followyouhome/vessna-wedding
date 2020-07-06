@@ -6,8 +6,8 @@
 </template>
 
 <script>
-  import { ModuleGrid } from '..';
-  import { PromoNews } from '@/components/promo';
+  import ModuleGrid from '../module-grid/module-grid.vue';
+  import PromoNews from '@/components/promo/promo-news/promo-news.vue';
 
   export default {
     name: 'ModuleGridNews',

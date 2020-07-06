@@ -8,7 +8,7 @@
 
 <script>
   import Popup from './popup.vue';
-  import { FormUserLogin } from '@/components/forms';
+  import FormUserLogin from '@/components/forms/form-user-login/form-user-login.vue';
 
   export default {
     name: 'popup-login',

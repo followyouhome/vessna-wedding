@@ -9,7 +9,11 @@
 
 <script>
   import Page from '@/components/pages/page.vue';
-  import { ModuleArticle, ModuleGridDress, ModuleCollectionControl, ModuleSharedFolder, ModuleFeedbackGrid } from '@/components/module';
+  import ModuleArticle from '@/components/module/module-article/module-article.vue';
+  import ModuleCollectionControl from '@/components/module/module-collection-control/module-collection-control.vue';
+  import ModuleSharedFolder from '@/components/module/module-shared-folder/module-shared-folder.vue';
+  import ModuleFeedbackGrid from '@/components/module/module-feedback-grid/module-feedback-grid.vue';
+  import ModuleGridDress from '@/components/module/module-grid-dress/module-grid-dress.vue';
   import store from '@/store/';
 
   function fetch (store, route) {
@@ -51,7 +55,7 @@
 
     data () {
       return {
-        filteredDresses: null,
+        filter: {},
       };
     },
 
@@ -71,34 +75,26 @@
       description () {
         return this.$store.state.page.description;
       },
+
+      filteredDresses () {
+        let filteredDresses = this.dresses;
+
+        if (this.filter.min) {
+          this.filteredDresses = this.filteredDresses.filter(item => item.price[this.currency] >= this.filter.min);
+        }
+
+        if (this.filter.max) {
+          this.filteredDresses = this.filteredDresses.filter(item => item.price[this.currency] <= this.filter.max);
+        }
+
+        return filteredDresses;
+      },
     },
 
     methods: {
       updateFilter (filter) {
-        this.filteredDresses = null;
-        this.$nextTick();
-        this.filteredDresses = this.dresses;
-
-        if (filter.min) {
-          this.filteredDresses = this.filteredDresses.filter(item => item.price[this.currency] >= filter.min);
-        }
-
-        if (filter.max) {
-          this.filteredDresses = this.filteredDresses.filter(item => item.price[this.currency] <= filter.max);
-        }
-
-        if (filter.columns) {
-
-        }
+        this.filter = filter;
       },
-    },
-
-    mounted () {
-      this.filteredDresses = this.dresses;
-    },
-
-    updated () {
-      this.filteredDresses = this.dresses;
     },
   };
 </script>

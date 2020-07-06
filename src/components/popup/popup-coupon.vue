@@ -8,7 +8,7 @@
 
 <script>
   import Popup from './popup.vue';
-  import { PromoCoupon } from '@/components/promo';
+  import PromoCoupon from '@/components/promo/promo-coupon/promo-coupon.vue';
 
   export default {
     name: 'PopupCooperationForm',

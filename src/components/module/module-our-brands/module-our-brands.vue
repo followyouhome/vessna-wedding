@@ -7,7 +7,7 @@
 </template>
 
 <script>
-	import { PromoBrand } from '@/components/promo';
+	import PromoBrand from '@/components/promo/promo-brand/promo-brand.vue';
 
 	export default {
 		name: 'ModuleOurBrands',

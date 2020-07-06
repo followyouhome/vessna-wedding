@@ -15,8 +15,9 @@
 
 <script>
   import Page from '@/components/pages/page.vue';
-  import { ModuleArticle, ModuleOurBrands, ModuleCallToAction } from '@/components/module';
-
+  import ModuleArticle from '@/components/module/module-article/module-article.vue';
+  import ModuleOurBrands from '@/components/module/module-our-brands/module-our-brands.vue';
+  import ModuleCallToAction from '@/components/module/module-call-to-action/module-call-to-action.vue';
   import store from '@/store/';
 
   function fetch (store, route) {
