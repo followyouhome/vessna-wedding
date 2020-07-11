@@ -8,7 +8,7 @@
       <router-view class="global-router-view" @loading="onLoading" @loaded="onLoaded" style="background: transparent;"></router-view>
     </transition>
     <global-footer/>
-    <global-popup-container :popup="popup" v-show="popup"/>
+    <global-popup-container/>
   </div>
 </template>
 
@@ -28,6 +28,7 @@
   import VectorIcon from '@/components/atoms/vector-icon.vue';
   import VectorLogo from '@/components/atoms/vector-logo.vue';
   import IconToggle from '@/components/atoms/icon-toggle.vue';
+  import AtomLink from '@/components/atoms/atom-link/atom-link.vue';
 
   const yandex = process.env.YANDEX_METRIKA_ID;
 
@@ -45,6 +46,7 @@
   Vue.component('vector-icon', VectorIcon);
   Vue.component('vector-logo', VectorLogo);
   Vue.component('icon-toggle', IconToggle);
+  Vue.component('atom-link', AtomLink);
 
   export default {
     name: 'App',

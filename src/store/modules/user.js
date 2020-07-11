@@ -101,17 +101,6 @@ const actions = {
         return Promise.reject(error);
       });
   },
-
-  cooperate (store, payload) {
-    return axios
-      .post(base + '/forms/cooperation', payload, settings)
-      .then(response => {
-        return Promise.resolve(response);
-      })
-      .catch(error => {
-        return Promise.reject(error);
-      });
-  },
 };
 
 const mutations = {

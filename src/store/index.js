@@ -16,6 +16,12 @@ const settings = {
 
 const state = {};
 
+const getters = {
+  amp (state) {
+    return state.settings && state.settings.amp;
+  },
+};
+
 const actions = {
   fetch (store, { endpoint, namespace, id, params, global }) {
     if (!namespace) {
@@ -113,6 +119,7 @@ export default new Vuex.Store({
   },
 
   state,
+  getters,
   actions,
   mutations,
 });

@@ -3,15 +3,15 @@
     <div class="footer__grid">
       <div class="footer__cell">
         <h5 class="footer__headline">О нас</h5>
-        <router-link class="footer__link" v-bind:to="item.route" v-for="item in about" :key="item.name">
+        <atom-link class="footer__link" v-bind:to="item.route" v-for="item in about" :key="item.name">
           {{item.name}}
-        </router-link>
+        </atom-link>
       </div>
       <div class="footer__cell">
         <h5 class="footer__headline">Бренды</h5>
-        <router-link class="footer__link" v-bind:to="item.route" v-for="item in brands" :key="item.name">
+        <atom-link class="footer__link" v-bind:to="item.route" v-for="item in brands" :key="item.name">
           {{item.name}}
-        </router-link>
+        </atom-link>
       </div>
       <div class="footer__cell">
         <h5 class="footer__headline">Наша рассылка</h5>
@@ -22,7 +22,7 @@
       </div>
     </div>
     <div>
-      <p class="footer__copyright">© 2019 Vessna</p>
+      <p class="footer__copyright">© {{year}} Vessna</p>
     </div>
   </footer>
 </template>
@@ -33,6 +33,7 @@
 
     data () {
       return {
+        year: new Date().getFullYear(),
         about: [{
           name: 'Главная страница',
           route: {
@@ -57,12 +58,12 @@
         brands: [{
           name: 'Vessna Dress',
           route: {
-            path: '/news',
+            path: '/wedding-dresses',
           },
         }, {
           name: 'Vessna Wedding',
           route: {
-            path: '/contact',
+            path: '/prom-and-party-dresses',
           },
         }],
       };

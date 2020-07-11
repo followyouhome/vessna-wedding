@@ -1,12 +1,11 @@
 <template>
-  <div class="global-popup-container" @click="clickOutside($event)">
-    <popup-login v-if="popup === 'popup-login'" :payload="payload"/>
-    <popup-signup v-if="popup === 'popup-signup'" :payload="payload"/>
-    <popup-coupon v-if="popup === 'popup-coupon'" :payload="payload"/>
-    <popup-feedback-form v-if="popup === 'popup-feedback-form'" :payload="payload"/>
-    <popup-subscribe-form v-if="popup === 'popup-subscribe-form'" :payload="payload"/>
-    <popup-image-carousel v-if="popup === 'popup-image-carousel'" :payload="payload"/>
-    <popup-cooperation-form v-if="popup === 'popup-cooperation-form'" :payload="payload"/>
+  <div class="global-popup-container" @click="clickOutside($event)" v-show="popup" v-if="!amp">
+    <component :is="popup" :payload="payload"/>
+  </div>
+  <div v-else>
+    <amp-lightbox :id="item" layout="nodisplay" scrollable :key="item" v-for="item in items">
+      <component :is="item" :id="item" :payload="payload"/>
+    </amp-lightbox>
   </div>
 </template>
 
@@ -32,6 +31,15 @@
       'popup-cooperation-form': PopupCooperationForm,
     },
 
+    data () {
+      return {
+        /**
+         * Get popup ids from child components
+         */
+        items: Object.keys(this.$options.components).filter(key => key.includes('popup')),
+      };
+    },
+
     computed: {
       popup () {
         const popup = this.$store.state.popup && this.$store.state.popup.item;
@@ -47,6 +55,10 @@
 
       payload () {
         return this.$store.state.popup && this.$store.state.popup.payload;
+      },
+
+      amp () {
+        return this.$store.getters.amp;
       },
     },
 
