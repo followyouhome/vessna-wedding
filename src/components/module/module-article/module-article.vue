@@ -1,12 +1,16 @@
 <template>
-	<article class="module module-article" v-if="article">
-		<div class="module__wrapper module-article__wrapper container" v-html="article"/>
+	<article class="module module-article" v-if="result">
+		<div class="module__wrapper module-article__wrapper container" v-html="result"/>
 	</article>
 </template>
 
 <script>
+	import Module from '@/components/module/module';
+
 	export default {
 		name: 'ModuleArticle',
+
+		extends: Module,
 
 		props: {
 			/**
@@ -16,6 +20,18 @@
 				type: String,
 				default: '',
 			},
+		},
+
+		data () {
+			let article = this.article;
+
+			if (article && this.amp) {
+				article = this.replaceImgWithAMP(article);
+			}
+
+			return {
+				result: article,
+			};
 		},
 
 		mounted () {
@@ -46,6 +62,20 @@
           });
 				}
 			},
+
+			replaceImgWithAMP (text) {
+				const regex = /<img.*?src="([^"]*)".*?>/g;
+				const template = `
+					<amp-img
+						src="$1"
+						width="1.5"
+						height="1"
+						layout="responsive"
+					/>
+				`;
+
+				return text.replace(regex, template);
+			},
 		},
 	};
 </script>
@@ -64,6 +94,7 @@
 		padding: 30px;
 		background: $white;
 		box-shadow: 0px 0px 10px 5px $gray1;
+		font: 1rem/1.5 $Default;
 
 		@media #{$phablet} {
 			padding: 20px;
