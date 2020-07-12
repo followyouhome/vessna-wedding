@@ -36,6 +36,9 @@
 
 <style lang="scss">
   .module-grid-dress {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
     margin: 10px;
 
     @media #{$tablet} {
@@ -75,8 +78,6 @@
     }
 
     .promo {
-      float: left;
-
       &.promo--width-2 {
         width: percentage(1 / 6);
 

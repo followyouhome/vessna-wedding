@@ -5,6 +5,12 @@
 <script>
   export default {
     name: 'Module',
+
+    computed: {
+      amp () {
+        return this.$store.getters.amp;
+      },
+    },
   };
 </script>
 

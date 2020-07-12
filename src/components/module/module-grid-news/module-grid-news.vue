@@ -24,6 +24,9 @@
 
 <style lang="scss">
   .module-grid-news {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
     margin: 10px;
 
     @media #{$tablet} {
@@ -63,8 +66,6 @@
     }
 
     .promo {
-      float: left;
-
       &.promo--width-2,
       &.promo--width-3 {
         width: percentage(1 / 5);

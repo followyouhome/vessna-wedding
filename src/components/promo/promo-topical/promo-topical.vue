@@ -34,6 +34,10 @@
 		position: relative;
 		border: 1px solid $gray1;
 		border-radius: 5px;
+
+		html[amp] & {
+			height: 100%;
+		}
 	}
 
 	.promo-topical__image-wrapper {

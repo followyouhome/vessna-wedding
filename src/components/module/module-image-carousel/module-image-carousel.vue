@@ -1,5 +1,5 @@
 <template>
-  <div class="module module-dress-info container">
+  <div class="module module-dress-info container" v-if="dress">
     <div class="module-dress-info__carousel" ref="carousel">
       <div class="module-dress-info__image" v-for="image in images">
         <image-deferred class="" :image="image" :key="image.url"/>
@@ -39,7 +39,7 @@
 
     computed: {
       images () {
-        return this.dress.images;
+        return this.dress && this.dress.images;
       },
 
       currency () {
