@@ -1,6 +1,7 @@
 {
   "name": "Vessna-Wedding",
   "version": "0.0.0-development",
+  "license": "WTFPL",
   "engines": {
     "node": "12.x",
     "npm": "6.x"
