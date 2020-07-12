@@ -1,6 +1,16 @@
  <template>
   <div class="atom-checkbox" :class="classes">
-    <input class="atom-checkbox__input" :id="id" type="checkbox" autocomplete="off" value="value" @change="change" :checked="value" :disabled="disabled" :required="required">
+    <input class="atom-checkbox__input"
+      :id="id"
+      :name="name"
+      type="checkbox"
+      autocomplete="off"
+      value="value"
+      @change="change"
+      :checked="value"
+      :disabled="disabled"
+      :required="required"
+    />
     <label class="atom-checkbox__label" :for="id">{{label}}</label>
   </div>
 </template>
@@ -12,6 +22,20 @@
     name: 'AtomCheckbox',
 
     props: {
+      /**
+       * HTML element id
+       */
+      id: {
+        type: String,
+        default: () => shortid.generate(),
+      },
+      /**
+       * Field name
+       */
+      name: {
+        type: String,
+        detault: '',
+      },
       /**
        * Text label near checkbox
        */
@@ -45,13 +69,6 @@
       disabled: {
         type: Boolean,
         default: undefined,
-      },
-      /**
-       * HTML element id
-       */
-      id: {
-        type: String,
-        default: () => shortid.generate(),
       },
     },
 

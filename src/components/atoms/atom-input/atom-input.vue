@@ -3,6 +3,7 @@
     class="atom-input"
     v-model="model"
     :id="id"
+    :name="name"
     :type="type"
     :title="title"
     :placeholder="placeholder"
@@ -27,6 +28,13 @@
         default: () => shortid.generate(),
       },
       /**
+       * Field name
+       */
+      name: {
+        type: String,
+        detault: '',
+      },
+      /**
        * Input value
        */
       value: {
@@ -40,7 +48,7 @@
         type: String,
         default: 'text',
         validator (value) {
-          return ['text', 'email'].includes(value);
+          return ['text', 'email', 'password'].includes(value);
         },
       },
       /**

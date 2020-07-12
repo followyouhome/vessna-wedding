@@ -7,12 +7,12 @@
       <div class="form-login__group">
         <div class="row mt-4 mb-4">
           <div class="col col-12">
-            <atom-input class="form__input-text" v-model="form.email" type="text" placeholder="Email" required/>
+            <atom-input class="form__input-text" v-model="form.email" name="email" type="text" placeholder="Email" required/>
           </div>
         </div>
         <div class="row mt-4 mb-4">
           <div class="col col-12">
-            <atom-input class="form__input-text" v-model="form.password" type="password" placeholder="Пароль" required/>
+            <atom-input class="form__input-text" v-model="form.password" name="password" type="password" placeholder="Пароль" required/>
           </div>
         </div>
         <div class="row mt-4 mb-4">
@@ -31,7 +31,8 @@
 </template>
 
 <script>
-  import Form from '../form.vue';
+  import { USER_LOGIN } from '@/store/mutation-types.js';
+  import Form from '@/components/forms/form.vue';
   import { AtomButton, AtomInput, AtomCheckbox, AtomSelect, AtomTextarea } from '@/components/atoms';
 
   const REDIRECTION_TIMEOUT = 3000;
@@ -52,7 +53,7 @@
 
     data () {
       return {
-        action: 'login',
+        action: '/api/user/login',
         form: {
           email: '',
           password: '',
@@ -69,7 +70,9 @@
     },
 
     methods: {
-      success (data) {
+      success ({ data }) {
+        this.$store.commit(USER_LOGIN, data);
+
         setTimeout(() => {
           if (data.access && data.access.keystone) {
             window.open('/keystone', '_self');

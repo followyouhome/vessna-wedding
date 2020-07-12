@@ -7,51 +7,51 @@
       <div class="form-user-registration__group">
         <div class="row mt-4 mb-4">
           <div class="col col-12">
-            <atom-input class="form__input-text" v-model="form.name" type="text" placeholder="Имя" required/>
+            <atom-input class="form__input-text" v-model="form.name" name="name" type="text" placeholder="Имя" required/>
           </div>
         </div>
         <div class="row mt-4 mb-4">
           <div class="col col-12">
-            <atom-input class="form__input-text" v-model="form.email" type="email" placeholder="Email" required/>
+            <atom-input class="form__input-text" v-model="form.email" name="email" type="email" placeholder="Email" required/>
           </div>
         </div>
         <div class="row mt-4 mb-4">
           <div class="col col-12">
-            <atom-input class="form__input-text" v-model="form.password" type="password" placeholder="Пароль" required/>
-          </div>
-        </div>
-      </div>
-      <div class="form__group">
-        <div class="row mt-4 mb-4">
-          <div class="col col-12">
-            <atom-input class="form__input-text" v-model="form.info.city" type="text" placeholder="Город" required/>
-          </div>
-        </div>
-        <div class="row mt-4 mb-4">
-          <div class="col col-12">
-            <atom-input class="form__input-text" v-model="form.info.shop" type="text" placeholder="Магазин" required/>
-          </div>
-        </div>
-        <div class="row mt-4 mb-4">
-          <div class="col col-12">
-            <atom-input class="form__input-text" v-model="form.info.phone" type="text" placeholder="Телефон" required/>
+            <atom-input class="form__input-text" v-model="form.password" name="password" type="password" placeholder="Пароль" required/>
           </div>
         </div>
       </div>
       <div class="form__group">
         <div class="row mt-4 mb-4">
           <div class="col col-12">
-            <atom-input class="form__input-text" v-model="form.invite" type="text" placeholder="Инвайт" required/>
+            <atom-input class="form__input-text" v-model="form.info.city" name="info.city" type="text" placeholder="Город" required/>
           </div>
         </div>
         <div class="row mt-4 mb-4">
           <div class="col col-12">
-            <atom-checkbox v-model="form.access.subscription" class="ml-4" inline label="Подписаться на рассылку"/>
+            <atom-input class="form__input-text" v-model="form.info.shop" name="info.shop" type="text" placeholder="Магазин" required/>
           </div>
         </div>
         <div class="row mt-4 mb-4">
           <div class="col col-12">
-            <atom-checkbox v-model="state.checked" class="ml-4" required inline label="Согласие с пользовательским соглашением"/>
+            <atom-input class="form__input-text" v-model="form.info.phone" name="info.phone" type="text" placeholder="Телефон" required/>
+          </div>
+        </div>
+      </div>
+      <div class="form__group">
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
+            <atom-input class="form__input-text" v-model="form.invite" name="invite" type="text" placeholder="Инвайт" required/>
+          </div>
+        </div>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
+            <atom-checkbox v-model="form.access.subscription" name="access.subscription" class="ml-4" label="Подписаться на рассылку"/>
+          </div>
+        </div>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
+            <atom-checkbox v-model="state.checked" name="checked" class="ml-4" :required="true" label="Согласие с пользовательским соглашением"/>
           </div>
         </div>
         <div class="row mt-4 mb-4">
@@ -92,7 +92,7 @@
     data () {
       return {
         recaptcha: true,
-        action: 'registration',
+        action: '/api/user/registration',
         confirmPassord: '',
         form: {
           name: '',
@@ -119,7 +119,9 @@
     },
 
     methods: {
-      success (data) {
+      success ({ data }) {
+        this.$store.commit(USER_LOGIN, data);
+
         setTimeout(() => {
           this.$router.push({
             path: '/user/settings',

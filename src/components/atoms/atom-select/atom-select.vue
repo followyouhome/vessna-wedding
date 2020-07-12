@@ -4,6 +4,7 @@
     :value="value"
     :class="classes"
     :id="id"
+    :name="name"
     @change="change"
   >
     <slot name="first"></slot>
@@ -31,6 +32,13 @@
       id: {
         type: String,
         default: () => shortid.generate(),
+      },
+      /**
+       * Field name
+       */
+      name: {
+        type: String,
+        detault: '',
       },
       /**
        * List of select options

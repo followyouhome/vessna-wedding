@@ -5,6 +5,7 @@
     :placeholder="placeholder"
     wrap="soft"
     :id="id"
+    :name="name"
     @input="input"
   />
 </template>
@@ -22,6 +23,13 @@
       id: {
         type: String,
         default: () => shortid.generate(),
+      },
+      /**
+       * Field name
+       */
+      name: {
+        type: String,
+        detault: '',
       },
       placeholder: {
         type: String,

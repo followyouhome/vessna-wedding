@@ -8,37 +8,37 @@
         <h4 class="form__subline">Ваши контактные данные</h4>
         <div class="row mt-4 mb-4">
           <div class="col col-sm-12 col-4 my-1">
-            <atom-input v-model="form.name" type="text" placeholder="Имя" required/>
+            <atom-input v-model="form.name" name="name" type="text" placeholder="Имя" required/>
           </div>
           <div class="col col-sm-12 col-4 my-1">
-            <atom-input v-model="form.email" type="text" placeholder="E-mail" required/>
+            <atom-input v-model="form.email" name="email" type="text" placeholder="E-mail" required/>
           </div>
           <div class="col col-sm-12 col-4 my-1">
-            <atom-input v-model="form.phone" type="text" placeholder="Телефон" required/>
+            <atom-input v-model="form.phone" name="phone" type="text" placeholder="Телефон" required/>
           </div>
         </div>
         <div class="row mt-4 mb-4">
           <div class="col col-sm-12 col-4 my-1">
-            <atom-input v-model="form.country" type="text" placeholder="Страна" required/>
+            <atom-input v-model="form.country" name="country" type="text" placeholder="Страна" required/>
           </div>
           <div class="col col-sm-12 col-4 my-1">
-            <atom-input v-model="form.city" type="text" placeholder="Город" required/>
+            <atom-input v-model="form.city" name="city" type="text" placeholder="Город" required/>
           </div>
           <div class="col col-sm-12 col-4 my-1">
-            <atom-input v-model="form.showroom" type="text" placeholder="Салон" required/>
+            <atom-input v-model="form.showroom" name="showroom" type="text" placeholder="Салон" required/>
           </div>
         </div>
       </div>
       <div class="form-cooperation__group">
         <div class="row mt-4 mb-4">
           <div class="col col-4">
-            <atom-checkbox v-model="form.subscribe" label="Подписаться на новостную рассылку" class="ml-4" inline/>
+            <atom-checkbox v-model="form.subscribe" name="subscribe" label="Подписаться на новостную рассылку" class="ml-4"/>
           </div>
           <div class="col col-4">
-            <atom-checkbox v-model="form.lookbook" label="Запросить актуальный лукбук" class="ml-4" inline/>
+            <atom-checkbox v-model="form.lookbook" name="lookbook" label="Запросить актуальный лукбук" class="ml-4"/>
           </div>
           <div class="col col-4">
-            <atom-checkbox v-model="form.callback" label="Получить обратный звонок" class="ml-4" inline/>
+            <atom-checkbox v-model="form.callback" name="callback" label="Получить обратный звонок" class="ml-4"/>
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@
         <h4 class="form__subline">Вид сотрудничества</h4>
         <div class="row mt-4 mb-4">
           <div class="col col-12">
-            <atom-select v-model="form.topic" :options="topics">
+            <atom-select v-model="form.topic" name="topic" :options="topics" block>
               <template slot="first">
                 <option :value="null" disabled>Выберите вид</option>
               </template>
@@ -58,7 +58,7 @@
         <h4 class="form__subline">Сообщение</h4>
         <div class="row mt-4 mb-4">
           <div class="col col-12">
-            <atom-textarea v-model="form.message" placeholder="Сообщение..." rows="3" max-rows="6"/>
+            <atom-textarea v-model="form.message" name="message" placeholder="Сообщение..." rows="3" block/>
           </div>
         </div>
       </div>
@@ -70,7 +70,7 @@
             <atom-button class="form__submit my-1" type="submit" :disabled="disabled" :title="title" label="Отправить"/>
           </div>
           <div class="col col-8 col-sm-12">
-            <atom-checkbox class="ml-4 my-1" v-model="state.checked" label="Даю согласие на обработку персональных данных" inline/>
+            <atom-checkbox class="ml-4 my-1" v-model="state.checked" name="checked" label="Даю согласие на обработку персональных данных"/>
           </div>
         </div>
       </div>
@@ -98,7 +98,7 @@
 
     data () {
       return {
-        action: 'cooperate',
+        action: '/api/forms/cooperation',
         form: {
           name: '',
           city: '',

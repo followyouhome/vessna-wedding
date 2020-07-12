@@ -7,7 +7,7 @@
       <div class="form-login__group">
         <div class="row mt-4 mb-4">
           <div class="col col-12">
-            <atom-input class="form__input-text" v-model="form.email || user" type="text" placeholder="Email" disabled/>
+            <atom-input class="form__input-text" v-model="form.email || user" name="email" type="text" placeholder="Email" disabled/>
           </div>
         </div>
       </div>
@@ -21,7 +21,8 @@
 </template>
 
 <script>
-  import Form from '../form.vue';
+  import { USER_LOGOUT } from '@/store/mutation-types.js';
+  import Form from '@/components/forms/form.vue';
   import { AtomButton, AtomInput, AtomCheckbox, AtomSelect, AtomTextarea } from '@/components/atoms';
 
   const REDIRECTION_TIMEOUT = 3000;
@@ -42,7 +43,7 @@
 
     data () {
       return {
-        action: 'logout',
+        action: '/api/user/logout',
         form: {
           email: '',
         },
@@ -61,6 +62,8 @@
 
     methods: {
       success (data) {
+        this.$store.commit(USER_LOGOUT);
+
         setTimeout(() => {
           this.$router.push({
             path: '/',

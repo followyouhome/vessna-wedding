@@ -10,7 +10,7 @@
             <label class="form__label" for="input-info-name">Имя:</label>
           </div>
           <div class="col col-10">
-            <atom-input class="form__input-text" v-model="form.name" id="input-info-name" type="text" placeholder="Введите своё имя" disabled />
+            <atom-input class="form__input-text" v-model="form.name" name="name" id="input-info-name" type="text" placeholder="Введите своё имя" disabled />
           </div>
         </div>
         <div class="row mt-4 mb-4" align-v="center">
@@ -18,7 +18,7 @@
             <label class="form__label" for="input-info-email">Email:</label>
           </div>
           <div class="col col-10">
-            <atom-input class="form__input-text" v-model="form.email" id="input-info-email" type="text" placeholder="Введите свой email" disabled />
+            <atom-input class="form__input-text" v-model="form.email" name="email" id="input-info-email" type="text" placeholder="Введите свой email" disabled />
           </div>
         </div>
       </div>
@@ -29,7 +29,7 @@
             <label class="form__label" for="input-info-phone">Телефон:</label>
           </div>
           <div class="col col-10">
-            <atom-input class="form__input-text" v-model="form.info.phone" id="input-info-phone" type="text" placeholder="Введите контактный телефон" />
+            <atom-input class="form__input-text" v-model="form.info.phone" name="phone" id="input-info-phone" type="text" placeholder="Введите контактный телефон" />
           </div>
         </div>
         <div class="row mt-4 mb-4" align-v="center">
@@ -37,7 +37,7 @@
             <label class="form__label" for="input-info-city">Город:</label>
           </div>
           <div class="col col-10">
-            <atom-input class="form__input-text" v-model="form.info.city" id="input-info-city" type="text" placeholder="Введите город" />
+            <atom-input class="form__input-text" v-model="form.info.city" name="city" id="input-info-city" type="text" placeholder="Введите город" />
           </div>
         </div>
         <div class="row mt-4 mb-4" align-v="center">
@@ -45,7 +45,7 @@
             <label class="form__label" for="input-info-shop">Салон:</label>
           </div>
           <div class="col col-10">
-            <atom-input class="form__input-text" v-model="form.info.shop" id="input-info-shop" type="text" placeholder="Введите название вашего бизнеса" />
+            <atom-input class="form__input-text" v-model="form.info.shop" name="shop" id="input-info-shop" type="text" placeholder="Введите название вашего бизнеса" />
           </div>
         </div>
       </div>
@@ -56,7 +56,7 @@
             <label class="form__label" for="input-access-currency">Валюта:</label>
           </div>
           <div class="col col-10">
-            <atom-select v-model="form.access.currency" id="input-access-currency" :options="currencies">
+            <atom-select v-model="form.access.currency" name="currency" id="input-access-currency" :options="currencies" block>
               <template slot="first">
                 <option :value="null" disabled>Выберите валюту</option>
               </template>
@@ -65,12 +65,12 @@
         </div>
         <div class="row mt-4 mb-4" align-v="center">
           <div class="col col-12">
-            <atom-checkbox v-model="form.access.subscription" class="ml-4" value="true" inline label="Подписаться на новостную рассылку"/>
+            <atom-checkbox v-model="form.access.subscription" name="access.subscription" class="ml-4" value="true" label="Подписаться на новостную рассылку"/>
           </div>
         </div>
         <div class="row mt-4 mb-4" align-v="center">
           <div class="col col-12">
-            <atom-checkbox v-model="form.access.content" class="ml-4" value="true" inline disabled title="Для изменения этой настройки обратитесь к администратору" label="Доступ к промо-материалам"/>
+            <atom-checkbox v-model="form.access.content" name="access.content" class="ml-4" value="true" disabled title="Для изменения этой настройки обратитесь к администратору" label="Доступ к промо-материалам"/>
           </div>
         </div>
       </div>
@@ -105,7 +105,7 @@
       const user = this.$store && this.$store.state && this.$store.state.user;
 
       return {
-        action: 'settings',
+        action: '/api/user/settings',
         state: {
           checked: true,
         },
