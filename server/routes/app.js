@@ -56,8 +56,8 @@ module.exports = app => {
     /**
      * @TODO temporal solution with hardcoded route mapping
      */
-    if (['page-dress-collection-prom'].includes(id)) {
-      id = 'page-dress-collection';
+    if (['page-dress-collection-prom', 'page-dress-collection-wedding'].includes(id)) {
+      id = 'page-dress-collection-hub';
     }
 
     Object.entries(stylesheets).forEach(([key, value]) => {
