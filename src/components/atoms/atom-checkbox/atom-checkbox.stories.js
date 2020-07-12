@@ -1,5 +1,6 @@
 import { action } from '@storybook/addon-actions';
-import { text } from '@storybook/addon-knobs';
+import { text, boolean } from '@storybook/addon-knobs';
+import shortid from 'shortid';
 import AtomCheckbox from './atom-checkbox.vue';
 
 export default {
@@ -13,13 +14,28 @@ export const Default = () => ({
     <atom-checkbox
       v-model="value"
       @input="input"
-      :value="value"
       :label="label"
+      :value="value"
+      :required="required"
+      :block="block"
+      :disabled="disabled"
     />
 	`,
   props: {
+    id: {
+      default: text('ID', shortid.generate()),
+    },
     label: {
       default: text('Label', 'Подписаться на рассылку'),
+    },
+    required: {
+      default: boolean('Required', false),
+    },
+    block: {
+      default: boolean('Block', false),
+    },
+    disabled: {
+      default: boolean('Disabled', false),
     },
   },
   data () {

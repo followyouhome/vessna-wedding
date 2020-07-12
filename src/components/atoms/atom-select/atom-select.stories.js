@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import { text, object } from '@storybook/addon-knobs';
+import { text, object, boolean } from '@storybook/addon-knobs';
 import AtomSelect from './atom-select.vue';
 
 export default {
@@ -15,7 +15,9 @@ export const Default = () => ({
       @input="input"
       :value="value"
       :label="label"
+      :block="block"
       :options="variations"
+      :disabled="disabled"
     />
 	`,
   props: {
@@ -37,6 +39,12 @@ export const Default = () => ({
         value: 100500,
         disabled: true,
       }]),
+    },
+    disabled: {
+      default: boolean('Disabled', false),
+    },
+    block: {
+      default: boolean('Block', true),
     },
   },
   data () {

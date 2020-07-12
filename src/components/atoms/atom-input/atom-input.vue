@@ -1,7 +1,7 @@
 <template>
   <input
     class="atom-input"
-    v-model="value"
+    v-model="model"
     :id="id"
     :type="type"
     :title="title"
@@ -76,6 +76,12 @@
       event: 'input',
     },
 
+    data () {
+      return {
+        model: this.value,
+      };
+    },
+
     methods: {
       input (e) {
         /**
@@ -93,15 +99,18 @@
     width: 100%;
     height: auto;
     padding: 10px 15px;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #495057;
+    font: 1rem/1.5 $Default;
+    color: $dark;
     box-sizing: border-box;
-    background-color: #fff;
+    background-color: $white;
     background-clip: padding-box;
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
+    outline-color: $dark3;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    &:disabled {
+      background-color: $gray1;
+    }
   }
 </style>

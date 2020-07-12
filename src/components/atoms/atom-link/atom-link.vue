@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="route">
+  <router-link class="atom-link" :to="route">
     <slot/>
   </router-link>
 </template>
@@ -25,3 +25,9 @@
     },
   };
 </script>
+
+<style lang="scss">
+  .atom-link {
+    font: 1rem/1.5 $Default;
+  }
+</style>

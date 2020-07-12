@@ -4,8 +4,8 @@
     :class="classes"
     :type="type"
     :title="title"
-    :block="block"
     :disabled="disabled"
+    :on="ampOn"
     @click="click"
   >
     {{label}}
@@ -62,6 +62,13 @@
       disabled: {
         type: Boolean,
       },
+      /**
+       * AMP event handler
+       */
+      ampOn: {
+        type: String,
+        default: undefined,
+      },
     },
 
     computed: {
@@ -85,25 +92,32 @@
 
 <style lang="scss">
   .atom-button {
-    display:block;
+    display: block;
     margin: 4px 0;
     padding: 0 20px;
     align-items:flex-start;
-    background: #c9b486;
+    background: $yellow;
     border: none;
     border-radius: 2px;
     box-sizing:border-box;
-    cursor: pointer;
     color: $white;
     font: 16px/50px $Default;
-    letter-spacing:normal;
-    opacity:0.65;
     text-align:center;
-    transition: color, background-color 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, transform 0.15s ease-in-out;
+    outline-color: $dark3;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $dark2;
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
 
     &:disabled {
-      background-color:rgb(108, 117, 125);
-      cursor:default;
+      background-color: $dark4;
+      cursor: default;
     }
 
     &--block {

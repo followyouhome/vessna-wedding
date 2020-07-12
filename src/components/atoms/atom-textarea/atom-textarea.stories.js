@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import { text } from '@storybook/addon-knobs';
+import { text, boolean } from '@storybook/addon-knobs';
 import AtomTextarea from './atom-textarea.vue';
 
 export default {
@@ -15,11 +15,15 @@ export const Default = () => ({
       @input="input"
       :value="value"
       :placeholder="placeholder"
+      :block="block"
     />
 	`,
   props: {
     placeholder: {
       default: text('Placeholder', 'Введите текст'),
+    },
+    block: {
+      default: boolean('Block', true),
     },
   },
   data () {

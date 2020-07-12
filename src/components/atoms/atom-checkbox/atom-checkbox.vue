@@ -1,6 +1,6 @@
  <template>
-  <div class="atom-checkbox">
-    <input class="atom-checkbox__input" :id="id" type="checkbox" autocomplete="off" value="value" @change="change" :checked="value">
+  <div class="atom-checkbox" :class="classes">
+    <input class="atom-checkbox__input" :id="id" type="checkbox" autocomplete="off" value="value" @change="change" :checked="value" :disabled="disabled" :required="required">
     <label class="atom-checkbox__label" :for="id">{{label}}</label>
   </div>
 </template>
@@ -20,11 +20,31 @@
         default: '',
       },
       /**
+       * Make field required
+       */
+      required: {
+        type: Boolean,
+        default: undefined,
+      },
+      /**
+       * Make button fullwidth
+       */
+      block: {
+        type: Boolean,
+      },
+      /**
        * Checkbox value
        */
       value: {
         type: Boolean,
         default: false,
+      },
+      /**
+       * Disabled button state
+       */
+      disabled: {
+        type: Boolean,
+        default: undefined,
       },
       /**
        * HTML element id
@@ -40,9 +60,16 @@
       event: 'input',
     },
 
+    computed: {
+      classes () {
+        return {
+          'atom-checkbox--block': this.block,
+        };
+      },
+    },
+
     methods: {
       change () {
-        console.log('CHANGE');
         this.$emit('input', !this.value);
       },
     },
@@ -54,73 +81,50 @@
     display:inline-flex;
     position:relative;
     margin: 0 24px 0 16px;
-    box-sizing:border-box;
-    color:rgb(33, 37, 41);
-    font-size:16px;
-    font-weight:400;
-    line-height:24px;
     min-height:24px;
     padding-left:24px;
-    text-align:left;
-    text-size-adjust:100%;
+    box-sizing:border-box;
+    color: $dark;
+    font-size: 1rem/1.5 $Default;
+
+    &--block {
+      display: flex;
+      width: 100%;
+    }
   }
 
   .atom-checkbox__input {
-    appearance:checkbox;
-    background-color:rgba(0, 0, 0, 0);
-    border: none;
-    box-sizing:border-box;
-    color:rgb(0, 0, 0);
-    cursor:default;
     display:block;
-    font-family:-apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    font-size:16px;
-    font-stretch:100%;
-    font-style:normal;
-    font-variant-caps:normal;
-    font-variant-east-asian:normal;
-    font-variant-ligatures:normal;
-    font-variant-numeric:normal;
-    font-weight:400;
-    height:20px;
-    left:0px;
-    letter-spacing:normal;
-    line-height:24px;
+    left: 0;
     margin: 0;
     padding: 0;
-    opacity:0;
-    overflow-x:visible;
-    overflow-y:visible;
-    position:absolute;
-    text-align:start;
-    text-indent:0px;
-    text-rendering:auto;
-    text-shadow:none;
-    text-size-adjust:100%;
-    text-transform:none;
-    width:16px;
-    word-spacing:0px;
-    writing-mode:horizontal-tb;
-    z-index:-1;
+    width: 16px;
+    height: 20px;
+    opacity: 0;
+    appearance: checkbox;
+    cursor: default;
   }
 
   .atom-checkbox__label {
+    display:block;
+    position:relative;
+    margin-bottom:0px;
     box-sizing:border-box;
     color:rgb(33, 37, 41);
     cursor:default;
-    display:block;
-    font-family: $Default;
-    font-size:16px;
-    font-weight:400;
-    line-height:24px;
-    margin-bottom:0px;
-    position:relative;
-    text-align:left;
-    text-size-adjust:100%;
+    font: 1rem/1.5 $Default;
 
     .atom-checkbox__input:checked + &:before {
       background-color: $yellow;
       border-color: $yellow;
+    }
+
+    .atom-checkbox__input:disabled + &:before {
+      background-color: #e9ecef;
+    }
+
+    .atom-checkbox__input:disabled + &:after {
+      background-image: none;
     }
 
     &:before {
@@ -149,8 +153,8 @@
       left: -24px;
       top: 4px;
       background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26l2.974 2.99L8 2.193z'/%3e%3c/svg%3e");
-      background-position: 50% 50%;
       background-repeat: no-repeat;
+      background-position: 50% 50%;
       background-size: 50% 50%;
       background-clip: border-box;
     }
