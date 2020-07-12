@@ -3,7 +3,7 @@
     <component :is="popup" :payload="payload"/>
   </div>
   <div v-else>
-    <amp-lightbox :id="item" layout="nodisplay" scrollable :key="item" v-for="item in items">
+    <amp-lightbox :id="item" layout="nodisplay" scrollable :key="item" v-for="item in items" class="global-popup-container">
       <component :is="item" :id="item" :payload="payload"/>
     </amp-lightbox>
   </div>

@@ -17,7 +17,7 @@
         <h5 class="footer__headline">Наша рассылка</h5>
         <div class="footer__subscribe">
           <p class="footer-copy">Подпишитесь, чтобы быть в курсе актуальных новостей</p>
-          <simple-button popup="popup-subscribe-form">Подписаться</simple-button>
+          <atom-button popup="popup-subscribe-form" label="Подписаться" :on="`tap:${popup}`" @click="click"/>
         </div>
       </div>
     </div>
@@ -28,12 +28,20 @@
 </template>
 
 <script>
+  import { POPUP_SET } from '@/store/mutation-types';
+  import AtomButton from '@/components/atoms/atom-button/atom-button';
+
   export default {
     name: 'GlobalFooter',
+
+    components: {
+      AtomButton,
+    },
 
     data () {
       return {
         year: new Date().getFullYear(),
+        popup: 'popup-subscribe-form',
         about: [{
           name: 'Главная страница',
           route: {
@@ -67,6 +75,14 @@
           },
         }],
       };
+    },
+
+    methods: {
+      click () {
+        this.$store.commit(POPUP_SET, {
+          popup: this.popup,
+        });
+      },
     },
   };
 </script>
