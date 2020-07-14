@@ -1,16 +1,16 @@
 <template>
 	<div class="promo promo-card">
     <div class="promo__wrapper promo-card__wrapper">
-			<router-link class="promo__image-wrapper promo-card__image-wrapper" v-bind:to="item.route">
+			<atom-link class="promo__image-wrapper promo-card__image-wrapper" v-bind:to="item.route">
 				<image-deferred v-bind:image="item.promo.image" v-if="item.promo.media == 'image'"></image-deferred>
 	      <video-regular v-bind:promo="item.promo" v-if="item.promo.media == 'video'"></video-regular>
-			</router-link>
+			</atom-link>
       <div class="promo__content-wrapper promo-card__content-wrapper">
-        <router-link class="promo-card__title" v-bind:to="item.route">
+        <atom-link class="promo-card__title" v-bind:to="item.route">
         	<h4 class="promo__text-title">
         		<span class="font-peignot" v-html="item.promo.headline"></span>
         	</h4>
-        </router-link>
+        </atom-link>
         <div class="promo-card__copy">
           <p class="promo__text-copy" v-html="item.promo.subline"></p>
         </div>

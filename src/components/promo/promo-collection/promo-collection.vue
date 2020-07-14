@@ -1,19 +1,19 @@
 <template>
 	<div class="promo promo-collection">
 	    <div class="promo__wrapper promo-collection__wrapper">
-					<router-link class="promo__image-wrapper promo-collection__image-wrapper" v-bind:to="item.route">
+					<atom-link class="promo__image-wrapper promo-collection__image-wrapper" v-bind:to="item.route">
 	            <image-deferred v-bind:image="item.promo.image"></image-deferred>
-	        </router-link>
+	        </atom-link>
 	        <div class="promo__content-wrapper promo-collection__content-wrapper">
-							<router-link class="promo-collection__title" v-bind:to="item.route">
+							<atom-link class="promo-collection__title" v-bind:to="item.route">
 	            	<h4 class="promo__text-title promo__text-title--normal-case" v-html="item.promo.title"></h4>
-							</router-link>
-							<router-link class="promo-collection__headline" v-bind:to="item.route">
+							</atom-link>
+							<atom-link class="promo-collection__headline" v-bind:to="item.route">
 	            	<h4 class="promo__text-headline promo__text-headline--normal-case" v-html="item.promo.headline"></h4>
-							</router-link>
-							<router-link class="promo-collection__link" v-bind:to="item.route">
+							</atom-link>
+							<atom-link class="promo-collection__link" v-bind:to="item.route">
 	            	<h4 class="promo__text-headline">Подробнее</h4>
-							</router-link>
+							</atom-link>
 	        </div>
 	    </div>
 	</div>

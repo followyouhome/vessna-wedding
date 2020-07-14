@@ -2,21 +2,21 @@
   <nav class="navigation" ref="navigation" @click="navigationClick" v-if="!amp">
     <ul class="navigation__main-list" itemscope itemtype="http://www.schema.org/SiteNavigationElement">
       <li class="navigation__main-list__item" v-for="item in navigation">
-        <router-link class="navigation__main-list__item__link" :to="item.route" itemprop="url" @click.native="itemClick" :event="mobile && item.items ? '' : 'click'">
+        <atom-link class="navigation__main-list__item__link" :to="item.route" itemprop="url" @click.native="itemClick" :event="mobile && item.items ? '' : 'click'">
           <span class="navigation__main-text" itemprop="name">{{item.name}}</span>
           <span class="navigation__icon icon-bars"></span>
-        </router-link>
+        </atom-link>
         <div class="navigation__bar" v-if="item.items">
           <ul class="navigation__secondary-list">
             <li class="navigation__secondary-list__item">
-              <router-link class="navigation__secondary-list__item__link" :to="item.route" @click.native="subitemClick" itemprop="url">
+              <atom-link class="navigation__secondary-list__item__link" :to="item.route" @click.native="subitemClick" itemprop="url">
                 <span class="navigation__secondary-text">Перейти</span>
-              </router-link>
+              </atom-link>
             </li>
             <li class="navigation__secondary-list__item" v-for="subitem in item.items">
-              <router-link class="navigation__secondary-list__item__link" :to="subitem.route" @click.native="subitemClick" itemprop="url">
+              <atom-link class="navigation__secondary-list__item__link" :to="subitem.route" @click.native="subitemClick" itemprop="url">
                 <span class="navigation__secondary-text">{{subitem.name}}</span>
-              </router-link>
+              </atom-link>
             </li>
           </ul>
         </div>

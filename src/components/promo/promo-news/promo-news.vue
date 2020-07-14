@@ -6,13 +6,13 @@
 			</atom-link>
 			<div class="promo__content-wrapper promo-news__content-wrapper">
 				<p class="promo-news__date"><span class="promo__text-date">{{ item.publishedDate.slice(0, 10) }}</span></p>
-				<router-link class="ppromo-news__headline" v-bind:to="item.route">
+				<atom-link class="ppromo-news__headline" v-bind:to="item.route">
 					<h4 class="promo__text-headline">{{ item.promo.headline }}</h4>
-				</router-link>
+				</atom-link>
 				<hr class="promo-news__line">
-				<router-link class="promo-news__footnote" v-bind:to="item.route">
+				<atom-link class="promo-news__footnote" v-bind:to="item.route">
 					<span class="promo__text-footnote">{{ item.promo.footnote || 'Читать далее' }}</span>
-				</router-link>
+				</atom-link>
 			</div>
 		</div>
 	</div>
