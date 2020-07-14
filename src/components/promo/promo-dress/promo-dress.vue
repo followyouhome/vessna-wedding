@@ -1,5 +1,5 @@
 <template>
-  <div class="promo promo-dress promo--width-2" @click="click">
+  <div class="promo promo-dress promo--width-2" @click="click" v-if="!amp">
     <div class="promo__wrapper promo-dress__wrapper">
       <div class="promo__image-wrapper promo-dress__image-wrapper">
         <image-deferred v-bind:image="dress.promo.image"></image-deferred>
@@ -11,6 +11,27 @@
         <div class="promo-dress__subheadline">
            <p class="promo__text-subheadline">{{dress.promo.subline}}</p>
            <no-ssr><p class="font-peignot" v-if="price">{{price}}</p></no-ssr>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="promo promo--width-2" v-else>
+    <div class="promo__image-wrapper promo-dress__image-wrapper">
+      <div class="promo__wrapper promo-dress__wrapper">
+        <div class="promo__image-wrapper promo-dress__image-wrapper">
+          <amp-carousel lightbox width="1" height="1.5" layout="responsive" type="slides">
+            <image-deferred :image="dress.promo.image" :ampLightbox="dress.promo.headline"/>
+            <image-deferred v-for="image in images" :image="image" :ampLightbox="dress.promo.headline" :key="image.src"/>
+          </amp-carousel>
+        </div>
+        <div class="promo__content-wrapper promo-dress__content-wrapper">
+          <div class="promo-dress__headline promo-dress__headline--no-link">
+             <h4 class="promo__text-headline"><span class="font-peignot">{{dress.promo.headline}}</span></h4>
+          </div>
+          <div class="promo-dress__subheadline">
+             <p class="promo__text-subheadline">{{dress.promo.subline}}</p>
+             <no-ssr><p class="font-peignot" v-if="price">{{price}}</p></no-ssr>
+          </div>
         </div>
       </div>
     </div>
