@@ -43,6 +43,7 @@
 
   .promo-contact-card__description {
     margin: 15px 0;
+    font-family: $Default;
     text-align: center;
   }
 
