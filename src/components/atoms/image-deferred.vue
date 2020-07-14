@@ -206,4 +206,11 @@
       transform: scale(1);
     }
   }
+
+  /**
+   * Fix all AMP images with wrong side
+   */
+  amp-img img {
+    object-fit: cover;
+  }
 </style>

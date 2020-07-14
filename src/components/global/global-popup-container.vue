@@ -86,6 +86,7 @@
     right: 0;
     left: 0;
     top: 0;
+    box-sizing: border-box;
     z-index: $z-popup;
     height: 100%;
     width: 100%;

@@ -51,10 +51,21 @@
         default: '',
       },
       /**
+       * Button size
+       */
+      size: {
+        type: String,
+        default: 'regular',
+        validator (value) {
+          return ['big', 'regular', 'small'].includes(value);
+        },
+      },
+      /**
        * Make button fullwidth
        */
       block: {
         type: Boolean,
+        default: undefined,
       },
       /**
        * Disabled button state
@@ -75,6 +86,7 @@
       classes () {
         return {
           'atom-button--block': this.block,
+          [`atom-button--${this.size}`]: this.size,
         };
       },
     },
@@ -103,6 +115,7 @@
     color: $white;
     font: 16px/50px $Default;
     text-align:center;
+    letter-spacing: 1px;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, transform 0.15s ease-in-out;
     outline-color: $dark3;
     cursor: pointer;
@@ -122,6 +135,19 @@
 
     &--block {
       width: 100%;
+    }
+
+    &--small {
+      line-height: 30px;
+    }
+
+    &--regular {
+      line-height: 50px;
+    }
+
+    &--big {
+      line-height: 60px;
+      padding: 0 30px;
     }
   }
 </style>

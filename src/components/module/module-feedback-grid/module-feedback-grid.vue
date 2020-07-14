@@ -86,12 +86,12 @@
 
 		@media #{$tablet} {
 			&:nth-child(1) {
-				width: 33%;
+				width: 50%;
 				align-self: flex-end;
 			}
 
 			&:nth-child(2) {
-				width: 67%;
+				width: 50%;
 				align-self: flex-end;
 			}
 

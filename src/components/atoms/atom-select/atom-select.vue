@@ -1,7 +1,6 @@
 <template>
   <select
     class="atom-select"
-    :value="value"
     :class="classes"
     :id="id"
     :name="name"

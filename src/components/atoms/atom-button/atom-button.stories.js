@@ -16,6 +16,7 @@ export const Default = () => ({
       :type="type"
       :title="title"
       :label="label"
+      :size="size"
       :block="block"
       :disabled="disabled"
       @click="click"
@@ -26,13 +27,16 @@ export const Default = () => ({
       default: text('ID', shortid.generate()),
     },
     type: {
-      default: select('Type', ['button', 'submit']),
+      default: select('Type', ['button', 'submit'], 'button'),
     },
     title: {
       default: text('Title', 'Нажми на кнопку - получишь результат'),
     },
     label: {
       default: text('Label', 'Подписаться'),
+    },
+    size: {
+      default: select('Size1', ['small', 'regular', 'big'], 'regular'),
     },
     block: {
       default: boolean('Block', false),

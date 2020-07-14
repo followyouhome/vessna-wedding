@@ -34,6 +34,6 @@
 
 <style lang="scss">
 	.module-promo-cards {
-		background: $gray2;
+		background: transparent;
 	}
 </style>

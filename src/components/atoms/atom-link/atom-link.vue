@@ -28,6 +28,6 @@
 
 <style lang="scss">
   .atom-link {
-    font: 1rem/1.5 $Default;
+    
   }
 </style>

@@ -2,6 +2,7 @@
  * Page container
  */
  .container {
+   margin: auto;
    max-width: 1140px;
 
    @media #{large} {

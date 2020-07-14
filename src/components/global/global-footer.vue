@@ -17,7 +17,7 @@
         <h5 class="footer__headline">Наша рассылка</h5>
         <div class="footer__subscribe">
           <p class="footer-copy">Подпишитесь, чтобы быть в курсе актуальных новостей</p>
-          <atom-button popup="popup-subscribe-form" label="Подписаться" :on="`tap:${popup}`" @click="click"/>
+          <atom-button label="Подписаться" :on="`tap:${popup}`" @click="click"/>
         </div>
       </div>
     </div>
