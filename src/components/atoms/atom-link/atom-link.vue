@@ -27,7 +27,5 @@
 </script>
 
 <style lang="scss">
-  .atom-link {
-    
-  }
+  .atom-link {}
 </style>
