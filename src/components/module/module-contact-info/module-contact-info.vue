@@ -1,22 +1,25 @@
 <template>
   <div class="module module-contact-info container">
     <h2 class="module-contact-info__headline">Контакты</h2>
-    <b-tabs class="module__wrapper module-contact-info__wrapper" content-class="mt-3">
-      <b-tab v-for="item in items" :title="item.name" :key="item.name">
+    <div class="module__wrapper module-contact-info__wrapper row" content-class="mt-3">
+      <div class="col-4" v-for="item in items" :title="item.name" :key="item.name">
         <promo-contact-card :item="item"/>
-      </b-tab>
-    </b-tabs>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+  import { Tabs, Tab } from 'vue-tabs-component';
   import PromoContactCard from '@/components/promo/promo-contact-card/promo-contact-card.vue';
 
   export default {
     name: 'module-contact-info',
 
     components: {
-      'promo-contact-card': PromoContactCard,
+      Tab,
+      Tabs,
+      PromoContactCard,
     },
 
     props: ['items'],
