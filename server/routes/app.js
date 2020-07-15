@@ -163,7 +163,7 @@ module.exports = app => {
       url: req.url,
       amp: req.query.amp === 'true',
       turbo: req.query.turbo === 'true',
-      canonical: `${domain}${req.url.match('amp') ? req.url.replace(/amp\//, '') : req.url}`,
+      canonical: `${domain}${req.url.replace('?amp=true', '')}`,
       cookie: req.headers.cookie,
       stylesheets: stylesheets,
     };
