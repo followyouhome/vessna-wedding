@@ -27,6 +27,7 @@
 
 			if (article && this.amp) {
 				article = this.replaceImgWithAMP(article);
+				article = this.replaceVideoWithAMP(article);
 			}
 
 			return {
@@ -75,6 +76,13 @@
 				`;
 
 				return text.replace(regex, template);
+			},
+
+			replaceVideoWithAMP (text) {
+				text = text.replace(/<video(.*)>/g, '<amp-video $1 width="1280" height="720" layout="responsive">');
+				text = text.replace(/<\/video>/g, '</amp-video>');
+
+				return text;
 			},
 		},
 	};
