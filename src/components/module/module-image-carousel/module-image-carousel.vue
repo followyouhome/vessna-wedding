@@ -132,7 +132,7 @@
 
     @media #{$phablet} {
       width: 100%;
-      height: 60vh;
+      height: 80vh;
     }
 
     .flickity-viewport {
@@ -184,7 +184,6 @@
   }
 
   .module-dress-info__image {
-    height: 100%;
     width: 100%;
 
     .image-deferred {

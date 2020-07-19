@@ -38,10 +38,10 @@
 
 <style lang="scss">
   .popup-image-carousel.popup {
-    height: 80%;
+    width: 80%;
+    height: auto;
     padding: 30px 40px;
     background: $gray1;
-    overflow: hidden;
 
     @media #{$phablet} {
       height: auto;
