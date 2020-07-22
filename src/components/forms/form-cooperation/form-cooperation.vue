@@ -6,67 +6,73 @@
     <template slot='body'>
       <div class="form-cooperation__group">
         <h4 class="form__subline">Ваши контактные данные</h4>
-        <b-row class="mt-4 mb-4">
-          <b-col cols="12" md="4" class="my-1">
-            <b-form-input v-model="form.name" type="text" placeholder="Имя" required/>
-          </b-col>
-          <b-col cols="12" md="4" class="my-1">
-            <b-form-input v-model="form.email" type="text" placeholder="E-mail" required/>
-          </b-col>
-          <b-col cols="12" md="4" class="my-1">
-            <b-form-input v-model="form.phone" type="text" placeholder="Телефон" required/>
-          </b-col>
-        </b-row>
-        <b-row class="mt-4 mb-4">
-          <b-col cols="12" md="4" class="my-1">
-            <b-form-input v-model="form.country" type="text" placeholder="Страна" required/>
-          </b-col>
-          <b-col cols="12" md="4" class="my-1">
-            <b-form-input v-model="form.city" type="text" placeholder="Город" required/>
-          </b-col>
-          <b-col cols="12" md="4" class="my-1">
-            <b-form-input v-model="form.showroom" type="text" placeholder="Салон" required/>
-          </b-col>
-        </b-row>
+        <div class="row mt-4 mb-4">
+          <div class="col col-sm-12 col-4 my-1">
+            <atom-input v-model="form.name" name="name" type="text" placeholder="Имя" required/>
+          </div>
+          <div class="col col-sm-12 col-4 my-1">
+            <atom-input v-model="form.email" name="email" type="text" placeholder="E-mail" required/>
+          </div>
+          <div class="col col-sm-12 col-4 my-1">
+            <atom-input v-model="form.phone" name="phone" type="text" placeholder="Телефон" required/>
+          </div>
+        </div>
+        <div class="row mt-4 mb-4">
+          <div class="col col-sm-12 col-4 my-1">
+            <atom-input v-model="form.country" name="country" type="text" placeholder="Страна" required/>
+          </div>
+          <div class="col col-sm-12 col-4 my-1">
+            <atom-input v-model="form.city" name="city" type="text" placeholder="Город" required/>
+          </div>
+          <div class="col col-sm-12 col-4 my-1">
+            <atom-input v-model="form.showroom" name="showroom" type="text" placeholder="Салон" required/>
+          </div>
+        </div>
       </div>
       <div class="form-cooperation__group">
-        <b-row class="mt-4 mb-4">
-          <b-col>
-            <b-form-checkbox v-model="form.subscribe" class="ml-4" value="true" inline>Подписаться на новостную рассылку</b-form-checkbox>
-          </b-col>
-          <b-col>
-            <b-form-checkbox v-model="form.lookbook" class="ml-4" value="true" inline>Запросить актуальный лукбук</b-form-checkbox>
-          </b-col>
-          <b-col>
-            <b-form-checkbox v-model="form.callback" class="ml-4" value="true" inline>Получить обратный звонок</b-form-checkbox>
-          </b-col>
-        </b-row>
+        <div class="row mt-4 mb-4">
+          <div class="col col-4">
+            <atom-checkbox v-model="form.subscribe" name="subscribe" label="Подписаться на новостную рассылку" class="ml-4"/>
+          </div>
+          <div class="col col-4">
+            <atom-checkbox v-model="form.lookbook" name="lookbook" label="Запросить актуальный лукбук" class="ml-4"/>
+          </div>
+          <div class="col col-4">
+            <atom-checkbox v-model="form.callback" name="callback" label="Получить обратный звонок" class="ml-4"/>
+          </div>
+        </div>
       </div>
       <div class="form-cooperation__group">
         <h4 class="form__subline">Вид сотрудничества</h4>
-        <b-row class="mt-4 mb-4">
-          <b-col>
-            <b-form-select v-model="form.topic" :options="topics">
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
+            <atom-select v-model="form.topic" name="topic" :options="topics" block>
               <template slot="first">
                 <option :value="null" disabled>Выберите вид</option>
               </template>
-            </b-form-select>
-          </b-col>
-        </b-row>
+            </atom-select>
+          </div>
+        </div>
       </div>
       <div class="form-cooperation__group">
         <h4 class="form__subline">Сообщение</h4>
-        <b-row class="mt-4 mb-4">
-          <b-col>
-            <b-form-textarea v-model="form.message" placeholder="Сообщение..." rows="3" max-rows="6"/>
-          </b-col>
-        </b-row>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
+            <atom-textarea v-model="form.message" name="message" placeholder="Сообщение..." rows="3" block/>
+          </div>
+        </div>
       </div>
     </template>
     <template slot='footer'>
-      <div class="form-feedback__control">
-        <b-button class="form__submit my-1" type="submit" :disabled="disabled" :title="title">Отправить</b-button>
-        <b-form-checkbox class="ml-4 my-1" v-model="state.checked" inline>Даю согласие на обработку персональных данных</b-form-checkbox>
+      <div class="form-cooperation__control">
+        <div class="row mt-4 mb-4">
+          <div class="col col-4 col-sm-12">
+            <atom-button class="form__submit my-1" type="submit" :disabled="disabled" :title="title" label="Отправить"/>
+          </div>
+          <div class="col col-8 col-sm-12">
+            <atom-checkbox class="ml-4 my-1" v-model="state.checked" name="checked" label="Даю согласие на обработку персональных данных"/>
+          </div>
+        </div>
       </div>
     </template>
   </v-form>
@@ -74,6 +80,7 @@
 
 <script>
   import Form from '../form.vue';
+  import { AtomButton, AtomInput, AtomCheckbox, AtomSelect, AtomTextarea } from '@/components/atoms';
 
   export default {
     name: 'FormCooperation',
@@ -81,12 +88,17 @@
     extends: Form,
 
     components: {
+      AtomButton,
+      AtomInput,
+      AtomCheckbox,
+      AtomSelect,
+      AtomTextarea,
       'v-form': Form,
     },
 
     data () {
       return {
-        action: 'cooperate',
+        action: '/api/forms/cooperation',
         form: {
           name: '',
           city: '',
@@ -139,10 +151,13 @@
     border-radius: 2px;
   }
 
-  .form-cooperation__control {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-top: 2rem;
+  .form-cooperation__control .row {
+    @media #{$phablet} {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-direction: column-reverse;
+      margin-top: 2rem;
+    }
   }
 </style>

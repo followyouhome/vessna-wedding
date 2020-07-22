@@ -6,8 +6,7 @@
 
 <script>
   import Page from './page.vue';
-
-  import store from '../../store/';
+  import store from '@/store/';
 
   export default {
     name: 'PageError',

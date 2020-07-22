@@ -26,11 +26,11 @@
 
 <style lang="scss">
   .promo-label {
-    padding: 20px;
+    padding: 0;
     height: 400px;
     width: 500px;
     background: $gray1;
-    border: 10px solid $gray2;
+    border: 10px solid transparent;
   }
 
   .promo-label__wrapper {
@@ -40,6 +40,7 @@
     flex-direction: column;
     padding: 20px;
     height: 100%;
+    box-sizing: border-box;
     border: 1px solid $gray1;
     background: $white;
   }
@@ -51,6 +52,14 @@
     font: 4rem/1 $RistrettoProMedium;
     letter-spacing: 0px;
     color: $black;
+
+    @media #{$tablet} {
+      font-size: 3rem;
+    }
+
+    @media #{$phablet} {
+      font-size: 2rem;
+    }
   }
 
   .promo-label_copy {

@@ -8,7 +8,7 @@
 
 <script>
   import Popup from './popup.vue';
-  import { ModuleImageCarousel } from '@/components/module';
+  import ModuleImageCarousel from '@/components/module/module-image-carousel/module-image-carousel.vue';
 
   export default {
     name: 'PopupImageCarousel',
@@ -38,10 +38,10 @@
 
 <style lang="scss">
   .popup-image-carousel.popup {
-    height: 80%;
+    width: 80%;
+    height: auto;
     padding: 30px 40px;
     background: $gray1;
-    overflow: hidden;
 
     @media #{$phablet} {
       height: auto;

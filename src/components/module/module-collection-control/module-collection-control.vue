@@ -1,27 +1,29 @@
 <template>
   <div class="module module-collection-control" v-if="show">
-    <b-container>
-      <b-row align-v="center">
-        <b-col cols="4" sm="4" md="2">
+    <div class="container">
+      <div class="row" align-v="center">
+        <div class="col col-2 col-sm-4">
           <p class="module-collection-control__headline">Диапазон цен</p>
-        </b-col>
-        <b-col cols="4" sm="4" md="2">
-          <b-form-input
+        </div>
+        <div class="col col-2 col-sm-4">
+          <input
+            class="form__input-text"
             type="text"
             v-model="min"
             placeholder="Минимальная"
             @input="updateFilter($event, 'min')"
           />
-        </b-col>
-        <b-col cols="4" sm="4" md="2">
-          <b-form-input
+        </div>
+        <div class="col col-2 col-sm-4">
+          <input
+            class="form__input-text"
             type="text"
             v-model="max"
             placeholder="Максимальная"
             @input="updateFilter($event, 'max')"
           />
-        </b-col>
-        <!-- <b-col md="2" offset-md="4">
+        </div>
+        <!-- <div class="col col-2 col-sm-4">
           <b-form-radio-group
             class="module-collection-control__selector-grid"
             v-model="filter.columns"
@@ -29,9 +31,9 @@
             buttons
             @input="updateFilter($event, 'columns')"
           />
-        </b-col> -->
-      </b-row>
-    </b-container>
+        </div> -->
+      </div>
+    </div>
   </div>
 </template>
 

@@ -1,27 +1,6 @@
 <template>
   <figure
-    v-if="amp"
-    class="image-deferred"
-  >
-    <amp-img
-      alt="A view of the sea"
-      :src="url"
-      :width="image.width"
-      :height="image.height"
-      layout="responsive"
-      :srcset="`
-        ${url}?w=1920 1920w,
-        ${url}?w=1680 1680w,
-        ${url}?w=1280 1280w,
-        ${url}?w=1024 1024w,
-        ${url}?w=768 768w,
-        ${url}?w=640 640w,
-        ${url}?w=480 480w,
-      `"
-    />
-  </figure>
-  <figure
-    v-else
+    v-if="!amp"
     :class="['image-deferred', 'image-deferred--preloader', aspect, parsedEffects]"
     :style="size"
   >
@@ -37,6 +16,29 @@
     <noscript v-if="server"><img :src="image.secure_url || image.url" alt="" title="" itemprop="contentUrl"></noscript>
     <noscript v-else />
   </figure>
+  <figure
+    v-else
+    class="image-deferred"
+  >
+    <amp-img
+      alt="A view of the sea"
+      :src="url"
+      :width="image.width"
+      :height="image.height"
+      layout="responsive"
+      :lightbox="ampLightbox"
+      :hidden="ampHidden"
+      :srcset="`
+        ${url}?w=1920 1920w,
+        ${url}?w=1680 1680w,
+        ${url}?w=1280 1280w,
+        ${url}?w=1024 1024w,
+        ${url}?w=768 768w,
+        ${url}?w=640 640w,
+        ${url}?w=480 480w,
+      `"
+    />
+  </figure>
 </template>
 
 <script>
@@ -45,7 +47,31 @@
   export default {
     name: 'ImageDeferred',
 
-    props: ['image', 'aspect', 'effect'],
+    props: {
+      image: {
+        type: Object,
+      },
+      aspect: {
+        type: String,
+      },
+      effect: {
+        type: String,
+      },
+      /**
+       * Add image to AMP lightbox
+       */
+      ampLightbox: {
+        type: String,
+        default: undefined,
+      },
+      /**
+       * Hide this image from main view
+       */
+      ampHidden: {
+        type: Boolean,
+        default: undefined,
+      },
+    },
 
     data () {
       return {
@@ -179,5 +205,12 @@
     &:hover img {
       transform: scale(1);
     }
+  }
+
+  /**
+   * Fix all AMP images with wrong side
+   */
+  amp-img img {
+    object-fit: cover;
   }
 </style>

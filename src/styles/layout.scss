@@ -1,0 +1,98 @@
+/**
+ * Page container
+ */
+ .container {
+   margin: 1rem auto;
+   max-width: 1140px;
+
+   @media #{large} {
+     max-width: 960px;
+   }
+
+   @media #{$medium} {
+     max-width: 720px;
+   }
+ }
+
+/**
+ * Grid row
+ */
+.row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+/**
+ * Grid column
+ */
+.col {
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+
+  @for $i from 1 through 12 {
+    &-#{$i} {
+      grid-column: span #{$i};
+    }
+  }
+
+  @media #{$xlarge} {
+    @for $i from 1 through 12 {
+      &-lg {
+        &-#{$i} {
+          grid-column: span #{$i};
+        }
+      }
+    }
+  }
+
+  @media #{$large} {
+    @for $i from 1 through 12 {
+      &-md {
+        &-#{$i} {
+          grid-column: span #{$i};
+        }
+      }
+    }
+  }
+
+  @media #{$phablet} {
+    @for $i from 1 through 12 {
+      &-sm {
+        &-#{$i} {
+          grid-column: span #{$i};
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Vertical margin
+ */
+ $margins: 0.25rem, 0.5rem, 1rem, 1.5rem;
+
+.mt {
+  @for $i from 1 through length($margins) {
+    &-#{$i} {
+      margin-top: nth($margins, $i);
+    }
+  }
+}
+
+.mb {
+  @for $i from 1 through length($margins) {
+    &-#{$i} {
+      margin-bottom: nth($margins, $i);
+    }
+  }
+}
+
+.my {
+  @for $i from 1 through length($margins) {
+    &-#{$i} {
+      margin-top: nth($margins, $i);
+      margin-bottom: nth($margins, $i);
+    }
+  }
+}

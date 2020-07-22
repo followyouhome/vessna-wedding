@@ -5,33 +5,35 @@
     </template>
     <template slot='body'>
       <div class="form-login__group">
-        <b-row class="mt-4 mb-4">
-          <b-col>
-            <b-form-input v-model="form.email" type="text" placeholder="Email" required/>
-          </b-col>
-        </b-row>
-        <b-row class="mt-4 mb-4">
-          <b-col>
-            <b-form-input v-model="form.password" type="password" placeholder="Пароль" required/>
-          </b-col>
-        </b-row>
-        <b-row class="mt-4 mb-4">
-          <b-col>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
+            <atom-input class="form__input-text" v-model="form.email" name="email" type="text" placeholder="Email" required/>
+          </div>
+        </div>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
+            <atom-input class="form__input-text" v-model="form.password" name="password" type="password" placeholder="Пароль" required/>
+          </div>
+        </div>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
             <captcha-google @init="captchaInit" @success="captchaSuccess" @failure="captchaFailure"/>
-          </b-col>
-        </b-row>
+          </div>
+        </div>
       </div>
     </template>
     <template slot='footer'>
       <div class="form-feedback__control">
-        <b-button class="form__submit" type="submit" :disabled="disabled" :title="title" block>Войти</b-button>
+        <atom-button class="form__submit" type="submit" :disabled="disabled" :title="title" block label="Войти"/>
       </div>
     </template>
   </v-form>
 </template>
 
 <script>
-  import Form from '../form.vue';
+  import { USER_LOGIN } from '@/store/mutation-types.js';
+  import Form from '@/components/forms/form.vue';
+  import { AtomButton, AtomInput, AtomCheckbox, AtomSelect, AtomTextarea } from '@/components/atoms';
 
   const REDIRECTION_TIMEOUT = 3000;
 
@@ -41,12 +43,17 @@
     extends: Form,
 
     components: {
+      AtomButton,
+      AtomInput,
+      AtomCheckbox,
+      AtomSelect,
+      AtomTextarea,
       'v-form': Form,
     },
 
     data () {
       return {
-        action: 'login',
+        action: '/api/user/login',
         form: {
           email: '',
           password: '',
@@ -63,7 +70,9 @@
     },
 
     methods: {
-      success (data) {
+      success ({ data }) {
+        this.$store.commit(USER_LOGIN, data);
+
         setTimeout(() => {
           if (data.access && data.access.keystone) {
             window.open('/keystone', '_self');

@@ -1,11 +1,8 @@
-import axios from 'axios';
 import {
   USER_LOGIN, USER_LOGOUT, USER_UPDATE, USER_SUBSCRIBE, USER_UNSUBSCRIBE,
 } from '../mutation-types.js';
 
 import Vue from 'vue';
-
-const base = '/api';
 
 const settings = {
   proxy: { port: process.env.PORT, host: 'localhost' },
@@ -30,88 +27,7 @@ const getters = {
 };
 
 const actions = {
-  login (store, { email, password }) {
-    return axios
-      .post(base + `/user/login`, { email, password })
-      .then(({ data }) => {
-        setTimeout(() => {
-          store.commit(USER_LOGIN, data);
-        }, 3000);
-        return Promise.resolve(data);
-      })
-      .catch(err => {
-        return Promise.reject(err);
-      });
-  },
 
-  logout (store) {
-    return axios
-      .post(base + '/user/logout', {})
-      .then(() => {
-        store.commit(USER_LOGOUT);
-        return Promise.resolve();
-      })
-      .catch(err => {
-        return Promise.reject(err);
-      });
-  },
-
-  registration (store, payload) {
-    return axios
-      .post(base + '/user/signup', payload)
-      .then(({ data }) => {
-        store.commit(USER_LOGIN, data);
-        return Promise.resolve(data);
-      })
-      .catch(err => {
-        return Promise.reject(err);
-      });
-  },
-
-  settings (store, payload) {
-    return axios
-      .post(base + '/user/settings', payload)
-      .then(({ data }) => {
-        store.commit(USER_UPDATE, data);
-        return Promise.resolve(data);
-      })
-      .catch(err => {
-        return Promise.reject(err);
-      });
-  },
-
-  subscribe (store, payload) {
-    return axios
-      .post(base + '/forms/subscribe', payload, settings)
-      .then(response => {
-        return Promise.resolve(response);
-      })
-      .catch(error => {
-        return Promise.reject(error);
-      });
-  },
-
-  feedback (store, payload) {
-    return axios
-      .post(base + '/forms/feedback', payload, settings)
-      .then(response => {
-        return Promise.resolve(response);
-      })
-      .catch(error => {
-        return Promise.reject(error);
-      });
-  },
-
-  cooperate (store, payload) {
-    return axios
-      .post(base + '/forms/cooperation', payload, settings)
-      .then(response => {
-        return Promise.resolve(response);
-      })
-      .catch(error => {
-        return Promise.reject(error);
-      });
-  },
 };
 
 const mutations = {

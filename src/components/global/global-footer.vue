@@ -1,42 +1,47 @@
 <template>
   <footer class="footer">
-    <b-container>
-      <b-row>
-        <b-col cols="6" sm="6" md="3">
-          <h5 class="footer__headline">О нас</h5>
-          <router-link class="footer__link" v-bind:to="item.route" v-for="item in about" :key="item.name">
-            {{item.name}}
-          </router-link>
-        </b-col>
-        <b-col cols="6" sm="6" md="3">
-          <h5 class="footer__headline">Бренды</h5>
-          <router-link class="footer__link" v-bind:to="item.route" v-for="item in brands" :key="item.name">
-            {{item.name}}
-          </router-link>
-        </b-col>
-        <b-col cols="12" sm="12" md="5" lg="4" offset-md="1" offset-lg="2">
-          <h5 class="footer__headline">Наша рассылка</h5>
-          <div class="footer__subscribe">
-            <p class="footer-copy">Подпишитесь, чтобы быть в курсе актуальных новостей</p>
-            <simple-button popup="popup-subscribe-form">Подписаться</simple-button>
-          </div>
-        </b-col>
-      </b-row>
-      <b-row>
-        <b-col>
-          <p class="footer__copyright">© 2019 Vessna</p>
-        </b-col>
-      </b-row>
-    </b-container>
+    <div class="footer__grid">
+      <div class="footer__cell">
+        <h5 class="footer__headline">О нас</h5>
+        <atom-link class="footer__link" v-bind:to="item.route" v-for="item in about" :key="item.name">
+          {{item.name}}
+        </atom-link>
+      </div>
+      <div class="footer__cell">
+        <h5 class="footer__headline">Бренды</h5>
+        <atom-link class="footer__link" v-bind:to="item.route" v-for="item in brands" :key="item.name">
+          {{item.name}}
+        </atom-link>
+      </div>
+      <div class="footer__cell">
+        <h5 class="footer__headline">Наша рассылка</h5>
+        <div class="footer__subscribe">
+          <p class="footer-copy">Подпишитесь, чтобы быть в курсе актуальных новостей</p>
+          <atom-button label="Подписаться" :on="`tap:${popup}`" @click="click"/>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="footer__copyright">© {{year}} Vessna</p>
+    </div>
   </footer>
 </template>
 
 <script>
+  import { POPUP_SET } from '@/store/mutation-types';
+  import AtomButton from '@/components/atoms/atom-button/atom-button';
+
   export default {
     name: 'GlobalFooter',
 
+    components: {
+      AtomButton,
+    },
+
     data () {
       return {
+        year: new Date().getFullYear(),
+        popup: 'popup-subscribe-form',
         about: [{
           name: 'Главная страница',
           route: {
@@ -61,15 +66,23 @@
         brands: [{
           name: 'Vessna Dress',
           route: {
-            path: '/news',
+            path: '/wedding-dresses',
           },
         }, {
           name: 'Vessna Wedding',
           route: {
-            path: '/contact',
+            path: '/prom-and-party-dresses',
           },
         }],
       };
+    },
+
+    methods: {
+      click () {
+        this.$store.commit(POPUP_SET, {
+          popup: this.popup,
+        });
+      },
     },
   };
 </script>
@@ -79,8 +92,28 @@
       margin: 0;
       padding: 30px;
       width: 100%;
+      box-sizing: border-box;
       background: $white;
       border-top: 1px solid $gray1;
+  }
+
+  .footer__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 2fr;
+
+    @media #{$phablet} {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .footer__cell {
+    &:last-child {
+      grid-column: 4 / 5;
+
+      @media #{$phablet} {
+        grid-column: 1/3;
+      }
+    }
   }
 
   .footer__subscribe {

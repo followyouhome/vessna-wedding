@@ -1,12 +1,16 @@
 <template>
-	<article class="module module-article" v-if="article">
-		<b-container class="module__wrapper module-article__wrapper" v-html="article" />
+	<article class="module module-article" v-if="result">
+		<div class="module__wrapper module-article__wrapper container" v-html="result"/>
 	</article>
 </template>
 
 <script>
+	import Module from '@/components/module/module';
+
 	export default {
 		name: 'ModuleArticle',
+
+		extends: Module,
 
 		props: {
 			/**
@@ -16,6 +20,19 @@
 				type: String,
 				default: '',
 			},
+		},
+
+		data () {
+			let article = this.article;
+
+			if (article && this.amp) {
+				article = this.replaceImgWithAMP(article);
+				article = this.replaceVideoWithAMP(article);
+			}
+
+			return {
+				result: article,
+			};
 		},
 
 		mounted () {
@@ -46,6 +63,27 @@
           });
 				}
 			},
+
+			replaceImgWithAMP (text) {
+				const regex = /<img.*?src="([^"]*)".*?>/g;
+				const template = `
+					<amp-img
+						src="$1"
+						width="1.5"
+						height="1"
+						layout="responsive"
+					/>
+				`;
+
+				return text.replace(regex, template);
+			},
+
+			replaceVideoWithAMP (text) {
+				text = text.replace(/<video(.*)>/g, '<amp-video $1 width="1280" height="720" layout="responsive">');
+				text = text.replace(/<\/video>/g, '</amp-video>');
+
+				return text;
+			},
 		},
 	};
 </script>
@@ -60,9 +98,11 @@
 	}
 
 	.module-article__wrapper {
+		margin: auto;
 		padding: 30px;
 		background: $white;
 		box-shadow: 0px 0px 10px 5px $gray1;
+		font: 1rem/1.5 $Default;
 
 		@media #{$phablet} {
 			padding: 20px;
@@ -136,6 +176,8 @@
 		}
 
 		p {
+			font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+			line-height: 24px;
 			margin: 2rem 0;
 			color: $dark;
 

@@ -43,12 +43,35 @@ module.exports = app => {
    * Get AMP stylesheets
    */
   const stylesheets = {};
-  const base = fs.readFileSync(resolve('../../dist/amp-entry-amp.css'), 'utf8');
+  const base = fs.readFileSync(resolve('../../dist/styles-amp.css'), 'utf8');
   glob.sync(`${__dirname}/../../dist/page-*-amp.css`).forEach(file => {
     const id = file.replace(/^.*\//, '').replace(/-amp.css/, '');
 
-    stylesheets[id] = base + '\n' + fs.readFileSync(resolve(file), 'utf8');
+    stylesheets[id] = fs.readFileSync(resolve(file), 'utf8');
   });
+
+  stylesheets.get = (id) => {
+    let result = base;
+
+    /**
+     * @TODO temporal solution with hardcoded route mapping
+     */
+    if (['page-dress-collection-prom'].includes(id)) {
+      id = 'page-dress-collection-hub';
+    } else if (['page-dress-collection-wedding'].includes(id)) {
+      id = 'page-dress-collection';
+    } else if (!id) {
+      id = 'page-dress-collection-hub';
+    }
+
+    Object.entries(stylesheets).forEach(([key, value]) => {
+      if (key.includes(id)) {
+        result += '\n' + value;
+      }
+    });
+
+    return result;
+  };
 
   function createWebRenderer (bundle, options) {
     return createBundleRenderer(bundle, Object.assign(options, {
@@ -140,7 +163,7 @@ module.exports = app => {
       url: req.url,
       amp: req.query.amp === 'true',
       turbo: req.query.turbo === 'true',
-      canonical: `${domain}${req.url.match('amp') ? req.url.replace(/amp\//, '') : req.url}`,
+      canonical: `${domain}${req.url.replace('?amp=true', '')}`,
       cookie: req.headers.cookie,
       stylesheets: stylesheets,
     };

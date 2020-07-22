@@ -5,79 +5,79 @@
     </template>
     <template slot='body'>
       <div class="form-user-settings__group">
-        <b-row class="mt-4 mb-4" align-v="center">
-          <b-col sm="2" class="align-middle">
-            <label class="form__label" for="input-info-phone">Имя:</label>
-          </b-col>
-          <b-col sm="10">
-            <b-form-input v-model="form.name" id="input-info-phone" type="text" placeholder="Введите своё имя" disabled />
-          </b-col>
-        </b-row>
-        <b-row class="mt-4 mb-4" align-v="center">
-          <b-col sm="2">
-            <label class="form__label" for="input-info-city">Email:</label>
-          </b-col>
-          <b-col sm="10">
-            <b-form-input v-model="form.email" id="input-info-city" type="text" placeholder="Введите свой email" disabled />
-          </b-col>
-        </b-row>
+        <div class="row mt-4 mb-4" align-v="center">
+          <div sm="2" class="col col-2 align-middle">
+            <label class="form__label" for="input-info-name">Имя:</label>
+          </div>
+          <div class="col col-10">
+            <atom-input class="form__input-text" v-model="form.name" name="name" id="input-info-name" type="text" placeholder="Введите своё имя" disabled />
+          </div>
+        </div>
+        <div class="row mt-4 mb-4" align-v="center">
+          <div class="col col-2">
+            <label class="form__label" for="input-info-email">Email:</label>
+          </div>
+          <div class="col col-10">
+            <atom-input class="form__input-text" v-model="form.email" name="email" id="input-info-email" type="text" placeholder="Введите свой email" disabled />
+          </div>
+        </div>
       </div>
       <div class="form-user-settings__group">
         <h4 class="form__subline">Контактные данные</h4>
-        <b-row class="mt-4 mb-4" align-v="center">
-          <b-col sm="2">
+        <div class="row mt-4 mb-4" align-v="center">
+          <div class="col col-2">
             <label class="form__label" for="input-info-phone">Телефон:</label>
-          </b-col>
-          <b-col sm="10">
-            <b-form-input v-model="form.info.phone" id="input-info-phone" type="text" placeholder="Введите контактный телефон" />
-          </b-col>
-        </b-row>
-        <b-row class="mt-4 mb-4" align-v="center">
-          <b-col sm="2">
+          </div>
+          <div class="col col-10">
+            <atom-input class="form__input-text" v-model="form.info.phone" name="phone" id="input-info-phone" type="text" placeholder="Введите контактный телефон" />
+          </div>
+        </div>
+        <div class="row mt-4 mb-4" align-v="center">
+          <div class="col col-2">
             <label class="form__label" for="input-info-city">Город:</label>
-          </b-col>
-          <b-col sm="10">
-            <b-form-input v-model="form.info.city" id="input-info-city" type="text" placeholder="Введите город" />
-          </b-col>
-        </b-row>
-        <b-row class="mt-4 mb-4" align-v="center">
-          <b-col sm="2">
+          </div>
+          <div class="col col-10">
+            <atom-input class="form__input-text" v-model="form.info.city" name="city" id="input-info-city" type="text" placeholder="Введите город" />
+          </div>
+        </div>
+        <div class="row mt-4 mb-4" align-v="center">
+          <div class="col col-2">
             <label class="form__label" for="input-info-shop">Салон:</label>
-          </b-col>
-          <b-col sm="10">
-            <b-form-input v-model="form.info.shop" id="input-info-shop" type="text" placeholder="Введите название вашего бизнеса" />
-          </b-col>
-        </b-row>
+          </div>
+          <div class="col col-10">
+            <atom-input class="form__input-text" v-model="form.info.shop" name="shop" id="input-info-shop" type="text" placeholder="Введите название вашего бизнеса" />
+          </div>
+        </div>
       </div>
       <div class="form-user-settings__group">
         <h4 class="form__subline">Настройки пользователя</h4>
-        <b-row class="mt-4 mb-4" align-v="center">
-          <b-col sm="2">
+        <div class="row mt-4 mb-4" align-v="center">
+          <div class="col col-2">
             <label class="form__label" for="input-access-currency">Валюта:</label>
-          </b-col>
-          <b-col sm="10">
-            <b-form-select v-model="form.access.currency" id="input-access-currency" :options="currencies">
+          </div>
+          <div class="col col-10">
+            <atom-select v-model="form.access.currency" name="currency" id="input-access-currency" :options="currencies" block>
               <template slot="first">
                 <option :value="null" disabled>Выберите валюту</option>
               </template>
-            </b-form-select>
-          </b-col>
-        </b-row>
-        <b-row class="mt-4 mb-4" align-v="center">
-          <b-col>
-            <b-form-checkbox v-model="form.access.subscription" class="ml-4" value="true" inline>Подписаться на новостную рассылку</b-form-checkbox>
-          </b-col>
-        </b-row>
-        <b-row class="mt-4 mb-4" align-v="center">
-          <b-col>
-            <b-form-checkbox v-model="form.access.content" class="ml-4" value="true" inline disabled title="Для изменения этой настройки обратитесь к администратору">Доступ к промо-материалам</b-form-checkbox>
-          </b-col>
-        </b-row>
+            </atom-select>
+          </div>
+        </div>
+        <div class="row mt-4 mb-4" align-v="center">
+          <div class="col col-12">
+            <atom-checkbox v-model="form.access.subscription" name="access.subscription" class="ml-4" value="true" label="Подписаться на новостную рассылку"/>
+          </div>
+        </div>
+        <div class="row mt-4 mb-4" align-v="center">
+          <div class="col col-12">
+            <atom-checkbox v-model="form.access.content" name="access.content" class="ml-4" value="true" disabled title="Для изменения этой настройки обратитесь к администратору" label="Доступ к промо-материалам"/>
+          </div>
+        </div>
       </div>
     </template>
     <template slot='footer'>
       <div class="form-feedback__control">
-        <b-button class="form__submit" type="submit" :disabled="disabled" block>Сохранить</b-button>
+        <atom-button class="form__submit" type="submit" :disabled="disabled" label="Сохранить" block/>
       </div>
     </template>
   </v-form>
@@ -85,6 +85,7 @@
 
 <script>
   import Form from '../form.vue';
+  import { AtomButton, AtomInput, AtomCheckbox, AtomSelect, AtomTextarea } from '@/components/atoms';
 
   export default {
     name: 'FormUserSettings',
@@ -92,6 +93,11 @@
     extends: Form,
 
     components: {
+      AtomButton,
+      AtomInput,
+      AtomCheckbox,
+      AtomSelect,
+      AtomTextarea,
       'v-form': Form,
     },
 
@@ -99,7 +105,7 @@
       const user = this.$store && this.$store.state && this.$store.state.user;
 
       return {
-        action: 'settings',
+        action: '/api/user/settings',
         state: {
           checked: true,
         },
@@ -124,10 +130,10 @@
         currencies: [
           {
             value: 'usd',
-            text: 'USD',
+            label: 'USD',
           }, {
             value: 'rub',
-            text: 'RUB',
+            label: 'RUB',
           },
         ],
       };

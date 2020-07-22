@@ -1,24 +1,34 @@
 <template>
-  <b-container class="module module-call-to-action">
+  <div class="module module-call-to-action container">
     <div class="module__wrapper module-call-to-action__wrapper">
       <div class="module-call-to-action__content">
         <h3 class="module-call-to-action__content-headline" v-if="content.headline">{{content.headline}}</h3>
-        <h4 class="module-call-to-action__content-subline"v-if="content.subline">{{content.subline}}</h4>
+        <h4 class="module-call-to-action__content-subline" v-if="content.subline">{{content.subline}}</h4>
         <p class="module-call-to-action__content-copy" v-if="content.copy">{{content.copy}}</p>
       </div>
       <div class="module-call-to-action__action">
-        <simple-button
+        <simple-button v-if="!amp"
           popup="popup-cooperation-form"
           @click="action"
         >{{button.text}}</simple-button>
+        <atom-button label="Заполните анкету" on="tap:popup-cooperation-form" v-else/>
       </div>
     </div>
-  </b-container>
+  </div>
 </template>
 
 <script>
+  import Module from '@/components/module/module.vue';
+  import AtomButton from '@/components/atoms/atom-button/atom-button';
+
   export default {
     name: 'ModuleCallToAction',
+
+    extends: Module,
+
+    components: {
+      AtomButton,
+    },
 
     props: ['content', 'button'],
 

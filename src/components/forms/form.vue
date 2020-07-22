@@ -1,5 +1,5 @@
 <template>
-  <b-form class="form" :class="formModifier" @submit.prevent="submit">
+  <form class="form" :class="formModifier" @submit.prevent="submit" method="post" :action-xhr="$parent.action" target="_blank">
     <slot name='header'>
 
     </slot>
@@ -11,23 +11,30 @@
     </slot>
     <slot name="modal">
       <div class="form__modal" v-show="state.request">
-        <b-spinner type="grow" label="Spinning"></b-spinner>
+        <atom-spinner/>
       </div>
-      <div class="form__modal form__modal--success" v-show="state.success">
+      <div class="form__modal form__modal--success" v-show="amp || state.success" submit-success>
         <h4 class="form__subline">{{label.success}}</h4>
       </div>
-      <div class="form__modal form__modal--failure" v-show="state.failure">
+      <div class="form__modal form__modal--failure" v-show="amp || state.failure" submit-error>
         <h4 class="form__subline">{{label.failure}}</h4>
       </div>
     </slot>
-  </b-form>
+  </form>
 </template>
 
 <script>
+  import axios from 'axios';
+  import { AtomSpinner } from '@/components/atoms';
+
   const MODAL_TIMEOUT = 3000;
 
   export default {
     name: 'v-form',
+
+    components: {
+      AtomSpinner,
+    },
 
     data () {
       return {
@@ -48,8 +55,8 @@
 
     computed: {
       disabled () {
-        return (typeof this.state.checked === 'boolean' ? !this.state.checked : false)
-          || (typeof this.state.recaptcha === 'boolean' ? !this.state.recaptcha : false);
+        return !this.amp && ((typeof this.state.checked === 'boolean' ? !this.state.checked : false)
+          || (typeof this.state.recaptcha === 'boolean' ? !this.state.recaptcha : false));
       },
 
       title () {
@@ -70,6 +77,10 @@
         }
 
         return '';
+      },
+
+      amp () {
+        return this.$store && this.$store.state && this.$store.state.settings && this.$store.state.settings.amp;
       },
     },
 
@@ -96,25 +107,24 @@
 
       submit () {
         this.state.request = true;
-        this.$emit('submit');
+        this.$parent.$emit('submit', this.$parent.form);
 
-        return this.$store.dispatch(this.$parent.action, this.$parent.form).then((data) => {
-          this.state.success = true;
-          this.state.request = false;
-          this.success(data);
-
-          setTimeout(() => {
-            this.state.success = false;
-          }, MODAL_TIMEOUT);
-        }).catch((err) => {
-          this.state.failure = true;
-          this.state.request = false;
-          this.failure(err);
-
-          setTimeout(() => {
-            this.state.failure = false;
-          }, MODAL_TIMEOUT);
-        });
+        return axios.post(this.$parent.action, this.$parent.form)
+          .then(response => {
+            this.state.success = true;
+            this.state.request = false;
+            this.success(response);
+          })
+          .catch(error => {
+            this.state.failure = true;
+            this.state.request = false;
+            this.failure(error);
+          })
+          .finally(() => {
+            setTimeout(() => {
+                this.state.failure = false;
+            }, MODAL_TIMEOUT);
+          });
       },
     },
   };
@@ -159,9 +169,7 @@
   }
 
   .form__modal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
     position: absolute;
     height: 100%;
     width: 100%;
@@ -170,11 +178,21 @@
     background: $glass3;
 
     &--success {
+      border: 1px solid $green;
       animation: animation-slit-in-vertical 0.45s ease-out both;
     }
 
     &--failure {
+      border: 1px solid $red;
       animation: animation-slit-in-vertical 0.45s ease-out both;
+    }
+
+    & .form__subline {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%);
     }
   }
 
@@ -198,6 +216,7 @@
   }
 
   .form__label {
+    font-family: $Default;
     margin-bottom: 0;
   }
 
@@ -212,7 +231,6 @@
     font: 1.5rem/1.5rem $RistrettoProLight;
     text-align: center;
   }
-
 
   // @keyframes fail {
   //   0%   { transform: translateX(0);}

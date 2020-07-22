@@ -4,7 +4,7 @@
 
 <script>
   import Page from '@/components/pages/page.vue';
-  import { ModuleGridNews } from '@/components/module';
+  import ModuleGridNews from '@/components/module/module-grid-news/module-grid-news.vue';
 
   import store from '@/store/';
 

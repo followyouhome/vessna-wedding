@@ -8,7 +8,7 @@
 
 <script>
   import Popup from './popup.vue';
-  import { FormSubscribe } from '@/components/forms';
+  import FormSubscribe from '@/components/forms/form-subscribe/form-subscribe.vue';
 
   export default {
     name: 'PopupSubscribeForm',

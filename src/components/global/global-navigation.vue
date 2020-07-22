@@ -1,22 +1,22 @@
 <template>
-  <nav class="navigation" ref="navigation" @click="navigationClick">
+  <nav class="navigation" ref="navigation" @click="navigationClick" v-if="!amp">
     <ul class="navigation__main-list" itemscope itemtype="http://www.schema.org/SiteNavigationElement">
       <li class="navigation__main-list__item" v-for="item in navigation">
-        <router-link class="navigation__main-list__item__link" :to="item.route" itemprop="url" @click.native="itemClick" :event="mobile && item.items ? '' : 'click'">
+        <atom-link class="navigation__main-list__item__link" :to="item.route" itemprop="url" @click.native="itemClick" :event="mobile && item.items ? '' : 'click'">
           <span class="navigation__main-text" itemprop="name">{{item.name}}</span>
           <span class="navigation__icon icon-bars"></span>
-        </router-link>
+        </atom-link>
         <div class="navigation__bar" v-if="item.items">
           <ul class="navigation__secondary-list">
             <li class="navigation__secondary-list__item">
-              <router-link class="navigation__secondary-list__item__link" :to="item.route" @click.native="subitemClick" itemprop="url">
+              <atom-link class="navigation__secondary-list__item__link" :to="item.route" @click.native="subitemClick" itemprop="url">
                 <span class="navigation__secondary-text">Перейти</span>
-              </router-link>
+              </atom-link>
             </li>
             <li class="navigation__secondary-list__item" v-for="subitem in item.items">
-              <router-link class="navigation__secondary-list__item__link" :to="subitem.route" @click.native="subitemClick" itemprop="url">
+              <atom-link class="navigation__secondary-list__item__link" :to="subitem.route" @click.native="subitemClick" itemprop="url">
                 <span class="navigation__secondary-text">{{subitem.name}}</span>
-              </router-link>
+              </atom-link>
             </li>
           </ul>
         </div>
@@ -62,7 +62,29 @@
         </div>
       </li>
     </ul>
-</nav>
+  </nav>
+  <div v-else>
+    <nav class="navigation navigation--mobile navigation--swipe-closed" ref="navigation" on="tap:sidebar.open" role="navigation" tabindex="0" />
+    <amp-sidebar id="sidebar" class="navigation--mobile navigation__main-list" layout="nodisplay" side="left">
+      <amp-accordion>
+        <section class="navigation__main-list__item" v-for="item in navigation" :key="item.name">
+          <h4 class="navigation__main-text">{{item.name}}</h4>
+          <ul class="navigation__secondary-list">
+            <li class="navigation__secondary-list__item">
+              <atom-link class="navigation__secondary-list__item__link" :to="item.route" @click.native="subitemClick" itemprop="url">
+                <span class="navigation__secondary-text">Перейти</span>
+              </atom-link>
+            </li>
+            <li class="navigation__secondary-list__item" v-for="subitem in item.items" :key="subitem.name">
+              <atom-link class="navigation__secondary-list__item__link" :to="subitem.route" @click.native="subitemClick" itemprop="url">
+                <span class="navigation__secondary-text">{{subitem.name}}</span>
+              </atom-link>
+            </li>
+          </ul>
+        </section>
+      </amp-accordion>
+    </amp-sidebar>
+  </div>
 </template>
 
 <script>
@@ -81,6 +103,10 @@
 
       user () {
         return this.$store && this.$store.state && this.$store.state.user && this.$store.state.user.uid;
+      },
+
+      amp () {
+        return this.$store && this.$store.state && this.$store.state.settings && this.$store.state.settings.amp;
       },
     },
 
@@ -202,7 +228,7 @@
       left: 10px;
       display: inline-block;
       font-size: 20px;
-      font-family: 'icomoon' !important;
+      font-family: 'icomoon';
       line-height: 40px;
       content: "\e909";
     }
@@ -395,7 +421,7 @@ height: 100%;
 
   .navigation__main-list__item--show-menu & {
     display: block;
-    background: $white !important;
+    background: $white;
   }
 
   .navigation__secondary-list__item__link {
@@ -550,6 +576,11 @@ box-shadow: 0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.06);
 	text-decoration: none;
 	vertical-align: middle;
   letter-spacing: 2px;
+
+  html[amp] & {
+    padding: 15px 30px;
+    border: none;
+  }
 }
 
 .navigation__secondary-text {

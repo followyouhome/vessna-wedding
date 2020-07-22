@@ -12,7 +12,10 @@
 
 <script>
   import Page from '@/components/pages/page.vue';
-  import { ModuleArticle, ModulePromoCards, ModuleCallToAction, ModuleSelectedCollections } from '@/components/module';
+  import ModuleArticle from '@/components/module/module-article/module-article.vue';
+  import ModulePromoCards from '@/components/module/module-promo-cards/module-promo-cards.vue';
+  import ModuleCallToAction from '@/components/module/module-call-to-action/module-call-to-action.vue';
+  import ModuleSelectedCollections from '@/components/module/module-selected-collections/module-selected-collections.vue';
 
   import store from '@/store/';
 

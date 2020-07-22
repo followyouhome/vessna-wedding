@@ -18,8 +18,10 @@
 
 <script>
   import Page from '@/components/pages/page.vue';
-  import { ModuleArticle, ModuleDealersMap, ModuleContactInfo, ModuleCallToAction } from '@/components/module';
-
+  import ModuleArticle from '@/components/module/module-article/module-article.vue';
+  import ModuleDealersMap from '@/components/module/module-dealers-map/module-dealers-map.vue';
+  import ModuleContactInfo from '@/components/module/module-contact-info/module-contact-info.vue';
+  import ModuleCallToAction from '@/components/module/module-call-to-action/module-call-to-action.vue';
   import store from '@/store/';
 
   function fetch (store, route) {

@@ -1,10 +1,10 @@
 <template>
 	<div class="promo promo-brand">
 		<div class="promo__wrapper promo-brand__wrapper">
-		  <router-link class="promo__image-wrapper promo-brand__image-wrapper" v-if="item.promo.image" v-bind:to="item.route">
+		  <atom-link class="promo__image-wrapper promo-brand__image-wrapper" v-if="item.promo.image" v-bind:to="item.route">
         <h5 class="promo-brand__headline">{{item.promo.headline}}</h5>
 				<image-deferred aspect="image-deffered--size-2-3" v-bind:image="item.promo.image" />
-			</router-link>
+			</atom-link>
 		</div>
 	</div>
 </template>

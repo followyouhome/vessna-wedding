@@ -5,23 +5,25 @@
     </template>
     <template slot='body'>
       <div class="form-login__group">
-        <b-row class="mt-4 mb-4">
-          <b-col>
-            <b-form-input v-model="form.email || user" type="text" placeholder="Email" disabled/>
-          </b-col>
-        </b-row>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
+            <atom-input class="form__input-text" v-model="form.email || user" name="email" type="text" placeholder="Email" disabled/>
+          </div>
+        </div>
       </div>
     </template>
     <template slot='footer'>
       <div class="form-feedback__control">
-        <b-button class="form__submit" type="submit" block>Выйти</b-button>
+        <atom-button class="form__submit" type="submit" block label="Выйти"/>
       </div>
     </template>
   </v-form>
 </template>
 
 <script>
-  import Form from '../form.vue';
+  import { USER_LOGOUT } from '@/store/mutation-types.js';
+  import Form from '@/components/forms/form.vue';
+  import { AtomButton, AtomInput, AtomCheckbox, AtomSelect, AtomTextarea } from '@/components/atoms';
 
   const REDIRECTION_TIMEOUT = 3000;
 
@@ -31,12 +33,17 @@
     extends: Form,
 
     components: {
+      AtomButton,
+      AtomInput,
+      AtomCheckbox,
+      AtomSelect,
+      AtomTextarea,
       'v-form': Form,
     },
 
     data () {
       return {
-        action: 'logout',
+        action: '/api/user/logout',
         form: {
           email: '',
         },
@@ -55,6 +62,8 @@
 
     methods: {
       success (data) {
+        this.$store.commit(USER_LOGOUT);
+
         setTimeout(() => {
           this.$router.push({
             path: '/',

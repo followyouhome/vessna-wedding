@@ -12,7 +12,8 @@
 
 <script>
   import Page from '@/components/pages/page.vue';
-  import { ModuleArticle, ModuleRelatedPosts } from '@/components/module';
+  import ModuleArticle from '@/components/module/module-article/module-article.vue';
+  import ModuleRelatedPosts from '@/components/module/module-related-posts/module-related-posts.vue';
 
   import store from '@/store/';
 

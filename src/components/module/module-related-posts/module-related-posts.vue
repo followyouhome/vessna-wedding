@@ -9,7 +9,7 @@
 <script>
 	import isMobile from 'ismobilejs';
 
-	import { PromoTopical } from '@/components/promo';
+	import PromoTopical from '@/components/promo/promo-topical/promo-topical.vue';
 
 	const POST_LIMIT = 7;
 
@@ -106,7 +106,7 @@
 	};
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 	.module-related-posts {
 		padding: 10px 0 0;
     margin-top: 0;
@@ -127,6 +127,7 @@
 	}
 
 	.module-related-posts__wrapper {
-		display: flex;
+		display: inline-flex;
+		overflow-x: scroll;
 	}
 </style>

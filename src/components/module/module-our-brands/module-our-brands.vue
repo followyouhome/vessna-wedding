@@ -1,13 +1,13 @@
 <template>
-	<b-container class="module module-our-brands">
+	<div class="module module-our-brands container">
 		<div class="module__wrapper module-our-brands__wrapper">
 			<promo-brand class="module-our-brands__promo" v-for="item in brands" :item="item" :key="item.name"/>
 		</div>
-	</b-container>
+	</div>
 </template>
 
 <script>
-	import { PromoBrand } from '@/components/promo';
+	import PromoBrand from '@/components/promo/promo-brand/promo-brand.vue';
 
 	export default {
 		name: 'ModuleOurBrands',

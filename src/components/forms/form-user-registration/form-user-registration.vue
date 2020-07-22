@@ -5,65 +5,65 @@
     </template>
     <template slot='body'>
       <div class="form-user-registration__group">
-        <b-row class="mt-4 mb-4">
-          <b-col>
-            <b-form-input v-model="form.name" type="text" placeholder="Имя" required/>
-          </b-col>
-        </b-row>
-        <b-row class="mt-4 mb-4">
-          <b-col>
-            <b-form-input v-model="form.email" type="email" placeholder="Email" required/>
-          </b-col>
-        </b-row>
-        <b-row class="mt-4 mb-4">
-          <b-col>
-            <b-form-input v-model="form.password" type="password" placeholder="Пароль" required/>
-          </b-col>
-        </b-row>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
+            <atom-input class="form__input-text" v-model="form.name" name="name" type="text" placeholder="Имя" required/>
+          </div>
+        </div>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
+            <atom-input class="form__input-text" v-model="form.email" name="email" type="email" placeholder="Email" required/>
+          </div>
+        </div>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
+            <atom-input class="form__input-text" v-model="form.password" name="password" type="password" placeholder="Пароль" required/>
+          </div>
+        </div>
       </div>
       <div class="form__group">
-        <b-row class="mt-4 mb-4">
-          <b-col>
-            <b-form-input v-model="form.info.city" type="text" placeholder="Город" required/>
-          </b-col>
-        </b-row>
-        <b-row class="mt-4 mb-4">
-          <b-col>
-            <b-form-input v-model="form.info.shop" type="text" placeholder="Магазин" required/>
-          </b-col>
-        </b-row>
-        <b-row class="mt-4 mb-4">
-          <b-col>
-            <b-form-input v-model="form.info.phone" type="text" placeholder="Телефон" required/>
-          </b-col>
-        </b-row>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
+            <atom-input class="form__input-text" v-model="form.info.city" name="info.city" type="text" placeholder="Город" required/>
+          </div>
+        </div>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
+            <atom-input class="form__input-text" v-model="form.info.shop" name="info.shop" type="text" placeholder="Магазин" required/>
+          </div>
+        </div>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
+            <atom-input class="form__input-text" v-model="form.info.phone" name="info.phone" type="text" placeholder="Телефон" required/>
+          </div>
+        </div>
       </div>
       <div class="form__group">
-        <b-row class="mt-4 mb-4">
-          <b-col>
-            <b-form-input v-model="form.invite" type="text" placeholder="Инвайт" required/>
-          </b-col>
-        </b-row>
-        <b-row class="mt-4 mb-4">
-          <b-col>
-            <b-form-checkbox v-model="form.access.subscription" class="ml-4" inline>Подписаться на рассылку</b-form-checkbox>
-          </b-col>
-        </b-row>
-        <b-row class="mt-4 mb-4">
-          <b-col>
-            <b-form-checkbox v-model="state.checked" class="ml-4" required inline>Согласие с пользовательским соглашением</b-form-checkbox>
-          </b-col>
-        </b-row>
-        <b-row class="mt-4 mb-4">
-          <b-col>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
+            <atom-input class="form__input-text" v-model="form.invite" name="invite" type="text" placeholder="Инвайт" required/>
+          </div>
+        </div>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
+            <atom-checkbox v-model="form.access.subscription" name="access.subscription" class="ml-4" label="Подписаться на рассылку"/>
+          </div>
+        </div>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
+            <atom-checkbox v-model="state.checked" name="checked" class="ml-4" :required="true" label="Согласие с пользовательским соглашением"/>
+          </div>
+        </div>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
             <captcha-google @init="captchaInit" @success="captchaSuccess" @failure="captchaFailure"/>
-          </b-col>
-        </b-row>
+          </div>
+        </div>
       </div>
     </template>
     <template slot='footer'>
       <div class="form-feedback__control">
-        <b-button class="form__submit" type="submit" :disabled="disabled" :title="title" block>Зарегистрироваться</b-button>
+        <atom-button class="form__submit" type="submit" label="Зарегистрироваться" :disabled="disabled" :title="title" block/>
       </div>
     </template>
   </v-form>
@@ -71,6 +71,7 @@
 
 <script>
   import Form from '../form.vue';
+  import { AtomButton, AtomInput, AtomCheckbox, AtomSelect, AtomTextarea } from '@/components/atoms';
 
   const REDIRECTION_TIMEOUT = 3000;
 
@@ -80,13 +81,18 @@
     extends: Form,
 
     components: {
+      AtomButton,
+      AtomInput,
+      AtomCheckbox,
+      AtomSelect,
+      AtomTextarea,
       'v-form': Form,
     },
 
     data () {
       return {
         recaptcha: true,
-        action: 'registration',
+        action: '/api/user/registration',
         confirmPassord: '',
         form: {
           name: '',
@@ -113,7 +119,9 @@
     },
 
     methods: {
-      success (data) {
+      success ({ data }) {
+        this.$store.commit(USER_LOGIN, data);
+
         setTimeout(() => {
           this.$router.push({
             path: '/user/settings',

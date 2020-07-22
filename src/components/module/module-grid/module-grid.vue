@@ -48,5 +48,9 @@
 </script>
 
 <style lang="scss">
-
+  .isotope-grid__sizer {
+    html[amp] & {
+      display: none;
+    }
+  }
 </style>

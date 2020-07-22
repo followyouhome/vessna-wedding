@@ -5,7 +5,6 @@
 
 <script>
   import Page from '@/components/pages/page.vue';
-
   import store from '@/store/';
 
   function fetch (store, route) {

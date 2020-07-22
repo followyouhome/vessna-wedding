@@ -20,6 +20,8 @@
 				if (typeof this.item.image === 'string') {
 					return {
 						url: this.item.image,
+						width: 1,
+						height: 1,
 					};
 				}
 

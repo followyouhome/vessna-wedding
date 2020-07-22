@@ -7,10 +7,9 @@
 
 <script>
   import Page from '@/components/pages/page.vue';
-  import { ModuleArticle } from '@/components/module';
-  import { FormUserSettings } from '@/components/forms';
-
-  import store from '../../../store/';
+  import ModuleArticle from '@/components/module/module-article/module-article.vue';
+  import FormUserSettings from '@/components/forms/form-user-settings/form-user-settings.vue';
+  import store from '@/store/';
 
   function fetch (store) {
     return Promise.all([

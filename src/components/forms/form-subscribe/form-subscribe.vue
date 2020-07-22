@@ -5,21 +5,21 @@
     </template>
     <template slot='body'>
       <div class="form-subscribe__group">
-        <b-row class="mt-4 mb-4">
-          <b-col>
-            <b-form-input v-model="form.email" type="email" placeholder="E-mail" required autofocus/>
-          </b-col>
-        </b-row>
-        <b-row class="mt-4 mb-4">
-          <b-col>
-            <b-form-checkbox v-model="state.checked" class="ml-4" required block>Даю согласие на обработку персональных данных</b-form-checkbox>
-          </b-col>
-        </b-row>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
+            <atom-input class="form__input-text" v-model="form.email" name="email" type="email" placeholder="E-mail" required autofocus/>
+          </div>
+        </div>
+        <div class="row mt-4 mb-4">
+          <div class="col col-12">
+            <atom-checkbox v-model="state.checked" name="checked" class="ml-4" :required="true" label="Даю согласие на обработку персональных данных"/>
+          </div>
+        </div>
       </div>
     </template>
     <template slot='footer'>
       <div class="form-subscribe__control">
-        <b-button class="form__submit" type="submit" :disabled="disabled" :title="title" block>Отправить</b-button>
+        <atom-button class="form__submit" type="submit" :disabled="disabled" :title="title" block label="Отправить"/>
       </div>
     </template>
   </v-form>
@@ -27,6 +27,7 @@
 
 <script>
   import Form from '../form';
+  import { AtomButton, AtomInput, AtomCheckbox, AtomSelect, AtomTextarea } from '@/components/atoms';
 
   export default {
     name: 'FormSubscribe',
@@ -34,12 +35,17 @@
     extends: Form,
 
     components: {
+      AtomButton,
+      AtomInput,
+      AtomCheckbox,
+      AtomSelect,
+      AtomTextarea,
       'v-form': Form,
     },
 
     data () {
       return {
-        action: 'subscribe',
+        action: '/api/forms/subscribe',
         form: {
           email: '',
           subscribe: true,

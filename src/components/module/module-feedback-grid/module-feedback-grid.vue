@@ -1,14 +1,15 @@
 <template>
-	<b-container class="module module-feedback-greed">
+	<div class="module module-feedback-greed container">
 		<div class="module__wrapper module-feedback-greed__wrapper">
 			<promo-label class="module-feedback-greed__promo" :item="label"/>
 			<promo-feedback class="module-feedback-greed__promo" v-for="feedback in limitedFeedbacks" :item="feedback" :key="feedback.name"/>
 		</div>
-	</b-container>
+	</div>
 </template>
 
 <script>
-	import { PromoLabel, PromoFeedback } from '@/components/promo';
+	import PromoLabel from '@/components/promo/promo-label/promo-label.vue';
+	import PromoFeedback from '@/components/promo/promo-feedback/promo-feedback.vue';
 
 	export default {
 		name: 'ModuleFeedbackGrid',
@@ -85,12 +86,12 @@
 
 		@media #{$tablet} {
 			&:nth-child(1) {
-				width: 33%;
+				width: 50%;
 				align-self: flex-end;
 			}
 
 			&:nth-child(2) {
-				width: 67%;
+				width: 50%;
 				align-self: flex-end;
 			}
 

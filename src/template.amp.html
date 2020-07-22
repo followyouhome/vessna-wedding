@@ -39,9 +39,14 @@
 
     <!--     AMP Scripts     -->
     <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js" async></script>
     <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
     <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+    <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+    <script async custom-element="amp-lightbox" src="https://cdn.ampproject.org/v0/amp-lightbox-0.1.js"></script>
     <script async custom-element="amp-accordion" src="https://cdn.ampproject.org/v0/amp-accordion-0.1.js"></script>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-lightbox-gallery" src="https://cdn.ampproject.org/v0/amp-lightbox-gallery-0.1.js"></script>
 
     <!--   AMP Boilerplate   -->
     <style amp-boilerplate>
@@ -53,12 +58,19 @@
 
     <!--  AMP Custom styles  -->
     <style amp-custom>
-      {{{ stylesheets[state.route.name] }}}
+      {{{ stylesheets.get(state.route.name) }}}
     </style>
   </head>
   <body>
     <!--vue-ssr-outlet-->
-    {{{ !amp && renderState() }}}
-    {{{ !amp && renderScripts() }}}
+    <amp-analytics type="metrika">
+        <script type="application/json">
+            {
+                "vars": {
+                    "counterId": "40895619"
+                }
+            }
+        </script>
+    </amp-analytics>
   </body>
 </html>

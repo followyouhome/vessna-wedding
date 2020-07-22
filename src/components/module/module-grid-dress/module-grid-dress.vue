@@ -1,13 +1,13 @@
 <template>
   <div class="module-grid-dress isotope-grid">
     <div class="isotope-grid__sizer"></div>
-    <promo-dress v-for="dress in dresses" v-bind:dress="dress" v-bind:key="dress.slug" v-if="dresses.length"></promo-dress>
+    <promo-dress v-for="dress in dresses" :dress="dress" :key="dress.slug"/>
   </div>
 </template>
 
 <script>
-  import { ModuleGrid } from '@/components/module';
-  import { PromoDress } from '@/components/promo';
+  import ModuleGrid from '@/components/module/module-grid/module-grid.vue';
+  import PromoDress from '@/components/promo/promo-dress/promo-dress';
 
   export default {
     name: 'ModuleGridDress',
@@ -36,6 +36,9 @@
 
 <style lang="scss">
   .module-grid-dress {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
     margin: 10px;
 
     @media #{$tablet} {
@@ -75,8 +78,6 @@
     }
 
     .promo {
-      float: left;
-
       &.promo--width-2 {
         width: percentage(1 / 6);
 

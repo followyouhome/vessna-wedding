@@ -1,5 +1,5 @@
 <template>
-  <b-container class="popup">
+  <div class="popup container">
     <slot name='header'>
 
     </slot>
@@ -7,15 +7,27 @@
 
     </slot>
     <slot name='footer'>
-      <button class="popup__close" @click="close">×</button>
+      <button class="popup__close" @click="close" v-if="!amp">×</button>
+      <button class="popup__close" :on="`tap:${$parent.id}.close`" v-else>×</button>
     </slot>
-  </b-container>
+  </div>
 </template>
 
 <script>
+  import shortid from 'shortid';
 
   export default {
     name: 'v-popup',
+
+    props: {
+      /**
+       * Popup ID
+       */
+      id: {
+        type: String,
+        default: () => shortid.generate(),
+      },
+    },
 
     data () {
       return {
@@ -30,6 +42,12 @@
           animation: 300,
         },
       };
+    },
+
+    computed: {
+      amp () {
+        return this.$store.getters.amp;
+      },
     },
 
     mounted () {

@@ -8,7 +8,7 @@
 
 <script>
   import Popup from './popup.vue';
-  import { FormUserRegistration } from '@/components/forms';
+  import FormUserRegistration from '@/components/forms/form-user-registration/form-user-registration.vue';
 
   export default {
     name: 'popup-signup',

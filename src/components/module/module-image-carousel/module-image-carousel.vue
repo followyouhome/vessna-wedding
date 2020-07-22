@@ -1,5 +1,5 @@
 <template>
-  <b-container class="module module-dress-info">
+  <div class="module module-dress-info container" v-if="dress">
     <div class="module-dress-info__carousel" ref="carousel">
       <div class="module-dress-info__image" v-for="image in images">
         <image-deferred class="" :image="image" :key="image.url"/>
@@ -18,7 +18,7 @@
         <p class="module-dress-info__copy" v-if="price">{{price}}</p>
       </div>
     </div>
-  </b-container>
+  </div>
 </template>
 
 <script>
@@ -39,7 +39,7 @@
 
     computed: {
       images () {
-        return this.dress.images;
+        return this.dress && this.dress.images;
       },
 
       currency () {
@@ -107,7 +107,7 @@
 
 <style lang="scss">
   .popup-image-carousel {
-    overflow: scroll !important;
+    overflow: scroll;
   }
 
   .module-dress-info {
@@ -132,7 +132,7 @@
 
     @media #{$phablet} {
       width: 100%;
-      height: 60vh;
+      height: 80vh;
     }
 
     .flickity-viewport {
@@ -184,13 +184,12 @@
   }
 
   .module-dress-info__image {
-    height: 100%;
     width: 100%;
 
     .image-deferred {
       width: 100%;
       height: 100%;
-      padding-top: 0 !important;
+      padding-top: 0;
 
       img {
         height: 100%;
