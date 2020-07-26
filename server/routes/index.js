@@ -1,6 +1,7 @@
 const glob = require('glob');
 const path = require('path');
 const config = require('../../config');
+const cache = require('./cache');
 
 module.exports = app => {
   const base = config.api.base;
@@ -23,6 +24,11 @@ module.exports = app => {
 
   glob.sync(`${__dirname}/query/*`).forEach(file => {
     require(path.resolve(file))(app, base);
+  });
+
+  app.get('/refresh', (req, res) => {
+    cache.reset();
+    res.end('Cache cleared');
   });
 
   require('./app')(app);

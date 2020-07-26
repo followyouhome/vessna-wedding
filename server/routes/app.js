@@ -18,6 +18,7 @@ const LRU = require('lru-cache');
 const glob = require('glob');
 const path = require('path');
 const {createBundleRenderer} = require('vue-server-renderer');
+const cache = require('./cache');
 const config = require('../../config');
 const uidCookie = require('../lib/uid-cookie');
 
@@ -169,6 +170,14 @@ module.exports = app => {
     };
 
     /**
+     * Render cached value
+     */
+    const hit = cache.get(req.url);
+    if (hit && !req.user) {
+      return res.end(hit);
+    }
+
+    /**
      * Callback function after Vue render
      */
     function callback (err, html) {
@@ -183,6 +192,10 @@ module.exports = app => {
         console.error(err.stack || err);
       } else {
         res.status(context.code).end(html);
+
+        if (!req.user) {
+          cache.set(req.url, html);
+        }
       }
     }
 
