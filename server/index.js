@@ -7,7 +7,6 @@ fs.readdirSync(path.resolve(__dirname, './keystone/models')).forEach(file => {
 });
 
 require('dotenv').config();
-require('newrelic');
 
 keystone.init(require('../config/keystone.config'));
 
