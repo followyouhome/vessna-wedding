@@ -168,6 +168,7 @@
 </script>
 
 <style lang="scss">
+  @import './styles/fonts.scss';
   @import './styles/layout.scss';
 
   html {

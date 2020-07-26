@@ -34,7 +34,6 @@ const config = {
           resolve('../src/styles/colors.scss'),
           resolve('../src/stylez/import.scss'),
           resolve('../src/styles/media.scss'),
-          resolve('../src/styles/fonts.scss'),
         ],
       },
     },

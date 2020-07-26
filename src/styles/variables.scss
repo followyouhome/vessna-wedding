@@ -1,5 +1,29 @@
+// Font families
+$Default: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$icomoon: 'icomoon';
+$AkzidensGrotesk: 'Akzidenz Grotesk';
+$PeginotLight: 'Peignot Light';
+$RistrettoProBlack: 'RistrettoPro-Black';
+$RistrettoProBold: 'RistrettoPro-Bold';
+$RistrettoProLight: 'RistrettoPro-Light';
+$RistrettoProExtraLight: 'RistrettoPro-ExtraLight';
+$RistrettoProThin: 'RistrettoPro-Thin';
+$RistrettoProMedium: 'RistrettoPro-Medium';
+$RistrettoProSemiBold: 'RistrettoPro-SemiBold';
+$RistrettoProRegular: 'RistrettoPro-Regular';
+$FuturaPTLight: 'Futura PT Light';
+
+// Depth indexes
 $z-loading: 1500;
 $z-popup: 1000;
 $z-navigation: 750;
 $z-default: 500;
 $z-background: 0;
+
+:export {
+  AkzidensGrotesk: $AkzidensGrotesk;
+  PeginotLight: $PeginotLight;
+  RistrettoProBlack: $RistrettoProBlack;
+  FuturaPTLight: $FuturaPTLight;
+  Default: $Default;
+}

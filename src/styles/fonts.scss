@@ -1,11 +1,6 @@
 $root: '';
 
 /**
- * Default system font
- */
-$Default: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-
-/**
  * Icomoon
  */
 
@@ -19,8 +14,6 @@ $Default: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue
      font-weight: 400;
      font-style: normal
  }
-
- $icomoon: 'icomoon';
 
 /**
  * Akzidenz Grotesk
@@ -38,8 +31,6 @@ $Default: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue
     font-style: normal;
 }
 
-$AkzidensGrotesk: 'Akzidenz Grotesk';
-
 /**
  * Peignot Light
  */
@@ -56,10 +47,8 @@ $AkzidensGrotesk: 'Akzidenz Grotesk';
   font-style: normal
 }
 
-$PeginotLight: 'Peignot Light';
-
 .font-peignot {
-    font-family: $PeginotLight, Helvetica, Arial, sans-serif;
+    font-family: 'Peignot Light', Helvetica, Arial, sans-serif;
     font-size: 1.1em;
     display: inline-block;
     text-transform: uppercase;
@@ -78,15 +67,11 @@ $PeginotLight: 'Peignot Light';
   src: url('#{$root}/public/fonts/RistrettoPro/RistrettoPro-Black.woff') format('woff'),
 }
 
-$RistrettoProBlack: 'RistrettoPro-Black';
-
 @font-face {
   font-family: 'RistrettoPro-Bold';
   font-display: swap;
   src: url('#{$root}/public/fonts/RistrettoPro/RistrettoPro-Bold.woff') format('woff'),
 }
-
-$RistrettoProBold: 'RistrettoPro-Bold';
 
 @font-face {
   font-family: 'RistrettoPro-Light';
@@ -94,15 +79,11 @@ $RistrettoProBold: 'RistrettoPro-Bold';
   src: url('#{$root}/public/fonts/RistrettoPro/RistrettoPro-Light.woff') format('woff'),
 }
 
-$RistrettoProLight: 'RistrettoPro-Light';
-
 @font-face {
   font-family: 'RistrettoPro-ExtraLight';
   font-display: swap;
   src: url('#{$root}/public/fonts/RistrettoPro/RistrettoPro-ExtraLight.woff') format('woff'),
 }
-
-$RistrettoProExtraLight: 'RistrettoPro-ExtraLight';
 
 @font-face {
   font-family: 'RistrettoPro-Thin';
@@ -110,15 +91,11 @@ $RistrettoProExtraLight: 'RistrettoPro-ExtraLight';
   src: url('#{$root}/public/fonts/RistrettoPro/RistrettoPro-Thin.woff') format('woff'),
 }
 
-$RistrettoProThin: 'RistrettoPro-Thin';
-
 @font-face {
   font-family: 'RistrettoPro-Medium';
   font-display: swap;
   src: url('#{$root}/public/fonts/RistrettoPro/RistrettoPro-Medium.woff') format('woff'),
 }
-
-$RistrettoProMedium: 'RistrettoPro-Medium';
 
 @font-face {
   font-family: 'RistrettoPro-SemiBold';
@@ -126,19 +103,16 @@ $RistrettoProMedium: 'RistrettoPro-Medium';
   src: url('#{$root}/public/fonts/RistrettoPro/RistrettoPro-SemiBold.woff') format('woff'),
 }
 
-$RistrettoProSemiBold: 'RistrettoPro-SemiBold';
-
 @font-face {
   font-family: 'RistrettoPro-Regular';
   font-display: swap;
   src: url('#{$root}/public/fonts/RistrettoPro/RistrettoPro-Regular.woff') format('woff'),
 }
 
-$RistrettoProRegular: 'RistrettoPro-Regular';
-
 /**
  * Futura PT Light
  */
+
 @font-face {
   font-family: 'Futura PT Light';
   font-display: swap;
@@ -148,14 +122,4 @@ $RistrettoProRegular: 'RistrettoPro-Regular';
        url("#{$root}/public/fonts/Futura_PT_Light/FTN35__W.svg") format("svg");
   font-weight: 400;
   font-style: normal
-}
-
-$FuturaPTLight: 'Futura PT Light';
-
-:export {
-  AkzidensGrotesk: $AkzidensGrotesk;
-  PeginotLight: $PeginotLight;
-  RistrettoProBlack: $RistrettoProBlack;
-  FuturaPTLight: $FuturaPTLight;
-  Default: $Default;
 }
