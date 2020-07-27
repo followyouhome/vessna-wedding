@@ -8,19 +8,28 @@
   export default {
     name: 'AtomLink',
 
-    props: ['to'],
+    props: ['to', 'href'],
 
     data () {
-      this.to.query = this.to.query || {};
+      let route = null;
+
+      if (this.to) {
+        route = this.to;
+      } else if (this.href) {
+        route = {
+          path: this.href,
+        };
+      }
 
       if (this.$store.getters.amp) {
-        this.to.query = {
+        route.query = route.query || {};
+        route.query = {
           amp: true,
         };
       }
 
       return {
-        route: this.to,
+        route: route,
       };
     },
   };

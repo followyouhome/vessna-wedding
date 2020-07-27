@@ -1,3 +1,4 @@
+import Vuex from 'vuex';
 import { text } from '@storybook/addon-knobs';
 import ModuleSharedFolder from './module-shared-folder.vue';
 
@@ -18,4 +19,11 @@ export const Default = () => ({
       default: text('Resources', 'https://disk.yandex.by'),
     },
   },
+  store: new Vuex.Store({
+    getters: {
+      isUserAvailable () {
+        return false;
+      },
+    },
+  }),
 });

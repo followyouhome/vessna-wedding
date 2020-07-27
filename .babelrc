@@ -1,3 +1,21 @@
 {
-  "presets": ["@vue/babel-preset-jsx"]
+  "presets": [
+    "@vue/app",
+  ],
+  "plugins": ["@babel/plugin-proposal-class-properties"],
+  "env": {
+    "test": {
+      "presets": [
+        "@vue/app",
+        [
+          "@babel/preset-env",
+          {
+            "targets": {
+              "node": "current",
+            },
+          },
+        ],
+      ],
+    },
+  },
 }

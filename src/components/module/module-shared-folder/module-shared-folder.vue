@@ -1,19 +1,12 @@
 <template>
   <div class="module module-shared-folder" v-if="resources">
     <div class="module__wrapper module-shared-folder__wrapper">
-      <tabs class="module-shared-folder__tabs" v-if="authorized && available">
-        <tab :name="logo.yandex">
-          <div class="module-shared-folder__yandex-wrapper">
-            <div class="module-shared-folder__yandex-macbook"></div>
-            <h3 class="module-shared-folder__yandex-headline">Скачать через Яндекс</h3>
-            <p class="module-shared-folder__yandex-subline">Папка Яндекс.Диска выглядит так же, как обычная папка на компьютере. Вы можете скачать напрямую с этого сервиса, либо добавить эту папку в свой профиль.</p>
-            <a class="module-shared-folder__yandex-button is-download" :href="resources" target="_blank">Скачать</a>
-          </div>
-        </tab>
-        <!-- <tab :name="logo.google">
-          <iframe src="https://drive.google.com/embeddedfolderview?id=0Bw_AFjU52L_BMjV1ME4xcm02M2c#grid" style=""></iframe>
-        </tab> -->
-      </tabs>
+      <div class="module-shared-folder__yandex-wrapper" v-if="authorized && available">
+        <div class="module-shared-folder__yandex-macbook"></div>
+        <h3 class="module-shared-folder__yandex-headline">Скачать через Яндекс</h3>
+        <p class="module-shared-folder__yandex-subline">Папка Яндекс.Диска выглядит так же, как обычная папка на компьютере. Вы можете скачать напрямую с этого сервиса, либо добавить эту папку в свой профиль.</p>
+        <a class="module-shared-folder__yandex-button is-download" :href="resources" target="_blank">Скачать</a>
+      </div>
       <div class="module-shared-folder__login" v-if="authorized && !available">
         <div class="module-shared-folder__yandex-devices"></div>
         <h3 class="module-shared-folder__yandex-headline">Доступно после первого заказа</h3>
@@ -24,15 +17,13 @@
         <div class="module-shared-folder__yandex-devices"></div>
         <h3 class="module-shared-folder__yandex-headline">Фото, видео и буклеты для клиентов</h3>
         <p class="module-shared-folder__yandex-subline">К этой коллекции у нас есть много дополнительного контента для вашего профиля Instagram, группы Вконтакте или сайта.</p>
-        <button class="module-shared-folder__yandex-button is-login" href="#" @click="login">Авторизоваться для просмотра</button>
+        <atom-link class="module-shared-folder__yandex-button is-login" href="/user/login">Авторизоваться для просмотра</atom-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  import {Tabs, Tab} from 'vue-tabs-component';
-
   export default {
     name: 'ModuleSharedFolder',
 
@@ -45,23 +36,17 @@
       },
     },
 
-    components: {
-      'tab': Tab,
-      'tabs': Tabs,
-    },
-
     data () {
       return {
         logo: {
           yandex: `<img class="logo-yandex" src="/public/images/icons/logo-yandex-disk.svg" alt="Яндекс диск">`,
-          google: `<img class="logo-google" src="/public/images/icons/logo-google-drive.svg" alt="Google Drive">`,
         },
       };
     },
 
     computed: {
       user () {
-        return this.$store && this.$store.getters && this.$store.getters.isUserAvailable && this.$store.state.user;
+        return this.$store.getters.isUserAvailable && this.$store.state.user;
       },
 
       authorized () {
@@ -70,12 +55,6 @@
 
       available () {
         return this.user && this.user.access && this.user.access.content;
-      },
-    },
-
-    methods: {
-      login () {
-        this.$store.commit('POPUP_SET', { popup: 'login' });
       },
     },
 
