@@ -70,7 +70,7 @@ module.exports = (app, base) => {
    * @todo Uncomplete
    * @inner
    */
-  app.post(base + '/user/signup', (req, res) => {
+  app.post(base + '/user/registration', (req, res) => {
     User.model.findOne({ email: req.body.email }).exec((err, user) => {
       if (err || user) {
         return res.status(400).json({ error: 'cannot create user' });
@@ -94,7 +94,7 @@ module.exports = (app, base) => {
         access: {
           content: false,
           keystone: false,
-          currency: 'usd',
+          currency: 'rub',
           subscription: user.access.subscription,
         },
       }).save(() => {

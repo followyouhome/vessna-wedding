@@ -46,12 +46,12 @@
         </div>
         <div class="row mt-4 mb-4">
           <div class="col col-12">
-            <atom-checkbox v-model="form.access.subscription" name="access.subscription" class="ml-4" label="Подписаться на рассылку"/>
+            <atom-checkbox id="registration-subscription" v-model="form.access.subscription" name="access.subscription" class="ml-4" label="Подписаться на рассылку"/>
           </div>
         </div>
         <div class="row mt-4 mb-4">
           <div class="col col-12">
-            <atom-checkbox v-model="state.checked" name="checked" class="ml-4" :required="true" label="Согласие с пользовательским соглашением"/>
+            <atom-checkbox id="registration-confirmation" v-model="state.checked" name="checked" class="ml-4" :required="true" label="Согласие с пользовательским соглашением"/>
           </div>
         </div>
         <div class="row mt-4 mb-4">
@@ -70,6 +70,7 @@
 </template>
 
 <script>
+  import { USER_LOGIN } from '@/store/mutation-types.js';
   import Form from '../form.vue';
   import { AtomButton, AtomInput, AtomCheckbox, AtomSelect, AtomTextarea } from '@/components/atoms';
 

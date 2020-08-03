@@ -7,7 +7,7 @@
       <div class="form-subscribe__group">
         <div class="row mt-4 mb-4">
           <div class="col col-12">
-            <atom-input class="form__input-text" v-model="form.email" name="email" type="email" placeholder="E-mail" required autofocus/>
+            <atom-input class="form__input-text" v-model="form.email" name="email" type="email" placeholder="E-mail" required/>
           </div>
         </div>
         <div class="row mt-4 mb-4">

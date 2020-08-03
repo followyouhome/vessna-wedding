@@ -56,7 +56,7 @@
             <label class="form__label" for="input-access-currency">Валюта:</label>
           </div>
           <div class="col col-10">
-            <atom-select v-model="form.access.currency" name="currency" id="input-access-currency" :options="currencies" block>
+            <atom-select v-model="form.access.currency" :value="form.access.currency" name="currency" id="input-access-currency" :options="currencies" block disabled>
               <template slot="first">
                 <option :value="null" disabled>Выберите валюту</option>
               </template>
@@ -65,7 +65,7 @@
         </div>
         <div class="row mt-4 mb-4" align-v="center">
           <div class="col col-12">
-            <atom-checkbox v-model="form.access.subscription" name="access.subscription" class="ml-4" value="true" label="Подписаться на новостную рассылку"/>
+            <atom-checkbox  id="settings-signup" v-model="form.access.subscription" name="access.subscription" class="ml-4" value="true" label="Подписаться на новостную рассылку"/>
           </div>
         </div>
         <div class="row mt-4 mb-4" align-v="center">

@@ -4,6 +4,7 @@
     :class="classes"
     :id="id"
     :name="name"
+    :value="value"
     @change="change"
   >
     <slot name="first"></slot>
