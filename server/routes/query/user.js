@@ -43,7 +43,17 @@ module.exports = (app, base) => {
     keystone.session.signin({ email: req.body.email, password: req.body.password }, req, res, () => {
       res.cookie('uid', req.user._id, { httpOnly: false });
 
-      return res.status(200).json(userFormat(req.user));
+      User.model.updateOne({
+        _id: req.user.id,
+      }, {
+        date: {
+          login: new Date().toISOString(),
+        },
+      }).then(() => {
+        res.status(200).json(userFormat(req.user));
+      }).catch((err, b) => {
+        res.status(401).json({ error: err });
+      });
     }, () => {
       return res.status(400).json({ error: 'wrong login or password' });
     });
@@ -97,6 +107,10 @@ module.exports = (app, base) => {
           currency: 'rub',
           subscription: user.access.subscription,
         },
+        date: {
+          login: new Date().toISOString(),
+          signup: new Date().toISOString(),
+        },
       }).save(() => {
         keystone.session.signin({ email: user.email, password: user.password }, req, res, function () {
           res.cookie('uid', req.user._id, { httpOnly: false });
@@ -124,6 +138,7 @@ module.exports = (app, base) => {
       user.info.shop = body.info.shop;
       user.access.currency = body.access.currency;
       user.access.subscription = body.access.subscription;
+      user.date.settings = new Date().toISOString();
 
       User.model.updateOne({ _id: user._id }, user).then(() => {
         res.status(200).json(userFormat(user));

@@ -67,6 +67,23 @@ User.add({
     	}],
     },
   },
+  date: {
+    login: {
+      label: 'Дата последнего входа',
+      type: Types.Date,
+      default: null,
+    },
+    signup: {
+      label: 'Дата регистрации',
+      type: Types.Date,
+      default: null,
+    },
+    settings: {
+      label: 'Дата изменения настроек',
+      type: Types.Date,
+      default: null,
+    },
+  },
 });
 
 User.schema.virtual('canAccessKeystone').get(function () {
@@ -75,14 +92,15 @@ User.schema.virtual('canAccessKeystone').get(function () {
 
 User.schema.pre('validate', function (next) {
     if (!this.name.replace(/[^\w]/gi, '').length) {
-        next(Error('Имя пользователя должно содержать буквы и цифры'));
+        // next(Error('Имя пользователя должно содержать буквы и цифры'));
+        next();
     }
     else {
         next();
     }
 });
 
-User.defaultColumns = 'name|20%, email|20%, access.keystone|20%, access.content|20%, access.subscription|20%';
+User.defaultColumns = 'name|20%, email|20%, access.keystone|20%, access.content|10%, access.subscription|10% date.login|20%';
 User.register();
 
 module.exports = User;
