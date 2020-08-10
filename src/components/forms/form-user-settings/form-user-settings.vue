@@ -6,18 +6,18 @@
     <template slot='body'>
       <div class="form-user-settings__group">
         <div class="row mt-4 mb-4" align-v="center">
-          <div sm="2" class="col col-2 align-middle">
+          <div sm="2" class="col col-sm-4 col-2 align-middle">
             <label class="form__label" for="input-info-name">Имя:</label>
           </div>
-          <div class="col col-10">
+          <div class="col col-sm-8 col-10">
             <atom-input class="form__input-text" v-model="form.name" name="name" id="input-info-name" type="text" placeholder="Введите своё имя" disabled />
           </div>
         </div>
         <div class="row mt-4 mb-4" align-v="center">
-          <div class="col col-2">
+          <div class="col col-sm-4 col-2">
             <label class="form__label" for="input-info-email">Email:</label>
           </div>
-          <div class="col col-10">
+          <div class="col col-sm-8 col-10">
             <atom-input class="form__input-text" v-model="form.email" name="email" id="input-info-email" type="text" placeholder="Введите свой email" disabled />
           </div>
         </div>
@@ -25,26 +25,26 @@
       <div class="form-user-settings__group">
         <h4 class="form__subline">Контактные данные</h4>
         <div class="row mt-4 mb-4" align-v="center">
-          <div class="col col-2">
+          <div class="col col-sm-4 col-2">
             <label class="form__label" for="input-info-phone">Телефон:</label>
           </div>
-          <div class="col col-10">
+          <div class="col col-sm-8 col-10">
             <atom-input class="form__input-text" v-model="form.info.phone" name="phone" id="input-info-phone" type="text" placeholder="Введите контактный телефон" />
           </div>
         </div>
         <div class="row mt-4 mb-4" align-v="center">
-          <div class="col col-2">
+          <div class="col col-sm-4 col-2">
             <label class="form__label" for="input-info-city">Город:</label>
           </div>
-          <div class="col col-10">
+          <div class="col col-sm-8 col-10">
             <atom-input class="form__input-text" v-model="form.info.city" name="city" id="input-info-city" type="text" placeholder="Введите город" />
           </div>
         </div>
         <div class="row mt-4 mb-4" align-v="center">
-          <div class="col col-2">
+          <div class="col col-sm-4 col-2">
             <label class="form__label" for="input-info-shop">Салон:</label>
           </div>
-          <div class="col col-10">
+          <div class="col col-sm-8 col-10">
             <atom-input class="form__input-text" v-model="form.info.shop" name="shop" id="input-info-shop" type="text" placeholder="Введите название вашего бизнеса" />
           </div>
         </div>
@@ -52,10 +52,10 @@
       <div class="form-user-settings__group">
         <h4 class="form__subline">Настройки пользователя</h4>
         <div class="row mt-4 mb-4" align-v="center">
-          <div class="col col-2">
+          <div class="col col-sm-4 col-2">
             <label class="form__label" for="input-access-currency">Валюта:</label>
           </div>
-          <div class="col col-10">
+          <div class="col col-sm-8 col-10">
             <atom-select v-model="form.access.currency" :value="form.access.currency" name="currency" id="input-access-currency" :options="currencies" block disabled>
               <template slot="first">
                 <option :value="null" disabled>Выберите валюту</option>

@@ -11,7 +11,7 @@
     </slot>
     <slot name="modal">
       <div class="form__modal" v-show="state.request">
-        <atom-spinner/>
+        <atom-spinner class="form__spinner"/>
       </div>
       <div class="form__modal form__modal--success" v-show="amp || state.success" submit-success>
         <h4 class="form__subline">{{label.success}}</h4>
@@ -230,6 +230,15 @@
     margin: 0px 0 20px;
     font: 1.5rem/1.5rem $RistrettoProLight;
     text-align: center;
+  }
+
+  .form__spinner {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
 
   // @keyframes fail {
