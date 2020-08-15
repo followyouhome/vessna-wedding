@@ -1,8 +1,13 @@
+const ejs = require('ejs');
+const path = require('path');
 const keystone = require('keystone');
+const mailgun = require('mailgun-js')({
+  apiKey: process.env.MAILGUN_KEY,
+  domain: process.env.MAILGUN_DOMAIN,
+});
 
 const User = keystone.list('user');
 const INVITE_CODE = process.env.INVITE_CODE;
-
 
 function userFormat (user) {
   return {
@@ -114,6 +119,24 @@ module.exports = (app, base) => {
       }).save(() => {
         keystone.session.signin({ email: user.email, password: user.password }, req, res, function () {
           res.cookie('uid', req.user._id, { httpOnly: false });
+
+          ejs.renderFile(path.resolve(__dirname, '../../emails/registration.ejs'), {
+            name: req.user.name,
+          }, {
+            async: false,
+          }, (err, html) => {
+              mailgun.messages().send({
+                to: user.email,
+                from: 'Vessna <robot@vessna.wedding>',
+                subject: '👗 Регистрация на сайте vessna.wedding',
+                html: html,
+              }, (err, body) => {
+                if (err) {
+                  console.error(err);
+                }
+              });
+          });
+
           return res.status(200).json(userFormat(req.user));
         }, () => {
           return res.status(401).json({ error: 'wrong login or password' });
