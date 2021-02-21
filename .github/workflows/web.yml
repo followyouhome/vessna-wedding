@@ -1,0 +1,54 @@
+name: Web
+on:
+  push:
+    branches: [master]
+  pull_request:
+    types: [assigned, opened, synchronize, reopened]
+jobs:
+  test:
+    name: Lint and Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+    env:
+      NODE_ENV: test
+      CI: true
+    steps:
+    - uses: actions/checkout@master
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install
+      run: yarn install --frozen-lockfile
+    - name: Lint
+      run: yarn lint
+    - name: Test
+      run: yarn test
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+    env:
+      NODE_ENV: production
+      CI: true
+    steps:
+    - uses: actions/checkout@master
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install
+      run: yarn install --frozen-lockfile
+    - name: Build website
+      run: yarn build
+    - name: Compress build
+      run: zip -j -r web.zip ./dist/
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: Web
+        path: ./web.zip
