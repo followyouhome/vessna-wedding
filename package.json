@@ -48,7 +48,7 @@
     "@babel/runtime": "^7.4.3",
     "@vue/babel-preset-jsx": "^1.1.2",
     "autoprefixer": "^9.7.3",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel-loader": "^8.0.5",
     "babel-plugin-dynamic-import-node-babel-7": "^2.0.7",
     "body-parser": "^1.18.3",
