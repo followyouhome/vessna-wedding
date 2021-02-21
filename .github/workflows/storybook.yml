@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [14.x]
     env:
       NODE_ENV: test
     steps:
@@ -20,10 +20,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: Install
+      run: yarn install --frozen-lockfile
     - name: Build storybook
-      run: |
-        yarn
-        yarn storybook:build
+      run: yarn storybook:build
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v2.5.0
       env:
@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [14.x]
     env:
       NODE_ENV: test
     steps:
@@ -45,7 +45,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: Install
+      run: yarn install --frozen-lockfile
     - name: Build storybook
-      run: |
-        yarn
-        yarn storybook:build
+      run: yarn storybook:build

@@ -6,7 +6,7 @@ on:
     types: [assigned, opened, synchronize, reopened]
 jobs:
   test:
-    name: Lint and Test
+    name: Test
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -43,11 +43,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Install
       run: yarn install --frozen-lockfile
-    - name: Build website
+    - name: Build
       run: yarn build
-    - name: Compress build
+    - name: Compress
       run: zip -j -r web.zip ./dist/
-    - name: Upload artifact
+    - name: Upload
       uses: actions/upload-artifact@v1
       with:
         name: Web
