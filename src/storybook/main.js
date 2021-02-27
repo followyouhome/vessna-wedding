@@ -26,7 +26,7 @@ module.exports = {
 
     cssLoader.options.modules = false;
 
-    config.output.publicPath = process.env.NODE_ENV === 'test' ? '/vessna-wedding' : '/';
+    config.output.publicPath = process.env.NODE_ENV === 'development' ? '/' : '/vessna-wedding';
 
     config.module.rules.push(styles);
 
