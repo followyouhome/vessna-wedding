@@ -26,6 +26,8 @@ module.exports = {
 
     cssLoader.options.modules = false;
 
+    config.output.publicPath = process.env.NODE_ENV === 'test' ? '/vessna-wedding' : '/';
+
     config.module.rules.push(styles);
 
     config.resolve.alias['@'] = path.resolve(__dirname, '..'),
