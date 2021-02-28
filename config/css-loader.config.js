@@ -4,8 +4,6 @@ const path = require('path');
 const isProd = process.env.NODE_ENV === 'production';
 const resolve = file => path.resolve(__dirname, file);
 
-console.log("OUTPUT", process.env.NODE_ENV);
-
 const config = {
   test: /\.(css|scss)$/,
   use: [
